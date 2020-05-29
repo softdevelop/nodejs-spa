@@ -9,88 +9,101 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
   `,
   script: `
-  <script src="/libs/dist/js/custom.min.js"></script>
-  
-  <script src="/libs/node_modules/summernote/dist/summernote-bs4.min.js"></script>
-  
-  <script>
-     $(document).ready(function() {
-         $(function() {
-     
-             $('.summernote').summernote({
-                 height: 350, // set editor height
-                 minHeight: null, // set minimum height of editor
-                 maxHeight: null, // set maximum height of editor
-                 focus: false, // set focus to editable area after initializing summernote
-             });
-     
-             $('.inline-editor').summernote({
-                 airMode: true
-             });
-     
-         });
-     
-         window.edit = function() {
-                 $(".click2edit").summernote()
-             },
-         window.save = function() {
-             $(".click2edit").summernote('destroy');
-         }
+    <script src="/libs/dist/js/custom.min.js"></script>
 
-         $('form').on('submit', function(e){
-           e.preventDefault();
-           var formData = new FormData(document.querySelector('form'))
-           console.log('submitttt', formData);
-           for (var pair of formData.entries()) {
-                console.log(pair[0]+ ', ' + pair[1]); 
-            }
-         })
-    });
-  </script>
-  
-  <script>
-  
-  var mymap = L.map('mapid').setView([16.0795694,108.1606642], 13);
-  
-  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-  maxZoom: 18,
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  id: 'mapbox/streets-v11',
-  tileSize: 512,
-  zoomOffset: -1
-  }).addTo(mymap);
-  
-  // L.marker([16.0795694,108.1606642]).addTo(mymap);
-  
-  // L.circle([51.508, -0.11], {
-  // 	color: 'red',
-  // 	fillColor: '#f03',
-  // 	fillOpacity: 0.5,
-  // 	radius: 500
-  // }).addTo(mymap);
-  
-  // L.polygon([
-  // 	[51.509, -0.08],
-  // 	[51.503, -0.06],
-  // 	[51.51, -0.047]
-  // ]).addTo(mymap);
-  var theMarker = {};
-  
-  function onMapClick(e) {
-  
-    if (theMarker != undefined) {
-      mymap.removeLayer(theMarker);
-        };
-  
-        theMarker = L.marker(e.latlng).addTo(mymap);
-  
-  }
-  
-  mymap.on('click', onMapClick);
-  
-  </script>
+    <script src="/libs/node_modules/summernote/dist/summernote-bs4.min.js"></script>
+    <script src="/js/slugify.js"></script>
+    <script>
+      $(document).ready(function() {
+          $(function() {
+      
+              $('.summernote').summernote({
+                  height: 350, // set editor height
+                  minHeight: null, // set minimum height of editor
+                  maxHeight: null, // set maximum height of editor
+                  focus: false, // set focus to editable area after initializing summernote
+              });
+      
+              $('.inline-editor').summernote({
+                  airMode: true
+              });
+      
+          });
+      
+          $('form').on('submit', function(e){
+              e.preventDefault();
+              var formData = new FormData(this);
+              $('.form-group').removeClass('has-danger');
+              $('.form-group small').html('')
+              formData.delete('files')
+              formData.delete('logo')
+
+              if(lng && lat){
+                formData.append('longitude', lng)
+                formData.append('latitude', lat)
+                formData.append('logo', $('input[name=logo]').prop('files')[0])
+
+                $.ajax({
+                  type: "POST",
+                  data: formData,
+                  method: 'POST',
+                  url: '/admin/spas/create',
+                  processData: false,
+                  contentType: false,
+                  success: (data) => {
+                    if(data.success)
+                    location.replace('/admin/spas')
+                    else alert(data)
+                  },
+                  error: (data) => {
+                    if(data && data.responseJSON && data.responseJSON.message &&  data.responseJSON.message.errors){
+                      Object.keys(data.responseJSON.message.errors).forEach(item=>{
+                        $('.form-group-'+item).addClass('has-danger');
+                        $('.form-group-'+item+' small').html(data.responseJSON.message.errors[item])
+                      })
+                    }
+                  }
+                })
+
+              }else{
+                $('.form-group-location').addClass('has-danger');
+                $('.form-group-location small').html('Please choose location on the map')
+              }
+          })
+      });
+    </script>
+    
+    <script>
+    
+    var mymap = L.map('mapid').setView([16.0795694,108.1606642], 13);
+    var lng, lat = '';
+    
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1
+    }).addTo(mymap);
+    
+    var theMarker = {};
+    
+    function onMapClick(e) {
+      if (theMarker != undefined) {
+        mymap.removeLayer(theMarker);
+      };
+      theMarker = L.marker(e.latlng).addTo(mymap);
+      lng = e.latlng.lng;
+      lat = e.latlng.lat;
+      $('.form-group-location').removeClass('has-danger');
+      $('.form-group-location small').html('')
+    }
+    
+    mymap.on('click', onMapClick);
+    
+    </script>
   
   `
   }) %>
@@ -129,24 +142,32 @@
                     <hr>
                     <div class="row p-t-20">
                        <div class="col-md-6">
-                          <div class="form-group <%=errors.name?'has-danger':''%>">
+                          <div class="form-group form-group-name <%=errors.name?'has-danger':''%>">
                              <label class="control-label">Name</label>
                              <input type="text" id="name" class="form-control" placeholder="" name="name" required value="<%=data.name?data.name:''%>">
                              <small class="form-control-feedback"><%=errors?errors.name:''%></small>
                           </div>
                        </div>
                        <div class="col-md-6">
-                          <div class="form-group <%=errors.slug?'has-danger':''%>">
+                          <div class="form-group form-group-slug <%=errors.slug?'has-danger':''%>">
                              <label class="control-label">Slug</label>
                              <input type="text" id="slug" class="form-control" placeholder="" name="slug" required value="<%=data.slug?data.slug:''%>">
                              <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
                           </div>
                        </div>
                     </div>
-                    <div id="mapid" style="width: 100%; height: 400px; z-index: 1;"></div>
+                    <div class="row">
+                      <div class="col-md-12 ">
+                         <div class="form-group form-group-location">
+                            <label class="control-label">Location</label>
+                            <div id="mapid" style="width: 100%; height: 400px; z-index: 1;"></div>
+                            <small class="form-control-feedback"></small>
+                         </div>
+                      </div>
+                   </div>
                     <div class="row">
                        <div class="col-md-12 ">
-                          <div class="form-group <%=errors.description? 'has-danger': ''%>">
+                          <div class="form-group form-group-description <%=errors.description? 'has-danger': ''%>">
                              <label class="control-label">Description</label>
                              <textarea class="summernote" style="z-index: 1;" name="description"></textarea>
                              <small class="form-control-feedback"><%=errors?errors.description:''%></small>
@@ -156,14 +177,14 @@
                     <!--/row-->
                     <div class="row p-t-20">
                        <div class="col-md-6">
-                          <div class="form-group <%=errors.phone?'has-danger':''%>">
+                          <div class="form-group form-group-phone <%=errors.phone?'has-danger':''%>">
                              <label class="control-label">Phone</label>
                              <input type="text" id="phone" class="form-control" name="phone" value="<%=data.phone?data.phone:''%>">
                              <small class="form-control-feedback"><%=errors?errors.phone:''%></small>
                           </div>
                        </div>
                        <div class="col-md-6">
-                          <div class="form-group <%=errors.address?'has-danger':''%>">
+                          <div class="form-group form-group-address <%=errors.address?'has-danger':''%>">
                              <label class="control-label">Address</label>
                              <input type="text" id="address" class="form-control" name="address" value="<%=data.address?data.address:''%>">
                              <small class="form-control-feedback"><%=errors?errors.address:''%></small>
@@ -174,7 +195,7 @@
                     <!--/row-->
                     <div class="row p-t-20">
                        <div class="col-md-6">
-                          <div class="form-group <%=errors.status?'has-danger':''%>">
+                          <div class="form-group form-group-status <%=errors.status?'has-danger':''%>">
                              <label class="control-label">Status</label>
                              <select class="form-control custom-select" name="status">
                                 <option value="pending">Pending</option>
@@ -185,10 +206,10 @@
                           </div>
                        </div>
                        <div class="col-md-6 ">
-                          <div class="form-group <%=errors.imgs? 'has-danger': ''%>">
-                             <label class="control-label">imgs</label>
-                             <input type="file" id="imgs" class="form-control" name="imgs" value="<%=data.imgs?data.imgs:''%>">
-                             <small class="form-control-feedback"><%=errors?errors.imgs:''%></small>
+                          <div class="form-group form-group-logo <%=errors.logo? 'has-danger': ''%>">
+                             <label class="control-label">Logo</label>
+                             <input type="file" id="logo" class="form-control" name="logo" value="<%=data.logo?data.logo:''%>">
+                             <small class="form-control-feedback"><%=errors?errors.logo:''%></small>
                           </div>
                        </div>
                     </div>
@@ -196,9 +217,9 @@
                      <!--/row-->
                      <div class="row p-t-20">
                       <div class="col-md-6">
-                         <div class="form-group <%=errors.owners?'has-danger':''%>">
+                         <div class="form-group form-group-owner <%=errors.owner?'has-danger':''%>">
                             <label class="control-label">Spa owner</label>
-                            <select class="form-control custom-select" name="owners">
+                            <select class="form-control custom-select" name="owner">
                               <% spaOwners.forEach(item=>{ %>
                                 <option value="<%=item._id%>"><%=item.first_name%> <%=item.last_name%> - <%=item.email%></option>
                               <% }) %>
@@ -206,19 +227,12 @@
                             <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
                          </div>
                       </div>
-                      <!-- <div class="col-md-6 ">
-                         <div class="form-group <%=errors.avatar? 'has-danger': ''%>">
-                            <label class="control-label">Avatar</label>
-                            <input type="file" id="avatar" class="form-control" name="avatar" value="<%=data.avatar?data.avatar:''%>">
-                            <small class="form-control-feedback"><%=errors?errors.avatar:''%></small>
-                         </div>
-                      </div> -->
                    </div>
                    <!--/row-->
                     <!--/row-->
                     <div class="row p-t-20">
                        <div class="col-md-6">
-                          <div class="form-group <%=errors.note?'has-danger':''%>">
+                          <div class="form-group form-group-note <%=errors.note?'has-danger':''%>">
                              <label class="control-label">Note</label>
                              <textarea id="note" class="form-control" name="note"><%=data.note?data.note:''%></textarea>
                              <small class="form-control-feedback"><%=errors?errors.note:''%></small>

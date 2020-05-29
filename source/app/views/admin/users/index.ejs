@@ -139,11 +139,11 @@
                                         <label class="custom-control-label" for="checkbox7"></label>
                                       </div>
                                     </th>
+                                    <th>Avatar</th>
                                     <th>Email</th>
                                     <th>Full name</th>
                                     <th>Info</th>
                                     <th>Birthday</th>
-                                    <th>Avatar</th>
                                     <th>Role</th>
                                     <th>Status</th>
                                     <th>Note</th>
@@ -159,6 +159,7 @@
                                       <label class="custom-control-label" for="checkbox<%=user._id%>"></label>
                                     </div>
                                   </td>
+                                  <td><img class="avatar" src="<%=urlMediaUpload.imageObj(user.avatar)%>" /></td>
                                   <td><%=user.email%></td>
                                   <td><%=user.first_name%> <%=user.last_name%></td>
                                   <td>
@@ -166,7 +167,6 @@
                                     <%=user.address%>
                                   </td>
                                   <td><%= moment(user.birthday).format('DD/MM/YYYY') %></td>
-                                  <td><img class="avatar" src="<%=urlMediaUpload.imageObj(user.avatar)%>" /></td>
                                   <td>
                                     <% if(user.role=='ADMIN'){ %>
                                       <span class="label label-danger"><%=user.role%></span>

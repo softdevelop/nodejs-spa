@@ -139,8 +139,8 @@
                                         <label class="custom-control-label" for="checkbox7"></label>
                                       </div>
                                     </th>
+                                    <th>Logo</th>
                                     <th>Name</th>
-                                    <th>Description</th>
                                     <th>Address</th>
                                     <th>Phone</th>
                                     <th>Status</th>
@@ -159,8 +159,8 @@
                                       <label class="custom-control-label" for="checkbox<%=item._id%>"></label>
                                     </div>
                                   </td>
+                                  <td><img class="avatar" src="<%=urlMediaUpload.imageObj(item.logo)%>" /></td>
                                   <td><%=item.name%></td>
-                                  <td><%=item.description%></td>
                                   <td>
                                     <b><%=item.address%></b><br/>
                                     <%=item.latitude%>, <%=item.longitude%>
