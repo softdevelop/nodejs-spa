@@ -1,0 +1,41 @@
+table .avatar{
+  max-width: 50px;
+}
+form .avatar-100{
+  max-width: 100%;
+}
+.Images-Preview{
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &>div{
+    width: calc(25% - 2px);
+    margin-bottom: 4px;
+    border: 1px dashed #ccc;
+    img{
+      max-width: 100%;
+      border-radius: 2px;
+    }
+    position: relative;
+    .remove{
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      color: red;
+      right: 5px;
+      top: 5px;
+      background: rgba(0, 0, 0, 0.387);
+      cursor: pointer;
+      text-align: center;
+      &:hover{
+        background: rgba(0, 0, 0, 0.7);
+      }
+    }
+  }
+}
+.note-editor{
+  z-index: 1;
+}

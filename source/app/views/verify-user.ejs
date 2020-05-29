@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PSCD- Verify User</title>
+</head>
+
+<body>
+    <script type="text/javascript" src="https://app.passbase.com/button.js"></script>
+    <div id="passbase-button" style="opacity: 0"></div>
+    <script type="text/javascript">
+        Passbase.renderButton(document.getElementById("passbase-button"), (err, passport) => {
+            if (passport) {
+                fetch(`/api/passbase/verify-done?customer_user_id=<%= customer_user_id %>`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            window.location.href = "<%= return_url %>"
+                        } else {
+                            alert(data.message)
+                        }
+                    })
+            } else {
+                console.log("not complete passbase")
+                window.location.href = "<%= return_url %>"
+            }
+        }, "<%= apiKey %>", {
+                "additionalAttributes": { "customer_user_id": "<%= customer_user_id %>", "mangopay_id": "<%= mangopay_id %>" }
+            });
+
+        document.querySelector("#passbase-button .passbase-auth-element").click()
+    </script>
+</body>
+
+</html>

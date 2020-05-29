@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" href="/images/logo.ico" />
+
+  <title>PSCD- Admin</title>
+  <meta http-equiv="refresh" content="60" />
+
+  <!-- Bootstrap 4.0 -->
+  <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+  <!-- Simple Line Icon -->
+  <link rel="stylesheet" href="/libs/simple-line-icons-master/css/simple-line-icons.css" />
+
+  <!-- Themify Icon -->
+  <link rel="stylesheet" href="/libs/themify-icons/themify-icons.css" />
+
+  <!-- MaterialDesign-Webfont -->
+  <link rel="stylesheet" href="/libs/MaterialDesign-Webfont-master/css/materialdesignicons.css" />
+
+  <!-- Ionicon -->
+  <link href="/libs/Ionicons/css/ionicons.min.css" rel="stylesheet" />
+
+  <!-- jquery.toast -->
+  <link rel="stylesheet" href="/css/admin/jquery.toast.css" />
+  <link rel="stylesheet" href="/css/admin/daterangepicker.css" />
+  <link rel="stylesheet" href="/css/admin/bootstrap-datepicker.min.css" />
+  <link rel="stylesheet" href="/css/admin/all.css" />
+  <link rel="stylesheet" href="/css/admin/bootstrap-colorpicker.min.css" />
+  <link rel="stylesheet" href="/css/admin/bootstrap-timepicker.min.css" />
+  <link rel="stylesheet" href="/css/admin/select2.min.css" />
+  <link rel="stylesheet" href="/css/admin/font-awesome.css" />
+  <link rel="stylesheet" href="/css/admin/switch.css" />
+  <!-- Bootstrap-extend -->
+  <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap-extend.css" />
+
+  <!-- select 2 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"> -->
+
+  <!-- Unique_Admin skins -->
+  <link rel="stylesheet" href="/css/admin/skins/_all-skins.css" />
+
+  <!-- theme style -->
+  <link rel="stylesheet" href="/css/admin/_all.css" />
+  <link rel="stylesheet" href="/css/admin/master_style.css" />
+
+  <!-- Bootstrap 4.0 -->
+  <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.css" />
+
+  <link rel="stylesheet" href="/scss/main.css" />
+
+  <script src="/js/admin/pages/toastr.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.6.2.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var url = window.location.href;
+      var [beforeFirst, toDate] = url.split("&")
+      var [before, fromDate] = beforeFirst.split("?")
+
+      $.ajax({
+        type: 'GET',
+        contentType: 'application/json',
+        url: `${window.location.origin}/api/admin/analytics?${fromDate}&${toDate}`,
+        success: function (data) {
+          document.getElementById("totalTalents").innerHTML = data.data.entertainer.totalTalents
+          document.getElementById("totalTalentsToday").innerHTML = data.data.entertainer.totalTalentsToday
+          document.getElementById("talentsActive").innerHTML = data.data.entertainer.talentsActive
+          document.getElementById("talentsActiveToday").innerHTML = data.data.entertainer.talentsActiveToday
+          document.getElementById("talentsActivePer").innerHTML = data.data.entertainer.totalTalents === 0 ? "(0%)" : `(${(data.data.entertainer.talentsActive / data.data.entertainer.totalTalents * 100).toFixed(2)}%)`
+          document.getElementById("talentsBlockedPer").innerHTML = data.data.entertainer.totalTalents === 0 ? "(0%)" : `(${(data.data.entertainer.talentsBlocked / data.data.entertainer.totalTalents * 100).toFixed(2)}%)`
+          document.getElementById("talentsBlocked").innerHTML = data.data.entertainer.talentsBlocked
+          document.getElementById("talentsBlockedToday").innerHTML = data.data.entertainer.talentsBlockedToday
+          document.getElementById("numOfTalentsRequested").innerHTML = data.data.entertainer.numOfTalentsRequested
+          document.getElementById("numOfTalentsRequestedLegend").innerHTML = data.data.entertainer.numOfTalentsRequestedLegend
+          document.getElementById("numOfTalentsRequestedSuperstar").innerHTML = data.data.entertainer.numOfTalentsRequestedSuperstar
+          document.getElementById("numOfTalentsRequestedToday").innerHTML = data.data.entertainer.numOfTalentsRequestedToday
+          document.getElementById("numOfTalentsRequestedLegendToday").innerHTML = data.data.entertainer.numOfTalentsRequestedLegendToday
+          document.getElementById("numOfTalentsRequestedSuperstarToday").innerHTML = data.data.entertainer.numOfTalentsRequestedSuperstarToday
+          document.getElementById("numOfTalentsRequestedPer").innerHTML = data.data.entertainer.numOfTalentsRequested === 0 ? "(0%)" : `(${(data.data.entertainer.numOfTalentsRequested / data.data.entertainer.totalTalents * 100).toFixed(2)}%)`
+          document.getElementById("numOfTalentsRequestedSuperstarPer").innerHTML = data.data.entertainer.numOfTalentsRequested === 0 ? "(0%)" : `(${(data.data.entertainer.numOfTalentsRequestedSuperstar / data.data.entertainer.numOfTalentsRequested * 100).toFixed(2)}%)`
+          document.getElementById("numOfTalentsRequestedLegendPer").innerHTML = data.data.entertainer.numOfTalentsRequested === 0 ? "(0%)" : `(${(data.data.entertainer.numOfTalentsRequestedLegend / data.data.entertainer.numOfTalentsRequested * 100).toFixed(2)}%)`
+
+          document.getElementById("numOfTalentsLive").innerHTML = data.data.entertainer.numOfTalentsLive
+          document.getElementById("numOfTalentsLiveToday").innerHTML = data.data.entertainer.numOfTalentsLiveToday
+          document.getElementById("numOfTalentsLiveLegend").innerHTML = data.data.entertainer.numOfTalentsLiveLegend
+          document.getElementById("numOfTalentsLiveSuperstar").innerHTML = data.data.entertainer.numOfTalentsLiveSuperstar
+          document.getElementById("numOfTalentsLiveLegendToday").innerHTML = data.data.entertainer.numOfTalentsLiveLegendToday
+          document.getElementById("numOfTalentsLiveSuperstarToday").innerHTML = data.data.entertainer.numOfTalentsLiveSuperstarToday
+          document.getElementById("numOfTalentsLivePer").innerHTML = data.data.entertainer.numOfTalentsLive === 0 ? "(0%)" : `(${(data.data.entertainer.numOfTalentsLive / data.data.entertainer.totalTalents * 100).toFixed(2)}%)`
+          document.getElementById("numOfTalentsLiveSuperstarPer").innerHTML = data.data.entertainer.numOfTalentsLive === 0 ? "(0%)" : `(${(data.data.entertainer.numOfTalentsLiveSuperstar / data.data.entertainer.numOfTalentsLive * 100).toFixed(2)}%)`
+          document.getElementById("numOfTalentsLiveLegendPer").innerHTML = data.data.entertainer.numOfTalentsLive === 0 ? "(0%)" : `(${(data.data.entertainer.numOfTalentsLiveLegend / data.data.entertainer.numOfTalentsLive * 100).toFixed(2)}%)`
+
+          document.getElementById("numOfMusicalActToday").innerHTML = data.data.entertainer.numOfMusicalActToday
+          document.getElementById("numOfEntertainerToday").innerHTML = data.data.entertainer.numOfEntertainerToday
+          document.getElementById("numOfPhotographerToday").innerHTML = data.data.entertainer.numOfPhotographerToday
+          document.getElementById("numOfMakeupAirtistToday").innerHTML = data.data.entertainer.numOfMakeupAirtistToday
+
+          document.getElementById("numOfMusicalAct").innerHTML = data.data.entertainer.numOfMusicalAct
+          document.getElementById("numOfEntertainer").innerHTML = data.data.entertainer.numOfEntertainer
+          document.getElementById("numOfPhotographer").innerHTML = data.data.entertainer.numOfPhotographer
+          document.getElementById("numOfMakeupAirtist").innerHTML = data.data.entertainer.numOfMakeupAirtist
+
+          document.getElementById("numOfMusicalActPer").innerHTML = data.data.entertainer.totalTalents === 0 ? "(0%)" : `(${(data.data.entertainer.numOfMusicalAct / data.data.entertainer.totalTalents * 100).toFixed(2)}%)`
+          document.getElementById("numOfEntertainerPer").innerHTML = data.data.entertainer.totalTalents === 0 ? "(0%)" : `(${(data.data.entertainer.numOfEntertainer / data.data.entertainer.totalTalents * 100).toFixed(2)}%)`
+          document.getElementById("numOfPhotographerPer").innerHTML = data.data.entertainer.totalTalents === 0 ? "(0%)" : `(${(data.data.entertainer.numOfPhotographer / data.data.entertainer.totalTalents * 100).toFixed(2)}%)`
+          document.getElementById("numOfMakeupAirtistPer").innerHTML = data.data.entertainer.totalTalents === 0 ? "(0%)" : `(${(data.data.entertainer.numOfMakeupAirtist / data.data.entertainer.totalTalents * 100).toFixed(2)}%)`
+          document.getElementById("totalCustomers").innerHTML = data.data.customer.totalCustomers
+          document.getElementById("customersActive").innerHTML = data.data.customer.customersActive
+          document.getElementById("totalGigBills").innerHTML = data.data.customer.totalGigBills
+          document.getElementById("b/s").innerHTML = data.data.entertainer.totalTalents === 0 ? "0%" : `${(data.data.customer.totalCustomers / data.data.entertainer.totalTalents * 100).toFixed(2)}%`
+          document.getElementById("avg").innerHTML = data.data.customer.totalCustomers === 0 ? "0" : `${(data.data.customer.totalGigBills / data.data.customer.totalCustomers).toFixed(2)}`
+          document.getElementById("atv").innerHTML = data.data.customer.totalGigBills === 0 ? "0" : `£ ${(data.data.customer.GMV / data.data.customer.totalGigBills).toFixed(2)}`
+          document.getElementById("GMV").innerHTML = `£ ${(data.data.customer.GMV)}`
+          document.getElementById("takeRate").innerHTML = `£ ${(data.data.customer.takeRate)}`
+          document.getElementById("takeRatePer").innerHTML = data.data.customer.GMV === 0 ? "0%" : `(${(data.data.customer.takeRate / data.data.customer.GMV * 100).toFixed(2)}%)`
+          document.getElementById("referPay").innerHTML = `£ ${(data.data.customer.referPay)}`
+          document.getElementById("referPayPer").innerHTML = data.data.customer.GMV === 0 ? "0%" : `(${(data.data.customer.referPay / data.data.customer.GMV * 100).toFixed(2)}%)`
+
+        }
+      });
+    });
+  </script>
+
+
+</head>
+
+
+<body class="hold-transition skin-yellow sidebar-mini">
+  <div class="modal-wrapper">
+    <div class="modal-header">
+      <div class="modal-header-inner">
+        <div class="logo-image-wrap">
+          <a href="/admin"><img class="logo-image" src="/images/PSCD.png" alt="logo"></a>
+
+        </div>
+        <div class="logo-text">
+          <a href="/admin">
+            <p class="logo-text-content">DASHBOARD</p>
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-content">
+      <div class="user-gig">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="talent">
+                <div class="talent-header">
+                  <p class="talent-header-text">TALENTS</p>
+                </div>
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-2 boder-col cus-col-mobile1">
+                    </div>
+                    <div class="col-sm-5 boder-col cus-col-mobile2" style="background-color: #F8F8F8;">
+                      <p class="today-text reset-margin">TODAY</p>
+                    </div>
+                    <div class="col-sm-5 boder-col cus-col-mobile3" style="background-color: #F8F8F8;">
+                      <p class="today-text reset-margin">TOTAL</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-2 cus-col-mobile1 boder-col">
+                      <p class="sign-up" style="margin-top: 15px;">SIGN UP</p>
+                    </div>
+                    <div class="col-sm-5 cus-col-mobile2 boder-col padding-cus">
+                      <div class="today-number">
+                        <p class="today-number-content reset-margin" id="totalTalentsToday">0</p>
+
+                      </div>
+                    </div>
+                    <div class="col-sm-5 cus-col-mobile3 boder-col padding-cus">
+                      <div class="total-number">
+                        <p class="total-number-content reset-margin" style="margin-top: 5px;" id="totalTalents">0</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-2 cus-col-mobile1 boder-col">
+                      <p class="sign-up" style="margin-top: 33px;">ACTIVE</p>
+                    </div>
+                    <div class="col-sm-5 cus-col-mobile2 boder-col padding-cus">
+                      <div class="today-number">
+                        <p class="today-number-content reset-margin reset-margin-top" id="talentsActiveToday">0</p>
+
+                      </div>
+                    </div>
+                    <div class="col-sm-5 cus-col-mobile3 boder-col padding-cus">
+                      <div class="total-number">
+                        <p class="total-number-content reset-margin" style="margin-top: 5px;" id="talentsActive">0</p>
+                      </div>
+                      <div>
+                        <p class="sup-under-text custom-sup custom-color" style="margin-top: 9px;"
+                          id="talentsActivePer">(0%)</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-2 cus-col-mobile1 boder-col">
+                      <p class="sign-up" style="margin-top: 30px;">BLOCK</p>
+                    </div>
+                    <div class="col-sm-5 boder-col cus-col-mobile2 padding-cus">
+                      <div class="today-number">
+                        <p class="today-number-content reset-margin reset-margin-top" id="talentsBlockedToday">0</p>
+
+                      </div>
+                    </div>
+                    <div class="col-sm-5 boder-col cus-col-mobile3 padding-cus">
+                      <div class="total-number">
+                        <p class="total-number-content reset-margin" style="margin-top: 5px;" id="talentsBlocked">0</p>
+                      </div>
+                      <div>
+                        <p class="sup-under-text custom-sup custom-color" style="margin-top: 9px;"
+                          id="talentsBlockedPer">(0%)</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-2 cus-col-mobile1 boder-col" style="padding-left: 5px;">
+                      <p class="sign-up" style="margin-top: 70px;">REQUEST</p>
+                    </div>
+                    <div class="col-sm-5 cus-col-mobile2 boder-col">
+                      <div class="second-middle1">
+                        <p class="second-middle1-text reset-margin-top" id="numOfTalentsRequestedToday">0</p>
+
+                      </div>
+                      <div>
+                        <div class="row" style="margin-top: 48px;">
+                          <div class="col-sm-6">
+                            <div>
+                              <p class="superstar-text">SUPERSTAR</p>
+
+                            </div>
+                            <div>
+                              <p class="sup-under-text" id="numOfTalentsRequestedSuperstarToday">0</p>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div>
+                              <p class="superstar-text today">LEGENDS</p>
+
+                            </div>
+                            <div>
+                              <p class="sup-under-text " id="numOfTalentsRequestedLegendToday">0</p>
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="col-sm-5 cus-col-mobile3 boder-col">
+                      <div class="second-middle1">
+                        <p class="second-middle1-text custom-color" id="numOfTalentsRequested">0</p>
+
+                      </div>
+                      <div class="second-middle1">
+                        <p class="second-middle1-text custom custom-color" id="numOfTalentsRequestedPer">(0%)</p>
+
+                      </div>
+                      <div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div>
+                              <p class="superstar-text custom-color">SUPERSTAR</p>
+
+                            </div>
+                            <div>
+                              <p class="sup-under-text custom-color" id="numOfTalentsRequestedSuperstar">0</p>
+                            </div>
+                            <div>
+                              <p class="sup-under-text custom-sup custom-color" id="numOfTalentsRequestedSuperstarPer">
+                                (0%)</p>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div>
+                              <p class="superstar-text custom-color">LEGENDS</p>
+
+                            </div>
+                            <div>
+                              <p class="sup-under-text custom-color" id="numOfTalentsRequestedLegend">0</p>
+                            </div>
+                            <div>
+                              <p class="sup-under-text custom-sup custom-color" id="numOfTalentsRequestedLegendPer">(0%)
+                              </p>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-2 cus-col-mobile1 boder-col" style="padding-left: 5px;">
+                      <p class="sign-up" style="margin-top: 70px;">LIVE</p>
+                    </div>
+                    <div class="col-sm-5 cus-col-mobile2 boder-col">
+                      <div class="second-middle1">
+                        <p class="second-middle1-text" id="numOfTalentsLiveToday">0</p>
+
+                      </div>
+                      <div>
+                        <div class="row" style="margin-top: 54px;">
+                          <div class="col-sm-6">
+                            <div>
+                              <p class="superstar-text">SUPERSTAR</p>
+
+                            </div>
+                            <div>
+                              <p class="sup-under-text" id="numOfTalentsLiveSuperstarToday">0</p>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div>
+                              <p class="superstar-text today">LEGENDS</p>
+
+                            </div>
+                            <div>
+                              <p class="sup-under-text" id="numOfTalentsLiveLegendToday">0</p>
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="col-sm-5 cus-col-mobile3 boder-col">
+                      <div class="second-middle1">
+                        <p class="second-middle1-text custom-color" id="numOfTalentsLive">0</p>
+
+                      </div>
+                      <div class="second-middle1">
+                        <p class="second-middle1-text custom custom-color" id="numOfTalentsLivePer">(0%)</p>
+
+                      </div>
+                      <div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div>
+                              <p class="superstar-text custom-color">SUPERSTAR</p>
+
+                            </div>
+                            <div>
+                              <p class="sup-under-text custom-color" id="numOfTalentsLiveSuperstar">0</p>
+                            </div>
+                            <div>
+                              <p class="sup-under-text custom-sup custom-color" id="numOfTalentsLiveSuperstarPer">(0%)
+                              </p>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div>
+                              <p class="superstar-text custom-color">LEGENDS</p>
+
+                            </div>
+                            <div>
+                              <p class="sup-under-text custom-color" id="numOfTalentsLiveLegend">0</p>
+                            </div>
+                            <div>
+                              <p class="sup-under-text custom-sup custom-color" id="numOfTalentsLiveLegendPer">(0%)</p>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-2 cus-col-mobile1 boder-col padding-cus">
+                      <p class="sign-up" style="margin-top: 30px;">CATEGORY</p>
+                    </div>
+                    <div class="col-sm-5 cus-col-mobile2">
+                      <div class="row">
+                        <div class="col-sm-3 boder-col padding-cus">
+                          <div>
+                            <p class="character">M</p>
+                          </div>
+                          <div>
+                            <p class="sup-under-text" style="margin-bottom: 24px;" id="numOfMusicalActToday">0</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-3 boder-col padding-cus">
+                          <div>
+                            <p class="character">E</p>
+                          </div>
+                          <div>
+                            <p class="sup-under-text" style="margin-bottom: 24px;" id="numOfEntertainerToday">0</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-3 boder-col padding-cus">
+                          <div>
+                            <p class="character">P</p>
+                          </div>
+                          <div>
+                            <p class="sup-under-text" style="margin-bottom: 24px;" id="numOfPhotographerToday">0</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-3 boder-col padding-cus">
+                          <div>
+                            <p class="character">M.A</p>
+                          </div>
+                          <div>
+                            <p class="sup-under-text" style="margin-bottom: 24px;" id="numOfMakeupAirtistToday">0</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-5 cus-col-mobile3">
+                      <div class="row">
+                        <div class="col-sm-3 boder-col padding-cus">
+                          <div>
+                            <p class="character">M</p>
+                          </div>
+                          <div>
+                            <p class="sup-under-text custom-color" id="numOfMusicalAct">0</p>
+                          </div>
+                          <div>
+                            <p class="sup-under-text custom-sup custom-color" id="numOfMusicalActPer">(0%)</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-3 boder-col padding-cus">
+                          <div>
+                            <p class="character">E</p>
+                          </div>
+                          <div>
+                            <p class="sup-under-text custom-color" id="numOfEntertainer">0</p>
+                          </div>
+                          <div>
+                            <p class="sup-under-text custom-sup custom-color" id="numOfEntertainerPer">(0%)</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-3 boder-col padding-cus">
+                          <div>
+                            <p class="character">P</p>
+                          </div>
+                          <div>
+                            <p class="sup-under-text custom-color" id="numOfPhotographer">0</p>
+                          </div>
+                          <div>
+                            <p class="sup-under-text custom-sup custom-color" id="numOfPhotographerPer">(0%)</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-3 boder-col padding-cus">
+                          <div>
+                            <p class="character">M.A</p>
+                          </div>
+                          <div>
+                            <p class="sup-under-text custom-color" id="numOfMakeupAirtist">0</p>
+                          </div>
+                          <div>
+                            <p class="sup-under-text custom-sup custom-color" id="numOfMakeupAirtistPer">(0%)</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container-fluid note-cus" style="margin-top: 20px;">
+                  <div class="row">
+                    <div class="col-sm-7">
+                      <div style="float: right;" class="note-first">
+                        <div>
+                          <p class="note">M = Music Act</p>
+                        </div>
+                        <div>
+                          <p class="note">E = Entertainer</p>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-sm-5">
+                      <div>
+                        <p class="note">P = Photographer/Videographer</p>
+                      </div>
+                      <div>
+                        <p class="note"> M.A = Makeup Artist</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="customer">
+                <div class="customer-header">
+                  <p class="customer-header-text">CUSTOMER</p>
+                </div>
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-4 cus-col-mobile boder-col padding-cus">
+                      <div class="today" style="background-color: #F8F8F8;">
+                        <p class="today-text reset-margin" style="font-size: 20px;">TOTAL</p>
+                      </div>
+                      <div class="total-number">
+                        <p class="total-number-content" id="totalCustomers" style="font-size: 48px;">0</p>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 cus-col-mobile boder-col padding-cus">
+                      <div class="today" style="background-color: #F8F8F8;">
+                        <p class="today-text reset-margin" style="font-size: 20px;">ACTIVE</p>
+                      </div>
+                      <div class="total-number">
+                        <p class="total-number-content" id="customersActive" style="font-size: 48px;">0</p>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 cus-col-mobile boder-col padding-cus">
+                      <div class="today" style="background-color: #F8F8F8;">
+                        <p class="today-text reset-margin" style="font-size: 20px;">BOOKINGS</p>
+                      </div>
+                      <div class="total-number">
+                        <p class="total-number-content" id="totalGigBills" style="font-size: 48px;">0</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-4 boder-col padding-cus">
+                      <div class="today" style="background-color: #F8F8F8;">
+                        <p class="today-text reset-margin">B/S %</p>
+                      </div>
+                      <div class="total-number">
+                        <p class="total-number-content" id="b/s" style="font-size: 48px;">0%</p>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 boder-col padding-cus">
+                      <div class="today" style="background-color: #F8F8F8;">
+                        <p class="today-text reset-margin" style="font-size: 16px;">AVG TRANSACTION</p>
+                      </div>
+                      <div class="total-number">
+                        <p class="total-number-content" id="avg" style="font-size: 48px;">0</p>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 boder-col padding-cus">
+                      <div class="today" style="background-color: #F8F8F8;">
+                        <p class="today-text reset-margin">ATV</p>
+                      </div>
+                      <div class="total-number">
+                        <p class="total-number-content" style="font-size: 48px;" id="atv">£0</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br><br><br><br>
+                <div class="customer-header">
+                  <p class="customer-header-text">OVERALL</p>
+                </div>
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-4 boder-col padding-cus">
+                      <div class="today" style="background-color: #F8F8F8;">
+                        <p class="today-text reset-margin">GMV</p>
+                      </div>
+                      <div class="total-number">
+                        <p class="total-number-content" id="GMV" style="font-size: 48px;">£0</p>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 boder-col padding-cus">
+                      <div class="today" style="background-color: #F8F8F8;">
+                        <p class="today-text reset-margin">TAKE RATE</p>
+                      </div>
+                      <div class="total-number">
+                        <p class="total-number-content" id="takeRate" style="font-size: 48px;">£0</p>
+                      </div>
+                      <div class="total-number">
+                        <p class="total-number-content" id="takeRatePer" style="font-size: 30px;">(0%)</p>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 boder-col padding-cus">
+                      <div class="today" style="background-color: #F8F8F8;">
+                        <p class="today-text reset-margin">REFER PAY</p>
+                      </div>
+                      <div class="total-number">
+                        <p class="total-number-content" id="referPay" style="font-size: 48px;">£0</p>
+                      </div>
+                      <div class="total-number">
+                        <p class="total-number-content" id="referPayPer" style="font-size: 30px;">(0%)</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>
+
+<link rel="stylesheet" href="/css/admin/modal-admin.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">

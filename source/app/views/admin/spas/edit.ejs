@@ -1,0 +1,261 @@
+<% extend('../layouts/base', { 
+  title: "Spa management",
+  subTitle: "Create",
+  css: `
+    <link href="/libs/dist/css/style.min.css" rel="stylesheet">
+  `,
+  script: `
+  <script src="/libs/node_modules/jquery/jquery-3.2.1.min.js"></script>
+  <!-- Bootstrap tether Core JavaScript -->
+  <script src="/libs/node_modules/popper/popper.min.js"></script>
+  <script src="/libs/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- slimscrollbar scrollbar JavaScript -->
+  <script src="/libs/dist/js/perfect-scrollbar.jquery.min.js"></script>
+  <!--Wave Effects -->
+  <script src="/libs/dist/js/waves.js"></script>
+  <!--stickey kit -->
+  <script src="/libs/node_modules/sticky-kit-master/dist/sticky-kit.min.js"></script>
+  <script src="/libs/node_modules/sparkline/jquery.sparkline.min.js"></script>
+  <!--Custom JavaScript -->
+  <script src="/libs/dist/js/custom.min.js"></script>
+  `
+}) %>
+
+<div class="container-fluid">
+  <!-- ============================================================== -->
+  <!-- Bread crumb and right sidebar toggle -->
+  <!-- ============================================================== -->
+  <div class="row page-titles">
+      <div class="col-md-5 align-self-center">
+          <h4 class="text-themecolor">Spa</h4>
+      </div>
+      <div class="col-md-7 align-self-center text-right">
+          <div class="d-flex justify-content-end align-items-center">
+              <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                  <li class="breadcrumb-item active">Spa</li>
+              </ol>
+              <a href="/admin/users" <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> List</button></a>
+          </div>
+      </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Bread crumb and right sidebar toggle -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Start Page Content -->
+  <!-- ============================================================== -->
+  <!-- Row -->
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="card">
+              <div class="card-body">
+                  <form action="/admin/users/<%=data._id%>/edit" method="post" enctype="multipart/form-data">
+                      <div class="form-body">
+                          <h3 class="card-title">Person Info</h3>
+                          <hr>
+                          <div class="row p-t-20">
+                              <div class="col-md-6">
+                                  <div class="form-group <%=errors.first_name?'has-danger':''%>">
+                                      <label class="control-label">First Name</label>
+                                      <input type="text" id="first_name" class="form-control" placeholder="" name="first_name" required value="<%=data.first_name?data.first_name:''%>">
+                                      <small class="form-control-feedback"><%=errors?errors.first_name:''%></small>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group <%=errors.last_name?'has-danger':''%>">
+                                      <label class="control-label">Last Name</label>
+                                      <input type="text" id="last_name" class="form-control" placeholder="" name="last_name" required value="<%=data.last_name?data.last_name:''%>">
+                                      <small class="form-control-feedback"><%=errors?errors.last_name:''%></small>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--/row-->
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <div class="form-group <%=errors.email?'has-danger':''%>">
+                                      <label class="control-label">Email</label>
+                                      <input type="email" id="email" class="form-control" placeholder="" name="email" required value="<%=data.email?data.email:''%>">
+                                      <small class="form-control-feedback"><%=errors?errors.email:''%></small>
+                                  </div>
+                              </div>
+                              <!--/span-->
+                              <div class="col-md-6">
+                                  <div class="form-group <%=errors.role?'has-danger':''%>">
+                                      <label class="control-label">Role</label>
+                                      <select class="form-control custom-select" name="role">
+                                          <option value="ADMIN" <%=data.gender=='ADMIN'?'selected':''%>>Admin</option>
+                                          <option value="USER" <%=data.gender=='USER'?'selected':''%>>User</option>
+                                          <option value="SPA_OWNER" <%=data.gender=='SPA_OWNER'?'selected':''%>>Spa owner</option>
+                                      </select>
+                                      <small class="form-control-feedback"><%=errors?errors.role:''%></small>
+                                  </div>
+                              </div>
+                              <!--/span-->
+                          </div>
+                          <!--/row-->
+                          <div class="row p-t-20">
+                              <div class="col-md-6">
+                                  <div class="form-group <%=errors.password?'has-danger':''%>">
+                                      <label class="control-label">Password</label>
+                                      <input type="password" id="password" class="form-control" name="password" value="">
+                                      <small class="form-control-feedback"><%=errors?errors.password:''%></small>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group <%=errors.repassword?'has-danger':''%>">
+                                      <label class="control-label">Re-password</label>
+                                      <input type="password" id="repassword" class="form-control" name="repassword" value="">
+                                      <small class="form-control-feedback"><%=errors?errors.repassword:''%></small>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--/row-->
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <div class="form-group <%=errors.gender?'has-danger':''%>">
+                                      <label class="control-label">Gender</label>
+                                      <select class="form-control custom-select" name="gender">
+                                          <option value="0" <%=data.gender=='0'?'selected':''%>>Male</option>
+                                          <option value="1" <%=data.gender=='1'?'selected':''%>>Female</option>
+
+                                      </select>
+                                      <small class="form-control-feedback"><%=errors?errors.gender:''%></small>
+                                  </div>
+                              </div>
+                              <!--/span-->
+                              <div class="col-md-6">
+                                  <div class="form-group <%=errors.birthday?'has-danger':''%>">
+                                      <label class="control-label">Date of birth</label>
+                                      <input type="date" class="form-control" placeholder="dd/mm/yyyy" name="birthday" required value="1990-12-31" value="<%=data.birthday?data.birthday:''%>">
+                                      <small class="form-control-feedback"><%=errors?errors.birthday:''%></small>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--/row-->
+                          <div class="row p-t-20">
+                              <div class="col-md-6">
+                                  <div class="form-group <%=errors.phone?'has-danger':''%>">
+                                      <label class="control-label">Phone</label>
+                                      <input type="text" id="phone" class="form-control" name="phone" value="<%=data.phone?data.phone:''%>">
+                                      <small class="form-control-feedback"><%=errors?errors.phone:''%></small>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group <%=errors.address?'has-danger':''%>">
+                                      <label class="control-label">Address</label>
+                                      <input type="text" id="address" class="form-control" name="address" value="<%=data.address?data.address:''%>">
+                                      <small class="form-control-feedback"><%=errors?errors.address:''%></small>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--/row-->
+                          <!--/row-->
+                          <div class="row p-t-20">
+                              <div class="col-md-6">
+                                  <div class="form-group <%=errors.status?'has-danger':''%>">
+                                      <label class="control-label">Status</label>
+                                      <select class="form-control custom-select" name="status">
+                                          <option value="pending" <%=data.status=='pending'?'selected':''%>>Pending</option>
+                                          <option value="active" <%=data.status=='active'?'selected':''%>>Active</option>
+                                          <option value="blocked" <%=data.status=='blocked'?'selected':''%>>Blocked</option>
+                         </select>
+                         <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 ">
+                      <div class="form-group <%=errors.avatar? 'has-danger': ''%>">
+                                              <label class="control-label">Avatar</label>
+                                              <input type="file" id="avatar" class="form-control" name="avatar" value="<%=data.avatar?data.avatar:''%>">
+                                              <small class="form-control-feedback"><%=errors?errors.avatar:''%></small>
+                                              <img class="avatar-100" src="<%=urlMediaUpload.imageObj(data.avatar)%>" />
+                                  </div>
+                              </div>
+                          </div>
+                          <!--/row-->
+                          <!--/row-->
+                          <div class="row p-t-20">
+                              <div class="col-md-6">
+                                  <div class="form-group <%=errors.note?'has-danger':''%>">
+                                      <label class="control-label">Note</label>
+                                      <textarea id="note" class="form-control" name="note"><%=data.note?data.note:''%></textarea>
+                                      <small class="form-control-feedback"><%=errors?errors.note:''%></small>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--/row-->
+                          <div class="form-actions">
+                              <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                              <a href="/admin/users">
+                                  <button type="button" class="btn btn-inverse">Cancel</button>
+                              </a>
+                          </div>
+                  </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- Row -->
+      <!-- ============================================================== -->
+      <!-- End PAge Content -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- Right sidebar -->
+      <!-- ============================================================== -->
+      <!-- .right-sidebar -->
+      <div class="right-sidebar">
+          <div class="slimscrollright">
+              <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+              <div class="r-panel-body">
+                  <ul id="themecolors" class="m-t-20">
+                      <li><b>With Light sidebar</b></li>
+                      <li><a href="javascript:void(0)" data-skin="skin-default" class="default-theme">1</a></li>
+                      <li><a href="javascript:void(0)" data-skin="skin-green" class="green-theme">2</a></li>
+                      <li><a href="javascript:void(0)" data-skin="skin-red" class="red-theme">3</a></li>
+                      <li><a href="javascript:void(0)" data-skin="skin-blue" class="blue-theme">4</a></li>
+                      <li><a href="javascript:void(0)" data-skin="skin-purple" class="purple-theme">5</a></li>
+                      <li><a href="javascript:void(0)" data-skin="skin-megna" class="megna-theme">6</a></li>
+                      <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                      <li><a href="javascript:void(0)" data-skin="skin-default-dark" class="default-dark-theme working">7</a></li>
+                      <li><a href="javascript:void(0)" data-skin="skin-green-dark" class="green-dark-theme">8</a></li>
+                      <li><a href="javascript:void(0)" data-skin="skin-red-dark" class="red-dark-theme">9</a></li>
+                      <li><a href="javascript:void(0)" data-skin="skin-blue-dark" class="blue-dark-theme">10</a></li>
+                      <li><a href="javascript:void(0)" data-skin="skin-purple-dark" class="purple-dark-theme">11</a></li>
+                      <li><a href="javascript:void(0)" data-skin="skin-megna-dark" class="megna-dark-theme ">12</a></li>
+                  </ul>
+                  <ul class="m-t-20 chatonline">
+                      <li><b>Chat option</b></li>
+                      <li>
+                          <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                      </li>
+                      <li>
+                          <a href="javascript:void(0)"><img src="../assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                      </li>
+                      <li>
+                          <a href="javascript:void(0)"><img src="../assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                      </li>
+                      <li>
+                          <a href="javascript:void(0)"><img src="../assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                      </li>
+                      <li>
+                          <a href="javascript:void(0)"><img src="../assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                      </li>
+                      <li>
+                          <a href="javascript:void(0)"><img src="../assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                      </li>
+                      <li>
+                          <a href="javascript:void(0)"><img src="../assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                      </li>
+                      <li>
+                          <a href="javascript:void(0)"><img src="../assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <!-- ============================================================== -->
+      <!-- End Right sidebar -->
+      <!-- ============================================================== -->
+  </div>
+</div>

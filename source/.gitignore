@@ -1,0 +1,20 @@
+/node_modules
+.env
+assets/uploads
+assets/uploads-origin
+assets/uploads-origin-backup
+assets/original
+scratch
+coverage
+.nyc_output
+#logs
+logs
+
+# yarn
+yarn-error.log
+
+**/.DS_Store
+
+../.DS_Store
+*.xlsx
+.idea

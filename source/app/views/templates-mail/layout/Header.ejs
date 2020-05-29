@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Welcome to PSCD!</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700,800&amp;subset=cyrillic,cyrillic-ext,latin-ext,vietnamese"
+    rel="stylesheet" />
+
+  <link href="http://allfont.net/allfont.css?fonts=montserrat-light" rel="stylesheet" type="text/css" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+  <!-- <link rel="stylesheet" href="/scss/main.css" /> -->
+
+  <style type="text/css">
+    /* fonts */
+    /* cyrillic-ext */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 100;
+      src: local("Montserrat Thin"), local("Montserrat-Thin"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTUQjIg1_i6t8kCHKm45_QpRxC7mw9c.woff2) format("woff2");
+    }
+
+    /* cyrillic */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 100;
+      src: local("Montserrat Thin"), local("Montserrat-Thin"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTUQjIg1_i6t8kCHKm45_QpRzS7mw9c.woff2) format("woff2");
+    }
+
+    /* vietnamese */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 100;
+      src: local("Montserrat Thin"), local("Montserrat-Thin"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTUQjIg1_i6t8kCHKm45_QpRxi7mw9c.woff2) format("woff2");
+    }
+
+    /* latin-ext */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 100;
+      src: local("Montserrat Thin"), local("Montserrat-Thin"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTUQjIg1_i6t8kCHKm45_QpRxy7mw9c.woff2) format("woff2");
+    }
+
+    /* latin */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 100;
+      src: local("Montserrat Thin"), local("Montserrat-Thin"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTUQjIg1_i6t8kCHKm45_QpRyS7m.woff2) format("woff2");
+    }
+
+    /* cyrillic-ext */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 300;
+      src: local("Montserrat Light"), local("Montserrat-Light"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_cJD3gTD_u50.woff2) format("woff2");
+    }
+
+    /* cyrillic */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 300;
+      src: local("Montserrat Light"), local("Montserrat-Light"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_cJD3g3D_u50.woff2) format("woff2");
+    }
+
+    /* vietnamese */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 300;
+      src: local("Montserrat Light"), local("Montserrat-Light"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_cJD3gbD_u50.woff2) format("woff2");
+    }
+
+    /* latin-ext */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 300;
+      src: local("Montserrat Light"), local("Montserrat-Light"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_cJD3gfD_u50.woff2) format("woff2");
+    }
+
+    /* latin */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 300;
+      src: local("Montserrat Light"), local("Montserrat-Light"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_cJD3gnD_g.woff2) format("woff2");
+    }
+
+    /* cyrillic-ext */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 400;
+      src: local("Montserrat Regular"), local("Montserrat-Regular"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format("woff2");
+    }
+
+    /* cyrillic */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 400;
+      src: local("Montserrat Regular"), local("Montserrat-Regular"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2) format("woff2");
+    }
+
+    /* vietnamese */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 400;
+      src: local("Montserrat Regular"), local("Montserrat-Regular"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2) format("woff2");
+    }
+
+    /* latin-ext */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 400;
+      src: local("Montserrat Regular"), local("Montserrat-Regular"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2) format("woff2");
+    }
+
+    /* latin */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 400;
+      src: local("Montserrat Regular"), local("Montserrat-Regular"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format("woff2");
+    }
+
+    /* cyrillic-ext */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 700;
+      src: local("Montserrat Bold"), local("Montserrat-Bold"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_dJE3gTD_u50.woff2) format("woff2");
+    }
+
+    /* cyrillic */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 700;
+      src: local("Montserrat Bold"), local("Montserrat-Bold"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_dJE3g3D_u50.woff2) format("woff2");
+    }
+
+    /* vietnamese */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 700;
+      src: local("Montserrat Bold"), local("Montserrat-Bold"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_dJE3gbD_u50.woff2) format("woff2");
+    }
+
+    /* latin-ext */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 700;
+      src: local("Montserrat Bold"), local("Montserrat-Bold"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_dJE3gfD_u50.woff2) format("woff2");
+    }
+
+    /* latin */
+    @font-face {
+      font-family: "Montserrat", sans-serif !important;
+      font-style: normal;
+      font-weight: 700;
+      src: local("Montserrat Bold"), local("Montserrat-Bold"),
+        url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_dJE3gnD_g.woff2) format("woff2");
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h5,
+    h6,
+    p,
+    div,
+    ul,
+    li,
+    a,
+    span {
+      color: #002d4b;
+      font-family: "Montserrat", sans-serif !important;
+    }
+
+    img {
+      margin-bottom: 15px;
+    }
+
+    body {
+      background: #f8f8f8;
+    }
+
+    /* mail */
+    .mail-content {
+      max-width: 650px;
+      margin: 30px auto;
+      background: #fff;
+    }
+
+    .mail-header {
+      position: relative;
+      height: 391px;
+      width: 100%;
+      background: url(https://i.ibb.co/30RTQJ5/cover.jpg) no-repeat top center;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .logo {
+      margin-top: 295px;
+      text-align: center;
+    }
+
+    .logo img {
+      width: 230px;
+    }
+
+    .mail-ctn {
+      padding: 60px 40px 0px;
+    }
+
+    .mail-ctn h3 {
+      margin: 0;
+      width: 100%;
+      overflow: hidden;
+      display: inline-block;
+      font-size: 38px;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.26;
+      letter-spacing: normal;
+      color: #05c4e1;
+      font-family: "Montserrat", sans-serif !important;
+      font-weight: 300;
+    }
+
+    .mail-ctn p {
+      width: 100%;
+      overflow: hidden;
+      display: inline-block;
+      margin: 10px 0;
+      font-family: Montserrat;
+      font-family: "Montserrat", sans-serif !important;
+      font-size: 18px;
+      font-weight: 300;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.6;
+      letter-spacing: normal;
+      color: #002d4b;
+    }
+
+    .mail-footer {
+      padding: 0 40px;
+      text-align: center;
+    }
+
+    .mail-footer p {
+      width: 100%;
+      display: inline-block;
+      font-family: Montserrat;
+      font-family: "Montserrat", sans-serif !important;
+      font-size: 13px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.54;
+      letter-spacing: normal;
+      color: #002d4b;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .mail-social {
+      margin: 20px 0 20px 0;
+      text-align: center;
+    }
+
+    .mail-social a {
+      display: inline-block;
+      width: 27px;
+      height: 27px;
+      background-size: contain !important;
+      margin: 0 15px;
+    }
+
+    .mail-social .tw {
+      background: url(https://i.ibb.co/XJTBwp1/twitter.png) no-repeat center center;
+    }
+
+    .mail-social .fb {
+      background: url(https://i.ibb.co/xDRh0kg/facebook.png) no-repeat center center;
+    }
+
+    .mail-social .ins {
+      background: url(https://i.ibb.co/jMkR2sP/instagram.png) no-repeat center center;
+    }
+
+    .logo_footer {
+      margin: 0 auto;
+      width: 28%;
+      margin-bottom: 10px;
+    }
+
+    .ft-help {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .ft-logo {
+      width: 100%;
+      font-family: Montserrat;
+      font-family: "Montserrat", sans-serif !important;
+      font-size: 13px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.38;
+      letter-spacing: normal;
+      text-align: center !important;
+      color: #002d4b;
+      width: 100%;
+    }
+
+    /* responsive */
+    @media (max-width: 767px) {
+      .mail-content {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 575px) {}
+
+    @media (max-width: 480px) {
+      .logo {
+        margin-top: 160px;
+      }
+
+      .mail-header {
+        height: auto;
+      }
+
+      .logo img {
+        width: 140px;
+      }
+
+      .mail-ctn {
+        padding: 30px;
+        padding-bottom: 0;
+      }
+
+      .mail-ctn h3 {
+        font-size: 28px;
+        height: auto;
+      }
+
+      .mail-ctn p {
+        font-size: 16px;
+        text-align: justify !important;
+      }
+
+      .mail-ctn h3 {
+        font-size: 18px;
+        text-align: center;
+        height: auto;
+        margin-bottom: 10px;
+      }
+
+      .mail-footer {
+        padding: 0 30px;
+      }
+
+      .mail-footer p {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .logo_footer {
+        width: 43%;
+      }
+
+      .mail-social {
+        margin: 10px 0 40px 0;
+      }
+
+      .mail-social a {
+        margin: 0 8px;
+      }
+    }
+  </style>
+</head>

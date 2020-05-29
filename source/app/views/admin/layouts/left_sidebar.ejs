@@ -1,0 +1,68 @@
+<div class="scroll-sidebar">
+  <!-- User Profile-->
+  <div class="user-profile">
+      <div class="user-pro-body">
+          <div><img src="/libs/images/users/2.jpg" alt="user-img" class="img-circle"></div>
+          <div class="dropdown">
+              <a href="javascript:void(0)" class="dropdown-toggle u-dropdown link hide-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= userLocal.email %> <span class="caret"></span></a>
+              <div class="dropdown-menu animated flipInY">
+                  <!-- text-->
+                  <a href="/admin/profile" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+                  <!-- text-->
+                  <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
+                  <!-- text-->
+                  <a href="/admin/logout" class="dropdown-item"><i class="fas fa-power-off"></i> Logout</a>
+                  <!-- text-->
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Sidebar navigation-->
+  <nav class="sidebar-nav">
+    <ul id="sidebarnav">
+        <li class="nav-small-cap">--- MAIN MENU</li>
+        <li>
+            <a class="waves-effect waves-dark" href="/admin" aria-expanded="false">
+                <i class="icon-speedometer"></i>
+                <span class="hide-menu">Dashboard</span>
+            </a>
+        </li>
+        <li> 
+          <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Users</span></a>
+            <ul aria-expanded="false" class="collapse">
+                <li><a href="/admin/users">All Users</a></li>
+                <li><a href="/admin/users/create">Add Users</a></li>
+            </ul>
+        </li>
+        <li> 
+          <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Spas</span></a>
+            <ul aria-expanded="false" class="collapse">
+                <li><a href="/admin/spas">All Spas</a></li>
+                <li><a href="/admin/spas/create">Add Spa</a></li>
+            </ul>
+        </li>
+        <!-- <li> 
+            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class=" fab fa-product-hunt"></i><span class="hide-menu">Products</span></a>
+              <ul aria-expanded="false" class="collapse">
+                  <li><a href="/admin/products">All Products</a></li>
+                  <li><a href="/admin/products/create">Add Products</a></li>
+              </ul>
+        </li>
+        <li> 
+          <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class=" fab fa-product-hunt"></i><span class="hide-menu">Projects</span></a>
+            <ul aria-expanded="false" class="collapse">
+                <li><a href="/admin/projects">All Projects</a></li>
+                <li><a href="/admin/projects/create">Add Projects</a></li>
+            </ul>
+        </li> -->
+        <li class="nav-small-cap">--- SUPPORTS</li>
+        <li>
+            <a class="waves-effect waves-dark" href="/admin/logout" aria-expanded="false">
+                <i class="icon-logout"></i>
+                <span class="hide-menu">Log Out</span>
+            </a>
+        </li>
+    </ul>
+  </nav>
+  <!-- End Sidebar navigation -->
+</div>
