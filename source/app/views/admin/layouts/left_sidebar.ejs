@@ -27,20 +27,47 @@
                 <span class="hide-menu">Dashboard</span>
             </a>
         </li>
+
+        <% if(userLocal.permissions.includes('user.index')){ %>
+          <li> 
+            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Users</span></a>
+              <ul aria-expanded="false" class="collapse">
+                  <li><a href="/admin/users">All Users</a></li>
+                  <li><a href="/admin/users/create">Add Users</a></li>
+              </ul>
+          </li>
+        <% } %>
+
+        <% if(userLocal.permissions.includes('spa.index')){ %>
+          <li> 
+            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Spas</span></a>
+              <ul aria-expanded="false" class="collapse">
+                  <li><a href="/admin/spas">All Spas</a></li>
+                  <li><a href="/admin/spas/create">Add Spa</a></li>
+              </ul>
+          </li>
+        <% } %>
+
+        <% if(userLocal.permissions.includes('blog.index')){ %>
+          <li> 
+            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Spa blogs</span></a>
+              <ul aria-expanded="false" class="collapse">
+                  <li><a href="/admin/blogs">All Blogs</a></li>
+                  <li><a href="/admin/blogs/create">Add blog</a></li>
+              </ul>
+          </li>
+        <% } %>
+
+        <% if(userLocal.permissions.includes('role.index')){ %>
         <li> 
-          <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Users</span></a>
+          <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Role management</span></a>
             <ul aria-expanded="false" class="collapse">
-                <li><a href="/admin/users">All Users</a></li>
-                <li><a href="/admin/users/create">Add Users</a></li>
+                <li><a href="/admin/roles">All roles</a></li>
+                <li><a href="/admin/roles/create">Add role</a></li>
             </ul>
         </li>
-        <li> 
-          <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Spas</span></a>
-            <ul aria-expanded="false" class="collapse">
-                <li><a href="/admin/spas">All Spas</a></li>
-                <li><a href="/admin/spas/create">Add Spa</a></li>
-            </ul>
-        </li>
+        <% } %>
+
         <!-- <li> 
             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class=" fab fa-product-hunt"></i><span class="hide-menu">Products</span></a>
               <ul aria-expanded="false" class="collapse">

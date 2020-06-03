@@ -30,10 +30,13 @@ viewLoginPage = (req, res) => {
 }
 
 login = async (req, res) => {
+  console.log('LOGIN=================' );
   try {
     const { email, password } = req.body;
 
-    let user = await User.findOne({ email, role: "ADMIN" }).exec();
+    let user = await User.findOne({ email }).populate({ path: 'permissions' }).exec();
+
+    console.log('usereeeeeeee', user.permissions.permissions);
 
     if (!user) {
       return res.render("admin/auth/login");
@@ -55,7 +58,8 @@ login = async (req, res) => {
       email: user.email,
       first_name: user.first_name,
       last_name: user.last_name,
-      avatar: user.avatar || "/images/avt.png"
+      avatar: user.avatar || "/images/avt.png",
+      permissions: user.permissions.permissions
     }
     const fromURLAdmin = getNodeLocalstorage('fromURLAdmin');
     if (fromURLAdmin) {

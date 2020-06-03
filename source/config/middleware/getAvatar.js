@@ -4,7 +4,7 @@ const User = mongoose.model("User");
 module.exports = async (req, res, next) => {
   const _id = req.user._id;
 
-  let user = await User.findOne({ _id }).exec();
+  let user = await User.findOne({ _id }).populate({ path: 'permissions' }).exec();
 
   if(user.avatar){
     req.app.locals.URL_AVATAR = user.avatar;
@@ -16,6 +16,7 @@ module.exports = async (req, res, next) => {
     email: user.email,
     first_name: user.first_name,
     last_name: user.last_name,
+    permissions: user.permissions.permissions,
     avatar: user.avatar || "/images/avt.png"
   }
 

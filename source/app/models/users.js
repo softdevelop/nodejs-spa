@@ -20,7 +20,9 @@ const UserSchema = new Schema({
     address: { type: String },
     birthday: { type: Date },
     avatar: { type: Object },
-    role: { type: String, enum: ROLES, required: true },
+    role: { type: String, required: true, ref: 'Role',
+    localField: 'role',
+    foreignField: 'value' },
     status: { type: String, enum: STATUS, default: STATUS[2] },
     note: { type: String, default: '' },
     token_verify_email: { type: String, default: '' }
@@ -149,6 +151,13 @@ UserSchema.virtual('projects', {
   ref: 'Project',
   localField: '_id',
   foreignField: 'createdBy'
+});
+
+UserSchema.virtual('permissions', {
+  ref: 'Role',
+  localField: 'role',
+  foreignField: 'value',
+  justOne: true
 });
 
 UserSchema.virtual('created_at').get(function () {

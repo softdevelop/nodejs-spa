@@ -27,7 +27,6 @@ const getListProjects = async (req, res) => {
   };
   let data = await Project.paginate(query, options);
 
-  console.log('dataaaaaaaaa', data);
   return res.render("admin/projects/index", {
     data,
     urlMediaUpload,
