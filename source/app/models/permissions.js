@@ -61,6 +61,16 @@ const dataMigrate = [
   { value: "role.edit" },
   { value: "role.view" },
   { value: "role.delete" },
+
+  { value: "staticpage.index" },
+  { value: "staticpage.edit" },
+  { value: "staticpage.view" },
+  { value: "staticpage.delete" },
+
+  { value: "qa.index" },
+  { value: "qa.edit" },
+  { value: "qa.view" },
+  { value: "qa.delete" },
   
 ];
 

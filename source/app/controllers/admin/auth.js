@@ -30,13 +30,10 @@ viewLoginPage = (req, res) => {
 }
 
 login = async (req, res) => {
-  console.log('LOGIN=================' );
   try {
     const { email, password } = req.body;
 
     let user = await User.findOne({ email }).populate({ path: 'permissions' }).exec();
-
-    console.log('usereeeeeeee', user.permissions.permissions);
 
     if (!user) {
       return res.render("admin/auth/login");

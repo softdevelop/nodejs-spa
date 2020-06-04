@@ -1,6 +1,8 @@
 module.exports = [
   "users",
   "spas",
+  "qas",
+  "staticpages",
   "roles",
   "permissions",
   "products",
