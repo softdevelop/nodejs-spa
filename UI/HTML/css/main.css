@@ -315,3 +315,23 @@ shortlink-section .single-shortlink-list > p {
   }
 
 } 
+
+/* Custom date range picker */
+.daterangepicker{
+  border-radius: 0;
+}
+.daterangepicker td.active, .daterangepicker td.active:hover{
+  background: #e83e8c;
+}
+.daterangepicker td.start-date, .daterangepicker td.start-date.end-date{
+  border-radius: 0;
+}
+.daterangepicker .drp-buttons .btn-primary{
+  background: #e83e8c;
+  border-radius: 0;
+  background-color: #e83e8c;
+  border: 0;
+}
+
+/* END: Custom date range picker */
+
