@@ -111,8 +111,12 @@
 
     /*---------booking date picker---------*/
     $("#booking-date").datepicker({
-        dateFormat: 'dd/mm/yy',
+        dateFormat: 'dd - mm - yy',
         minDate: "new Date()",
+    });
+    $("#booking-date2").datepicker({
+      dateFormat: 'dd - mm - yy',
+      minDate: "new Date()",
     });
 
 

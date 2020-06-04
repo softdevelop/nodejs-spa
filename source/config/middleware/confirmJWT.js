@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
+const Role = mongoose.model("Role");
 
 const { pareJwtToken } = require("../../app/utils/func")
 
@@ -17,9 +18,12 @@ module.exports = async (req, res, next) => {
     let decodedToken;
     try {
       decodedToken = pareJwtToken(token);
-      await User.findById(decodedToken._id).then(doc => {
+      await User.findById(decodedToken._id).then(async doc => {
         if (!doc) return new Promise.reject({ message: "User not found" });
-        req.user = doc.toJSON();
+        let docTmp = doc.toJSON();
+        let permissions = await Role.findOne({ value: docTmp.role}).exec();
+        docTmp.permissions = permissions.permissions
+        req.user = docTmp; 
         next();
       })
     } catch (err) {

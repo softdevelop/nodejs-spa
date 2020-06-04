@@ -6,6 +6,7 @@ const dashboardCtrl = require("../../../app/controllers/admin/dashboard");
 
 const users = require("./users");
 const spas = require("./spas");
+const roles = require("./roles");
 const profile = require("./profile");
 const products = require("./products");
 const projects = require("./projects");
@@ -36,6 +37,9 @@ router.use(users);
 // spa
 router.use(spas);
 
+// role
+router.use(roles);
+
 // profile
 router.use(profile);
 
@@ -46,9 +50,7 @@ router.use(products);
 router.use(projects);
 
 router.get("*", (req, res) => {
-  res.send({
-    message: "Page not found"
-  })
+  res.render('admin/404');
 });
 
 module.exports = router;
