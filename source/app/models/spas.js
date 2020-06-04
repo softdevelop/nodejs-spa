@@ -19,11 +19,45 @@ const SpaSchema = new Schema({
     phone: { type: String },
     status: { type: String, enum: STATUS, default: STATUS[2] },
     note: { type: String, default: '' },
-    owners: { type: Schema.Types.ObjectId },
+    owner: { type: Schema.Types.ObjectId },
     imgs: { type: [{ type: Object}], default: []},
+    logo: { type: Object },
   }, {
     timestamps: true,
 })
+
+
+function validateSpa(spa) {
+  const schema = {
+      name: Joi.string().min(1).max(50).required(),
+      slug: Joi.string().min(1).max(50).required(),
+      description: Joi.string().min(5).required(),
+      latitude: Joi.string().min(5).max(255).required(),
+      longitude: Joi.string().min(5).max(255).required(),
+      address: Joi.string(),
+      phone: Joi.string().required(),
+      status: Joi.string().required(),
+      note: Joi.string().allow(''),
+      owner: Joi.string().required()
+  };
+  return Joi.validate(spa, schema, { abortEarly: false });
+}
+
+function validateSpaEdit(spa) {
+  const schema = {
+      name: Joi.string().min(1).max(50).required(),
+      slug: Joi.string().min(1).max(50).required(),
+      description: Joi.string().min(5).required(),
+      latitude: Joi.string().min(5).max(255).required(),
+      longitude: Joi.string().min(5).max(255).required(),
+      address: Joi.string(),
+      phone: Joi.string().required(),
+      status: Joi.string().required(),
+      note: Joi.string().allow(''),
+      owner: Joi.string().required()
+  };
+  return Joi.validate(spa, schema, { abortEarly: false });
+}
 
 /**
  * virtual
@@ -34,7 +68,7 @@ SpaSchema.virtual('created_at').get(function () {
 
 SpaSchema.post('save', function (error, doc, next) {
     if (error.name === 'MongoError' && error.code === 11000)
-        next(new Error('Email already exists, please try again'));
+        next(new Error({name: 'This field is duplicated'}));
     else next(error);
 });
 
@@ -68,3 +102,5 @@ SpaSchema.plugin(mongoosePaginate);
 const Spa = mongoose.model('Spa', SpaSchema);
 
 exports.Spa = Spa;
+exports.validateSpa = validateSpa;
+exports.validateSpaEdit = validateSpaEdit;

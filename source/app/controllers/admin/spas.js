@@ -55,17 +55,16 @@ const create = async (req, res) => {
         [item.path[0]]: item.message
       }
     }, {})
-    return res.render('admin/spas/create', {errors, data})
+    return res.sendError({errors, data})
   }else{
-    if(req.files.avatar){
-      data.avatar = req.files.avatar[0]
+    if(req.files.logo){
+      data.logo = req.files.logo[0]
     }
-    data.password = bcrypt.hashSync(data.password, 10);
     let newSpa = new Spa(data)
     newSpa.save().then((e)=>{
-      res.redirect('/admin/spas')
+      return res.sendData({ status: 'Success'})
     }).catch(e=>{
-      console.log('catch', e);
+      return res.sendError({errors: {name: 'The value is duplicated.', slug: 'The value is duplicated.'}})
     })
   }
 }
@@ -73,12 +72,14 @@ const create = async (req, res) => {
 const getFormEdit = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
-  res.render('admin/spas/edit', {errors: {}, data: record, urlMediaUpload})
+  let spaOwners = await User.find({role: "SPA_OWNER"}).exec();
+  res.render('admin/spas/edit', {errors: {}, data: record, urlMediaUpload, spaOwners})
 }
 
 const edit = async (req, res) => {
   let id = req.params.id
   let data = req.body
+  delete data.logo
   let err = validateSpaEdit(data)
   if(err && err.error){
     let errors = err.error && err.error.details.reduce((result, item)=>{
@@ -88,16 +89,14 @@ const edit = async (req, res) => {
       }
     }, {})
     data._id = id
-    return res.render('admin/spas/edit', {errors, data, urlMediaUpload})
+    return res.sendError({errors, data})
   }else{
-    if(req.files.avatar && req.files.avatar[0]){
-      data.avatar = req.files.avatar[0]
-    }else delete data.avatar
+    if(req.files.logo && req.files.logo[0]){
+      data.logo = req.files.logo[0]
+    }else delete data.logo
 
-    if(data.password && data.password == '') delete data.password
-    else data.password = bcrypt.hashSync(data.password, 10);
     await Spa.findById(id).update(data);
-    res.redirect('/admin/spas')
+    return res.sendData({ status: 'Success'})
   }
 }
 
@@ -118,7 +117,8 @@ delMany = async (req, res) => {
 const viewDetail = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
-  res.render('admin/spas/view', {errors: {}, data: record, urlMediaUpload})
+  let spaOwners = await User.find({role: "SPA_OWNER"}).exec();
+  res.render('admin/spas/view', {errors: {}, data: record, urlMediaUpload, spaOwners})
 }
 
 module.exports = {
