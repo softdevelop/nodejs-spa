@@ -1,0 +1,132 @@
+/** Single **/
+
+ul.dt-sc-fancy-list.aligncenter li:before {
+    position: static;
+    margin-right: 8px
+}
+
+ul.dt-sc-fancy-list.aligncenter li {
+    padding-left: 0
+}
+
+.dt-custom-separator-width-40px.vc_sep_width_10 {
+    width: 40px
+}
+
+.woocommerce-tabs .panel .wpb_content_element:last-child, .woocommerce-tabs .panel .vc_row>.wpb_column:last-child, .dt-sc-tabs-vertical-frame-content .wpb_content_element:last-child, .dt-sc-tabs-vertical-frame-content .vc_row>.wpb_column:last-child {
+    margin-bottom: 0
+}
+
+.woocommerce .product .summary.bg-with-shadow {
+    padding-left: 20px !important;
+    padding-right: 20px !important
+}
+
+.woocommerce ul.products.dt-icon-after-bg li.product .product-buttons-wrapper.product-icons .wc_inline_buttons>.wc_btn_inline a, .woocommerce ul.products.dt-icon-after-bg li.product .product-buttons-wrapper.product-icons .wc_inline_buttons>.wc_btn_inline a.button, .woocommerce ul.products.dt-icon-after-bg li.product .product-buttons-wrapper.product-icons .wc_inline_buttons>.wc_btn_inline button, .woocommerce ul.products.dt-icon-after-bg li.product .product-buttons-wrapper.product-icons .wc_inline_buttons>.wc_btn_inline button.button, .woocommerce ul.products.dt-icon-after-bg li.product .product-buttons-wrapper.product-icons .wc_inline_buttons>.wc_btn_inline .button {
+    background-color: transparent !important
+}
+
+.woocommerce ul.products.dt-icon-after-bg li.product .product-buttons-wrapper.product-icons .wc_inline_buttons>.wc_btn_inline a:after, .woocommerce ul.products.dt-icon-after-bg li.product .product-buttons-wrapper.product-icons .wc_inline_buttons>.wc_btn_inline a.button:after, .woocommerce ul.products.dt-icon-after-bg li.product .product-buttons-wrapper.product-icons .wc_inline_buttons>.wc_btn_inline button:after, .woocommerce ul.products.dt-icon-after-bg li.product .product-buttons-wrapper.product-icons .wc_inline_buttons>.wc_btn_inline button.button:after, .woocommerce ul.products.dt-icon-after-bg li.product .product-buttons-wrapper.product-icons .wc_inline_buttons>.wc_btn_inline .button:after {
+    content: "";
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: auto;
+    z-index: -1;
+    -webkit-border-radius: inherit;
+    border-radius: inherit;
+    -webkit-transition: inherit;
+    transition: inherit
+}
+
+.woocommerce ul.products.dt-chronodial-layout.product-content-iconsgroup-style-simple li.product .product-details .product-buttons-wrapper.product-icons .wc_inline_buttons {
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+.woocommerce ul.products.dt-caravan-layout.product-border-type-default.product-border-position-bottom-right li.product .product-wrapper, .woocommerce ul.products.dt-caravan-layout.product-border-type-thumb.product-border-position-bottom-right li.product .product-thumb {
+    -webkit-box-shadow: 1px 1px 2px #E6E6E6;
+    box-shadow: 1px 1px 2px #E6E6E6
+}
+
+/*** Custom CSS added in Product Pages ***/
+
+.ult-carousel-wrapper.no-space .slick-slide {
+    margin: 0 !important;
+}
+
+.woocommerce div.product div.summary.margin-0 {
+    margin-bottom: 0;
+}
+
+.woocommerce .product .summary.bg-with-shadow {
+    background: #fff;
+    padding: 30px 35px 15px 35px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+    margin-top: 5px;
+}
+
+.woocommerce div.product .bg-white .dt-sc-product-tabs .woocommerce-tabs:after {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: calc(100vw);
+    width: -webkit-calc(100vw);
+    width: -moz-calc(100vw);
+    background: #fff;
+    z-index: -1;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+}
+
+.dt-sc-curvy-bg.top:before {
+    background-color: #fff;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 200px;
+    right: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 9;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-image: url(images/curvy-bg-main-1.png);
+    mask-image: url(images/curvy-bg-main-1.png);
+    -webkit-mask-position: left top;
+    mask-position: left top;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+
+.dt-sc-curvy-bg.bottom:after {
+    background-color: #fff;
+    top: -1px;
+    content: "";
+    display: block;
+    height: 200px;
+    right: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 9;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-image: url(images/curvy-bg-main-2.png);
+    mask-image: url(images/curvy-bg-main-2.png);
+    -webkit-mask-position: left top;
+    mask-position: left top;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}

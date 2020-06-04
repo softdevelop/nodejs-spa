@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Table of Content
+==================================================
+	1.0  -  Donutchart
+	2.0  -  DT Responsive*/
+	
+	/*--------------------------------------------------------------
+	1.0 - Donutchart
+	--------------------------------------------------------------*/
+.dt-sc-donutchart { text-align: center; margin: 0 auto 15px; }
+h5.dt-sc-donutchart-title { text-align: center; width: 100%; font-size: 20px; margin-bottom: 0; font-weight: 600; }
+p.dt-sc-donutchart-desc { width: 100%; text-align: center; }
+.donutchart-text { font-weight: 300 !important; }
+.dt-sc-donutchart-small .donutchart-text { font-size: 24px !important; font-weight: 900 !important; }
+.dt-sc-donutchart-medium .donutchart-text { font-size: 36px !important; font-weight: 900 !important; }
+.dt-sc-donutchart-large .donutchart-text { font-size: 48px !important; font-weight: 900 !important; }
+.dark-bg .donutchart-text { color: #ffffff; }
+	
+	
+	/*--------------------------------------------------------------
+	2.0 - DT Responsive
+	--------------------------------------------------------------*/	
+	
+	/* Note: Design for a width of 768px */
+    @media only screen and (min-width:768px) and (max-width:991px) {
+div[class*="dt-sc-donutchart-"] .dt-sc-donutchart,  div[class*="dt-sc-donutchart-"] canvas,  div[class*="dt-sc-donutchart-"] .donutchart-text { width: 150px !important; height: 150px !important; }
+div[class*="dt-sc-donutchart-"] .donutchart-text { line-height: 150px !important; }
+}
+
+	/* Note: Design for a width of 767px */
+    @media only screen and (max-width:767px) {
+div[class*="dt-sc-donutchart-"] { margin-bottom: 30px; }
+}

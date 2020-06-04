@@ -1,0 +1,44 @@
+/*	Theme Color All Codes Variable
+==============================================*/
+:root{
+	--primary-theme-color: #84fab0; /* theme primary color */
+}
+:root{
+	--secondery-theme-color: #8fd3f4; /* theme secondery color */
+}
+:root{
+	--gray-color: #f5f5f5; /* gray color */
+}
+:root{
+	--black-color: #2a2a2a; /* Black color */
+}
+:root{
+	--white-color: #fff; /* white color */
+}
+:root{
+	--body-color: #818181;	/*	body font color */
+}
+/*	Gradient color
+==============================================*/
+:root{
+	--gradient-color: linear-gradient(to right, #8fd3f4 0%, #84fab0 100%);
+}
+:root{
+    --linear-gradient-color: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+}
+/* Overlay color
+=============================================*/
+:root{
+	--color-overlay-black: rgba(0,0,0,0.3);
+}
+:root{
+	--color-overlay-black-50: rgba(0,0,0,0.50);
+}
+/*	Font Variable
+==============================================*/
+:root{
+	--theme-body-font: 'Open Sans', sans-serif;; /* Font use for normal text and body text */
+}
+:root {
+	 --theme-highlight-font: 'Raleway', sans-serif;  /* Font used in title or special area */
+}

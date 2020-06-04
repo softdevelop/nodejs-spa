@@ -1,0 +1,27 @@
+/**
+ * @package 	WordPress
+ * @subpackage 	Wellness SPA
+ * @version		1.0.0
+ * 
+ * High Resolution (Retina) Displays CSS Rules
+ * Created by CMSMasters
+ * 
+ */
+
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), 
+	only screen and (-moz-min-device-pixel-ratio: 1.5), 
+	only screen and (-o-min-device-pixel-ratio: 3/2), 
+	only screen and (min-device-pixel-ratio: 1.5) {
+	
+	#footer .logo img,
+	#header .logo img {
+		display:none;
+	}
+	
+	#footer .logo .footer_logo_retina,
+	#header .header_mid .logo_wrap .logo .logo_retina {
+		display:inline-block;
+	}
+}
+

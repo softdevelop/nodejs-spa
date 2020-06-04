@@ -1,0 +1,57 @@
+@charset "utf-8";
+/* Table of Content
+==================================================
+	1.0 - Blockquotes
+	2.0 - Default Colors
+	3.0 - Responsive*/
+
+	/*--------------------------------------------------------------
+	1.0 - Blockquotes
+	--------------------------------------------------------------*/
+
+blockquote.type1 { padding: 20px; border: 4px double rgba(0, 0, 0, .15); }
+blockquote.type1 cite { text-align: right; display: block; }
+blockquote.type1 q, blockquote.type1 > p { font-size: 18px; line-height: 30px; display: inline-block; font-weight: 300; padding: 0 0 20px; margin-bottom: 10px; }
+.dt-sc-dark-bg blockquote.type1 q { border-color: #ffffff; }
+blockquote[class*="type"].alignleft { text-align: left; width: 100%; margin: 0; }
+blockquote[class*="type"].alignright { text-align: right; width: 100%; margin: 0; }
+blockquote.type2, blockquote.type3 { overflow: hidden; position: relative; }
+blockquote.type2 q { border-bottom: 1px solid rgba(0, 0, 0, .15); border-top: 1px solid rgba(0, 0, 0, .15); display: inline-block; font-size: 24px; line-height: 40px; padding: 35px 0; }
+blockquote.type2 q:before { content: ""; }
+blockquote.type2 q:after { content: '\f1b2'; display: block; font-family: Material-Design-Iconic-Font; font-size: 10em; font-style: normal; left: 0; margin: 0 auto; opacity: 0.05; position: absolute; right: 0; text-align: center; top: 65%; transform: translateY(-50%); transform: translateY(-50%); transform: translateY(-100%); width: 100%; }
+ @media all and (-ms-high-contrast:none) {
+blockquote.type2 q:after { margin-top: 10px; } /* IE10 */
+ *::-ms-backdrop, blockquote.type2 q:after {
+margin-top: 10px;
+} /* IE11 */
+}
+blockquote.type2 cite { float: right; font-style: normal; position: relative; text-align: right; background: rgba(0, 0, 0, .15); padding: 6px 15px; }
+blockquote.type2.aligncenter cite { float: none; display: inline-block; }
+blockquote.type3 { width: 100%; float: left; position: relative; padding: 46px 0; overflow: hidden; }
+blockquote.type3:before { position: absolute; content: ""; display: block; width: 100px; height: 10px; border-width: 1px; border-style: solid; border-right: none; border-left: none; top: 0; left: -30px; transform: skew(-80deg); -moz-transform: skew(-80deg); -webkit-transform: skew(-80deg); -ms-transform: skew(-80deg); }
+blockquote.type3:after { position: absolute; content: ""; display: block; width: 100px; height: 10px; border-width: 1px; border-style: solid; border-right: none; border-left: none; bottom: 0; right: -30px; transform: skew(-80deg); -moz-transform: skew(-80deg); -webkit-transform: skew(-80deg); -ms-transform: skew(-80deg); }
+blockquote.type3 q { font-size: 20px; font-style: italic; line-height: normal; margin-left: 20px; position: relative; }
+blockquote.type3 q:before { left: -18px; position: absolute; font-size: 30px; top: -15px; }
+blockquote.type3 q:after { display: none; }
+blockquote.type3 cite { width: 100%; float: right; text-align: right; margin-top: 15px; }
+blockquote.type4 { background: #000; font-size: 16px; line-height: 30px; padding: 30px; text-align: center; color: #fff; }
+blockquote.type4 > cite { display: inline-block; text-align: center; width: 100%; text-transform: uppercase; font-style: normal; }
+blockquote.type4 span { float: left; width: 100%; color: #fff; text-transform: capitalize; font-size: 13px; }
+blockquote.type4 > q:before, blockquote.type4 > q:after { display: inline-block; font-size: 30px; text-align: center; width: 100%; position: relative; content: '"'; }
+blockquote.type4 > q:before { top: 14px; }
+blockquote.type4 > q:after { bottom: -10px; }
+blockquote.type4:before { border: 3px dashed #fff; bottom: 5px; content: ''; left: 5px; position: absolute; right: 5px; top: 5px; }
+/*--------------------------------------------------------------
+	2.0 - Default Colors
+	--------------------------------------------------------------*/
+blockquote.type1 q, blockquote > p { border-color: rgba(0, 0, 0, 0.15); }
+	
+	
+	/*--------------------------------------------------------------
+	3.0 - Responsive
+	--------------------------------------------------------------*/	
+	
+	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+	@media only screen and (max-width: 479px) {
+blockquote.type2 { width: 100%; }
+}
