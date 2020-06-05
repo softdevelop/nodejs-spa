@@ -48,6 +48,16 @@
           </li>
         <% } %>
 
+        <% if(userLocal.permissions.includes('category.index')){ %>
+          <li> 
+            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-list"></i><span class="hide-menu">Category</span></a>
+              <ul aria-expanded="false" class="collapse">
+                  <li><a href="/admin/categories">All category</a></li>
+                  <li><a href="/admin/categories/create">Add category</a></li>
+              </ul>
+          </li>
+        <% } %>
+
         <% if(userLocal.permissions.includes('blog.index')){ %>
           <li> 
             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-feed"></i><span class="hide-menu">Spa blogs</span></a>

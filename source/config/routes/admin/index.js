@@ -11,7 +11,7 @@ const staticpages = require("./staticpages");
 const roles = require("./roles");
 const profile = require("./profile");
 const products = require("./products");
-const projects = require("./projects");
+const categories = require("./categories");
 
 // Controllers
 const {
@@ -54,8 +54,11 @@ router.use(profile);
 // products
 router.use(products);
 
-// projects
-router.use(projects);
+// // projects
+// router.use(projects);
+
+// categories
+router.use(categories);
 
 router.get("*", (req, res) => {
   res.render('admin/404');

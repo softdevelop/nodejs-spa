@@ -1,0 +1,204 @@
+<% extend('../layouts/base', { 
+  title: "Categories management",
+  subTitle: "Index",
+  css: `
+  <link href="/libs/css/nestable.css" rel="stylesheet">
+  `,
+  script: `
+
+  ` 
+}) %>
+
+  <div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h4 class="text-themecolor">Categories</h4>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                    <li class="breadcrumb-item active">Categories</li>
+                </ol>
+                <a href="/admin/categories/create"><button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i
+                        class="fa fa-plus-circle"></i> Create New</button></a>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Categories Table</h4>
+                    <h6 class="card-subtitle">Categories table example</h6>
+
+                     <!-- Start Page Content -->
+                      <!-- ============================================================== -->
+                      <div class="row">
+                          <div class="col-lg-12 col-md-12">
+                              <div class="card">
+                                  <div class="card-body">
+                                      <div class="dd myadmin-dd" id="nestable-menu">
+                                          <ol class="dd-list">
+                                            <%-data%>
+                                          </ol>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    <!-- ============================================================== -->
+                    <!-- End PAge Content -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    <div class="right-sidebar">
+        <div class="slimscrollright">
+            <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span>
+            </div>
+            <div class="r-panel-body">
+                <ul id="themecolors" class="m-t-20">
+                    <li><b>With Light sidebar</b></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-default" class="default-theme">1</a>
+                    </li>
+                    <li><a href="javascript:void(0)" data-skin="skin-green" class="green-theme">2</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-red" class="red-theme">3</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-blue" class="blue-theme">4</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-purple" class="purple-theme">5</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-megna" class="megna-theme">6</a></li>
+                    <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-default-dark"
+                            class="default-dark-theme working">7</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-green-dark"
+                            class="green-dark-theme">8</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-red-dark" class="red-dark-theme">9</a>
+                    </li>
+                    <li><a href="javascript:void(0)" data-skin="skin-blue-dark"
+                            class="blue-dark-theme">10</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-purple-dark"
+                            class="purple-dark-theme">11</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-megna-dark"
+                            class="megna-dark-theme ">12</a></li>
+                </ul>
+                <ul class="m-t-20 chatonline">
+                    <li><b>Chat option</b></li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user-img"
+                                class="img-circle"> <span>Varun Dhavan <small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/2.jpg" alt="user-img"
+                                class="img-circle"> <span>Genelia Deshmukh <small
+                                    class="text-warning">Away</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/3.jpg" alt="user-img"
+                                class="img-circle"> <span>Ritesh Deshmukh <small
+                                    class="text-danger">Busy</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/4.jpg" alt="user-img"
+                                class="img-circle"> <span>Arijit Sinh <small
+                                    class="text-muted">Offline</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/5.jpg" alt="user-img"
+                                class="img-circle"> <span>Govinda Star <small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/6.jpg" alt="user-img"
+                                class="img-circle"> <span>John Abraham<small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/7.jpg" alt="user-img"
+                                class="img-circle"> <span>Hritik Roshan<small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/8.jpg" alt="user-img"
+                                class="img-circle"> <span>Pwandeep rajan <small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+  </div>
+<scrip>
+  <script src="/libs/js/jquery.nestable.js"></script>
+
+</scrip>
+<script type="text/javascript">
+  $(document).ready(function() {
+
+      $('#nestable-menu').on('click', function(e) {
+          var target = $(e.target),
+              action = target.data('action');
+          if (action === 'expand-all') {
+              $('.dd').nestable('expandAll');
+          }
+          if (action === 'collapse-all') {
+              $('.dd').nestable('collapseAll');
+          }
+      });
+
+      $('#nestable-menu').nestable({
+        // handleClass:'123' // this line to disabled drag and drop
+      }).on('change', (e)=>{
+        var list = e.length ? e : $(e.target), output = list.data('output');
+        console.log('data', list);
+        console.log('list.nestable', list.nestable('serialize'));
+
+      });
+
+      $(document).on("click",".dd-item .delete",function(){
+        let isDelete = confirm('Are you sure to delete this category');
+        if(isDelete){
+          $.ajax({
+            method: 'POST',
+            url: '/admin/categories/delete',
+            data: {
+              id: $(this).attr('data-id')
+            },
+            success: (data) => {
+              console.log('succ', data);
+              location.reload();
+            },
+            error: (data) => {
+              console.log('dtaaaaa', data);
+              let res = JSON.parse(data.responseText)
+              if(!res.success && res.message){
+                alert(res.message)
+              }
+            }
+          })
+        }else{
+
+        }
+      }) 
+          
+  });
+  </script>

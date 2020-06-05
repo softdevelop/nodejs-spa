@@ -1,36 +1,13 @@
 <% extend('../layouts/base', { 
-  title: "Static page management",
-  subTitle: "Edit",
+  title: "Category management",
+  subTitle: "Create",
   css: `
     <link rel="stylesheet" href="/libs/node_modules/dropify/dist/css/dropify.min.css">
     <link href="/libs/dist/css/style.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/libs/node_modules/summernote/dist/summernote-bs4.css">
   `,
   script: `
     <script src="/libs/dist/js/custom.min.js"></script>
-
-    <script src="/libs/node_modules/summernote/dist/summernote-bs4.min.js"></script>
     <script src="/js/slugify.js"></script>
-    <script>
-      $(document).ready(function() {
-          $(function() {
-      
-              $('.summernote').summernote({
-                  height: 350, // set editor height
-                  minHeight: null, // set minimum height of editor
-                  maxHeight: null, // set maximum height of editor
-                  focus: false, // set focus to editable area after initializing summernote
-              });
-      
-              $('.inline-editor').summernote({
-                  airMode: true
-              });
-      
-          });
-      
-      });
-    </script>
-    
   `
   }) %>
 <div class="container-fluid">
@@ -39,15 +16,15 @@
   <!-- ============================================================== -->
   <div class="row page-titles">
      <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Static page</h4>
+        <h4 class="text-themecolor">Category</h4>
      </div>
      <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
            <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-              <li class="breadcrumb-item active">Static page</li>
+              <li class="breadcrumb-item active">Category</li>
            </ol>
-           <a href="/admin/users" <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> List</button></a>
+           <a href="/admin/categories" <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> List</button></a>
         </div>
      </div>
   </div>
@@ -62,9 +39,9 @@
      <div class="col-lg-12">
         <div class="card">
            <div class="card-body">
-              <form action="/admin/static-pages/<%=data.slug%>/edit" method="post">
+              <form action="/admin/categories/create" method="post">
                  <div class="form-body">
-                    <h3 class="card-title">Static page Info</h3>
+                    <h3 class="card-title">Category Info</h3>
                     <hr>
                     <div class="row p-t-20">
                        <div class="col-md-6">
@@ -75,32 +52,35 @@
                           </div>
                        </div>
                        <div class="col-md-6">
-                          <div class="form-group form-group-slug <%=errors.slug?'has-danger':''%>">
-                             <label class="control-label">Slug</label>
-                             <input type="text" id="slug" class="form-control" placeholder="" name="slug" required value="<%=data.slug?data.slug:''%>">
-                             <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
-                          </div>
-                       </div>
+                        <div class="form-group form-group-slug <%=errors.slug?'has-danger':''%>">
+                           <label class="control-label">Slug</label>
+                           <input type="text" id="slug" class="form-control" placeholder="" name="slug" required value="<%=data.slug?data.slug:''%>">
+                           <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
+                        </div>
+                      </div>
                     </div>
-                    <div class="row">
-                       <div class="col-md-12 ">
-                          <div class="form-group form-group-content <%=errors.content? 'has-danger': ''%>">
-                             <label class="control-label">Content</label>
-                             <textarea class="summernote" style="z-index: 1;" name="content"><%=data.content?data.content:''%></textarea>
-                             <small class="form-control-feedback"><%=errors?errors.content:''%></small>
-                          </div>
-                       </div>
-                    </div>
+                    <div class="row p-t-20">
+                      <div class="col-md-12">
+                         <div class="form-group form-group-parent <%=errors.name?'has-danger':''%>">
+                            <label class="control-label">Parent</label>
+                            <select class="form-control custom-select" name="parent">
+                              <option value="">None</option>
+                              <%-optionsHtml%>
+                            </select>
+                            <small class="form-control-feedback "><%=errors?errors.parent:''%></small> 
+                         </div>
+                      </div>
+                   </div>
                     <!--/row-->
                     <div class="row p-t-20">
                        <div class="col-md-6">
                           <div class="form-group form-group-status <%=errors.status?'has-danger':''%>">
                              <label class="control-label">Status</label>
                              <select class="form-control custom-select" name="status">
-                              <option value="pending" <%=data.status=='pending'?'selected':''%>>Pending</option>
-                              <option value="active" <%=data.status=='active'?'selected':''%>>Active</option>
-                              <option value="blocked" <%=data.status=='blocked'?'selected':''%>>Blocked</option>
-                            </select>
+                                <option value="pending">Pending</option>
+                                <option value="active" ">Active</option>
+                                <option value="blocked ">Blocked</option>
+                             </select>
                              <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
                           </div>
                        </div>
@@ -108,7 +88,7 @@
                     <!--/row-->
                     <div class="form-actions">
                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                       <a href="/admin/users">
+                       <a href="/admin/categories">
                        <button type="button" class="btn btn-inverse">Cancel</button>
                        </a>
                     </div>

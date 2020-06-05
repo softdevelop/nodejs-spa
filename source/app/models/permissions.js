@@ -72,6 +72,11 @@ const dataMigrate = [
   { value: "qa.view" },
   { value: "qa.delete" },
   
+  { value: "category.index" },
+  { value: "category.edit" },
+  { value: "category.view" },
+  { value: "category.delete" },
+  
 ];
 
 PermissionSchema.statics.getMigrateData = function () {

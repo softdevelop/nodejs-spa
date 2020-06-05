@@ -84,6 +84,11 @@ const dataMigrate = [
       'qa.view',
       'qa.delete',
       'qa.create',
+      'category.index',
+      'category.edit',
+      'category.view',
+      'category.delete',
+      'category.create',
     ]
   },
   {
