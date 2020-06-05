@@ -44,4 +44,7 @@ $(document).ready(function(){
   $("input[name=name]").keyup(function(){
     $("input[name=slug]").val(slugify($(this).val()));
   });
+  $("input[name=question]").keyup(function(){
+    $("input[name=slug]").val(slugify($(this).val()));
+  });
 })

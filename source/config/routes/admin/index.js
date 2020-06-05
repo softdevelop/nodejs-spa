@@ -6,6 +6,8 @@ const dashboardCtrl = require("../../../app/controllers/admin/dashboard");
 
 const users = require("./users");
 const spas = require("./spas");
+const qas = require("./qas");
+const staticpages = require("./staticpages");
 const roles = require("./roles");
 const profile = require("./profile");
 const products = require("./products");
@@ -36,6 +38,12 @@ router.use(users);
 
 // spa
 router.use(spas);
+
+// qa
+router.use(qas);
+
+// staticpage
+router.use(staticpages);
 
 // role
 router.use(roles);

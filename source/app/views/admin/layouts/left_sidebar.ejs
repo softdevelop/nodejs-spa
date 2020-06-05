@@ -40,7 +40,7 @@
 
         <% if(userLocal.permissions.includes('spa.index')){ %>
           <li> 
-            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Spas</span></a>
+            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-diamond"></i><span class="hide-menu">Spas</span></a>
               <ul aria-expanded="false" class="collapse">
                   <li><a href="/admin/spas">All Spas</a></li>
                   <li><a href="/admin/spas/create">Add Spa</a></li>
@@ -50,7 +50,7 @@
 
         <% if(userLocal.permissions.includes('blog.index')){ %>
           <li> 
-            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Spa blogs</span></a>
+            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-feed"></i><span class="hide-menu">Spa blogs</span></a>
               <ul aria-expanded="false" class="collapse">
                   <li><a href="/admin/blogs">All Blogs</a></li>
                   <li><a href="/admin/blogs/create">Add blog</a></li>
@@ -60,7 +60,7 @@
 
         <% if(userLocal.permissions.includes('role.index')){ %>
         <li> 
-          <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Role management</span></a>
+          <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-lock-open"></i><span class="hide-menu">Role management</span></a>
             <ul aria-expanded="false" class="collapse">
                 <li><a href="/admin/roles">All roles</a></li>
                 <li><a href="/admin/roles/create">Add role</a></li>
@@ -68,6 +68,26 @@
         </li>
         <% } %>
 
+        <% if(userLocal.permissions.includes('staticpage.index')){ %>
+          <li> 
+            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-layers"></i><span class="hide-menu">Static page</span></a>
+              <ul aria-expanded="false" class="collapse">
+                  <li><a href="/admin/static-pages">All static page</a></li>
+                  <li><a href="/admin/static-pages/create">Add static page</a></li>
+              </ul>
+          </li>
+        <% } %>
+  
+        <% if(userLocal.permissions.includes('qa.index')){ %>
+          <li> 
+            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-info"></i><span class="hide-menu">Q&A</span></a>
+              <ul aria-expanded="false" class="collapse">
+                  <li><a href="/admin/q-a">All Q&A</a></li>
+                  <li><a href="/admin/q-a/create">Add Q&A</a></li>
+              </ul>
+          </li>
+        <% } %>
+  
         <!-- <li> 
             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class=" fab fa-product-hunt"></i><span class="hide-menu">Products</span></a>
               <ul aria-expanded="false" class="collapse">
