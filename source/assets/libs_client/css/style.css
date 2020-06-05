@@ -293,16 +293,16 @@ Css Table Of Content
     width: 100%;
 }
 .home1-slider .img-fill .slider-img1 {
-    background: url(images/slider-img/slider-img1.jpg) no-repeat center center / cover;
+    background: url(../images/slider-img/slider-img1.jpg) no-repeat center center / cover;
 }
 .home1-slider .img-fill .slider-img2 {
-    background: url(images/slider-img/slider-img2.jpg) no-repeat center center / cover;
+    background: url(../images/slider-img/slider-img2.jpg) no-repeat center center / cover;
 }
 .home1-slider .img-fill .slider-img3{
-    background: url(images/slider-img/slider-img3.jpg) no-repeat center center / cover;
+    background: url(../images/slider-img/slider-img3.jpg) no-repeat center center / cover;
 }
 .home1-slider .img-fill .slider-img4{
-    background: url(images/slider-img/slider-img4.jpg) no-repeat center center / cover;
+    background: url(../images/slider-img/slider-img4.jpg) no-repeat center center / cover;
 }
 
 .home1-slider .Modern-Slider .item .img-fill {
@@ -626,7 +626,7 @@ Css Table Of Content
 
 /*--------- start booking section style------------*/
 .booking-section {
-    background: url(images/booking-bg.jpg) no-repeat center center / cover;
+    background: url(../images/booking-bg.jpg) no-repeat center center / cover;
     padding-top: 90px;
     padding-bottom: 100px;
 }
@@ -870,7 +870,7 @@ Css Table Of Content
 
 /*------------------- 6.6 start beauty lab gallery section style --------------------*/
 .beautyLab-gallery {
-    background: url(images/gallerybg.jpg) no-repeat fixed center center / cover;
+    background: url(../images/gallerybg.jpg) no-repeat fixed center center / cover;
     position: relative;
 }
 .beautyLab-gallery .overlay {
@@ -1250,7 +1250,7 @@ priceing-section .single-price-list > p {
 
 /*--------- testimonial section ----------*/
 .testimonial-section {
-    background: url(images/tesimonialbg.jpg) no-repeat fixed center center / cover;
+    background: url(../images/tesimonialbg.jpg) no-repeat fixed center center / cover;
     position: relative;
     padding: 90px 0;
 }
@@ -1397,7 +1397,7 @@ priceing-section .single-price-list > p {
 
 /*---------- Start call to action section -----------*/
 .cta-section {
-    background: url("images/gallerybg.jpg") no-repeat;
+    background: url("../images/gallerybg.jpg") no-repeat;
     background-size: cover;
     padding: 50px 0;
     position: relative;
@@ -1578,16 +1578,16 @@ footer .copyright a:hover {
     border-radius: 100%;
 }
 .home1-slider.v2 .img-fill .slider-img1 {
-    background: url(images/slider-img/slider-img5.jpg) no-repeat left center / cover;
+    background: url(../images/slider-img/slider-img5.jpg) no-repeat left center / cover;
 }
 .home1-slider.v2 .img-fill .slider-img2 {
-    background: url(images/slider-img/slider-img6.jpg) no-repeat center center / cover;
+    background: url(../images/slider-img/slider-img6.jpg) no-repeat center center / cover;
 }
 .home1-slider.v2 .img-fill .slider-img3{
-    background: url(images/slider-img/slider-img7.jpg) no-repeat top center / cover;
+    background: url(../images/slider-img/slider-img7.jpg) no-repeat top center / cover;
 }
 .home1-slider.v2 .img-fill .slider-img4{
-    background: url(images/slider-img/slider-img8.jpg) no-repeat center center / cover;
+    background: url(../images/slider-img/slider-img8.jpg) no-repeat center center / cover;
 }
 .home1-slider.v2 .Modern-Slider .item .img-fill {
     height: 100vh;
@@ -1615,7 +1615,7 @@ footer .copyright a:hover {
 
 /*--------*/
 .booking-section.v2 {
-    background: url(images/booking-bg2.jpg) no-repeat center center / cover;
+    background: url(../images/booking-bg2.jpg) no-repeat center center / cover;
 }
 .booking-section.v2 .section-title p{
     color: #fff;
@@ -1689,7 +1689,7 @@ footer .copyright a:hover {
 
 /*-------------video section-------------*/
 .video-section {
-    background: url(images/video-bg.jpg) no-repeat fixed center center / cover;
+    background: url(../images/video-bg.jpg) no-repeat fixed center center / cover;
     position: relative;
 }
 .video-content {
@@ -1817,7 +1817,7 @@ footer .copyright a:hover {
 
 
 .home3-hero.particle {
-    background: url(images/slider-img/slider-img9.jpg) no-repeat center center / cover;
+    background: url(../images/slider-img/slider-img9.jpg) no-repeat center center / cover;
     overflow: hidden;
 }
 
@@ -1833,7 +1833,7 @@ footer .copyright a:hover {
 
 /*-------------------04. start service page style---------------------*/
 .service-banner {
-    background: url(images/service-banner.jpg) no-repeat fixed center center / cover;
+    background: url(../images/service-banner.jpg) no-repeat fixed center center / cover;
 }
 .banner-section {
     position: relative;
@@ -1887,7 +1887,7 @@ footer .copyright a:hover {
 
 /*---------quick support section--------*/
 .quick-support-section {
-    background: rgba(0, 0, 0, 0) url("images/gallerybg.jpg") no-repeat fixed 0 0 / cover ;
+    background: rgba(0, 0, 0, 0) url("../images/gallerybg.jpg") no-repeat fixed 0 0 / cover ;
     position: relative;
     padding: 80px 0;
 }
@@ -2339,7 +2339,7 @@ footer .copyright a:hover {
 
 /*-------------------06. Start Booking page style---------------------*/
 .booking-banner {
-    background: url(images/booking-banner.jpg) no-repeat fixed center center / cover;
+    background: url(../images/booking-banner.jpg) no-repeat fixed center center / cover;
 }
 
 /*-----our history section----*/
@@ -2413,7 +2413,7 @@ footer .copyright a:hover {
 
 /*-------------------07. Start Gallery page style---------------------*/
 .gallery-banner {
-    background: url(images/gallery-banner.jpg) no-repeat fixed center center / cover;
+    background: url(../images/gallery-banner.jpg) no-repeat fixed center center / cover;
 }
 
 
@@ -2495,7 +2495,7 @@ footer .copyright a:hover {
 
 /*------facts------*/
 .facts-section {
-    background: url(images/fact-bg.jpg) no-repeat fixed center center / cover;
+    background: url(../images/fact-bg.jpg) no-repeat fixed center center / cover;
     padding: 60px 0;
 }
 .facts-section .overlay {
@@ -2619,7 +2619,7 @@ footer .copyright a:hover {
 
 /*-------------------09. Start Shop Full width page style---------------------*/
 .shop-banner{
-    background: url("images/shop-banner.jpg") no-repeat fixed center center / cover ;
+    background: url("../images/shop-banner.jpg") no-repeat fixed center center / cover ;
 }
 
 /*--------filtering area---------*/
@@ -3349,7 +3349,7 @@ footer .copyright a:hover {
 
 /*-------------------11. Start Blog Page style---------------------*/
 .blog-banner {
-    background: rgba(0, 0, 0, 0) url("images/blog-bg.jpg") no-repeat fixed center center / cover;
+    background: rgba(0, 0, 0, 0) url("../images/blog-bg.jpg") no-repeat fixed center center / cover;
 }
 
 .blog-page.fullwidth .single-blog {
@@ -3675,7 +3675,7 @@ footer .copyright a:hover {
 
 /*-------------------13. Start Contact Page style---------------------*/
 .contact-banner{
-    background: url(images/contact-banner.jpg) no-repeat fixed center center / cover;
+    background: url(../images/contact-banner.jpg) no-repeat fixed center center / cover;
 }
 
 .contact-info-section {
@@ -3789,7 +3789,7 @@ footer .copyright a:hover {
     width: 26%;
 }
 .error-section {
-    background: url(images/error-bg.png) repeat;
+    background: url(../images/error-bg.png) repeat;
     position: relative;
     overflow: hidden;
 }

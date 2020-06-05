@@ -1,15 +1,26 @@
 const path = require("path")
 const router = require('express').Router();
-
+const search = require("../../../app/controllers/client/search")
+const home = require("../../../app/controllers/client/homes")
+const contact = require('../../../app/controllers/client/contacts')
+const booking = require('../../../app/controllers/client/booking')
+const service = require('../../../app/controllers/client/services')
+const blogDetail = require('../../../app/controllers/client/blog')
 const { PATH_CLIENT } = require("../../../config")
-const homes = require("./homes");
+const {
+} = require("../../../app/controllers/client");
+ 
 
+router.get("/", home.index );
 
+router.get("/search",search.index) ;
 
-router.use(homes);
-
+router.get('/contact',contact.index)
+router.get('/booking', booking.index)
+router.get('/services', service.index)
+router.get('/blog', blogDetail.index)
 router.get("*", (req, res) => {
-  res.redirect('/admin')
+  res.render('client/404')
 });
 
 // router.get("*", (req, res) => {
