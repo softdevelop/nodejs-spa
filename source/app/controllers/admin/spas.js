@@ -100,7 +100,7 @@ const edit = async (req, res) => {
   }
 }
 
-delMany = async (req, res) => {
+const delMany = async (req, res) => {
   try {
     let ids = req.body.ids;
     ids.map(async val => {
@@ -121,6 +121,15 @@ const viewDetail = async (req, res) => {
   res.render('admin/spas/view', {errors: {}, data: record, urlMediaUpload, spaOwners})
 }
 
+const landingPage = (req, res) => {
+  res.render('admin/spas/landing-page')
+}
+
+const setTemplate = (req, res) => {
+  let data = req.body
+}
+
+
 module.exports = {
   getListSpas,
   getFormCreate,
@@ -128,5 +137,7 @@ module.exports = {
   getFormEdit,
   edit,
   delMany,
-  viewDetail
+  viewDetail,
+  landingPage,
+  setTemplate
 };
