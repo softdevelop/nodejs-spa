@@ -144,7 +144,17 @@
                               <div class="row">
                                   <h4 class="m-t-40 mb-5">Each card is a slide in the landing page</h4>
                               </div>
-                              <div class="Landing-Intro"></div>
+                              <div class="Landing-Intro">
+
+                                <% if(spaLandingData.intros && spaLandingData.intros.length>0){
+                                  spaLandingData.intros.forEach(item=>{ %>
+                                    <%- include('./elements/card_intro', { item, urlMediaUpload}) %>
+                                  <%
+                                  })
+                                }
+                                %>
+
+                              </div>
                               <div class="row">
                                   <button type="button" class="Landing-Intro-Create btn btn-info d-none d-lg-block m-l-15 mb-3"><i class="fa fa-plus-circle"></i> Add slide</button>
                               </div>
@@ -156,7 +166,17 @@
                               <div class="row">
                                   <h4 class="m-t-40 mb-5">Each card is a service in the landing page</h4>
                               </div>
-                              <div class="Landing-Service"></div>
+                              <div class="Landing-Service">
+
+                                <% if(spaLandingData.services && spaLandingData.services.length>0){
+                                  spaLandingData.services.forEach(item=>{ %>
+                                    <%- include('./elements/card_service', { item, urlMediaUpload}) %>
+                                  <%
+                                  })
+                                }
+                                %>
+
+                              </div>
 
                               <div class="row">
                                   <button type="button" class="Landing-Service-Create btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add service</button>
@@ -169,13 +189,13 @@
                                   <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Start</label>
-                                        <input type="time" class="form-control" name="start">
+                                        <input type="time" class="form-control" name="start" value="<%=spaLandingData && spaLandingData.working_hour && spaLandingData.working_hour.start%>">
                                     </div>
                                   </div>
                                   <div class="col-md-6">
                                     <div class="form-group">
                                         <label>End</label>
-                                        <input type="time" class="form-control" name="end">
+                                        <input type="time" class="form-control" name="end" value="<%=spaLandingData && spaLandingData.working_hour && spaLandingData.working_hour.end%>">
                                     </div>
                                   </div>
                               </div>
@@ -186,7 +206,17 @@
                              <div class="row">
                                  <h4 class="m-t-40 mb-5">Each card is a member of spa</h4>
                              </div>
-                             <div class="Landing-Team"></div>
+                             <div class="Landing-Team">
+
+                              <% if(spaLandingData.members && spaLandingData.members.length>0){
+                                spaLandingData.members.forEach(item=>{ %>
+                                  <%- include('./elements/card_member', { item, urlMediaUpload}) %>                                  
+                                <%
+                                })
+                              }
+                              %>
+
+                             </div>
 
                              <div class="row">
                                  <button type="button" class="Landing-Team-Create btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Member</button>
@@ -291,6 +321,7 @@
           });
   
       });
+      loadEditor();
   });
 </script>
 
@@ -324,7 +355,7 @@
       this.id = id
       this.imageUpload = {}
       this.data = {
-        templateId: null,
+        templateId: spaLandingData.template_id,
         intros: [],
         services: [],
         members: [],
@@ -336,8 +367,8 @@
       return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     }
 
-    setImageUpload(key, file){
-      this.imageUpload[key] = file
+    getTemplateId(){
+      return this.data.templateId
     }
 
     getData(){
@@ -346,6 +377,10 @@
       this.setWorkingHour();
       this.setMembers();
       return this.data
+    }
+
+    setImageUpload(key, file){
+      this.imageUpload[key] = file
     }
 
     setTemplate(id){
@@ -359,7 +394,8 @@
         intros.push({
           title: $(item).find('input[name=title]').val(),
           content: $(item).find('textarea[name=content]').val(),
-          image: $(item).attr('key')
+          image: $(item).attr('key'),
+          id: $(item).attr('id'),
         })
       })
       this.data.intros = intros;
@@ -374,7 +410,8 @@
           title: $(item).find('input[name=title]').val(),
           content: $(item).find('textarea[name=content]').val(),
           image: $(item).attr('key'),
-          price: $(item).find('input[name=price]').val()
+          price: $(item).find('input[name=price]').val(),
+          id: $(item).attr('id'),
         })
       })
       this.data.services = services;
@@ -388,6 +425,7 @@
           name: $(item).find('input[name=name]').val(),
           content: $(item).find('textarea[name=content]').val(),
           avatar: $(item).attr('key'),
+          id: $(item).attr('id'),
         })
       })
       this.data.members = members;
@@ -626,7 +664,12 @@
   $(document).on('change', '.ImageUpload', function(e){
     let file = e.target.files[0];
     let key = $(this).attr('key');
-    landing.setImageUpload(key, file)
+    if(key){
+      landing.setImageUpload(key, file)
+    }else{
+      let id = $(this).attr('id');
+      landing.setImageUpload(id, file)
+    }
   })
 
   $('.Landing-Template').on('click', function(){
@@ -636,5 +679,14 @@
     $(this).html('Chosen')
     $(this).removeClass('btn-primary').addClass('btn-success');
   })
+
+  function setView(){
+    $('.Landing-Template').html('Choose')
+    $('.Landing-Template').removeClass('btn-success').addClass('btn-primary');
+    $(`.Landing-Template[data=${landing.getTemplateId()}]`).html('Chosen')
+    $(`.Landing-Template[data=${landing.getTemplateId()}]`).removeClass('btn-primary').addClass('btn-success');
+  }
+
+  setView();
 
 </script>

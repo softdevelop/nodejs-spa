@@ -26,7 +26,7 @@ const createSpasService = (data) => {
 }
 const editSpasService = async (id, data) => {
     return new Promise((resolve, reject) => {
-        SpasService.findById(id).update(data)
+        SpasService.findById(id).updateOne(data)
             .then(doc => {
                 if (doc == null) throw new Error('edit fail')
                 resolve("edit project successfully")

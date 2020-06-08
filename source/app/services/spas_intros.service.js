@@ -26,7 +26,7 @@ const createSpasIntro = (data) => {
 }
 const editSpasIntro = async (id, data) => {
     return new Promise((resolve, reject) => {
-        SpasIntro.findById(id).update(data)
+        SpasIntro.findById(id).updateOne(data)
             .then(doc => {
                 if (doc == null) throw new Error('edit fail')
                 resolve("edit project successfully")

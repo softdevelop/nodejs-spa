@@ -26,7 +26,7 @@ const createSpasTeam = (data) => {
 }
 const editSpasTeam = async (id, data) => {
     return new Promise((resolve, reject) => {
-        SpasTeam.findById(id).update(data)
+        SpasTeam.findById(id).updateOne(data)
             .then(doc => {
                 if (doc == null) throw new Error('edit fail')
                 resolve("edit project successfully")
