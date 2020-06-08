@@ -491,6 +491,7 @@
         processData: false,
         contentType: false,
         success: (data) => {
+          if(data.success) location.replace('/admin/spas/landing-page/preview')
         },
         error: (data) => {
           // if(data && data.responseJSON && data.responseJSON.message &&  data.responseJSON.message.errors){

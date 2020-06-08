@@ -185,10 +185,8 @@ const setTemplate = async (req, res) => {
     template_id: data.templateId
   })
 
-  res.sendData({
-    data,
-    fileObj
-  })
+  res.sendData('Success')
+
 }
 
 const getTemplate = async (req, res) => {
