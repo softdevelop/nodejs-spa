@@ -17,7 +17,8 @@ module.exports = async (req, res, next) => {
     first_name: user.first_name,
     last_name: user.last_name,
     permissions: user.permissions.permissions,
-    avatar: user.avatar || "/images/avt.png"
+    avatar: user.avatar || "/images/avt.png",
+    role: user.role
   }
 
   next();

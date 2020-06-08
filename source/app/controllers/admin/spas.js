@@ -5,6 +5,11 @@ const moment = require("moment-timezone");
 const {genHtmlPagination, urlMediaUpload} = require('../../utils')
 const {validateSpa, validateSpaEdit} = require('../../models/spas')
 const bcrypt = require("bcryptjs");
+const { 
+  spaIntroService,
+  spaServiceService,
+  spaTeamService
+} = require("../../services");
 
 const APP_DOMAIN = require("../../../config/index").APP_DOMAIN;
 const dashboardUrl = () => APP_DOMAIN + `/dashboard`;
@@ -36,7 +41,6 @@ const getListSpas = async (req, res) => {
       genHtmlPagination: genHtmlPagination(data.total, data.limit, data.page, data.pages, data.search),
     });
   } else {
-    console.log('err', req.err);
   }
 };
 
@@ -121,12 +125,59 @@ const viewDetail = async (req, res) => {
   res.render('admin/spas/view', {errors: {}, data: record, urlMediaUpload, spaOwners})
 }
 
-const landingPage = (req, res) => {
-  res.render('admin/spas/landing-page')
+const landingPage = async (req, res) => {
+  let user = await User.findById(req.user._id).populate('spa').exec();
+  let spa = user.spa;
+  let spaLandingData = await Spa.findById(spa._id).populate('intros').populate('services').populate('members').exec();
+  res.render('admin/spas/landing-page', {spaLandingData})
 }
 
-const setTemplate = (req, res) => {
+const setTemplate = async (req, res) => {
+  let user = await User.findById(req.user._id).populate('spa').exec();
+  let spa = user.spa;
   let data = req.body
+  let files = req.files;
+  let fileObj = await files.reduce((result, item)=>{
+    return {
+      ...result,
+      [item.fieldname]: item
+    }
+  }, {})
+
+  await data.intros.forEach(async item=>{
+    item.spa_id = spa._id
+    item.image = fileObj[item.image]
+    await spaIntroService.createSpasIntro(item);
+  })
+
+  await data.services.forEach(async item=>{
+    item.spa_id = spa._id
+    item.image = fileObj[item.image]
+    await spaServiceService.createSpasService(item);
+  })
+
+  await data.members.forEach(async item=>{
+    item.spa_id = spa._id
+    item.avatar = fileObj[item.avatar]
+    await spaTeamService.createSpasTeam(item);
+  })
+
+  await Spa.findById(spa._id).updateOne({
+    working_hour: data.workingHour,
+    template_id: data.templateId
+  })
+
+  res.sendData({
+    data,
+    fileObj
+  })
+}
+
+const getTemplate = async (req, res) => {
+  let user = await User.findById(req.user._id).populate('spa').exec();
+  let spa = user.spa;
+  let spaLandingData = await Spa.findById(spa._id).populate('intros').populate('services').populate('members').exec();
+  res.sendData(spaLandingData)
 }
 
 
@@ -139,5 +190,6 @@ module.exports = {
   delMany,
   viewDetail,
   landingPage,
-  setTemplate
+  setTemplate,
+  getTemplate
 };

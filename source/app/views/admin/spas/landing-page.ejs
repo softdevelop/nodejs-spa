@@ -150,19 +150,18 @@
                               </div>
                             </section>
 
+                            <!-- Step 3 -->
+                            <h6>Services</h6>
+                            <section>
+                              <div class="row">
+                                  <h4 class="m-t-40 mb-5">Each card is a service in the landing page</h4>
+                              </div>
+                              <div class="Landing-Service"></div>
 
-                              <!-- Step 3 -->
-                              <h6>Services</h6>
-                              <section>
-                                <div class="row">
-                                    <h4 class="m-t-40 mb-5">Each card is a service in the landing page</h4>
-                                </div>
-                                <div class="Landing-Service"></div>
-
-                                <div class="row">
-                                    <button type="button" class="Landing-Service-Create btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add service</button>
-                                </div>
-                              </section>
+                              <div class="row">
+                                  <button type="button" class="Landing-Service-Create btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add service</button>
+                              </div>
+                            </section>
                             <!-- Step 4 -->
                             <h6>Wokring hour</h6>
                             <section>
@@ -181,7 +180,18 @@
                                   </div>
                               </div>
                             </section>
-                          
+                           <!-- Step 5 -->
+                           <h6>Team</h6>
+                           <section>
+                             <div class="row">
+                                 <h4 class="m-t-40 mb-5">Each card is a member of spa</h4>
+                             </div>
+                             <div class="Landing-Team"></div>
+
+                             <div class="row">
+                                 <button type="button" class="Landing-Team-Create btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Member</button>
+                             </div>
+                           </section>
                         </form>
                       </div>
                   </div>
@@ -309,7 +319,7 @@
   });
 
   class LandingManageForm {
-    constructor(id) {
+    constructor(id, spaLandingData) {
       this.form = $(id)
       this.id = id
       this.imageUpload = {}
@@ -317,19 +327,24 @@
         templateId: null,
         intros: [],
         services: [],
+        members: [],
         workingHour: {}
       }
     }
 
+    genStringRandom(){
+      return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    }
+
     setImageUpload(key, file){
       this.imageUpload[key] = file
-
     }
 
     getData(){
       this.setIntros();
       this.setServices();
       this.setWorkingHour();
+      this.setMembers();
       return this.data
     }
 
@@ -344,7 +359,7 @@
         intros.push({
           title: $(item).find('input[name=title]').val(),
           content: $(item).find('textarea[name=content]').val(),
-          image: this.imageUpload[$(item).attr('key')]
+          image: $(item).attr('key')
         })
       })
       this.data.intros = intros;
@@ -358,11 +373,24 @@
         services.push({
           title: $(item).find('input[name=title]').val(),
           content: $(item).find('textarea[name=content]').val(),
-          image: this.imageUpload[$(item).attr('key')],
+          image: $(item).attr('key'),
           price: $(item).find('input[name=price]').val()
         })
       })
       this.data.services = services;
+    }
+
+    setMembers(){
+      let arr = $(`${this.id} .Landing-Team .card.CardItem`);
+      let members = [];
+      arr.each((index, item)=>{
+        members.push({
+          name: $(item).find('input[name=name]').val(),
+          content: $(item).find('textarea[name=content]').val(),
+          avatar: $(item).attr('key'),
+        })
+      })
+      this.data.members = members;
     }
 
     setWorkingHour(){
@@ -382,6 +410,9 @@
           break;
         case 'service':
           this.onAddCardService(wrapper);
+          break;
+        case 'team':
+          this.onAddCardTeam(wrapper);
           break;
         default:
           break;
@@ -409,6 +440,11 @@
     onSubmit(){
       let data = this.getData();
       let dataSend = this.jsonToFormData(data);
+
+      Object.keys(this.imageUpload).map(key=>{
+        dataSend.append(key, this.imageUpload[key]);
+      })
+
       $.ajax({
         type: "POST",
         data: dataSend,
@@ -432,7 +468,7 @@
 
   
     onAddCardIntro(wrapper){
-      let key = Math.random();
+      let key = this.genStringRandom();
       let card = `
         <!-- ------------- -->
         <div class="CardItem card" key="${key}">
@@ -475,7 +511,7 @@
     }
 
     onAddCardService(wrapper){
-      let key = Math.random();
+      let key = this.genStringRandom();
       let card = `
         <!-- ------------- -->
           <div class="CardItem card" key="${key}">
@@ -523,9 +559,54 @@
           ${card}
       `)
     }
+
+    onAddCardTeam(wrapper){
+      let key = this.genStringRandom();
+      let card = `
+        <!-- ------------- -->
+        <div class="CardItem card" key="${key}">
+            <div class="card-header">
+              Title
+              <div class="card-actions">
+                  <a class="" data-action="collapse"><i class="ti-minus"></i></a>
+                  <a class="btn-close" data-action=""><i class="ti-close"></i></a>
+              </div>
+            </div>
+            <div class="card-body collapse show">
+              <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="name"> 
+                    </div>
+                  </div>
+                  <div class="col-md-12 ">
+                    <div class="form-group form-group-content ">
+                        <label class="control-label">Content</label>
+                        <textarea class="summernote" style="z-index: 1;" name="content"></textarea>
+                        <small class="form-control-feedback"></small>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Avatar</label>
+                        <input type="file" class="ImageUpload form-control" name="avatar" key="${key}"> 
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <!-- ----------------- -->
+      `;
+      wrapper.append(`
+        ${card}
+      `)
+    }
   }
 
-  let landing = new LandingManageForm('#Landing-Form');
+  let spaLandingData = JSON.parse(`<%-JSON.stringify(spaLandingData)%>`)
+
+  let landing = new LandingManageForm('#Landing-Form', spaLandingData);
 
   $('.Landing-Intro-Create').on('click', function(){
     landing.onAddCard('.Landing-Intro', 'intro');
@@ -537,8 +618,15 @@
     loadEditor();
   })
 
+  $('.Landing-Team-Create').on('click', function(){
+    landing.onAddCard('.Landing-Team', 'team');
+    loadEditor();
+  })
+
   $(document).on('change', '.ImageUpload', function(e){
-    landing.setImageUpload($(this).attr('key'), e.target.files[0])
+    let file = e.target.files[0];
+    let key = $(this).attr('key');
+    landing.setImageUpload(key, file)
   })
 
   $('.Landing-Template').on('click', function(){

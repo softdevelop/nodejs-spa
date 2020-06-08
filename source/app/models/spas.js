@@ -19,9 +19,14 @@ const SpaSchema = new Schema({
     phone: { type: String },
     status: { type: String, enum: STATUS, default: STATUS[2] },
     note: { type: String, default: '' },
-    owner: { type: Schema.Types.ObjectId },
+    owner: { type: Schema.Types.ObjectId, ref: 'User' },
     imgs: { type: [{ type: Object}], default: []},
     logo: { type: Object },
+    working_hour: {
+      start: { type: String },
+      end: { type: String }
+    },
+    template_id: { type: String, default: null}
   }, {
     timestamps: true,
 })
@@ -62,6 +67,31 @@ function validateSpaEdit(spa) {
 /**
  * virtual
  */
+SpaSchema.virtual('ownerDetail', {
+  ref: 'User',
+  localField: 'owner',
+  foreignField: '_id',
+  justOne: true
+});
+
+SpaSchema.virtual('intros', {
+  ref: 'SpasIntro',
+  localField: '_id',
+  foreignField: 'spa_id',
+});
+
+SpaSchema.virtual('services', {
+  ref: 'SpasService',
+  localField: '_id',
+  foreignField: 'spa_id',
+});
+
+SpaSchema.virtual('members', {
+  ref: 'SpasTeam',
+  localField: '_id',
+  foreignField: 'spa_id',
+});
+
 SpaSchema.virtual('created_at').get(function () {
     return moment(this.createdAt).format("DD-MM-YYYY hh:mm:ss");
 })
