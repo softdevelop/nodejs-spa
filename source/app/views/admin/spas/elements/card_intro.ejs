@@ -1,0 +1,34 @@
+<div class="CardItem card" id="<%=item._id%>">
+  <div class="card-header">
+    Title
+    <div class="card-actions">
+        <a class="" data-action="collapse"><i class="ti-minus"></i></a>
+        <a class="btn-close" data-action=""><i class="ti-close"></i></a>
+    </div>
+  </div>
+  <div class="card-body collapse show">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+              <label>Title</label>
+              <input type="text" class="form-control" name="title" value="<%=item.title%>"> 
+          </div>
+        </div>
+        <div class="col-md-12 ">
+          <div class="form-group form-group-content ">
+              <label class="control-label">Content</label>
+              <textarea class="summernote" style="z-index: 1;" name="content"><%=item.content%></textarea>
+              <small class="form-control-feedback"></small>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+              <label>Image</label>
+              <input type="file" class="ImageUpload form-control" name="image" id="<%=item._id%>"> 
+              <img class="avatar-100" src="<%=urlMediaUpload.imageObj(item.image)%>" />
+
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

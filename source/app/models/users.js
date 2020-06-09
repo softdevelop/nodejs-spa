@@ -146,6 +146,12 @@ function validateEmail(user) {
 /**
  * virtual
  */
+UserSchema.virtual('spa', {
+  ref: 'Spa',
+  localField: '_id',
+  foreignField: 'owner',
+  justOne: true
+});
 
 UserSchema.virtual('projects', {
   ref: 'Project',
