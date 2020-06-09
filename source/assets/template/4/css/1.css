@@ -1,0 +1,134 @@
+.header_top_aligner {
+  height : 24px;
+  }
+  .logo_aligner,
+  .header_mid_aligner {
+  height : 90px;
+  }
+  .header_mid_half_aligner {
+  height : 45px;
+  }
+  .header_bot_aligner {
+  height : 50px;
+  }
+  .enable_logo_side #header nav > div > ul#navigation > li.menu-item-mega > div.menu-item-mega-container,
+  .enable_logo_side #header #navigation > li.menu-item-has-children > ul {
+  margin-top :15px;
+  }
+  .enable_header_bottom #header nav > div > ul#navigation > li.menu-item-mega > div.menu-item-mega-container,
+  .enable_header_bottom #header #navigation > li.menu-item-has-children > ul {
+  margin-top :20px;
+  }
+  .enable_logo_side #header nav > div > ul#navigation > li.menu-item-mega > div.menu-item-mega-container:before,
+  .enable_logo_side #navigation > li > ul:before {
+  height :15px;
+  top : -15px;
+  }
+  .enable_header_bottom #header nav > div > ul#navigation > li.menu-item-mega > div.menu-item-mega-container:before,
+  .enable_header_bottom #navigation > li > ul:before {
+  height :20px;
+  top : -20px;
+  }
+  .enable_logo_side #header.navi_scrolled {
+  padding-top : 70px !important;
+  margin-top : -94px;
+  }
+  .enable_header_bottom #header.navi_scrolled {
+  padding-top : 70px !important;
+  margin-top : -184px;
+  }
+  #header.navi_scrolled .header_bot_aligner,
+  .enable_logo_side #header.navi_scrolled .header_mid_half_aligner,
+  .enable_logo_side #header.navi_scrolled .logo_aligner,
+  .enable_logo_side #header.navi_scrolled .header_mid_aligner {
+  height : 70px;
+  }
+  .enable_header_bottom #header.navi_scrolled nav > div > ul#navigation > li.menu-item-mega > div.menu-item-mega-container
+  .enable_header_bottom #header.navi_scrolled #navigation > li.menu-item-has-children > ul,
+  .enable_logo_side #header.navi_scrolled nav > div > ul#navigation > li.menu-item-mega > div.menu-item-mega-container
+  .enable_logo_side #header.navi_scrolled #navigation > li.menu-item-has-children > ul {
+  margin-top :20px;
+  }
+  .enable_header_bottom #header.navi_scrolled nav > div > ul#navigation > li.menu-item-mega > div.menu-item-mega-container:before,
+  .enable_header_bottom .navi_scrolled #navigation > li > ul:before,
+  .enable_logo_side #header.navi_scrolled nav > div > ul#navigation > li.menu-item-mega > div.menu-item-mega-container:before,
+  .enable_logo_side .navi_scrolled #navigation > li > ul:before {
+  height :20px;
+  top : -20px;
+  }
+  #page.cmsmasters_heading_after_header #middle, 
+  #page.cmsmasters_heading_under_header #middle .headline .headline_outer {
+  padding-top : 90px;
+  }
+  #page .cmsmasters_dynamic_cart {
+  top : 130px;
+  }
+  #page.enable_header_top .cmsmasters_dynamic_cart {
+  top : 154px;
+  }
+  #page.enable_header_bottom .cmsmasters_dynamic_cart {
+  top : 180px;
+  }
+  #page.enable_header_top.enable_header_bottom .cmsmasters_dynamic_cart {
+  top : 204px;
+  }
+  #page.cmsmasters_heading_after_header.enable_header_top #middle, 
+  #page.cmsmasters_heading_under_header.enable_header_top #middle .headline .headline_outer {
+  padding-top : 114px;
+  }
+  #page.cmsmasters_heading_after_header.enable_header_bottom #middle, 
+  #page.cmsmasters_heading_under_header.enable_header_bottom #middle .headline .headline_outer {
+  padding-top : 140px;
+  }
+  #page.cmsmasters_heading_after_header.enable_header_top.enable_header_bottom #middle, 
+  #page.cmsmasters_heading_under_header.enable_header_top.enable_header_bottom #middle .headline .headline_outer {
+  padding-top : 164px;
+  }
+  @media only screen and (max-width: 1024px) {
+  .header_top,
+  .header_top_outer,
+  .header_top_inner,
+  .header_top_aligner,
+  .header_mid,
+  .header_mid_outer,
+  .header_bot,
+  .header_bot_outer,
+  .header_bot .header_bot_inner nav > div > ul,
+  .header_bot .header_bot_inner nav > div > ul > li,
+  .header_bot .header_bot_inner nav > div > ul > li > a {
+  height : auto;
+  }
+  #page.fixed_header #middle,
+  #page.fixed_header #middle .headline .headline_outer,
+  #page.fixed_header.enable_header_top #middle,
+  #page.fixed_header.enable_header_top #middle .headline .headline_outer,
+  #page.fixed_header.enable_header_bottom #middle,
+  #page.fixed_header.enable_header_bottom #middle .headline .headline_outer,
+  #page.fixed_header.enable_header_top.enable_header_bottom #middle,
+  #page.fixed_header.enable_header_top.enable_header_bottom #middle .headline .headline_outer {
+  padding-top : 0px !important;
+  }
+  #page .cmsmasters_dynamic_cart {
+  top : 130px;
+  }
+  #page.enable_header_top .cmsmasters_dynamic_cart {
+  top : 154px;
+  }
+  #page.enable_header_bottom .cmsmasters_dynamic_cart {
+  top : 180px;
+  }
+  #page.enable_header_top.enable_header_bottom .cmsmasters_dynamic_cart {
+  top : 204px;
+  }
+  }
+  @media only screen and (max-width: 767px) {
+  .header_mid .header_mid_inner .resp_nav_wrap_inner {
+  height : auto;
+  }
+  }
+  #footer.cmsmasters_footer_default .footer_inner {
+  min-height:450px;
+  }
+  .fixed_footer #main {
+  margin-bottom:450px;
+  }
