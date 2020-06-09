@@ -193,9 +193,17 @@ const getTemplate = async (req, res) => {
   let user = await User.findById(req.user._id).populate('spa').exec();
   let spa = user.spa;
   let spaLandingData = await Spa.findById(spa._id).populate('intros').populate('services').populate('members').exec();
-  res.sendData(spaLandingData)
+  // res.sendData(spaLandingData)
+  res.render('template/5')
 }
 
+const getTemplateId = async (req, res) => {
+  let user = await User.findById(req.user._id).populate('spa').exec();
+  let spa = user.spa;
+  let spaLandingData = await Spa.findById(spa._id).populate('intros').populate('services').populate('members').exec();
+  // res.sendData(spaLandingData)
+  res.render('template/'+req.params.id)
+}
 
 module.exports = {
   getListSpas,
@@ -207,5 +215,6 @@ module.exports = {
   viewDetail,
   landingPage,
   setTemplate,
-  getTemplate
+  getTemplate,
+  getTemplateId
 };

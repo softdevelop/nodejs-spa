@@ -1,15 +1,18 @@
 # README #
-
-* Create sample database:
-npm run migration
+* Make sure node version >=10
 
 * Install the project:
 change .env.example to .env
 cd /server
 npm install
 
+* Create sample database:
+npm run migration
+
 * Run the project:
 npm start
+
+* Project will be run at localhost:3002 in dev
 
 * Backup database:
 mongodump -d <database_name> -o <directory_backup>
@@ -20,3 +23,9 @@ mongodump -d pscd-spa -o /var/backups/mongobackups
 mongorestore -d <database_name> <directory_backup>
 ex:
 mongorestore -d  pscd-spa /var/backups/mongobackups/pscd-spa
+
+* Account default to login
+/admin/login
+admin@gmail.com/12345
+spa@gmail.com/12345
+user@gmail.com/12345

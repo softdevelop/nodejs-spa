@@ -1,3 +1,3 @@
 module.exports = function (req, res) {
-    res.render("admin/statics/404");
+    res.render("admin/404");
 }

@@ -12,6 +12,7 @@ router.post("/spas/create",  uploadMedia.fields([
 router.get("/spas/landing-page", spas.landingPage);
 router.post("/spas/landing-page",  uploadMedia.any(), spas.setTemplate);
 router.get("/spas/landing-page/preview", spas.getTemplate);
+router.get("/spas/landing-page/preview/:id", spas.getTemplateId);
 router.get("/spas/:id", spas.viewDetail);
 router.get("/spas/:id/edit", spas.getFormEdit);
 router.post("/spas/:id/edit",  uploadMedia.fields([

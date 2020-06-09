@@ -1,0 +1,247 @@
+/* Table of Content
+==================================================
+	1.0 - Transition
+	1.1 - Number Counter
+	1.2 - Browser Css
+	1.3 - Default Color*/
+
+	/*--------------------------------------------------------------
+	1.0 - Transition
+	--------------------------------------------------------------*/
+.dt-sc-counter.type6 .dt-sc-counter-icon-holder:before, .dt-sc-counter.type4 .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4 .dt-sc-counter-icon-holder, .dt-sc-counter.type4 .dt-sc-counter-icon-holder span, .dt-sc-counter.type5 *, .dt-sc-counter.type5 h4:before, .dt-sc-counter.type5 h4:after, .dt-sc-counter.type1 .icon-wrapper span, .dt-sc-counter.type1 .dt-sc-counter-number, .dt-sc-counter.type1 .dt-sc-counter-number:before, .dt-sc-counter.type1 .icon-wrapper span:after, .dt-sc-counter.type3 .dt-sc-counter-number:before, .dt-sc-counter.type3 .dt-sc-counter-number:after, .dt-sc-counter.type2 .dt-sc-counter-icon-holder, .dt-sc-counter.type2 .icon-wrapper span, .dt-sc-counter.type2 span:before, .dt-sc-counter.type2 span:after, .dt-sc-counter.type2 h4:before, .dt-sc-counter.type2 h4:after, .dt-sc-counter.type6:before, .dt-sc-counter.type6:after, .dt-sc-counter.type6 h4, .dt-sc-counter.type6 .dt-sc-counter-icon-holder .icon-wrapper span, .dt-sc-counter.type4 .dt-sc-counter-number { -webkit-transition: all 0.3s linear; -moz-transition: all 0.3s linear; -o-transition: all 0.3s linear; -ms-transition: all 0.3s linear; transition: all 0.3s linear; }
+/*--------------------------------------------------------------
+	1.1 - Number Counter
+	--------------------------------------------------------------*/
+.dt-sc-counter { float: left; clear: both; width: 100%; margin: 0; padding: 0; }
+.dt-sc-counter.type1 .icon-wrapper { float: left; position: relative; margin: 10px 20px 0 0; padding-bottom: 20px; min-width: 60px; text-align: center; }
+.dt-sc-counter.type1.alignright .icon-wrapper:before { right: 0; left: inherit; }
+.dt-sc-counter.type1 .icon-wrapper span { font-size: 55px; }
+.dt-sc-counter.type1 .dt-sc-counter-number { font-size: 50px; display: inline-block; font-weight: bold; line-height: 50px; margin: 0 0 10px 0; }
+.dt-sc-counter.type1 h4 { font-size: 14px; font-weight: 300; text-transform: uppercase; margin-bottom: 5px; }
+.dt-sc-counter.type1 .dt-sc-counter-subtitle { font-weight: 600; text-transform: uppercase; }
+.dt-sc-counter.type1.alignright .icon-wrapper { float: right; text-align: right; margin: 10px 0 0 30px; }
+.secondary-skin-highlight .dt-sc-counter.type1 .dt-sc-counter-number:before { background: #fff; }
+/*--------------------------------*/
+	
+.dt-sc-counter.type2 { box-sizing: border-box; text-align: center; width: 100%; }
+.dt-sc-counter.type2 .icon-wrapper span img { margin-bottom: 0; margin-top: 20px; padding-bottom: 40px; }
+.dt-sc-counter.type2 .icon-wrapper span { border-radius: 50%; display: inline-block; font-size: 30px; height: 100px; line-height: 100px; margin-bottom: 20px; width: 100px; position: relative; text-align: center; }
+.dt-sc-counter.type2 .icon-wrapper span:after { border-radius: 50%; border-style: solid; border-width: 1px; content: ""; display: inline-block; float: none; height: 40px; left: 0; margin: 27px auto; opacity: 0; position: absolute; right: 0; width: 40px; top: 3px; background-color: #191919; }
+.dt-sc-counter.type2 .icon-wrapper span { color: #191919; }
+.dt-sc-counter.type2:hover h4:after, .dt-sc-counter.type2 h4:after { background-color: #191919; }
+.dt-sc-counter.type2 .icon-wrapper span:before { left: 0; right: 0; top: 0; bottom: 0; position: absolute; margin: auto; -moz-transform: scale(1); -webkit-transform: scale(1); transform: scale(1); background-color: #fff; border-radius: 50%; z-index: 1; }
+.dt-sc-counter.type2:hover .icon-wrapper span:before { background-color: transparent; }
+.dt-sc-counter.type2:hover .icon-wrapper span:after { -moz-transform: scale(2.5); -ms-transform: scale(2.5); -webkit-transform: scale(2.5); opacity: 1; transform: scale(2.5); }
+.dt-sc-counter.type2:hover .icon-wrapper span:before { -moz-transform: scale(0.8); -webkit-transform: scale(0.8); transform: scale(0.8); color: #ffffff; }
+.dt-sc-counter.type2 .dt-sc-counter-icon-holder { display: inline-block; padding: 0 0 10px; width: 120px; }
+.dt-sc-counter.type2 .dt-sc-counter-number { font-size: 40px; font-weight: 300; }
+.dt-sc-counter.type2 h4 { font-size: 22px; font-weight: 300; margin: 30px 0 0; position: relative; }
+.dt-sc-counter.type2 h4:before { background: #fff; content: ""; display: block; height: 3px; left: 0; margin: 0 auto; position: absolute; right: 0; top: -15px; width: 30px; }
+.dt-sc-counter.type2:hover h4:before { width: 0; }
+.dt-sc-counter.type2 h4:after { content: ""; display: block; height: 3px; left: 0; margin: 0 auto; position: absolute; right: 0; top: -15px; width: 0; }
+.dt-sc-counter.type2:hover h4:after { width: 60px; }
+.dt-sc-counter.type2.alignleft { text-align: left; }
+.dt-sc-counter.type2.alignright { text-align: right; }
+.dt-sc-counter.type2.alignright .icon-wrapper span.zmdi:after, .dt-sc-counter.type2.alignright .icon-wrapper span.pe-icon:after, .dt-sc-counter.type2.alignright .icon-wrapper span.icon:after, .dt-sc-counter.type2.alignright .icon-wrapper span.fa:after { right: 25px; left: inherit; }
+.dt-sc-counter.type2.alignright h4:before, .dt-sc-counter.type2.alignright h4:after { left: auto; right: 0; }
+.dt-sc-counter.type2.alignright .dt-sc-counter-number { float: right; }
+.dt-sc-counter.type2.alignleft .icon-wrapper span.zmdi:after, .dt-sc-counter.type2.alignleft .icon-wrapper span.pe-icon:after, .dt-sc-counter.type2.alignleft .icon-wrapper span.icon:after, .dt-sc-counter.type2.alignleft .icon-wrapper span.fa:after { left: 25px; right: inherit; }
+.dt-sc-counter.type2.alignleft h4:before, .dt-sc-counter.type2.alignleft h4:after { left: 0; right: auto; }
+.dt-sc-counter.type2.alignleft .dt-sc-counter-number { float: left; }
+.dt-sc-counter.type2.alignleft .dt-sc-counter-icon-holder, .dt-sc-counter.type2.alignright .dt-sc-counter-icon-holder { text-align: center; width: 100%; }
+.dt-sc-counter.type2.alignleft .icon-wrapper span.zmdi,  .dt-sc-counter.type2.alignleft .icon-wrapper span.pe-icon,  .dt-sc-counter.type2.alignleft .icon-wrapper span.icon,  .dt-sc-counter.type2.alignleft .icon-wrapper span.fa,  .dt-sc-counter.type2.alignleft h4 { text-align: left; }
+.dt-sc-counter.type2.alignleft .icon-wrapper { float: left; text-align: left; width: 100%; }
+.dt-sc-counter.type2.alignright .icon-wrapper span.zmdi,  .dt-sc-counter.type2.alignright .icon-wrapper span.pe-icon,  .dt-sc-counter.type2.alignright .icon-wrapper span.icon,  .dt-sc-counter.type2.alignright .icon-wrapper span.fa { text-align: right; }
+.dt-sc-counter.type2.alignright h4 { text-align: right; }
+.dt-sc-counter.type2.alignright .icon-wrapper { float: right; text-align: right; width: 100%; }
+.dt-sc-dark-bg .dt-sc-counter.type2 h4:before { background: #ffffff; }
+.dt-sc-counter.type2:hover .icon-wrapper span.zmdi, .dt-sc-counter.type2:hover .icon-wrapper span.pe-icon,  .dt-sc-counter.type2:hover .icon-wrapper span.icon, .dt-sc-counter.type2:hover .icon-wrapper span.fa, .dt-sc-counter.type2:hover .icon-wrapper span.fas,  .dt-sc-counter.type2:hover h4:after, .dt-sc-counter.type2 h4:after { background: #000; }
+/*--------------------------------*/	
+
+.dt-sc-counter.type3 { text-align: center; margin: 70px 0 20px; position: relative; }
+.dt-sc-counter.type3 .icon-wrapper { width: auto; clear: both; position: absolute; right: 25px; top: -65px; }
+.dt-sc-counter.type3 .icon-wrapper span { color: rgba(0, 0, 0,0.05); font-size: 95px; }
+.dt-sc-counter.type3 .icon-wrapper span img { opacity: 0.15; }
+.dt-sc-counter.type3 .dt-sc-counter-number { font-size: 60px; margin-bottom: 25px; font-weight: bold; position: relative; padding-bottom: 38px; }
+.dt-sc-counter.type3 h4 { font-size: 18px; font-weight: normal; letter-spacing: 1px; margin-bottom: 5px; }
+.dt-sc-counter.type3 .dt-sc-counter-number:before, .dt-sc-counter.type3 .dt-sc-counter-number:after { position: absolute; content: ""; display: block; left: 0; right: 0; margin: auto; bottom: 0; }
+.dt-sc-counter.type3 .dt-sc-counter-number:before { width: 50px; height: 2px; background-color: #d4d4d4; }
+.dt-sc-counter.type3 .dt-sc-counter-number:after { width: 0; height: 2px; }
+.dt-sc-counter.type3:hover .dt-sc-counter-number:before { width: 0; }
+.dt-sc-counter.type3:hover .dt-sc-counter-number:after { width: 50px; }
+.dt-sc-counter.type3.alignleft { text-align: left; }
+.dt-sc-counter.type3.alignleft .icon-wrapper { right: 0; left: inherit; }
+.dt-sc-counter.type3.alignleft .dt-sc-counter-number:before { left: 0; right: inherit; }
+.dt-sc-counter.type3.alignleft .dt-sc-counter-number:before, .dt-sc-counter.type3.alignleft .dt-sc-counter-number:after { left: 0; right: inherit; }
+.dt-sc-counter.type3.alignright { text-align: right; }
+.dt-sc-counter.type3.alignright .icon-wrapper { right: inherit; left: 0; }
+.dt-sc-counter.type3.alignright .dt-sc-counter-number:before { left: inherit; right: 0; }
+.dt-sc-counter.type3.alignright .dt-sc-counter-number:before, .dt-sc-counter.type3.alignright .dt-sc-counter-number:after { left: inherit; right: 0; }
+.dt-sc-counter.type3 .dt-sc-counter-number:after { background-color: #000; }
+/*--------------------------------*/
+	
+.dt-sc-counter.type4 { text-align: center; }
+.dt-sc-counter.type4 .dt-sc-counter-icon-holder { display: inline-block; width: 140px; height: 140px; border: 5px solid; border-radius: 50%; position: relative; }
+.dt-sc-counter.type4 .dt-sc-counter-icon-holder .icon-wrapper { width: 70px; height: 70px; border: 5px solid; border-radius: 50%; position: absolute; left: -40px; top: -10px; line-height: 60px; }
+.dt-sc-counter.type4 .dt-sc-counter-icon-holder span { line-height: 60px; font-size: 32px; }
+.dt-sc-counter.type4 .dt-sc-counter-number { font-size: 30px; line-height: 135px; }
+.dt-sc-counter.type4 h4 { font-size: 14px; margin: 15px 0 0; text-transform: uppercase; padding: 0; }
+.dt-sc-counter.type4:hover .dt-sc-counter-icon-holder .icon-wrapper { width: 100%; top: 0; left: 0; height: 100%; line-height: 140px; opacity: 0.05; }
+.dt-sc-counter.type4:hover .dt-sc-counter-icon-holder span { font-size: 60px; line-height: 120px; }
+.dt-sc-counter.type4.alignright .dt-sc-counter-icon-holder .icon-wrapper { left: auto; right: -40px; }
+.dt-sc-counter.type4.alignright:hover .dt-sc-counter-icon-holder .icon-wrapper { left: inherit; right: 0; }
+.dt-sc-counter.type4.aligncenter .dt-sc-counter-icon-holder .icon-wrapper { left: 0; right: 0; top: -30px; margin: 0 auto; }
+.dt-sc-counter.type4.aligncenter:hover .dt-sc-counter-icon-holder .icon-wrapper { top: 0; left: 0; right: 0; }
+.dt-sc-dark-bg .dt-sc-counter.type4 .dt-sc-counter-number { color: #000000; }
+.dt-sc-dark-bg .dt-sc-counter.type4:hover .dt-sc-counter-number { color: #fff; }
+.dt-sc-counter.type4.blue .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.blue:hover .dt-sc-counter-icon-holder { background: #008bd3; }
+.dt-sc-counter.type4.brown .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.brown:hover .dt-sc-counter-icon-holder { background: #795548; }
+.dt-sc-counter.type4.cadetblue .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.cadetblue:hover .dt-sc-counter-icon-holder { background: #3c939d; }
+.dt-sc-counter.type4.chillipepper .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.chillipepper:hover .dt-sc-counter-icon-holder { background: #c10841; }
+.dt-sc-counter.type4.cyan .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.cyan:hover .dt-sc-counter-icon-holder { background: #00bcd4; }
+.dt-sc-counter.type4.darkgolden .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.darkgolden:hover .dt-sc-counter-icon-holder { background: #b48b3c; }
+.dt-sc-counter.type4.deeporange .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.deeporange:hover .dt-sc-counter-icon-holder { background: #ff5722; }
+.dt-sc-counter.type4.deeppurple .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.deeppurple:hover .dt-sc-counter-icon-holder { background: #673ab7; }
+.dt-sc-counter.type4.green .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.green:hover .dt-sc-counter-icon-holder { background: #6ca04a; }
+.dt-sc-counter.type4.lime .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.lime:hover .dt-sc-counter-icon-holder { background: #cddc39; }
+.dt-sc-counter.type4.magenta .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.magenta:hover .dt-sc-counter-icon-holder { background: #cb506d; }
+.dt-sc-counter.type4.orange .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.orange:hover .dt-sc-counter-icon-holder { background: #ff9800; }
+.dt-sc-counter.type4.pink .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.pink:hover .dt-sc-counter-icon-holder { background: #fd6ca3; }
+.dt-sc-counter.type4.purple .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.purple:hover .dt-sc-counter-icon-holder { background: #9c27b0; }
+.dt-sc-counter.type4.red .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.red:hover .dt-sc-counter-icon-holder { background: #da0000; }
+.dt-sc-counter.type4.skyblue .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.skyblue:hover .dt-sc-counter-icon-holder { background: #0eb2e7; }
+.dt-sc-counter.type4.teal .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.teal:hover .dt-sc-counter-icon-holder { background: #009688; }
+.dt-sc-counter.type4.yellow .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.yellow:hover .dt-sc-counter-icon-holder { background: #ffe401; }
+.dt-sc-counter.type4.turquoise .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.turquoise:hover .dt-sc-counter-icon-holder { background: #32ccbd; }
+.dt-sc-counter.type4.wisteria .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.wisteria:hover .dt-sc-counter-icon-holder { background: #9b59b6; }
+.dt-sc-counter.type4.black .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4.black:hover .dt-sc-counter-icon-holder { background: #000000; }
+.dt-sc-counter.type4 .dt-sc-counter-icon-holder span img { filter: grayscale(1) invert(1); -moz-filter: grayscale(1) invert(1); -webkit-filter: grayscale(1) invert(1); -ms-filter: grayscale(1) invert(1); opacity: 1; width: 40px; margin-top: 12px; }
+.dt-sc-counter.type5 { margin-top: -30px; padding: 60px 30px; position: relative; text-align: center; border: none; }
+.dt-sc-counter.type5 .icon-wrapper { width: 100%; clear: both; position: relative; margin-bottom: 10px; padding-bottom: 20px; }
+.dt-sc-counter.type5 h4:before, .dt-sc-counter.type5 h4:after { position: absolute; content: ""; display: block; left: 0; right: 0; margin: auto; bottom: 0; }
+.dt-sc-counter.type5 h4:before { width: 50px; height: 4px; background-color: #4d4d4d; }
+.dt-sc-counter.type5 h4:after { width: 0; height: 4px; }
+.dt-sc-counter.type5:hover h4:before { width: 0; }
+.dt-sc-counter.type5:hover h4:after { width: 50px; }
+.dt-sc-counter.type5 .icon-wrapper span { font-size: 50px; display: inline-block; opacity: 0; }
+.dt-sc-counter.type5:hover .icon-wrapper span { opacity: 1; }
+.dt-sc-counter.type5 .dt-sc-counter-number { font-size: 40px; font-weight: bold; margin-bottom: 20px; position: absolute; top: 75px; left: 0; right: 0; margin: 0 auto; }
+.dt-sc-counter.type5:hover .dt-sc-counter-number { opacity: 0; }
+.dt-sc-counter.type5 h4 { font-size: 14px; font-weight: normal; text-transform: uppercase; padding: 0 0 30px; margin-bottom: 0; position: relative; letter-spacing: 0.1em; }
+.dt-sc-counter.type5:hover h4 { letter-spacing: 0.3em; }
+.dt-sc-counter.type5.alignleft { text-align: left; padding: 60px 0; }
+.dt-sc-counter.type5.alignleft h4:before { left: 0; right: inherit; }
+.dt-sc-counter.type5.alignleft h4:before, .dt-sc-counter.type5.alignleft h4:after { left: 0; right: inherit; }
+.dt-sc-counter.type5.alignright { text-align: right; padding: 60px 0; }
+.dt-sc-counter.type5.alignright h4:before { left: inherit; right: 0; }
+.dt-sc-counter.type5.alignright h4:before, .dt-sc-counter.type5.alignright h4:after { left: inherit; right: 0; }
+.dt-sc-dark-bg .dt-sc-counter.type5 h4:before { background: #fff; }
+/*Skin Styles*/
+
+	/* Primary */
+
+.dt-sc-counter.type5 h4:after { background-color: #ccc; }
+/*--------------------------------*/
+	
+.dt-sc-counter.type6 { float: left; padding: 0 15px 0; position: relative; min-height: 140px; }
+.dt-sc-counter.type6 .dt-sc-counter-icon-holder .icon-wrapper { position: absolute; right: 10px; bottom: 10px; }
+.dt-sc-counter.type6 .dt-sc-counter-icon-holder .icon-wrapper span { font-size: 60px; opacity: 0.15; }
+.dt-sc-counter.type6 .dt-sc-counter-icon-holder .dt-sc-counter-number { font-size: 40px; float: none; display: inline-block; width: 100%; color: #2d2d2d; font-weight: 900; letter-spacing: 1px; line-height: normal; }
+.dt-sc-counter.type6 h4 { margin-bottom: 0; float: none; display: inline-block; text-transform: uppercase; font-size: 15px; }
+.dt-sc-counter.type6:before, .dt-sc-counter.type6:after { border-width: 2px; border-style: solid; content: ""; position: absolute; height: 50px; width: 50px; }
+.dt-sc-counter.type6:not(.alignright):before { top: 0; left: 0; border-bottom-color: transparent !important; border-right-color: transparent !important; }
+.dt-sc-counter.type6:not(.alignright):after { right: 0; bottom: 0; border-top-color: transparent !important; border-left-color: transparent !important; }
+.dt-sc-counter.type6.alignright:before { border-bottom-color: transparent !important; border-left-color: transparent !important; right: 0; }
+.dt-sc-counter.type6.alignright:after { border-top-color: transparent !important; border-right-color: transparent !important; left: 0; bottom: 0; }
+.dt-sc-counter.type6:hover .dt-sc-counter-icon-holder .icon-wrapper span { opacity: 0.25; font-size: 72px; }
+.dt-sc-counter.type6:hover:before { height: 75px; width: 75px; }
+.dt-sc-counter.type6:hover:after { height: 75px; width: 75px; }
+.dt-sc-counter.type6.alignright .dt-sc-counter-icon-holder .icon-wrapper { right: inherit; left: 10px; }
+.dt-sc-counter.type6.aligncenter { min-height: auto; padding: 32px 15px; }
+.dt-sc-counter.type6.aligncenter .dt-sc-counter-icon-holder .icon-wrapper { bottom: auto; left: 50%; right: auto; top: 50%; transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); }
+.dt-sc-counter.type6.aligncenter .dt-sc-counter-icon-holder .icon-wrapper span { line-height: 100px; font-size: 80px; }
+.dt-sc-counter.type6.aligncenter:hover .dt-sc-counter-icon-holder .icon-wrapper span { line-height: 110px; font-size: 100px; }
+/*Skin Styles*/
+
+	/* Primary */
+
+.dt-sc-counter.type6 .dt-sc-counter-icon-holder .icon-wrapper span { color: #000; }
+
+	/*--------------------------------*/
+	
+	/*--------------------------------------------------------------
+	1.2 - Browser Css
+	--------------------------------------------------------------*/
+	@media all and (min-width:0\0) and (min-resolution:.001dpcm) {
+ .dt-sc-counter.type5:before, .dt-sc-counter.type5:after {
+transform: rotate(45deg) skew(10deg, 10deg);
+-ms-transform: rotate(45deg) skew(10deg, 10deg);
+}
+}
+	
+	/* IE9 and above */	
+	@media screen and (min-width:0\0) {
+ .type4.dt-sc-counter .dt-sc-counter-icon-holder .icon-wrapper {
+border: none;
+box-shadow: 0 0 0 5px #fff;
+-ms-box-shadow: 0 0 0 5px #fff;
+}
+}
+/*--------------------------------------------------------------
+	1.3 - Default Colors
+	--------------------------------------------------------------*/
+.dt-sc-counter { color: #000000; }
+.dt-sc-counter.type4 .dt-sc-counter-icon-holder span, .dt-sc-counter.type4:hover .dt-sc-counter-number, .dt-sc-dark-bg .dt-sc-counter { color: #ffffff; }
+.secondary-skin-highlight .dt-sc-counter.type3 .dt-sc-counter-number:before { background: #fff; }
+.dt-sc-dark-bg .dt-sc-counter.type3 .icon-wrapper span { color: rgba(255,255,255,0.2); }
+.dt-sc-counter.type4 .dt-sc-counter-icon-holder { background: #ffffff; }
+.dt-sc-counter.type4 .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-counter.type4:hover .dt-sc-counter-icon-holder .icon-wrapper { background: #333333; }
+.secondary-skin-bg .dt-sc-counter.type1:hover .dt-sc-counter-number { color: #fff; }
+.secondary-skin-bg .dt-sc-counter.type1 .dt-sc-counter-number:before { background: #fff; }
+.dt-sc-counter.type4 .dt-sc-counter-icon-holder .icon-wrapper, .dt-sc-dark-bg .dt-sc-counter.type5:before, .dt-sc-dark-bg .dt-sc-counter.type5:after { border-color: #ffffff; }
+.dt-sc-counter.type4 .dt-sc-counter-icon-holder { border: 5px solid rgba(0, 0, 0, 0.07); }
+	
+	
+	/* Note: Design for a width of 960px */	
+    @media only screen and (min-width:768px) and (max-width:1199px) {
+/** Counters **/
+.vc_col-sm-6.vc_col-lg-3 .dt-sc-counter.type1 { margin-bottom: 25px; }
+.dt-sc-counter.type1 .icon-wrapper span img { width: 48px; }
+.dt-sc-counter.type2 h4 { font-size: 20px; }
+.dt-sc-counter.type3 .icon-wrapper { left: 0; right: 0; margin: 0 auto; }
+}
+	
+	
+	/* Note: Design for a width of 768px */
+    @media only screen and (min-width:768px) and (max-width:991px) {
+/** Counters **/
+
+.dt-sc-counter.type1 .icon-wrapper { margin: 10px 15px 0 0; }
+.dt-sc-counter.type2 { margin-bottom: 50px; }
+.dt-sc-counter.type4 .dt-sc-counter-icon-holder { height: 140px; width: 140px; }
+.dt-sc-counter.type4 .dt-sc-counter-icon-holder .icon-wrapper { left: -30px; }
+.dt-sc-counter.type4 .dt-sc-counter-icon-holder span { font-size: 24px; }
+.dt-sc-counter.type4 .dt-sc-counter-icon-holder span img { width: 34px; margin-top: 14px; }
+.dt-sc-counter.type5:before { height: 150px; width: 150px; }
+.dt-sc-counter.type5:after { height: 130px; width: 130px; }
+.dt-sc-counter.type1 h4 { display: inline-block; }
+.dt-sc-counter.type2 { margin-bottom: 0; }
+}
+	
+	
+	/*----*****---- << Mobile (Landscape) >> ----*****----*/	
+	
+	/* Common Styles for the devices below 767px width */
+	@media only screen and (max-width: 767px) {
+/** Counters **/
+.dt-sc-counter { margin-bottom: 30px; }
+.dt-sc-counter.type3 .icon-wrapper { left: 0; right: 0; margin: 0 auto; }
+.dt-sc-counter.type5 { padding: 60px 30px 0; }
+}
+		
+	
+	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+	@media only screen and (max-width: 319px) {
+.dt-sc-counter.type5:before { height: 180px; width: 180px; }
+.dt-sc-counter.type5:after { height: 160px; width: 160px; }
+}

@@ -1,0 +1,110 @@
+/**
+ * @package 	WordPress
+ * @subpackage 	Wellness SPA
+ * @version		1.0.0
+ * 
+ * Theme Icons
+ * Created by CMSMasters
+ * 
+ */
+
+
+@font-face {
+  font-family: 'fontello';
+  src: url('fonts/fontello.eot?13836975');
+  src: url('fonts/fontello.eot?13836975#iefix') format('embedded-opentype'),
+       url('fonts/fontello.woff?13836975') format('woff'),
+       url('fonts/fontello.ttf?13836975') format('truetype'),
+       url('fonts/fontello.svg?13836975#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('fonts/fontello.svg?13836975#fontello') format('svg');
+  }
+}
+*/
+ 
+[class^="cmsmasters_theme_icon_"]:before, 
+[class*=" cmsmasters_theme_icon_"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  vertical-align: baseline;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.cmsmasters_theme_icon_sticky_post:before { content: '\ec78'; } /* Sticky post format icon */
+.cmsmasters_theme_icon_standard_post:before { content: '\eaaa'; } /* Standard post format icon */
+.cmsmasters_theme_icon_aside_post:before { content: '\ea29'; } /* Aside post format icon */
+.cmsmasters_theme_icon_audio_post:before { content: '\ea74'; } /* Audio post format icon */
+.cmsmasters_theme_icon_chat_post:before { content: '\e993'; } /* Chat post format icon */
+.cmsmasters_theme_icon_gallery_post:before { content: '\ea81'; } /* Gallery post format icon */
+.cmsmasters_theme_icon_image_post:before { content: '\ea81'; } /* Image post format icon */
+.cmsmasters_theme_icon_link_post:before { content: '\ea95'; } /* Link post format icon */
+.cmsmasters_theme_icon_quote_post:before { content: '\eaa6'; } /* Quote post format icon */
+.cmsmasters_theme_icon_status_post:before { content: '\ea29'; } /* Status post format icon */
+.cmsmasters_theme_icon_video_post:before { content: '\ea80'; } /* Video post format icon */
+
+.cmsmasters_theme_icon_item_link:before { content: '\eb07'; } /* Open item icon */
+.cmsmasters_theme_icon_lightbox:before { content: '\ef5a'; } /* Open lightbox icon */
+
+.cmsmasters_theme_icon_user:before { content: '\e82a' ;}  /* post format profile */
+.cmsmasters_theme_icon_pencil:before { content: '\ec7d'; } /* post format icon */
+.cmsmasters_theme_icon_video:before { content: '\ec75'; } /* post format icon */
+.cmsmasters_theme_icon_photo:before { content: '\ec77'; } /* post format icon */
+
+.cmsmasters_theme_icon_comment:before { content: '\eaae'; } /* comments in post */
+.cmsmasters_theme_icon_heart:before { content: '\ea79'; } /* likes in posts */
+.cmsmasters_theme_icon_calendar:before { content: '\ec86'; } /* date in posts */
+
+.cmsmasters_theme_icon_basket:before { content: '\e9b0'; } /* shop cart */
+.cmsmasters_theme_icon_details:before { content: '\e892'; } /* shop details */
+.cmsmasters_theme_icon_star_empty:before { content: '\e826'; } /* rating empty star */
+.cmsmasters_theme_icon_star_full:before { content: '\e826'; } /* rating full star */
+
+.cmsmasters_theme_icon_user_mail:before { content: '\ed8a'; } /* mail in user info (open post) */
+.cmsmasters_theme_icon_user_website:before { content: '\ea08'; } /* website in user info (open post) */
+.cmsmasters_theme_icon_user_gplus:before { content: '\ec10'; } /* google plus in user info (open post) */
+.cmsmasters_theme_icon_user_twitter:before { content: '\ec37'; } /* twitter in user info (open post) */
+.cmsmasters_theme_icon_user_facebook:before { content: '\ec47'; } /* facebook in user info (open post) */
+
+.cmsmasters_theme_icon_search:before { content: '\ea76'; } /* all search */
+.cmsmasters_theme_icon_cancel:before { content: '\ea86'; } /* cancel (notice) */
+.cmsmasters_theme_icon_resp_nav:before { content: '\ea84'; } /* resp nav */
+.cmsmasters_theme_icon_slide_top:before { content: '\e9cd'; } /* slide top */
+
+.cmsmasters_theme_icon_video_project:before { content: '\ea80'; } /* Video project format icon */
+.cmsmasters_theme_icon_gallery_project:before { content: '\ea81'; } /* Gallery project format icon */
