@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs');
 
 // utils 
-const { jwtToken } = require("../../utils/func");
+const { jwtToken, pareJwtToken } = require("../../utils/func");
 
 const getNodeLocalstorage = (key) => {
   if (typeof localStorage === "undefined" || localStorage === null) {
@@ -25,7 +25,13 @@ const removeNodeLocalstorage = (key) => {
   return localStorage.removeItem(key);
 }
 
-viewLoginPage = (req, res) => {
+viewLoginPage = async (req, res) => {
+  const token = req.session.token;
+  if (token) {
+    let decodedToken = pareJwtToken(token);
+    let user = User.findById(decodedToken._id).exec();
+    if(user) return res.redirect('/admin') 
+  }
   return res.render("admin/auth/login");
 }
 
