@@ -1,36 +1,42 @@
-
 /*--------- start booking section style------------*/
+
 .home-booking {
   background: #e83e8c;
   padding-top: 100px;
   padding-bottom: 20px;
 }
+
 .home-booking .section-title {
   margin-bottom: 45px;
 }
+
 .home-booking .section-title p {
   font-size: 16px;
   line-height: 26px;
   color: #363636;
 }
+
 .home-booking .booking-wrapper {
   background: rgba(255, 255, 255, 0.8);
   padding: 20px 35px;
 }
+
 .home-booking .booking-wrapper form {
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
   justify-content: space-between;
-
 }
-.home-booking .booking-wrapper form>div{
+
+.home-booking .booking-wrapper form>div {
   flex-grow: 1;
   margin: 2px;
 }
-.home-booking .booking-wrapper form>div input{
+
+.home-booking .booking-wrapper form>div input {
   margin: 0;
 }
+
 .home-booking .booking-wrapper .single-input {
   margin-bottom: 30px;
   float: left;
@@ -38,6 +44,7 @@
   width: 30%;
   position: relative;
 }
+
 .home-booking .booking-wrapper .single-input.date:after {
   content: "\f073";
   font-family: fontawesome;
@@ -61,12 +68,14 @@
   letter-spacing: 1px;
   height: 100%;
 }
+
 .home-booking .booking-wrapper .single-input.msg {
   resize: none;
   width: 100%;
   height: 100%;
   margin-right: 0!important;
 }
+
 .home-booking .booking-wrapper .single-input.msg textarea {
   margin-bottom: 0;
   color: #747474;
@@ -76,9 +85,11 @@
   letter-spacing: 1px;
   border: 1px solid #d2d2d2;
 }
+
 .home-booking .booking-wrapper .single-input:nth-child(2n+1) {
   margin-right: 30px;
 }
+
 .home-booking .booking-wrapper .single-input .nice-select {
   border-radius: 0;
   border: 1px solid #d2d2d2;
@@ -86,15 +97,18 @@
   color: #747474;
   letter-spacing: 1px;
 }
+
 .home-booking .booking-wrapper .single-input .nice-select:after {
   border-bottom: 1px solid #747474;
   border-right: 1px solid #747474;
   height: 7px;
   width: 7px;
 }
+
 .home-booking .booking-wrapper .single-input .nice-select .list {
   border-radius: 0;
 }
+
 .home-booking .booking-wrapper form button {
   border: medium none;
   color: #fff;
@@ -109,20 +123,25 @@
   letter-spacing: 1.2px;
   background: #720f83;
 }
-.home-booking .nice-select{
+
+.home-booking .nice-select {
   border-radius: 0;
 }
 
+
 /*------------tab content----------- */
+
 .shortlink-section .tab-content {
   padding-top: 60px;
 }
+
 .shortlink-section .single-shortlink-list {
   margin-bottom: 45px;
   margin-left: 30px;
   width: 47.3%;
   position: relative;
 }
+
 .shortlink-section .single-shortlink-list::before {
   border-bottom: 1px dashed #ddd;
   content: "";
@@ -132,14 +151,17 @@
   width: 100%;
   z-index: 0;
 }
+
 .shortlink-section .single-shortlink-list:nth-child(2n+1) {
   margin-left: 0;
 }
+
 .shortlink-section .single-shortlink-list h6 {
   font-size: 16px;
   letter-spacing: 0.4px;
   line-height: 28px;
 }
+
 .shortlink-section .single-shortlink-list h6 a {
   background: #f9f9f9;
   color: #1f1f1f;
@@ -148,6 +170,7 @@
   z-index: 1;
   position: relative;
 }
+
 .shortlink-section .single-shortlink-list h6 span {
   background: #f9f9f9;
   float: right;
@@ -156,9 +179,11 @@
   position: relative;
   z-index: 1;
 }
-shortlink-section .single-shortlink-list > p {
+
+shortlink-section .single-shortlink-list>p {
   margin-top: 20px;
 }
+
 .shortlink-section a.booking-now,
 .cta-content a {
   border-radius: 3px;
@@ -171,56 +196,70 @@ shortlink-section .single-shortlink-list > p {
   width: 230px;
   line-height: 26px;
 }
-.shortlink-list-tab .tab-menu li a.active:hover{
+
+.shortlink-list-tab .tab-menu li a.active:hover {
   color: #fff;
 }
 
+
 /*------pricing section------*/
+
 .shortlink-section .single-shortlink-plan {
   border: 1px solid #eaeaea;
   width: 33.3333%;
   position: relative;
 }
+
 .shortlink-section .shortlink-header {
   border-bottom: 1px solid #eaeaea;
   padding: 50px;
 }
+
 .shortlink-section .shortlink-header h3 {
   font-size: 30px;
 }
+
 .shortlink-section .shortlink-divider {
   background: #000000;
   height: 1px;
   margin: 20px auto 30px;
   width: 70px;
 }
+
 .shortlink-section .shortlink-header p {
   font-family: roboto;
   font-size: 20px;
   letter-spacing: 0.7px;
 }
+
 .shortlink-section .shortlink-body {
   padding: 10px 30px;
 }
+
 .shortlink-section .shortlink-content {
   border-bottom: 1px solid #eaeaea;
   padding: 15px 0;
 }
+
 .shortlink-section .shortlink-content:last-child {
   border-bottom: none;
 }
+
 .shortlink-section .shortlink-body .shortlink-content h6 {
   font-size: 16px;
   margin-bottom: 12px;
   position: relative;
 }
+
 .shortlink-section .shortlink-body .shortlink-content h6 i {
   margin-right: 10px;
 }
+
 .shortlink-section .shortlink-footer {
   border-top: 1px solid #eaeaea;
   padding: 50px 30px;
 }
+
 .shortlink-section .shortlink-footer .get-start {
   border-radius: 5px;
   color: #fff;
@@ -234,14 +273,17 @@ shortlink-section .single-shortlink-list > p {
   width: 220px;
   line-height: 57px;
 }
+
 .shortlink-section .premium {
   border-top-width: 5px !important;
   box-shadow: 0 0 34px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
+
 .premium .shortlink-header {
   padding: 48px;
 }
+
 .shortlink-section .premium::before {
   color: #fff;
   content: "Recommend";
@@ -262,14 +304,16 @@ shortlink-section .single-shortlink-list > p {
   transform: rotate(-45deg);
 }
 
-.search-section{
+.search-section {
   display: flex;
 }
-.search-section .search-section-results{
+
+.search-section .search-section-results {
   padding-top: 20px;
   padding-bottom: 30px;
 }
-.search-section .search-section-map{
+
+.search-section .search-section-map {
   height: 100%;
   position: -webkit-sticky;
   position: sticky;
@@ -277,61 +321,82 @@ shortlink-section .single-shortlink-list > p {
   font-size: 20px;
   display: flex;
   align-items: stretch;
+  padding-top: 20px;
 }
-.search-section .search-section-results .search-section-results-item{
+
+.search-section .search-section-results .search-section-results-item {
   background: #f5f5f5;
   margin-bottom: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.search-section .search-section-results .search-section-results-item>div{
+
+.search-section .search-section-results .search-section-results-item>div {
   display: flex;
   height: 200px;
 }
-.search-section .search-section-results .search-section-results-item .img-area img{
+
+.search-section .search-section-results .search-section-results-item .img-area img {
   max-height: 135px;
 }
 
-.search-section .search-section-results .search-section-results-item div.address p{
+.search-section .search-section-results .search-section-results-item div.address p {
   font-size: 12px !important;
 }
-.search-section .search-section-results .search-section-results-item .single-blog .brand{
+
+.search-section .search-section-results .search-section-results-item .single-blog .brand {
   /* background: pink; */
 }
 
 @media only screen and (max-width: 600px) {
-  .home-booking .booking-wrapper form>button{
-    width: 100%;
+  .home-booking .booking-wrapper form>button {
+      width: 100%;
   }
-
-  .search-section .search-section-results .search-section-results-item>div{
-    flex-direction: column;
-    height: 400px;
+  .search-section .search-section-results .search-section-results-item>div {
+      flex-direction: column;
+      height: 400px;
   }
-
-  .search-section .search-section-map{
-    position: unset;
-    height: 200px;
+  .search-section .search-section-map {
+      position: unset;
+      height: 200px;
   }
+}
 
-} 
 
 /* Custom date range picker */
-.daterangepicker{
+
+.daterangepicker {
   border-radius: 0;
 }
-.daterangepicker td.active, .daterangepicker td.active:hover{
+
+.daterangepicker td.active,
+.daterangepicker td.active:hover {
   background: #e83e8c;
 }
-.daterangepicker td.start-date, .daterangepicker td.start-date.end-date{
+
+.daterangepicker td.start-date,
+.daterangepicker td.start-date.end-date {
   border-radius: 0;
 }
-.daterangepicker .drp-buttons .btn-primary{
+
+.daterangepicker .drp-buttons .btn-primary {
   background: #e83e8c;
   border-radius: 0;
   background-color: #e83e8c;
   border: 0;
 }
 
+
 /* END: Custom date range picker */
 
+
+/* update css */
+
+#num_sit {
+  width: 130px;
+}
+
+.view-more {
+  right: 0px;
+  top: 10px;
+}
