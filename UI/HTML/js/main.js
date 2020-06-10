@@ -1,9 +1,9 @@
-(function ($) {
+(function($) {
     "use strict";
     var main_wind = $(window);
     var wWidth = $(window).width();
 
-    jQuery(document).ready(function ($) {
+    jQuery(document).ready(function($) {
 
         //-----menuzord------
         jQuery("#menuzord").menuzord({
@@ -38,7 +38,7 @@
         $('.venobox').venobox();
 
         //----------moving to welcome section on clicking mouse icon---------
-        $("#mouse").on("click", function () {
+        $("#mouse").on("click", function() {
             $("html, body").animate({
                 scrollTop: $("#welcome").offset().top - 0 + 'px'
             }, 1200);
@@ -55,7 +55,7 @@
 
 
     //------sticky menu----
-    main_wind.on('scroll', function () {
+    main_wind.on('scroll', function() {
         if ($(this).scrollTop() >= 35) {
             $(".sticky-menu").addClass("sticked");
         } else {
@@ -68,21 +68,21 @@
     $("#popover1").popover({
         html: true,
         placement: 'top',
-        content: function () {
+        content: function() {
             return $("#popover-content1").html();
         }
     });
     $("#popover2").popover({
         html: true,
         placement: 'top',
-        content: function () {
+        content: function() {
             return $("#popover-content2").html();
         }
     });
     $("#popover3").popover({
         html: true,
         placement: 'top',
-        content: function () {
+        content: function() {
             return $("#popover-content3").html();
         }
     });
@@ -117,8 +117,8 @@
     // $("#booking-date2").daterangepicker();
 
     $("#booking-date2").datepicker({
-      dateFormat: 'dd - mm - yy',
-      minDate: "new Date()",
+        dateFormat: 'dd - mm - yy',
+        minDate: "new Date()",
     });
 
 
@@ -129,12 +129,12 @@
 
 
     //---------product list view and grid view---------
-    $('#list-view').on('click', function () {
+    $('#list-view').on('click', function() {
         $("#product-gallery-v2").addClass('list-view');
         $("#grid-view").removeClass('active');
         $(this).addClass('active');
     });
-    $('#grid-view').on('click', function () {
+    $('#grid-view').on('click', function() {
         $("#product-gallery-v2").removeClass('list-view');
         $("#list-view").removeClass('active');
         $(this).addClass('active');
@@ -147,7 +147,7 @@
         min: 200,
         max: 10000,
         values: [200, 5000],
-        slide: function (event, ui) {
+        slide: function(event, ui) {
             $("#minVal").html(ui.values[0]);
             $("#maxVal").html(ui.values[1]);
         }
@@ -157,13 +157,13 @@
 
 
     //--------product quantity increase or decrease-----
-    $(".increse").on('click', function () {
+    $(".increse").on('click', function() {
         var old = $(this).parent().find('#number').val();
         var newn = parseInt(old);
         $(this).parent().find('#number').val(newn + 1);
     });
 
-    $(".decrese").on('click', function () {
+    $(".decrese").on('click', function() {
         var old = $(this).parent().find('#number').val();
         var newn = parseInt(old);
         if (newn > 1) {
@@ -180,26 +180,26 @@
     });
 
     var filterFns = {
-        numberGreaterThan50: function () {
+        numberGreaterThan50: function() {
             var number = $(this).find('.number').text();
             return parseInt(number, 10) > 50;
         },
     };
-    $('.filtering-menu').on('click', 'li', function () {
+    $('.filtering-menu').on('click', 'li', function() {
         var filterValue = $(this).attr('data-filter');
         filterValue = filterFns[filterValue] || filterValue;
         $grid.isotope({
             filter: filterValue
         });
     });
-    $('.filtering-menu').each(function (i, buttonGroup) {
+    $('.filtering-menu').each(function(i, buttonGroup) {
         var $buttonGroup = $(buttonGroup);
-        $buttonGroup.on('click', 'li', function () {
+        $buttonGroup.on('click', 'li', function() {
             $buttonGroup.find('.is-checked').removeClass('is-checked');
             $(this).addClass('is-checked');
         });
     });
-    $grid.imagesLoaded().progress(function () {
+    $grid.imagesLoaded().progress(function() {
         $grid.isotope('layout');
 
     });
@@ -232,11 +232,12 @@
 
 
     //-------experts carousel-------
+    /*
     $("#experts-carousel").owlCarousel({
         items: 4,
         loop: true,
         dots: false,
-        nav: true,
+        nav: false,
         margin: 25,
         navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
         autoplay: true,
@@ -258,7 +259,7 @@
             }
         }
     });
-
+    */
 
     //-------testimonial carousel-------
     $(".testimoial-wrapper").owlCarousel({
@@ -289,7 +290,7 @@
 
 
     //--------Scroll Top---------
-    main_wind.on('scroll', function () {
+    main_wind.on('scroll', function() {
         if ($(this).scrollTop() > 200) {
             $('.scroll-top').fadeIn();
             $('.scroll-top').removeClass('not-visible');
@@ -297,7 +298,7 @@
             $('.scroll-top').fadeOut();
         }
     });
-    $('.scroll-top').on('click', function (event) {
+    $('.scroll-top').on('click', function(event) {
         event.preventDefault();
         $('html, body').animate({
             scrollTop: 0
