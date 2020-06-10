@@ -14,7 +14,7 @@ router.get("/", home.index );
 router.get("/search",search.index) ;
 router.get('/contact',contact.index)
 router.get('/booking', booking.index)
-router.get('/services', service.index)
+router.get('/service', service.index)
 router.get('/news', newsDetail.index)
 router.get("*", (req, res) => {
   res.render('client/404')
