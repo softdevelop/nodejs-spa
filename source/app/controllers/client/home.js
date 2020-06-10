@@ -1,7 +1,19 @@
-const index = (req, res) => {
-  res.render('client/homes/index')
-  }
+const mongoose = require('mongoose');
+const Category = mongoose.model('Category')
 
-  module.exports = {
-    index
-  }
+const index = async (req, res) => {
+
+  let categoryLevel1 = await Category.getChildrenTree({
+    fields: "_id name slug parent path",
+    options: { lean: false },
+  });
+
+  res.render("client/homes/index", {
+    categoryLevel1
+
+  });
+};
+
+module.exports = {
+  index,
+};

@@ -168,7 +168,11 @@
                                   <td><%=item.phone%></td>
                                   <td><%=item.status%></td>
                                   <td><%=item.note%></td>
-                                  <td></td>
+                                  <td>
+                                    <a href="/admin/users/<%=item.owner%>">
+                                      <%=(item.owner && item.ownerDetail)?(item.ownerDetail.first_name+' '+item.ownerDetail.last_name):''%>
+                                    </a>
+                                  </td>
                                   <td><%= moment(item.createdAt).format('DD/MM/YYYY') %></td>
                                   <td>
                                     <a href="/admin/spas/<%=item._id%>">
@@ -176,6 +180,9 @@
                                     </a>
                                     <a href="/admin/spas/<%=item._id%>/edit">
                                       <i class="icon-note"></i>
+                                    </a>
+                                    <a href="/spa/<%=item.slug%>">
+                                      <i class="icon-cursor"></i>
                                     </a>
                                   </td>
                                 </tr>

@@ -5,6 +5,7 @@ const home = require("../../../app/controllers/client/home")
 const contact = require('../../../app/controllers/client/contact')
 const booking = require('../../../app/controllers/client/booking')
 const service = require('../../../app/controllers/client/service')
+const spa = require('../../../app/controllers/client/spa')
 const newsDetail = require('../../../app/controllers/client/news')
 const staticPage = require('../../../app/controllers/client/staticpage')
 const { PATH_CLIENT } = require("../../../config")
@@ -19,6 +20,7 @@ router.get('/contact', contact.index)
 router.get('/booking', booking.index)
 router.get('/service', service.index)
 router.get('/news', newsDetail.index)
+router.get('/spa/:slug', spa.landingPage)
 router.get("/:slug", staticPage.index);
 
 // router.get("*", (req, res) => {

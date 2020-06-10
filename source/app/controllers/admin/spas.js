@@ -30,7 +30,9 @@ const getListSpas = async (req, res) => {
       sort: { createdAt: -1 },
       lean: true,
       limit: parseInt(limit, 10) || 10,
-      page: parseInt(page, 10) || 1
+      page: parseInt(page, 10) || 1,
+      populate: "ownerDetail",
+
     };
     let data = await Spa.paginate(query, options);
     data.search = search
@@ -45,7 +47,9 @@ const getListSpas = async (req, res) => {
 };
 
 const getFormCreate = async (req, res) => {
-  let spaOwners = await User.find({role: "SPA_OWNER"}).exec();
+  let usersOwnedSpa = await Spa.find({ owner: { $ne: null } }).select('_id name').exec();
+  let idsUsersOwnedSpa = usersOwnedSpa.map(item=>''+item._id);
+  let spaOwners = await User.find({role: "SPA_OWNER", _id: { $nin: idsUsersOwnedSpa }}).exec();
   res.render('admin/spas/create', {errors: {}, data: {}, spaOwners})
 }
 
@@ -76,7 +80,9 @@ const create = async (req, res) => {
 const getFormEdit = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
-  let spaOwners = await User.find({role: "SPA_OWNER"}).exec();
+  let usersOwnedSpa = await Spa.find({ owner: { $ne: null } }).select('owner name').exec();
+  let idsUsersOwnedSpa = usersOwnedSpa.map(item=>''+item.owner);
+  let spaOwners = await User.find({role: "SPA_OWNER", _id: { $nin: idsUsersOwnedSpa }}).exec();
   res.render('admin/spas/edit', {errors: {}, data: record, urlMediaUpload, spaOwners})
 }
 
@@ -121,7 +127,9 @@ const delMany = async (req, res) => {
 const viewDetail = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
-  let spaOwners = await User.find({role: "SPA_OWNER"}).exec();
+  let usersOwnedSpa = await Spa.find({ owner: { $ne: null } }).select('_id name').exec();
+  let idsUsersOwnedSpa = usersOwnedSpa.map(item=>''+item._id);
+  let spaOwners = await User.find({role: "SPA_OWNER", _id: { $nin: idsUsersOwnedSpa }}).exec();
   res.render('admin/spas/view', {errors: {}, data: record, urlMediaUpload, spaOwners})
 }
 

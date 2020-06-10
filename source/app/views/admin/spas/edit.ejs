@@ -123,7 +123,7 @@
                             <label class="control-label">Spa owner</label>
                             <select class="form-control custom-select" name="owner">
                               <% spaOwners.forEach(item=>{ %>
-                                <option value="<%=item._id%>"><%=item.first_name%> <%=item.last_name%> - <%=item.email%></option>
+                                <option value="<%=item._id%>"><%=item.first_name%> <%=item.last_name%> - <%=item.email%> <%=item._id%></option>
                               <% }) %>
                             </select>
                             <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
