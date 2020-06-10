@@ -37,3 +37,7 @@ form .avatar-100 {
 
 .card.CardItem {
   border: 3px solid blue; }
+
+.content-static-page {
+  margin-top: 120px;
+  margin-bottom: 100px; }

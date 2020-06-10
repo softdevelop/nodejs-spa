@@ -18,6 +18,9 @@
                           </ul>
                       </li>
                       <li><a href="/contact" title="Contact">Contact</a></li>
+                      <% staticPages.forEach(item=>{ %>
+                        <li><a href="/<%=item.slug%>" title="<%=item.name%>"><%=item.name%></a></li>
+                      <% }) %>
                   </ul>
                   <button type="button" id="search-button" data-toggle="modal" data-target="#search-modal"><i class="fa fa-search"></i></button>
               </div>
