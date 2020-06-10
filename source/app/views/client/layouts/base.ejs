@@ -1,5 +1,4 @@
-
-<% const block = (name, def = '') => {
+  <% const block = (name, def = '') => {
     const fn = locals[name];
     if(!fn) return def;
     if(typeof(fn)==='string') return fn;
@@ -7,156 +6,165 @@
     fn(txt=>arr.push(txt));
     return arr.join('');
   }-%>
-  
-  <!DOCTYPE html>
-  <html lang="en">
-  
-  <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <!-- Tell the browser to be responsive to screen width -->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <!-- Favicon icon -->
-      <link rel="icon" type="image/png" sizes="16x16" href="/libs/images/favicon.png">
-      <!-- <title>Spa Admin Template - The Ultimate Multipurpose admin template</title> -->
-      <title>
-        SPA <%-block('title', '')%> - <%-block('subTitle', '2020')%>
-      </title>    <link rel="icon" href="images/favicon.png">
 
-      <!-- font awesome css -->
-      <link rel="stylesheet" href="/libs_client/css/font-awesome.min.css">
-  
-      <!-- flaticon css -->
-      <link rel="stylesheet" href="/libs_client/css/flaticon.css">
-  
-      <!--bootstrap min css-->
-      <link rel="stylesheet" href="/libs_client/css/bootstrap.min.css">
-  
-      <!--jquery-ui css-->
-      <link rel="stylesheet" href="/libs_client/css/jquery-ui.min.css">
-  
-      <!--menuzord css-->
-      <link rel="stylesheet" href="/libs_client/css/menuzord.css">
-  
-      <!--animate css-->
-      <link rel="stylesheet" href="/libs_client/css/slick.css">
-      <link rel="stylesheet" href="/libs_client/css/animate.css">
-  
-      <!--owl.carousel css-->
-      <link rel="stylesheet" href="/libs_client/css/owl.carousel.min.css">
-  
-      <!--nice-select css-->
-      <link rel="stylesheet" href="/libs_client/css/nice-select.css">
-  
-      <!--venobox css-->
-      <link rel="stylesheet" href="/libs_client/css/venobox.css">
-  
-      <!-- global style css -->
-      <link rel="stylesheet" href="/libs_client/css/global-style.css">
-  
-      <!-- style css -->
-      <link rel="stylesheet" href="/libs_client/style.css">
-  
-      <!-- color css -->
-      <link rel="stylesheet" href="/libs_client/css/colors/color-1.css">
-  
-      <!--responsive css-->
-      <link rel="stylesheet" href="/libs_client/css/responsive.css">
-  
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
 
-      <%-block('css')%>
-      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-      <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  
-       <!-- All Jquery -->
-      <!-- ============================================================== -->
-      <script src="/libs/node_modules/jquery/jquery-3.2.1.min.js"></script>
-      <!-- Bootstrap popper Core JavaScript -->
-      <script src="/libs/node_modules/popper/popper.min.js"></script>
-      <script src="/libs/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-      <!-- slimscrollbar scrollbar JavaScript -->
-      <script src="/libs/dist/js/perfect-scrollbar.jquery.min.js"></script>
-      <!--Wave Effects -->
-      <script src="/libs/dist/js/waves.js"></script>
-      <!--Menu sidebar -->
-      <script src="/libs/dist/js/sidebarmenu.js"></script>
-      <!--Custom JavaScript -->
-      <script src="/libs/dist/js/custom.min.js"></script>
-      <!-- ============================================================== -->
-      <!-- This page plugins -->
-      <!-- ============================================================== -->
-      <!--morris JavaScript -->
-      <script src="/libs/node_modules/raphael/raphael-min.js"></script>
-      <script src="/libs/node_modules/morrisjs/morris.min.js"></script>
-      <script src="/libs/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
-      <!-- Popup message jquery -->
-      <script src="/libs/node_modules/toast-master/js/jquery.toast.js"></script>
-      <!-- Chart JS -->
-      <script src="/libs/dist/js/dashboard1.js"></script>
-      <script src="/libs/node_modules/toast-master/js/jquery.toast.js"></script>
-      <!-- jQuery peity -->
-      <script src="/libs/node_modules/peity/jquery.peity.min.js"></script>
-      <script src="/libs/node_modules/peity/jquery.peity.init.js"></script>
-      
-  <![endif]-->
-  </head>
-  
-  <body class="skin-default-dark fixed-layout">
-      <!-- ============================================================== -->
-      <!-- Preloader - style you can find in spinners.css -->
-      <!-- ============================================================== -->
-      <div class="preloader">
-          <div class="loader">
-              <div class="loader__figure"></div>
-          </div>
-      </div>
-      <!-- ============================================================== -->
-      <!-- Main wrapper - style you can find in pages.scss -->
-      <!-- ============================================================== -->
-      <div id="beauty-header">
-          <!-- ============================================================== -->
-          <!-- Topbar header - style you can find in pages.scss -->
-          <!-- ============================================================== -->
-          <%- include header %>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>
+      SPA <%-block('title', '')%> - <%-block('subTitle', '2020')%>
+    </title>
 
-
-          <!-- ============================================================== -->
-  
-          <div class="page-wrapper">
-              <!-- ============================================================== -->
-              <!-- Container fluid  -->
-              <!-- ============================================================== -->
-              <%- content %>
-              <!-- ============================================================== -->
-              <!-- End Container fluid  -->
-              <!-- ============================================================== -->
-          </div>
-          <!-- ============================================================== -->
-          <!-- End Page wrapper  -->
-          <!-- ============================================================== -->
-          <!-- ============================================================== -->
-          <!-- footer -->
-          <%- include footer %>
-
-          <!-- ============================================================== -->
-          
-          <!-- ============================================================== -->
-          <!-- End footer -->
-          <!-- ============================================================== -->
-      </div>
-      <!-- ============================================================== -->
-      <!-- End Wrapper -->
-      <!-- ============================================================== -->
-      <!-- ============================================================== -->
-   
-   
      
-      <%-block('script')%>
-  </body>
-  
-  </html>
+    <!--favicon icon-->
+    <link rel="icon" href="/libs_client/images/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs_client/css/daterangepicker.css" />
+
+    <!-- font awesome css -->
+    <link rel="stylesheet" href="/libs_client/css/font-awesome.min.css">
+
+    <!-- flaticon css -->
+    <link rel="stylesheet" href="/libs_client/css/flaticon.css">
+
+    <!--bootstrap min css-->
+    <link rel="stylesheet" href="/libs_client/css/bootstrap.min.css">
+
+    <!--jquery-ui css-->
+    <link rel="stylesheet" href="/libs_client/css/jquery-ui.min.css">
+
+    <!--menuzord css-->
+    <link rel="stylesheet" href="/libs_client/css/menuzord.css">
+
+    <!--animate css-->
+    <link rel="stylesheet" href="/libs_client/css/slick.css">
+    <link rel="stylesheet" href="/libs_client/css/animate.css">
+
+    <!--owl.carousel css-->
+    <link rel="stylesheet" href="/libs_client/css/owl.carousel.min.css">
+
+    <!--nice-select css-->
+    <link rel="stylesheet" href="/libs_client/css/nice-select.css">
+
+    <!--venobox css-->
+    <link rel="stylesheet" href="/libs_client/css/venobox.css">
+
+    <!-- global style css -->
+    <link rel="stylesheet" href="/libs_client/css/global-style.css">
+
+    <!-- style css -->
+    <link rel="stylesheet" href="/libs_client/css/style.css">
+
+    <!-- color css -->
+    <link rel="stylesheet" href="/libs_client/css/colors/color-1.css">
+
+    <!--responsive css-->
+    <link rel="stylesheet" href="/libs_client/css/responsive.css">
+
+    <link rel="stylesheet" href="/libs_client/css/main.css">
+
+    <%-block('css')%>
+
+    <script type="text/javascript" src="/libs_client/js/moment.min.js"></script>
+
+    <!-- jQuary library -->
+    <script src="/libs_client/js/jquery-3.2.1.min.js"></script>
+
+    <!--bootstrap js-->
+    <script src="/libs_client/js/popper.min.js"></script>
+    <script src="/libs_client/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/libs_client/js/daterangepicker.min.js"></script>
+
+    <!--jquery-ui js-->
+    <script src="/libs_client/js/jquery-ui.min.js"></script>
+
+    <!--menuzord js-->
+    <script src="/libs_client/js/menuzord.js"></script>
+
+    <!--slick js-->
+    <script src="/libs_client/js/slick.js"></script>
+
+    <!--owl.carousel js-->
+    <script src="/libs_client/js/owl.carousel.min.js"></script>
+
+    <!--nice-select js-->
+    <script src="/libs_client/js/jquery.nice-select.min.js"></script>
+
+    <!--venobox js-->
+    <script src="/libs_client/js/venobox.min.js"></script>
+
+    <!--counterup js-->
+    <script src="/libs_client/js/jquery.counterup.min.js"></script>
+    <script src="/libs_client/js/waypoints.min.js"></script>
+
+    <!--vide js for background video-->
+    <script type="text/javascript" src="/libs_client/js/jquery.vide.js"></script>
+
+    <!--isotope js-->
+    <script src="/libs_client/js/isotope.pkgd.min.js"></script>
+    <script src="/libs_client/js/imagesloaded.pkgd.min.js"></script>
+
+    <!-- all jQuary activation code here and always it will be bottom of all script tag -->
+    <script src="/libs_client/js/main.js"></script>
+    
+</head>
+
+<body>
+
+    <!-- search-modal -->
+    <div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <img src="images/search-popup-logo.png" alt="search-popup-logo">
+                <form action="" class="form-inline">
+                    <input type="text" name="search" placeholder="Search here...">
+                    <button><i class="fa fa-search"></i></button>
+                </form>
+                <div class="quick-search">
+                    <h6 class="color-ff pos-relative ptb-30">Quick search</h6>
+                    <ul>
+                        <li><a href="#">parlour</a></li>
+                        <li><a href="#">massage</a></li>
+                        <li><a href="#">yoga</a></li>
+                        <li><a href="#">spa</a></li>
+                        <li><a href="#">beauty</a></li>
+                        <li><a href="#">exparts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ======================================= 
+        ==Start Header section==  
+    =======================================-->
+    <div class="header-top" style="padding: 1px 0; background: white;"></div>
+
+    <%- include header %>
+
+    <%- content %>
+
+    <%- include footer %>
+
+  <!-- ======================================= 
+      ==Start scroll top==  
+  =======================================-->
+  <div class="scroll-top not-visible"><i class="fa fa-angle-up"></i></div>
+  <!-- =======================================
+      ==End scroll top==  
+  =======================================-->
+
+  <%-block('script')%>
+ 
+</body>
+
+</html>
