@@ -86,7 +86,7 @@ const getFormEdit = async (req, res) => {
 };
 
 const edit = async (req, res) => {
-  let slug = req.params.slug;
+  let id = req.params.id;
   let data = req.body;
   delete data.files;
   let err = validateQAEdit(data);
@@ -101,7 +101,7 @@ const edit = async (req, res) => {
       }, {});
     return res.render("admin/qas/edit", { errors, data, urlMediaUpload });
   } else {
-    await Qa.findOne({ slug }).update(data);
+    await Qa.findById(id).update(data);
     res.redirect("/admin/q-a");
   }
 };

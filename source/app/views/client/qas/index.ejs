@@ -1,0 +1,48 @@
+<% extend('../layouts/base',{
+  title: "Question and Answer"
+}) %>
+
+
+  <!-- ======================================= 
+      ==Start Product gallery section== 
+  =======================================-->
+  <section class="product-gallery with-sidebar product-details-section">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <aside class="sidebar order-lg-1">
+                    <div class="single-block categorie">
+                        <h6 class="text-uppercase fw-700 color-ff">Question and Answer</h6>
+                        <div class="panel-group" id="accordion">
+                            <div class="accordion" id="product-categorie">
+
+                                <% data.forEach(item=>{ %>
+                                  <div class="card">
+                                    <div class="card-header">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#qa<%=item._id%>" aria-expanded="false" aria-controls="qa<%=item._id%>"><%=item.question%></button>
+                                    </div>
+
+                                    <div id="qa<%=item._id%>" class="collapse" data-parent="#product-categorie">
+                                        <div class="card-body">
+                                           <%-item.answer%>
+                                        </div>
+                                    </div>
+                                  </div>
+                                <% }) %>
+
+                            </div>
+                            <!--/panel-->
+                        </div>
+                        <!--/accordion-->
+                    </div>
+                    <!--/categorie-->
+                </aside>
+            </div>
+            <!--/sidebar-->
+        </div>
+    </div>
+</section>
+<!-- ======================================= 
+    ==End Product gallery section== 
+=======================================-->

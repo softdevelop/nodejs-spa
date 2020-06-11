@@ -23,9 +23,9 @@ const QASchema = new Schema(
 
 function validateQA(qa) {
   const schema = {
-    question: Joi.string().min(1).max(50).required(),
-    slug: Joi.string().min(1).max(50).required(),
-    answer: Joi.string().min(1).max(50).required(),
+    question: Joi.string().min(1).max(200).required(),
+    slug: Joi.string().min(1).max(200).required(),
+    answer: Joi.string().min(1).required(),
     status: Joi.string().required(),
   };
   return Joi.validate(qa, schema, { abortEarly: false });
@@ -33,9 +33,9 @@ function validateQA(qa) {
 
 function validateQAEdit(qa) {
   const schema = {
-    question: Joi.string().min(1).max(50).required(),
-    slug: Joi.string().min(1).max(50).required(),
-    answer: Joi.string().min(1).max(50).required(),
+    question: Joi.string().min(1).max(200).required(),
+    slug: Joi.string().min(1).max(200).required(),
+    answer: Joi.string().min(1).required(),
     status: Joi.string().required(),
   };
   return Joi.validate(qa, schema, { abortEarly: false });
@@ -55,7 +55,7 @@ QASchema.post("save", function (error, doc, next) {
 });
 
 const genQAs = () => {
-  return [...Array(100).keys()].map((item) => {
+  return [...Array(5).keys()].map((item) => {
     return {
       question: `qa_${item}`,
       slug: `qa_${item}`,

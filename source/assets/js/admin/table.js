@@ -64,7 +64,7 @@
 
 
 $(document).ready(function () {
-  var x = [];
+  var listChecked = [];
   $("table.DataTable").on("click", ".CheckAll input", function () {
     if ($(this).prop("checked")) {
       listChecked = [];
@@ -84,7 +84,6 @@ $(document).ready(function () {
 
   //Check to delete
   $("table.DataTable").on("click", ".CheckRecord input", function () {
-    listChecked = [];
     var idCheckBox = $(this).attr("alt");
     if ($(this).prop("checked")) {
       listChecked.push(idCheckBox);

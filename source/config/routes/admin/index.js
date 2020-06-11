@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const moment = require('moment');
-const { jwtAuth, confirmJWT, getAvatar } = require("../../middleware");
+const { jwtAuth, confirmJWT, getAvatar, getHeader } = require("../../middleware");
 const authCtrl = require("../../../app/controllers/admin/auth");
 const dashboardCtrl = require("../../../app/controllers/admin/dashboard");
 
@@ -28,6 +28,8 @@ router.post("/login", authCtrl.login);
 // confirm session
 router.use(confirmJWT);
 router.use(getAvatar);
+router.use(getHeader);
+
 // router.use(jwtAuth);
 
 // dashboard
