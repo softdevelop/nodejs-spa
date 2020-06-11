@@ -6,7 +6,7 @@ const landingPage = async (req, res) => {
 
   let slug = req.params.slug
   let spaDetail = await Spa.findOne({slug}).populate('intros').populate('services').populate('members').exec();
-  let template_id = spaDetail.template_id;
+  let template_id = spaDetail.template_id || '1';
   // res.sendData(spaDetail);
   res.render("template/"+template_id, {
     spaDetail

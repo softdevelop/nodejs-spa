@@ -138,10 +138,14 @@ const viewDetail = async (req, res) => {
 }
 
 const landingPage = async (req, res) => {
-  let user = await User.findById(req.user._id).populate('spa').exec();
-  let spa = user.spa;
-  let spaLandingData = await Spa.findById(spa._id).populate('intros').populate('services').populate('members').exec();
-  res.render('admin/spas/landing-page', {spaLandingData, urlMediaUpload})
+  try{
+    let user = await User.findById(req.user._id).populate('spa').exec();
+    let spa = user.spa;
+    let spaLandingData = await Spa.findById(spa._id).populate('intros').populate('services').populate('members').exec();
+    res.render('admin/spas/landing-page', {spaLandingData, urlMediaUpload})
+  } catch(e){
+    res.render('admin/404_user_not_owner_spa')
+  }
 }
 
 const setTemplate = async (req, res) => {
@@ -201,20 +205,26 @@ const setTemplate = async (req, res) => {
 
 }
 
-const getTemplate = async (req, res) => {
+const getTemplatePreview = async (req, res) => {
   let user = await User.findById(req.user._id).populate('spa').exec();
   let spa = user.spa;
-  let spaLandingData = await Spa.findById(spa._id).populate('intros').populate('services').populate('members').exec();
-  // res.sendData(spaLandingData)
-  res.render('template/5')
+  let spaDetail = await Spa.findById(spa._id).populate('intros').populate('services').populate('members').exec();
+  let template_id = spaDetail.template_id;
+  res.render("template/"+template_id, {
+    spaDetail,
+    urlMediaUpload
+  });
 }
 
 const getTemplateId = async (req, res) => {
   let user = await User.findById(req.user._id).populate('spa').exec();
   let spa = user.spa;
-  let spaLandingData = await Spa.findById(spa._id).populate('intros').populate('services').populate('members').exec();
-  // res.sendData(spaLandingData)
-  res.render('template/'+req.params.id)
+  let spaDetail = await Spa.findById(spa._id).populate('intros').populate('services').populate('members').exec();
+  let template_id = spaDetail.template_id;
+  res.render('template/'+req.params.id, {
+    spaDetail,
+    urlMediaUpload
+  })
 }
 const getFormService = async (req, res) => {
   let id = req.params.id
@@ -329,7 +339,7 @@ module.exports = {
   viewDetail,
   landingPage,
   setTemplate,
-  getTemplate,
+  getTemplatePreview,
   getTemplateId,
   getFormCreateService,
   createService,
