@@ -1,10 +1,14 @@
 const mongoose = require("mongoose");
 const Spa = mongoose.model("Spa");
 const User = mongoose.model("User");
+const SpaService = mongoose.model("SpasService")
 const moment = require("moment-timezone");
 const {genHtmlPagination, urlMediaUpload} = require('../../utils')
 const {validateSpa, validateSpaEdit} = require('../../models/spas')
+const {validateSpaService,validateSpaServiceEdit} = require('../../models/spas_services')
 const bcrypt = require("bcryptjs");
+var ObjectId = require('mongodb').ObjectID;
+
 const { 
   spaIntroService,
   spaServiceService,
@@ -212,7 +216,109 @@ const getTemplateId = async (req, res) => {
   // res.sendData(spaLandingData)
   res.render('template/'+req.params.id)
 }
+const getFormService = async (req, res) => {
+  let id = req.params.id
+  let record = await Spa.findById(id).exec();
+  let spaOwners = await User.find({role: "SPA_OWNER"}).exec();
+  let spaLandingData = await Spa.findById(record._id).populate('services').exec();
+  res.render('admin/spas/service/index', {errors: {}, data: spaLandingData.services,record, urlMediaUpload, spaOwners})
+}
+const getFormCreateService = async (req, res) => {
+  let id = req.params.id
+  let record = await Spa.findById(id).exec();
+  
+  let spaOwners = await User.find({role: "SPA_OWNER"}).exec();
+  res.render('admin/spas/service/create', {errors: {}, data: {},record, spaOwners})
+}
+const createService = async (req, res) => {
+  let id = req.params.id
+  let record = await Spa.findById(id).exec();
+  let spa_id = record._id
+  let data = {...req.body,spa_id};
+  // delete data.image;
+  let err = validateSpaService(data);
+  
+  if (err && err.error) {
+    let errors =
+      err.error &&
+      err.error.details.reduce((result, item) => {
+        return {
+          ...result,
+          [item.path[0]]: item.message,
+        };
+      }, {});
+    return res.render("admin/spas/service/create", { errors,record, data });
+  } else {
+    if(req.files.image){
+      data.image = req.files.image[0]
+    }
+    let newSpaService = new SpaService(data);
+    newSpaService
+      .save()
+      .then((data) => {
+        res.redirect('/admin/spas/' +req.params.id+'/service/index');
+       
+      })
+      .catch((err) => {
+        return res.render("admin/spas/service/create", {
+          errors: {
+            name: "The value is duplicated.",
+            slug: "The value is duplicated.",
+          },
+          data,record,
+        });
+      });
+  }
+};
 
+const getFormEditService = async (req, res) => {
+  let id = req.params.id
+  let idService = req.params.idService
+  let record = await Spa.findById(id).exec();
+  let resole = await SpaService.findById(idService).exec();
+  let spaOwners = await User.find({role: "SPA_OWNER"}).exec();
+  res.render('admin/spas/service/edit', {errors: {}, data: record,resole, urlMediaUpload, spaOwners})
+}
+const editService = async (req, res) => {
+  let id = req.params.id
+  let record = await Spa.findById(id).exec();
+  let spa_id = record._id
+  let idService = req.params.idService
+  let resole = await SpaService.findById(idService).exec();
+  let data = {...req.body,spa_id}
+  delete data.image
+  let err = validateSpaServiceEdit(data)
+  if(err && err.error){
+    let errors = err.error && err.error.details.reduce((result, item)=>{
+      return {
+        ...result,
+        [item.path[0]]: item.message
+      }
+    }, {})
+    data._id = id
+    return res.render('admin/spas/service/edit', {errors: {}, data,record,resole,urlMediaUpload})
+  }else{
+    if(req.files.image && req.files.image[0]){
+      data.image = req.files.image[0]
+    }else delete data.image
+
+    await SpaService.findById(idService).update(data);
+    return res.redirect('/admin/spas/' +req.params.id+'/service/index')
+  }
+}
+const delManyService = async (req, res) => {
+  try {
+    let ids = req.body.ids;
+    ids.map(async val => {
+      const user = await SpaService.deleteOne({ _id: val }, (err, result) => {
+        if (err) return res.status(400).json({ status: "error" });
+      }).exec();
+    });
+    return res.status(200).json({ success: true });
+  } catch (err) {
+    return res.status(400).json({ success: false });
+  }
+}
 module.exports = {
   getListSpas,
   getFormCreate,
@@ -224,5 +330,11 @@ module.exports = {
   landingPage,
   setTemplate,
   getTemplate,
-  getTemplateId
+  getTemplateId,
+  getFormCreateService,
+  createService,
+  getFormService,
+  getFormEditService,
+  editService,
+  delManyService
 };

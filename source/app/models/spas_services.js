@@ -22,22 +22,22 @@ const SpaServiceSchema = new Schema({
 
 function validateSpaService(data) {
   const schema = {
-      tile: Joi.string().max(50).required(),
+      title: Joi.string().max(50).required(),
       content: Joi.string().max(500).required(),
-      image: Joi.object().required(),
+      image: Joi.object(),
       price: Joi.number().required(),
-      spa_id: Joi.string().required()
+      spa_id: Joi.required()
   };
   return Joi.validate(data, schema, { abortEarly: false });
 }
 
 function validateSpaServiceEdit(data) {
   const schema = {
-    tile: Joi.string().max(50).required(),
+    title: Joi.string().max(50).required(),
     content: Joi.string().max(500).required(),
-    image: Joi.object().required(),
+    image: Joi.object(),
     price: Joi.number().required(),
-    spa_id: Joi.string().required()
+    spa_id: Joi.required()
   };
   return Joi.validate(data, schema, { abortEarly: false });
 }

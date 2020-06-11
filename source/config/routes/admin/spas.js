@@ -19,5 +19,14 @@ router.post("/spas/:id/edit",  uploadMedia.fields([
   { name: 'logo', maxCount: 1 }
 ]), spas.edit);
 router.post("/spas/delmany", spas.delMany);
-
+router.get('/spas/:id/service/index',spas.getFormService);
+router.get('/spas/:id/service/create', spas.getFormCreateService);
+router.post('/spas/:id/service/create', uploadMedia.fields([
+  { name: 'image', maxCount: 1 }
+]), spas.createService);
+router.get('/spas/:id/service/:idService/edit', spas.getFormEditService);
+router.post('/spas/:id/service/:idService/edit', uploadMedia.fields([
+  { name: 'image', maxCount: 1 }
+]), spas.editService)
+router.post('/spas/:id/service/delManyService',spas.delManyService)
 module.exports = router;

@@ -64,7 +64,7 @@
 
 
 $(document).ready(function () {
-  var listChecked = [];
+  var x = [];
   $("table.DataTable").on("click", ".CheckAll input", function () {
     if ($(this).prop("checked")) {
       listChecked = [];
@@ -84,6 +84,7 @@ $(document).ready(function () {
 
   //Check to delete
   $("table.DataTable").on("click", ".CheckRecord input", function () {
+    listChecked = [];
     var idCheckBox = $(this).attr("alt");
     if ($(this).prop("checked")) {
       listChecked.push(idCheckBox);
@@ -143,4 +144,35 @@ $(document).ready(function () {
     var newUrl = url.href;
     location.href = newUrl;
   })
+});
+$(".BtnDeleteMany").on("click", function () {
+  if (listChecked.length > 0) {
+    let ctl = $(this).attr("ctl");
+    let isDel = confirm("Are you sure delete those records!");
+    if (isDel) {
+      urlDel = "/admin/" + ctl + "/service"+"/delManyService"
+      $.ajax({
+        url: urlDel,
+        dataType: "json",
+        data: {
+          ids: listChecked,
+        },
+        type: "POST",
+        success: function (data) {
+          console.log("succ", data);
+          if (data.success) {
+            $.each(listChecked, function (k, v) {
+              $("#Row-" + v).remove();
+            });
+            listChecked = [];
+          }
+        },
+        error: function (err) {
+          console.log("err", err);
+        },
+      });
+    }
+  } else {
+    alert("Nobody to delete!");
+  }
 });
