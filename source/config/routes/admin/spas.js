@@ -29,4 +29,5 @@ router.post('/spas/:id/service/:idService/edit', uploadMedia.fields([
   { name: 'image', maxCount: 1 }
 ]), spas.editService)
 router.post('/spas/:id/service/delManyService',spas.delManyService)
+router.get('/spas/:id/service/:idService',spas.viewDetailService)
 module.exports = router;

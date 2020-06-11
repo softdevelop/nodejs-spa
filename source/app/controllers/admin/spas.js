@@ -329,6 +329,15 @@ const delManyService = async (req, res) => {
     return res.status(400).json({ success: false });
   }
 }
+
+const viewDetailService = async (req, res) => {
+  let id = req.params.id
+  let record = await Spa.findById(id).exec();
+  let idService = req.params.idService
+  let resole = await SpaService.findById(idService).exec();
+  res.render('admin/spas/service/view', {errors: {}, data: record,resole, urlMediaUpload})
+}
+
 module.exports = {
   getListSpas,
   getFormCreate,
@@ -346,5 +355,6 @@ module.exports = {
   getFormService,
   getFormEditService,
   editService,
-  delManyService
+  delManyService,
+  viewDetailService
 };
