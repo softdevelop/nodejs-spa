@@ -35,6 +35,9 @@ upadteProfile = async (req, res) => {
       delete _data.re_password;
     }
 
+    console.log("ahihi :")
+    console.log(_data)
+
     let user = await User.findOneAndUpdate(
       { _id },
       { $set: _data },
