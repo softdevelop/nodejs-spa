@@ -148,7 +148,11 @@ const landingPage = async (req, res) => {
     let user = await User.findById(req.user._id).populate('spa').exec();
     let spa = user.spa;
     let spaLandingData = await Spa.findById(spa._id).populate('intros').populate('services').populate('members').exec();
-    res.render('admin/spas/landing-page', {spaLandingData, urlMediaUpload})
+    res.render('admin/spas/landing-page', {
+      spaLandingData, 
+      urlMediaUpload,
+      spaLandingDataJSON: JSON.stringify(spaLandingData).replace(/\\"/g, '\\\\"'),
+    })
   } catch(e){
     res.render('admin/404_user_not_owner_spa')
   }
@@ -204,7 +208,8 @@ const setTemplate = async (req, res) => {
 
   await Spa.findById(spa._id).updateOne({
     working_hour: data.workingHour,
-    template_id: data.templateId
+    template_id: data.templateId,
+    description: data.description
   })
 
   res.sendData('Success')

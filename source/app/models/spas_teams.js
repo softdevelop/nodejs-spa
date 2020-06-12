@@ -13,7 +13,12 @@ const SpaTeamSchema = new Schema({
     name: { type: String, required: true },
     avatar: { type: Object, required: true },
     content: { type: String, required: true },
-    spa_id: { type: Schema.Types.ObjectId, required: true }
+    spa_id: { type: Schema.Types.ObjectId, required: true },
+    position: { type: String, required: true },
+    facebook: { type: String, default: null},
+    gmail: { type: String, default: null},
+    phone: { type: String, default: null},
+
   }, {
     timestamps: true,
 })

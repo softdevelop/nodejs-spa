@@ -171,19 +171,26 @@
                               </div>
                             </section>
                             <!-- Step 4 -->
-                            <h6>Wokring hour</h6>
+                            <h6>About</h6>
                             <section>
                               <div class="row">
                                   <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Start</label>
+                                        <label>Working time start</label>
                                         <input type="time" class="form-control" name="start" value="<%=spaLandingData && spaLandingData.working_hour && spaLandingData.working_hour.start%>">
                                     </div>
                                   </div>
                                   <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>End</label>
+                                        <label>Working time end</label>
                                         <input type="time" class="form-control" name="end" value="<%=spaLandingData && spaLandingData.working_hour && spaLandingData.working_hour.end%>">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12 ">
+                                    <div class="form-group form-group-description">
+                                        <label class="control-label">Description</label>
+                                        <textarea class="summernote" style="z-index: 1;" name="description"><%=spaLandingData.description%></textarea>
+                                        <small class="form-control-feedback"></small>
                                     </div>
                                   </div>
                               </div>
@@ -352,7 +359,8 @@
         intros: [],
         services: [],
         members: [],
-        workingHour: {}
+        workingHour: {},
+        description: ""
       }
     }
 
@@ -367,7 +375,7 @@
     getData(){
       this.setIntros();
       this.setServices();
-      this.setWorkingHour();
+      this.setWorkingHourAbout();
       this.setMembers();
       return this.data
     }
@@ -385,7 +393,7 @@
       let intros = [];
       arr.each((index, item)=>{
         intros.push({
-          title: $(item).find('input[name=title]').val(),
+          title: $(item).find('textarea[name=title]').val(),
           content: $(item).find('textarea[name=content]').val(),
           image: $(item).attr('key'),
           id: $(item).attr('id'),
@@ -419,17 +427,23 @@
           content: $(item).find('textarea[name=content]').val(),
           avatar: $(item).attr('key'),
           id: $(item).attr('id'),
+          position: $(item).find('input[name=position]').val(),
+          facebook: $(item).find('input[name=facebook]').val(),
+          gmail: $(item).find('input[name=gmail]').val(),
+          phone: $(item).find('input[name=phone]').val(),
         })
       })
       this.data.members = members;
     }
 
-    setWorkingHour(){
+    setWorkingHourAbout(){
       let working = {
         start: $(`${this.id} input[name=start]`).val(),
         end: $(`${this.id} input[name=end]`).val()
       }
+      let description = $(`${this.id} textarea[name=description]`).val()
       this.data.workingHour = working;
+      this.data.description = description;
     }
  
  
@@ -513,11 +527,10 @@
             </div>
             <div class="card-body collapse show">
               <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" class="form-control" name="title"> 
-                    </div>
+                  <div class="form-group form-group-title ">
+                      <label class="control-label">Title</label>
+                      <textarea class="summernote" style="z-index: 1;" name="title"></textarea>
+                      <small class="form-control-feedback"></small>
                   </div>
                   <div class="col-md-12 ">
                     <div class="form-group form-group-content ">
@@ -625,6 +638,30 @@
                         <input type="file" class="ImageUpload form-control" name="avatar" key="${key}"> 
                     </div>
                   </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Position</label>
+                        <input type="text" class="form-control" name="position"> 
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Facebook</label>
+                        <input type="text" class="form-control" name="facebook"> 
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Gmail</label>
+                        <input type="text" class="form-control" name="gmail"> 
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" class="form-control" name="phone"> 
+                    </div>
+                  </div>
               </div>
             </div>
         </div>
@@ -636,7 +673,9 @@
     }
   }
 
-  let spaLandingData = JSON.parse(`<%-JSON.stringify(spaLandingData)%>`)
+
+  let spaLandingDataJSON = `<%-spaLandingDataJSON%>`;  
+  let spaLandingData = JSON.parse(spaLandingDataJSON)
 
   let landing = new LandingManageForm('#Landing-Form', spaLandingData);
 
