@@ -39,7 +39,7 @@ login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    let user = await User.findOne({ email }).populate({ path: 'permissions' }).exec();
+    let user = await User.findOne({ email, status: 'active' }).populate({ path: 'permissions' }).exec();
 
     if (!user) {
       return res.render("admin/auth/login");

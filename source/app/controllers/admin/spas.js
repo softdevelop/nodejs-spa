@@ -51,8 +51,8 @@ const getListSpas = async (req, res) => {
 };
 
 const getFormCreate = async (req, res) => {
-  let usersOwnedSpa = await Spa.find({ owner: { $ne: null } }).select('_id name').exec();
-  let idsUsersOwnedSpa = usersOwnedSpa.map(item=>''+item._id);
+  let usersOwnedSpa = await Spa.find({ owner: { $ne: null } }).select('_id name owner').exec();
+  let idsUsersOwnedSpa = usersOwnedSpa.map(item=>''+item.owner);
   let spaOwners = await User.find({role: "SPA_OWNER", _id: { $nin: idsUsersOwnedSpa }}).exec();
   res.render('admin/spas/create', {errors: {}, data: {}, spaOwners})
 }
@@ -85,7 +85,13 @@ const getFormEdit = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
   let usersOwnedSpa = await Spa.find({ owner: { $ne: null } }).select('owner name').exec();
-  let idsUsersOwnedSpa = usersOwnedSpa.map(item=>''+item.owner);
+  let idsUsersOwnedSpa = [];
+  usersOwnedSpa.forEach(item=>{
+    if(''+item.owner === record.owner+''){
+    }else{
+      idsUsersOwnedSpa.push(''+item.owner)
+    }
+  });
   let spaOwners = await User.find({role: "SPA_OWNER", _id: { $nin: idsUsersOwnedSpa }}).exec();
   res.render('admin/spas/edit', {errors: {}, data: record, urlMediaUpload, spaOwners})
 }
@@ -226,6 +232,11 @@ const getTemplateId = async (req, res) => {
     urlMediaUpload
   })
 }
+
+const getTemplateExampleId = async (req, res) => {
+  res.render('template/'+req.params.id+'_example')
+}
+
 const getFormService = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
@@ -350,6 +361,7 @@ module.exports = {
   setTemplate,
   getTemplatePreview,
   getTemplateId,
+  getTemplateExampleId,
   getFormCreateService,
   createService,
   getFormService,

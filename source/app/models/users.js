@@ -189,7 +189,7 @@ UserSchema.post('save', function (error, doc, next) {
 const dfPass = bcrypt.hashSync("12345", 10);
 
 const genUsers = () => {
-    return [...Array(100).keys()].map(item => {
+    return [...Array(3).keys()].map(item => {
         let role = ROLES[Math.floor(Math.random()*ROLES.length)];
         return ({
             first_name: `${role}`,

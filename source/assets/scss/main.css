@@ -41,3 +41,6 @@ form .avatar-100 {
 .content-static-page {
   margin-top: 120px;
   margin-bottom: 100px; }
+
+.leaflet-bottom {
+  display: none; }
