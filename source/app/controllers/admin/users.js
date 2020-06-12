@@ -125,5 +125,6 @@ module.exports = {
   getFormEdit,
   edit,
   delMany,
-  viewDetail
+  viewDetail,
+  
 };
