@@ -3,8 +3,8 @@ const User = mongoose.model("User");
 const moment = require("moment");
 const bcrypt = require("bcryptjs");
 const {genHtmlPagination, urlMediaUpload} = require('../../utils');
-const {validateUser, validateUserProfileEdit} = require('../../models/users');
-
+const {validateResetPass,validateUser, validateUserProfileEdit} = require('../../models/users');
+const { userService } = require("../../services");
 viewProfile = async (req, res) => {
   try {
     const _id = req.user._id;
@@ -21,7 +21,7 @@ viewProfile = async (req, res) => {
 };
 
 getFormEdit = async (req, res) => {
-  let id = req.params.id
+  let id = req.user.id
   let user = await User.findById(id).exec();
   res.render('admin/profile/edit', {
     errors: {},
@@ -31,12 +31,51 @@ getFormEdit = async (req, res) => {
 }
 
 getFormChangePass = async (req, res) => {
-  let id = req.params.id
-  res.render('admin/profile/edit', {
+  let id = req.user.id
+  res.render('admin/profile/changePass', {
+    errors: {},
     id
   });
 }
 
+
+resetPassword = (req, res) => {
+  let id = req.user.id;
+  let data = {
+    id: req.user.id,
+    password: req.body.password,
+    newPass: req.body.newPass,
+    newPassRetype: req.body.newPassRetype
+  }
+  let err = validateResetPass(data)
+  if (err && err.error) {
+    let errors = err.error && err.error.details.reduce((result, item) => {
+      return  {
+        ...result,
+        [item.path[0]]: item.message
+      }
+    }, {})
+    return res.render('admin/profile/changePass', {errors, id})
+  } else {
+    userService.getUser2(data.id).then(function (result) {
+      if (bcrypt.compareSync(data.password, result.password)) {
+        data.newPass = bcrypt.hashSync(data.newPass, 10)
+        userService.changePassword(result.id, data.newPass)
+          .then(data => {
+            return res.sendData(data);
+          })
+          .catch(err => {
+            return res.sendError(err);
+          })
+      }
+      else {
+        return res.sendError("Password incorrect")
+      }
+    }).catch(err => {
+      return res.sendError(err);
+    })
+  }
+}
 
 upadteProfile = async (req, res) => {
   try {
@@ -87,7 +126,7 @@ upadteProfile = async (req, res) => {
 };
 
 edit = async (req, res) => {
-  let id = req.params.id
+  let id = req.user.id
   let data = req.body
   let err = validateUserProfileEdit(data)
   if(err && err.error){
@@ -98,6 +137,7 @@ edit = async (req, res) => {
       }
     }, {})
     data._id = id
+    return res.render('admin/profile/edit', {errors, data, urlMediaUpload})
   }else{
     if(req.files.avatar && req.files.avatar[0]){
       data.avatar = req.files.avatar[0]
@@ -168,5 +208,6 @@ module.exports = {
   logoutAccount,
   getFormEdit,
   edit,
-  getFormChangePass
+  getFormChangePass,
+  resetPassword
 };

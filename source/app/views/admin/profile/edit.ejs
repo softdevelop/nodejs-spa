@@ -38,7 +38,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="/admin/profile/<%=user._id%>/edit" method="post" enctype="multipart/form-data">
+                    <form action="/admin/profile/edit" method="post" enctype="multipart/form-data">
                         <div class="form-body">
                             <h3 class="card-title">Person Info</h3>
                             <hr>
@@ -49,6 +49,7 @@
                                   <label class="control-label">Avatar</label>
                                   <input type="file" id="avatar" class="form-control" name="avatar" value="<%=user.avatar?user.avatar:''%>">
                                   <img class="avatar-100" src="<%=urlMediaUpload.imageObj(user.avatar)%>" />
+                                  <small class="form-control-feedback"><%=errors?errors.avatar:''%></small>
                                </div>
                               </div>
                               
@@ -60,6 +61,7 @@
                                       <label class="control-label">First Name</label>
                                       <input class="form-control" name="first_name" value="<%= user.first_name %>" type="text"
                                         />
+                                        <small class="form-control-feedback"><%=errors?errors.first_name:''%></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -67,6 +69,7 @@
                                       <label class="control-label">Last Name</label>
                                       <input class="form-control" name="last_name" value="<%= user.last_name %>" type="text"
                                         />
+                                        <small class="form-control-feedback"><%=errors?errors.last_name:''%></small>
                                     </div>
                                 </div>
                             </div>
@@ -77,6 +80,7 @@
                                       <label class="control-label">Email</label>
                                       <input class="form-control" name="email" value="<%= user.email %>" type="email"
                                         />
+                                        <small class="form-control-feedback"><%=errors?errors.email:''%></small>
                                     </div>
                                 </div>
                                 <!--/span-->
@@ -84,7 +88,8 @@
                                   <div class="form-group">
                                     <label class="control-label">Date of birth</label>
                                     <input type="date" class="form-control" placeholder="dd/mm/yyyy" name="birthday" required value="1990-12-31" value="<%=user.birthday?user.birthday:''%>">
-                                  </div>
+                                    <small class="form-control-feedback"><%=errors?errors.birthday:''%></small>
+                                </div>
                                 </div>
                                 <!--/span-->
                             </div>
@@ -103,6 +108,7 @@
                                     <div class="form-group">
                                       <label class="control-label">Phone</label>
                                       <input class="form-control" name="phone" value="<%= user.phone?user.phone:'' %>" type="text"/>
+                                      <small class="form-control-feedback"><%=errors?errors.phone:''%></small>
                                     </div>
                                   </div>
                             </div>
@@ -111,13 +117,14 @@
                                   <div class="form-group">
                                     <label class="control-label">Address</label>
                                     <input  class="form-control" name="address" value="<%= user.address?user.address:'' %>" type="text"/>
-                                  </div>
+                                    <small class="form-control-feedback"><%=errors?errors.address:''%></small>
+                                </div>
                                 </div>
                             </div>
                             <!-- /row  -->
                             <div class="form-actions">
                                 <a href="edit"><button type="submit" class="btn btn-primary"> <i class="icon-note"></i> Edit</button></a>
-                                <a href="/admin/users">
+                                <a href="/admin/profile">
                                     <button type="button" class="btn btn-inverse">Cancel</button>
                                 </a>
                             </div>
