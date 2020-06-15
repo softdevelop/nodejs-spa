@@ -12,6 +12,8 @@
       <link rel="stylesheet" href="/template/2/css/color.css" id="color-change">
       <link rel="stylesheet" href="fonts/flaticon.css">
       <link rel="stylesheet" href="/template/2/css/settings.css">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
   `,
   script: `
       <script src="/template/2/js/greensock.js"></script> 
@@ -128,7 +130,7 @@
         <div class="container">
             <div class="row">
                 <nav class="navbar navbar-expand-lg navbar-light w-100">
-                    <a class="navbar-brand p_0" href="#top"><img src="/template/2/images/logo/logo.png" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                    <a class="navbar-brand p_0" href="#top"><img src="<%=urlMediaUpload.imageObj(spaDetail.logo)%>" style="max-width: 50px;" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         
                     </div>
@@ -137,43 +139,28 @@
         </div>
     </header>
       <div id="slider" style="width:100%;height:100vh;">
-         <div class="ls-slide" data-ls="bgsize:cover; bgposition:50% 50%; duration:8000; transition2d:3; timeshift:-500; deeplink:home; kenburnszoom:in; kenburnsrotate:0; kenburnsscale:1.1; parallaxevent:scroll; parallaxdurationmove:500;">
-            <img style="width:100%; height:100%;" src="/template/2/images/slider/01.jpg" class="ls-bg" alt="slider image" />
+        <% spaDetail.intros.forEach(item=>{ %>
+          <div class="ls-slide" data-ls="bgsize:cover; bgposition:50% 50%; duration:8000; transition2d:3; timeshift:-500; deeplink:home; kenburnszoom:in; kenburnsrotate:0; kenburnsscale:1.1; parallaxevent:scroll; parallaxdurationmove:500;">
+            <img style="width:100%; height:100%;" src="<%=urlMediaUpload.imageObj(item.image)%>" class="ls-bg" alt="slider image" />
             <div style="width:100%; height:100%; background:rgba(0, 0, 0, 0.35); top:50%; left:50%;" class="ls-l" data-ls="durationout:400; parallaxlevel:0; position:fixed;"></div>
-            <p style="font-weight:900; text-align:center; width:100%; text-transform: uppercase; font-family:'Raleway', sans-serif; font-size:50px; line-height:60px; color:#ffffff; top:330px; left:50%;" class="ls-l" data-ls="offsetyin:40; delayin:150; easingin:easeOutQuint; offsetyout:-200; durationout:400; parallax:true; parallaxlevel:3;">We feel Your <span class="color-primary">Body Requirments</span></p>
-            <p style="font-weight:300; text-align:center; width:850px; letter-spacing: 2px; font-family:'Raleway', sans-serif; font-size:18px; line-height:30px; color:#ffffff; top:400px; left:50%; white-space:normal;" class="ls-l" data-ls="offsetyin:40; delayin:300; easingin:easeOutQuint; offsetyout:-250; durationout:400; parallax:true; parallaxlevel:2;">Thing moved Dry were divided likeness fly multiply sea cattle man creature. Them lights. Created, dominion replenish seed night also.</p>
-            <div style="text-align:center; padding:15px 40px; transition: 0.5s; background-size:200% auto; line-height: 24px; font-family:'Raleway', sans-serif; font-size:16px; color:#2a2a2a; border-radius:0px; top:485px; left:50%;" class="ls-l btn btn-gradient" data-ls="offsetyin:40; delayin:450; easingin:easeOutQuint; offsetyout:-300; durationout:400; parallax:true; parallaxlevel:1;">Read More</div>
+            <p style="font-weight:900; text-align:center; width:100%; text-transform: uppercase; font-family:'Raleway', sans-serif; font-size:50px; line-height:60px; color:#ffffff; top:330px; left:50%;" class="ls-l" data-ls="offsetyin:40; delayin:150; easingin:easeOutQuint; offsetyout:-200; durationout:400; parallax:true; parallaxlevel:3;"><%-item.title%></p>
+            <div style="font-weight:300; text-align:center; width:850px; letter-spacing: 2px; font-family:'Raleway', sans-serif; font-size:18px; line-height:30px; color:#ffffff; top:400px; left:50%; white-space:normal;" class="ls-l" data-ls="offsetyin:40; delayin:300; easingin:easeOutQuint; offsetyout:-250; durationout:400; parallax:true; parallaxlevel:2;">
+              <%-item.content%>
+            </div>
          </div>
-         <div class="ls-slide" data-ls="bgsize:cover; bgposition:50% 50%; duration:8000; transition2d:3; deeplink:latest-works; kenburnszoom:out; kenburnsrotate:0; kenburnsscale:1.1; parallaxtype:3d; parallaxevent:scroll; parallaxdurationmove:500; parallaxrotate:4;">
-            <img style="width:100%; height:100%;" src="/template/2/images/slider/02.jpg" class="ls-bg" alt="slider image" />
-            <div style="width:100%; height:100%; background:rgba(0, 0, 0, 0.35); top:0%; left:0%;" class="ls-l" data-ls="durationout:400; parallaxlevel:0; position:fixed;"></div>
-            <p style="font-weight:900; text-align:center; width:100%; text-transform: uppercase; font-family:'Raleway', sans-serif; font-size:50px; line-height:60px; color:#ffffff; top:330px; left:50%;" class="ls-l" data-ls="offsetyin:40; delayin:150; easingin:easeOutQuint; offsetyout:-200; durationout:400; parallax:true; parallaxlevel:3;">Creative team to make <span class="color-primary"> you Special</span></p>
-            <p style="font-weight:300; text-align:center; width:850px; letter-spacing: 2px; font-family:'Raleway', sans-serif; font-size:18px; line-height:30px; color:#ffffff; top:400px; left:50%; white-space:normal;" class="ls-l" data-ls="offsetyin:40; delayin:300; easingin:easeOutQuint; offsetyout:-250; durationout:400; parallax:true; parallaxlevel:2;">Thing moved Dry were divided likeness fly multiply sea cattle man creature. Them lights. Created, dominion replenish seed night also.</p>
-            <div style="text-align:center; padding:15px 40px; transition: 0.5s; background-size:200% auto; line-height: 24px; font-family:'Raleway', sans-serif; font-size:16px; color:#2a2a2a; border-radius:0px; top:485px; left:50%;" class="ls-l btn btn-gradient" data-ls="offsetyin:40; delayin:450; easingin:easeOutQuint; offsetyout:-300; durationout:400; parallax:true; parallaxlevel:1;">Read More</div>
-         </div>
-         <div class="ls-slide" data-ls="bgsize:cover; bgposition:50% 50%; duration:8000; transition2d:3; deeplink:contact-us; kenburnszoom:in; kenburnsscale:1.2; parallaxevent:scroll;">
-            <img style="width:100%; height:100%;" src="/template/2/images/slider/03.jpg" class="ls-bg" alt="slider image" />
-            <div style="width:100%; height:100%; background:rgba(0, 0, 0, 0.35); top:0%; left:0%;" class="ls-l" data-ls="durationout:400; parallaxlevel:0; position:fixed;"></div>
-            <p style="font-weight:900; text-align:center; width:100%; text-transform: uppercase; font-family:'Raleway', sans-serif; font-size:50px; line-height:60px; color:#ffffff; top:330px; left:50%;" class="ls-l" data-ls="offsetyin:40; delayin:150; easingin:easeOutQuint; offsetyout:-200; durationout:400; parallax:true; parallaxlevel:3;">We Keep Your Body <span class="color-primary">Soft and Smooth</span></p>
-            <p style="font-weight:300; text-align:center; width:850px; letter-spacing: 2px; font-family:'Raleway', sans-serif; font-size:18px; line-height:30px; color:#ffffff; top:400px; left:50%; white-space:normal;" class="ls-l" data-ls="offsetyin:40; delayin:300; easingin:easeOutQuint; offsetyout:-250; durationout:400; parallax:true; parallaxlevel:2;">Thing moved Dry were divided likeness fly multiply sea cattle man creature. Them lights. Created, dominion replenish seed night also.</p>
-            <div style="text-align:center; padding:15px 40px; transition: 0.5s; background-size:200% auto; line-height: 24px; font-family:'Raleway', sans-serif; font-size:16px; color:#2a2a2a; border-radius:0px; top:485px; left:50%;" class="ls-l btn btn-gradient" data-ls="offsetyin:40; delayin:450; easingin:easeOutQuint; offsetyout:-300; durationout:400; parallax:true; parallaxlevel:1;">Read More</div>
-         </div>
+
+        <% }) %>
       </div>
       <section id="about" class="py-80">
          <div class="container">
             <div class="row">
-               <div class="col-md-12 col-lg-12">
-                  <h2 class="main-title mb-3 text-uppercase letter-space-1 text-center color-primary">welcome to beautyqueen</h2>
-                  <span class="sub-title pb-5 w-50 m-auto text-center color-black">Third and made a saying stars two. Image stars. All let made subdue, stars fruit blessed were. Lights fowl fruitful.</span>
-               </div>
+             
             </div>
             <div class="row">
                <div class="col-md-5 col-lg-6"> <img src="/template/2/images/about/woman-large.png" alt="image not found"></div>
                <div class="col-md-7 col-lg-6">
                   <div class="text-area">
-                     <p class="mb-5"><span class="color-black">“ Above land them light was midst said saw saying under, deep bearing. Winged under dominion lesser first heaven tree every creepeth second, make they're firmament, unto given in bring fowl.”</span></p>
-                     <p class="mb-5">Gathered bring likeness brought be fruitful upon. Own in air over multiply void spirit. Fly waters sixth over our form. Yielding was there a. Fish from fourth him appear. Isn't beast in living years, rule their day green gathering grass, days likeness under lesser. Darkness winged male winged. Yielding fruitful. Face you're, first winged air blessed let our can't heaven. A made. Rule give won't all sixth that from heaven seas days herb. Days grass. Wherein greater fruitful one, seas divide Midst form tree i which form night, lights forth god itself fish and over let first moving abundantly gathered.</p>
-                     <a class="btn btn-black mr-3" href="#">read more</a> <a class="btn btn-gradient" href="#resarvation_from" data-toggle="modal" data-target="#myModal">Resarvation</a>
+                    <%-spaDetail.description%>
                   </div>
                </div>
             </div>
@@ -184,92 +171,31 @@
             <div class="row">
                <div class="col-md-12 col-lg-12">
                   <h2 class="main-title mb-3 text-uppercase letter-space-1 text-center color-primary">our services</h2>
-                  <span class="sub-title pb-5 w-50 m-auto text-center color-black">Third and made a saying stars two. Image stars. All let made subdue, stars fruit blessed were. Lights fowl fruitful.</span>
                </div>
             </div>
             <div class="row">
-               <div class="col-md-6 col-lg-4">
+              <% spaDetail.services.forEach(item=>{ %>
+                <div class="col-md-6 col-lg-4">
                   <div class="service-widget mb-4">
-                     <div class="service-image overflow-hidden"> <img src="/template/2/images/services/1.jpg" alt="bodymassage"></div>
+                     <div class="service-image overflow-hidden"> <img src="<%=urlMediaUpload.imageObj(item.image)%>" style="max-height: 200px;" alt="bodymassage"></div>
                      <div class="service-iconprice">
                         <div class="ser-icon bg-gradient icon-font-30 color-white"> <i class="flaticon-massage"></i></div>
-                        <div class="ser-price bg-gradient color-white"> <span>$ 99</span></div>
+                        <div class="ser-price bg-gradient color-white"> <span><%=item.price%></span></div>
                      </div>
                      <div class="text-box py-4 px-3">
-                        <h4 class="inner-title text-center text-capitalize color-black">Full Body Massage</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                        <h4 class="inner-title text-center text-capitalize color-black"><%=item.title%></h4>
+                        <div>
+                          <%-item.content%>
+                        </div>
                      </div>
                   </div>
-               </div>
-               <div class="col-md-6 col-lg-4">
-                  <div class="service-widget mb-4">
-                     <div class="service-image overflow-hidden"> <img src="/template/2/images/services/2.jpg" alt="bodymassage"></div>
-                     <div class="service-iconprice">
-                        <div class="ser-icon bg-gradient icon-font-30 color-white"> <i class="flaticon-massage-spa-body-treatment"></i></div>
-                        <div class="ser-price bg-gradient color-white"> <span>$ 85</span></div>
-                     </div>
-                     <div class="text-box py-4 px-3">
-                        <h4 class="inner-title text-center text-capitalize color-black">spa treatment</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-4">
-                  <div class="service-widget mb-4">
-                     <div class="service-image overflow-hidden"> <img src="/template/2/images/services/3.jpg" alt="bodymassage"></div>
-                     <div class="service-iconprice">
-                        <div class="ser-icon bg-gradient icon-font-30 color-white"> <i class="flaticon-spa-facial-treatment-with-mask-and-massages"></i></div>
-                        <div class="ser-price bg-gradient color-white"> <span>$ 69</span></div>
-                     </div>
-                     <div class="text-box py-4 px-3">
-                        <h4 class="inner-title text-center text-capitalize color-black">skin care treatment</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-4">
-                  <div class="service-widget mb-5">
-                     <div class="service-image overflow-hidden"> <img src="/template/2/images/services/4.jpg" alt="bodymassage"></div>
-                     <div class="service-iconprice">
-                        <div class="ser-icon bg-gradient icon-font-30 color-white"> <i class="flaticon-spa-face-mask-treatment-for-woman"></i></div>
-                        <div class="ser-price bg-gradient color-white"> <span>$ 55</span></div>
-                     </div>
-                     <div class="text-box py-4 px-3">
-                        <h4 class="inner-title text-center text-capitalize color-black">beauty</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-4">
-                  <div class="service-widget mb-5">
-                     <div class="service-image overflow-hidden"> <img src="/template/2/images/services/5.jpg" alt="bodymassage"></div>
-                     <div class="service-iconprice">
-                        <div class="ser-icon bg-gradient icon-font-30 color-white"> <i class="flaticon-pets-hair-salon-tools-kit"></i></div>
-                        <div class="ser-price bg-gradient color-white"> <span>$ 30</span></div>
-                     </div>
-                     <div class="text-box py-4 px-3">
-                        <h4 class="inner-title text-center text-capitalize color-black">nail treatment</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-4">
-                  <div class="service-widget mb-5">
-                     <div class="service-image overflow-hidden"> <img src="/template/2/images/services/6.jpg" alt="bodymassage"></div>
-                     <div class="service-iconprice">
-                        <div class="ser-icon bg-gradient icon-font-30 color-white"> <i class="flaticon-scissors-and-comb"></i></div>
-                        <div class="ser-price bg-gradient color-white"> <span>$ 40</span></div>
-                     </div>
-                     <div class="text-box py-4 px-3">
-                        <h4 class="inner-title text-center text-capitalize color-black">Hair Treatment</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                     </div>
-                  </div>
-               </div>
+                </div>
+
+              <% }) %>
             </div>
          </div>
       </section>
-      <section id="our-gallery" class="full-row py-80 pb-0">
+      <!-- <section id="our-gallery" class="full-row py-80 pb-0">
          <div class="container-fluid">
             <div class="row">
                <div class="col-md-12 col-lg-12">
@@ -380,7 +306,7 @@
                </div>
             </div>
          </div>
-      </section>
+      </section> -->
       <section id="team" class="bg-gray py-80">
          <div class="container">
             <div class="row">
@@ -390,14 +316,15 @@
                </div>
             </div>
             <div class="row">
-               <div class="col-md-6 col-lg-3">
+              <% spaDetail.members.forEach(item=>{ %>
+                <div class="col-md-6 col-lg-3">
                   <div class="team-widget bg-white mb-4">
                      <div class="team-image">
-                        <img src="/template/2/images/team/1.jpg" alt="Team image 1">
+                        <img src="<%=urlMediaUpload.imageObj(item.avatar)%>" style="min-height: 270px;" alt="<%=item.name%>">
                         <div class="teamimg-overlay"></div>
                         <div class="member-data">
-                           <h4>Victor Sandra</h4>
-                           <span>Sap Treatment</span>
+                           <h4><%=item.name%></h4>
+                           <span><%=item.position%></span>
                            <div class="socal-icon mt-4">
                               <ul>
                                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -409,8 +336,8 @@
                      </div>
                      <div class="member-profile">
                         <div class="member-data">
-                           <h4 class="color-black">Victor Sandra</h4>
-                           <span>Sap Treatment</span>
+                           <h4 class="color-black"><%=item.name%></h4>
+                           <span><%=item.position%></span>
                            <div class="socal-icon mt-4">
                               <ul>
                                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -420,120 +347,17 @@
                            </div>
                         </div>
                         <div class="member-content">
-                           <p>Appear yielding creeping good our creepeth whose his first. Over second thing abundantly. Be cattle creeping, of given let meat can't. Have first a us living bring. The void green.</p>
+                          <%-item.content%>
                         </div>
                      </div>
                   </div>
                </div>
-               <div class="col-md-6 col-lg-3">
-                  <div class="team-widget bg-white mb-4">
-                     <div class="team-image">
-                        <img src="/template/2/images/team/2.jpg" alt="Team image 1">
-                        <div class="teamimg-overlay"></div>
-                        <div class="member-data">
-                           <h4>Victor Sandra</h4>
-                           <span>Sap Treatment</span>
-                           <div class="socal-icon mt-4">
-                              <ul>
-                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="member-profile">
-                        <div class="member-data">
-                           <h4 class="color-black">Victor Sandra</h4>
-                           <span>Sap Treatment</span>
-                           <div class="socal-icon mt-4">
-                              <ul>
-                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="member-content">
-                           <p>Appear yielding creeping good our creepeth whose his first. Over second thing abundantly. Be cattle creeping, of given let meat can't. Have first a us living bring. The void green.</p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-3">
-                  <div class="team-widget bg-white mb-4">
-                     <div class="team-image">
-                        <img src="/template/2/images/team/3.jpg" alt="Team image 1">
-                        <div class="teamimg-overlay"></div>
-                        <div class="member-data">
-                           <h4>Asha zimba</h4>
-                           <span>Body Massage</span>
-                           <div class="socal-icon mt-4">
-                              <ul>
-                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="member-profile">
-                        <div class="member-data">
-                           <h4 class="color-black">raul mancera</h4>
-                           <span>Beauty Treatment</span>
-                           <div class="socal-icon mt-4">
-                              <ul>
-                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="member-content">
-                           <p>Appear yielding creeping good our creepeth whose his first. Over second thing abundantly. Be cattle creeping, of given let meat can't. Have first a us living bring. The void green.</p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-3">
-                  <div class="team-widget bg-white mb-4">
-                     <div class="team-image">
-                        <img src="/template/2/images/team/4.jpg" alt="Team image 1">
-                        <div class="teamimg-overlay"></div>
-                        <div class="member-data">
-                           <h4>anna osinkina</h4>
-                           <span>hair treatment</span>
-                           <div class="socal-icon mt-4">
-                              <ul>
-                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="member-profile">
-                        <div class="member-data">
-                           <h4 class="color-black">Victor Sandra</h4>
-                           <span>Sap Treatment</span>
-                           <div class="socal-icon mt-4">
-                              <ul>
-                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="member-content">
-                           <p>Appear yielding creeping good our creepeth whose his first. Over second thing abundantly. Be cattle creeping, of given let meat can't. Have first a us living bring. The void green.</p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+
+              <% }) %>
             </div>
          </div>
       </section>
-      <div id="join-us" class="py-80 overlay-black background-1">
+      <!-- <div id="join-us" class="py-80 overlay-black background-1">
          <div class="container">
             <div class="row">
                <div class="col-md-8 col-lg-8">
@@ -547,8 +371,10 @@
                </div>
             </div>
          </div>
-      </div>
-      <section id="price" class="py-80 bg-gray">
+      </div> -->
+
+
+      <!-- <section id="price" class="py-80 bg-gray">
          <div class="container">
             <div class="row">
                <div class="col-md-12 col-lg-12">
@@ -639,8 +465,10 @@
                </div>
             </div>
          </div>
-      </section>
-      <div class="background-2 py-80 overlay-black">
+      </section> -->
+      
+      
+      <!-- <div class="background-2 py-80 overlay-black">
          <div class="container">
             <div class="row">
                <div class="video text-center m-auto color-white">
@@ -773,12 +601,14 @@
                </div>
             </div>
          </div>
-      </section>
+      </section> -->
+
+
       <section id="map-contact">
          <div class="container-fluid">
             <div class="row">
                <div class="col-md-6 col-lg-6">
-                  <div id="map" class="map-canvas row"></div>
+                <div id="mapid" class="map-canvas" style="width: 100%;height: 600px;"></div>
                </div>
                <div class="col-md-6 col-lg-6 py-80">
                   <h2 class="main-title mb-3 text-uppercase letter-space-1 text-center color-primary">contact us</h2>
@@ -815,5 +645,20 @@
          </div>
       </section>
       
-      
- 
+<script>
+  var mymap = L.map('mapid').setView([<%=spaDetail.latitude?spaDetail.latitude:''%>, <%=spaDetail.longitude?spaDetail.longitude:''%>], 8);
+  var lng = <%=spaDetail.longitude?spaDetail.longitude:''%>;
+  var lat = <%=spaDetail.latitude?spaDetail.latitude:''%>;
+  
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+  maxZoom: 18,
+  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  id: 'mapbox/streets-v11',
+  tileSize: 512,
+  zoomOffset: -1
+  }).addTo(mymap);
+  var theMarker = {};
+  L.marker([<%=spaDetail.latitude?spaDetail.latitude:''%>, <%=spaDetail.longitude?spaDetail.longitude:''%>]).addTo(mymap);
+</script>

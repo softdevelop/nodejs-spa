@@ -8,10 +8,11 @@
   </div>
   <div class="card-body collapse hide">
     <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
-              <label>Title</label>
-              <input type="text" class="form-control" name="title" value="<%=item.title%>"> 
+        <div class="col-md-12 ">
+          <div class="form-group form-group-title ">
+              <label class="control-label">Title</label>
+              <textarea class="summernote" style="z-index: 1;" name="title"><%=item.title%></textarea>
+              <small class="form-control-feedback"></small>
           </div>
         </div>
         <div class="col-md-12 ">
@@ -26,7 +27,6 @@
               <label>Image</label>
               <input type="file" class="ImageUpload form-control" name="image" id="<%=item._id%>"> 
               <img class="avatar-100" src="<%=urlMediaUpload.imageObj(item.image)%>" />
-
           </div>
         </div>
     </div>

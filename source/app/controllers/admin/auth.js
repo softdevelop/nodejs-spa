@@ -28,9 +28,13 @@ const removeNodeLocalstorage = (key) => {
 viewLoginPage = async (req, res) => {
   const token = req.session.token;
   if (token) {
-    let decodedToken = pareJwtToken(token);
-    let user = User.findById(decodedToken._id).exec();
-    if(user) return res.redirect('/admin') 
+    try{
+      let decodedToken = pareJwtToken(token);
+      let user = User.findById(decodedToken._id).exec();
+      if(user) return res.redirect('/admin') 
+    }catch(e){
+      return res.render("admin/auth/login");
+    }
   }
   return res.render("admin/auth/login");
 }

@@ -1523,7 +1523,7 @@ priceing-section .single-price-list>p {
 /*-----------Blog section style ------------*/
 
 .blog-section {
-    padding: 90px 0;
+    padding: 60px 0;
 }
 
 .single-blog .img-area {
@@ -2966,7 +2966,7 @@ footer .copyright a:hover {
 
 .experts-section {
     background: #fafafa;
-    padding: 90px 0 100px;
+    padding: 90px 0 60px;
 }
 
 .experts-section .expert-hover {
