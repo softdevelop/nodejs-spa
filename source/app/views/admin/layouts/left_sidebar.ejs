@@ -48,6 +48,17 @@
           </li>
         <% } %>
 
+          <li> 
+            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class=" fas fa-building
+              "></i><span class="hide-menu">Booking</span></a>
+              <ul aria-expanded="false" class="collapse">
+                  <li><a href="/admin/booking">All Booking</a></li>
+                  <li><a href="/admin/booking/create">Add Booking</a></li>
+              </ul>
+          </li>
+
+
+
         <% if(userLocal.permissions.includes('category.index')){ %>
           <li> 
             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-list"></i><span class="hide-menu">Category</span></a>

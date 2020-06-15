@@ -12,5 +12,6 @@ module.exports = [
   "categories",
   "projects",
   "reports",
-  "requests"
+  "requests",
+  "booking"
 ];

@@ -12,6 +12,7 @@ const roles = require("./roles");
 const profile = require("./profile");
 const products = require("./products");
 const categories = require("./categories");
+const booking = require("./booking")
 
 // Controllers
 const {
@@ -61,7 +62,7 @@ router.use(products);
 
 // categories
 router.use(categories);
-
+router.use(booking);
 router.get("*", (req, res) => {
   res.render('admin/404');
 });
