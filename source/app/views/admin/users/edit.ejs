@@ -84,9 +84,9 @@
                                   <div class="form-group <%=errors.role?'has-danger':''%>">
                                       <label class="control-label">Role</label>
                                       <select class="form-control custom-select" name="role">
-                                          <option value="ADMIN" <%=data.gender=='ADMIN'?'selected':''%>>Admin</option>
-                                          <option value="USER" <%=data.gender=='USER'?'selected':''%>>User</option>
-                                          <option value="SPA_OWNER" <%=data.gender=='SPA_OWNER'?'selected':''%>>Spa owner</option>
+                                          <% roles.forEach(item=>{ %>
+                                            <option value="<%=item.value%>" <%=data.role==item.value?'selected':''%>><%=item.name%></option>
+                                          <% }) %>
                                       </select>
                                       <small class="form-control-feedback"><%=errors?errors.role:''%></small>
                                   </div>
@@ -127,7 +127,7 @@
                               <div class="col-md-6">
                                   <div class="form-group <%=errors.birthday?'has-danger':''%>">
                                       <label class="control-label">Date of birth</label>
-                                      <input type="date" class="form-control" placeholder="dd/mm/yyyy" name="birthday" required value="1990-12-31" value="<%=data.birthday?data.birthday:''%>">
+                                      <input type="date" class="form-control" placeholder="dd/mm/yyyy" name="birthday" required value="<%=data.birthday_form?data.birthday_form:''%>">
                                       <small class="form-control-feedback"><%=errors?errors.birthday:''%></small>
                                   </div>
                               </div>

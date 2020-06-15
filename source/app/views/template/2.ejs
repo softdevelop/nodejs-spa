@@ -608,38 +608,64 @@
          <div class="container-fluid">
             <div class="row">
                <div class="col-md-6 col-lg-6">
-                <div id="mapid" class="map-canvas" style="width: 100%;height: 600px;"></div>
+                <div id="mapid" class="map-canvas" style="width: 100%;height: 700px;"></div>
                </div>
                <div class="col-md-6 col-lg-6 py-80">
                   <h2 class="main-title mb-3 text-uppercase letter-space-1 text-center color-primary">contact us</h2>
-                  <span class="sub-title pb-5 w-80 m-auto text-center color-black">Third and made a saying stars two. Image stars. All let made subdue, stars fruit blessed were. Lights fowl fruitful.</span>
-                  <form class="contact-message" id="contact-form" action="email.php" method="post">
-                     <div class="col-md-12 col-lg-12">
-                        <div class="row">
-                           <div class="col-md-6 col-lg-6">
-                              <div class="form-group"> <input class="form-control no-border" type="text" name="name" placeholder="Name"/></div>
-                           </div>
-                           <div class="col-md-6 col-lg-6">
-                              <div class="form-group"> <input class="form-control no-border" type="text" name="email" placeholder="Email*"/></div>
-                           </div>
+                  <form method="POST" >
+                    <div class="col-md-12 col-lg-12">
+                       <div class="row">
+                          <div class="col-md-6 col-lg-6">
+                             <div class="form-group"> <input required class="form-control no-border" type="text" name="name" placeholder="Name*"/></div>
+                          </div>
+                          <div class="col-md-6 col-lg-6">
+                             <div class="form-group"> <input required class="form-control no-border" type="text" name="email" placeholder="Email*"/></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                       <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                           <div class="form-group"> <input required class="form-control no-border" id="phone" type="number" name="phone" placeholder="Phone*"/></div>
                         </div>
-                     </div>
-                     <div class="col-md-12 col-lg-12">
-                        <div class="form-group"> <input class="form-control no-border" id="subject" type="text" name="subject" placeholder="Subject*"/></div>
-                     </div>
-                     <div class="col-md-12 col-lg-12">
-                        <div class="form-group"><textarea class="form-control no-border" id="message" rows="7" name="message" placeholder="Message*"></textarea></div>
-                     </div>
-                     <div class="col-md-12 col-lg-12">
-                        <div class="form-group m-0"> <input class="btn btn-black" id="send" type="submit" value="send"/></div>
-                     </div>
-                     <div class="col-md-12 col-lg-12">
-                        <div class="error-handel">
-                           <div id="success">Your email sent Successfully, Thank you.</div>
-                           <div id="error"> Error occurred while sending email. Please try again later.</div>
+                        <div class="col-md-6 col-lg-6">
+                           <div class="form-group"> <input required class="form-control no-border" id="address" type="text" name="address" placeholder="Address*"/></div>
                         </div>
-                     </div>
-                  </form>
+                      </div>
+
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                       <div class="form-group"> <input required class="form-control no-border" id="subject" type="text" name="subject" placeholder="Subject*"/></div>
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                      <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                              <select class="form-control no-border" id="service" name="service_id" placeholder="Service*">
+                                <% spaDetail.services.forEach(item=>{ %>
+                                  <option value="<%=item._id%>"><%=item.title%></option>
+                                <% }) %>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group"> <input required class="form-control no-border" id="date" type="date" name="date" placeholder="Date*"/></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                       <div class="form-group"><textarea required class="form-control no-border" id="message" rows="7" name="message" placeholder="Message*"></textarea></div>
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                       <div class="form-group m-0"> <input required class="btn btn-black" id="send" type="submit" value="send"/></div>
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                       <div class="error-handel">
+                          <div id="success">Your email sent Successfully, Thank you.</div>
+                          <div id="error"> Error occurred while sending email. Please try again later.</div>
+                       </div>
+                    </div>
+                 </form>
                </div>
             </div>
          </div>

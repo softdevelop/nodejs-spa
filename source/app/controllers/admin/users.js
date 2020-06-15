@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
+const Role = mongoose.model("Role");
 const moment = require("moment-timezone");
 const {genHtmlPagination, urlMediaUpload} = require('../../utils')
 const {validateUser, validateUserEdit} = require('../../models/users')
@@ -38,8 +39,9 @@ const getListUsers = async (req, res) => {
   }
 };
 
-const getFormCreate = (req, res) => {
-  res.render('admin/users/create', {errors: {}, data: {}})
+const getFormCreate = async (req, res) => {
+  let roles = await Role.find().select('name value').exec();
+  res.render('admin/users/create', {errors: {}, data: {}, roles})
 }
 
 const create = async (req, res) => {
@@ -52,7 +54,8 @@ const create = async (req, res) => {
         [item.path[0]]: item.message
       }
     }, {})
-    return res.render('admin/users/create', {errors, data})
+    let roles = await Role.find().select('name value').exec();
+    return res.render('admin/users/create', {errors, data, roles})
   }else{
     if(req.files.avatar){
       data.avatar = req.files.avatar[0]
@@ -70,7 +73,8 @@ const create = async (req, res) => {
 const getFormEdit = async (req, res) => {
   let id = req.params.id
   let record = await User.findById(id).exec();
-  res.render('admin/users/edit', {errors: {}, data: record, urlMediaUpload})
+  let roles = await Role.find().select('name value').exec();
+  res.render('admin/users/edit', {errors: {}, data: record, urlMediaUpload, roles})
 }
 
 const edit = async (req, res) => {
@@ -85,7 +89,8 @@ const edit = async (req, res) => {
       }
     }, {})
     data._id = id
-    return res.render('admin/users/edit', {errors, data, urlMediaUpload})
+    let roles = await Role.find().select('name value').exec();
+    return res.render('admin/users/edit', {errors, data, urlMediaUpload, roles})
   }else{
     if(req.files.avatar && req.files.avatar[0]){
       data.avatar = req.files.avatar[0]
@@ -125,5 +130,6 @@ module.exports = {
   getFormEdit,
   edit,
   delMany,
-  viewDetail
+  viewDetail,
+  
 };

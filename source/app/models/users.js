@@ -42,7 +42,7 @@ function validateUser(user) {
         phone: Joi.string().allow(''),
         address: Joi.string().allow(''),
         birthday: Joi.date().required(),
-        role: Joi.string().valid(ROLES).required(),
+        role: Joi.string().required(),
         status: Joi.string().valid(STATUS).required(),
         avatar: Joi.any(),
         note: Joi.string().allow(''),
@@ -64,8 +64,22 @@ function validateUserEdit(user) {
         phone: Joi.string().allow(''),
         address: Joi.string().allow(''),
         birthday: Joi.date().required(),
-        role: Joi.string().valid(ROLES).required(),
+        role: Joi.string().required(),
         status: Joi.string().valid(STATUS).required(),
+        avatar: Joi.any(),
+        note: Joi.string().allow('')
+    };
+    return Joi.validate(user, schema, { abortEarly: false });
+}
+function validateUserProfileEdit(user) {
+    const schema = {
+        first_name: Joi.string().min(1).max(50).required(),
+        last_name: Joi.string().min(1).max(50).required(),
+        email: Joi.string().min(5).max(255).required().email(),
+        gender: Joi.number(),
+        phone: Joi.string().allow(''),
+        address: Joi.string().allow(''),
+        birthday: Joi.date().required(),
         avatar: Joi.any(),
         note: Joi.string().allow('')
     };
@@ -173,6 +187,10 @@ UserSchema.virtual('created_at').get(function () {
 UserSchema.virtual('birthday_at').get(function () {
     return moment(this.createdAt).format("DD/MM/YYYY");
 })
+
+UserSchema.virtual('birthday_form').get(function () {
+  return moment(this.createdAt).format("YYYY-MM-DD");
+})
 /**
  * Method
  */
@@ -248,6 +266,7 @@ const User = mongoose.model('User', UserSchema);
 
 exports.validateUser = validateUser;
 exports.validateUserEdit = validateUserEdit;
+exports.validateUserProfileEdit = validateUserProfileEdit;
 exports.validatePass = validatePass;
 exports.validateLogin = validateLogin;
 exports.validateAdminLogin = validateAdminLogin;

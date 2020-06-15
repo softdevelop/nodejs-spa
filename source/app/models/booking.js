@@ -10,11 +10,11 @@ const Joi = require('joi');
 const STATUS = ["blocked", "active", "pending"]
 
 const BookingSchema = new Schema({
-    name: { type: String, unique: true, require:true},
-    phone: {type: Number, require:true },
-    address: {type: String, require:true},
+    name: { type: String, require: true},
+    phone: {type: Number, require: true },
+    address: {type: String, require: true},
     date: {type: Date, require: true},
-    message: {type: String, require:true},
+    message: {type: String, require: true},
     note: {type: String},
     status: { type: String, enum: STATUS, default: STATUS[2] },
     spa_id: {type: String, require: true},
