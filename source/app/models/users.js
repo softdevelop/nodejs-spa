@@ -42,7 +42,7 @@ function validateUser(user) {
         phone: Joi.string().allow(''),
         address: Joi.string().allow(''),
         birthday: Joi.date().required(),
-        role: Joi.string().valid(ROLES).required(),
+        role: Joi.string().required(),
         status: Joi.string().valid(STATUS).required(),
         avatar: Joi.any(),
         note: Joi.string().allow(''),
@@ -64,7 +64,7 @@ function validateUserEdit(user) {
         phone: Joi.string().allow(''),
         address: Joi.string().allow(''),
         birthday: Joi.date().required(),
-        role: Joi.string().valid(ROLES).required(),
+        role: Joi.string().required(),
         status: Joi.string().valid(STATUS).required(),
         avatar: Joi.any(),
         note: Joi.string().allow('')

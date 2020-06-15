@@ -84,9 +84,9 @@
                                   <div class="form-group <%=errors.role?'has-danger':''%>">
                                       <label class="control-label">Role</label>
                                       <select class="form-control custom-select" name="role">
-                                          <option value="ADMIN" <%=data.gender=='ADMIN'?'selected':''%>>Admin</option>
-                                          <option value="USER" <%=data.gender=='USER'?'selected':''%>>User</option>
-                                          <option value="SPA_OWNER" <%=data.gender=='SPA_OWNER'?'selected':''%>>Spa owner</option>
+                                          <% roles.forEach(item=>{ %>
+                                            <option value="<%=item.value%>" <%=data.role==item.value?'selected':''%>><%=item.name%></option>
+                                          <% }) %>
                                       </select>
                                       <small class="form-control-feedback"><%=errors?errors.role:''%></small>
                                   </div>

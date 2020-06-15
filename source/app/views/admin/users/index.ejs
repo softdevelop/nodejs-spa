@@ -172,8 +172,8 @@
                                       <span class="label label-danger"><%=user.role%></span>
                                     <% } else if (user.role=='USER'){ %>
                                       <span class="label label-info m-r-10"><%=user.role%></span>
-                                    <% } else if (user.role=='SPA_OWNER'){ %>
-                                      <span class="label label-warning m-r-10">Spa owner</span>
+                                    <% } else { %>
+                                      <span class="label label-warning m-r-10"><%=user.role%></span>
                                     <% } %>
                                   </td>
                                   <td><%=user.status%></td>
