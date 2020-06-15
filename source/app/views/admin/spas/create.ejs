@@ -163,6 +163,23 @@
                          </div>
                       </div>
                    </div>
+                   <div class="row p-t-20">
+                     <div class="col-md-6">
+                        <div class="form-group form-group-status <%=errors.status?'has-danger':''%>">
+                           <label class="control-label">Locations</label>
+                           <select class="form-control custom-select" name="status">
+                               <% for (let [key, value] of Object.entries(locations)) { %>
+                                 <option value="<%=key%>"><%= value %> </option>
+                               <% } %>
+                               
+
+                           </select>
+                           <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
+                        </div>
+                     </div>
+                     
+                  </div>
+                  <!--/row-->
                     <div class="row">
                        <div class="col-md-12 ">
                           <div class="form-group form-group-description <%=errors.description? 'has-danger': ''%>">
@@ -198,7 +215,7 @@
                              <select class="form-control custom-select" name="status">
                                 <option value="pending">Pending</option>
                                 <option value="active" ">Active</option>
-                                <option value="blocked ">Blocked</option>
+                                
                              </select>
                              <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
                           </div>
