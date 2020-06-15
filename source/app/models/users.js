@@ -187,6 +187,10 @@ UserSchema.virtual('created_at').get(function () {
 UserSchema.virtual('birthday_at').get(function () {
     return moment(this.createdAt).format("DD/MM/YYYY");
 })
+
+UserSchema.virtual('birthday_form').get(function () {
+  return moment(this.createdAt).format("YYYY-MM-DD");
+})
 /**
  * Method
  */

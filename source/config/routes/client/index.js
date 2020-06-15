@@ -23,6 +23,7 @@ router.get('/service', service.index)
 router.get('/news', newsDetail.index)
 router.get('/question-and-answer', qa.index)
 router.get('/spa/:slug', spa.landingPage)
+router.post('/spa/:slug', spa.booking)
 router.get("/:slug", staticPage.index);
 
 // router.get("*", (req, res) => {

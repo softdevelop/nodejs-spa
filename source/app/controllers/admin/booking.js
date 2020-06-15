@@ -47,7 +47,10 @@ const getListBooking = async (req, res) => {
 };
 
 const getFormCreate = async (req, res) => {
-  var spas = await Spa.find().populate("services").exec()
+  var spas = await Spa.find().select('_id name').populate({
+    path: "services",
+    select: "_id title"
+  }).exec()
   res.render('admin/booking/create', {errors: {}, data:  spas})
 }
 
