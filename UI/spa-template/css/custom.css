@@ -1,0 +1,23 @@
+.carousel-item .overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: 100%;
+}
+.carousel-caption {
+    bottom: 50%!important;
+    transform: translateY(50%);
+}
+.carousel-caption h5{
+    color: white;
+    font-size: 80px;
+    font-weight: bold;
+    line-height: 84px;
+}
+.carousel-caption p{
+    color: white;
+    font-size: 25px;
+    line-height: 50px;
+}
