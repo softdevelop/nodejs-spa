@@ -34,6 +34,7 @@ getFormChangePass = async (req, res) => {
   let id = req.user.id
   res.render('admin/profile/changePass', {
     errors: {},
+    errPass:"",
     id
   });
 }
@@ -55,7 +56,7 @@ resetPassword = (req, res) => {
         [item.path[0]]: item.message
       }
     }, {})
-    return res.render('admin/profile/changePass', {errors, id})
+    return res.render('admin/profile/changePass', {errors, errPass:"" , id})
   } else {
     userService.getUser2(data.id).then(function (result) {
       if (bcrypt.compareSync(data.password, result.password)) {
@@ -69,7 +70,7 @@ resetPassword = (req, res) => {
           })
       }
       else {
-        return res.sendError("Password incorrect")
+        return res.render('admin/profile/changePass', {errors:{}, errPass:"Password incorrect" , id})
       }
     }).catch(err => {
       return res.sendError(err);
