@@ -71,6 +71,20 @@ function validateUserEdit(user) {
     };
     return Joi.validate(user, schema, { abortEarly: false });
 }
+function validateUserProfileEdit(user) {
+    const schema = {
+        first_name: Joi.string().min(1).max(50).required(),
+        last_name: Joi.string().min(1).max(50).required(),
+        email: Joi.string().min(5).max(255).required().email(),
+        gender: Joi.number(),
+        phone: Joi.string().allow(''),
+        address: Joi.string().allow(''),
+        birthday: Joi.date().required(),
+        avatar: Joi.any(),
+        note: Joi.string().allow('')
+    };
+    return Joi.validate(user, schema, { abortEarly: false });
+}
 function validateUserEditApi(user) {
     const schema = {
         first_name: Joi.string().min(1).max(50),
@@ -248,6 +262,7 @@ const User = mongoose.model('User', UserSchema);
 
 exports.validateUser = validateUser;
 exports.validateUserEdit = validateUserEdit;
+exports.validateUserProfileEdit = validateUserProfileEdit;
 exports.validatePass = validatePass;
 exports.validateLogin = validateLogin;
 exports.validateAdminLogin = validateAdminLogin;
