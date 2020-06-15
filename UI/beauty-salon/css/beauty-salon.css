@@ -223,67 +223,67 @@
 }
 .nd_options_navigation_search_content_form {}
 
-		.nd_options_navigation_search_content_form input[type="search"] {
-			background: none;
-			border: 0px;
-			border-bottom: 2px solid #fff;
-			color: #fff;
-			font-size: 30px;
-			line-height: 30px;
-		}
+.nd_options_navigation_search_content_form input[type="search"] {
+	background: none;
+	border: 0px;
+	border-bottom: 2px solid #fff;
+	color: #fff;
+	font-size: 30px;
+	line-height: 30px;
+}
 
-		.nd_options_navigation_search_content_form input[type="search"]::-webkit-input-placeholder {
-			color: #fff;
-		}
+.nd_options_navigation_search_content_form input[type="search"]::-webkit-input-placeholder {
+	color: #fff;
+}
 
-		.nd_options_navigation_search_content_form input[type="submit"] {
-			font-size: 25px;
-			line-height: 40px;
-			margin-left: 20px;
-    }
-    .nd_options_navigation_4 div>ul {
-			list-style: none;
-			margin: 0px;
-			padding: 0px;
-			text-align: center;
-		}
+.nd_options_navigation_search_content_form input[type="submit"] {
+	font-size: 25px;
+	line-height: 40px;
+	margin-left: 20px;
+}
+.nd_options_navigation_4 div>ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}
 
-		.nd_options_navigation_4 div>ul>li {
-			display: inline-block;
-			padding: 0px;
-		}
+.nd_options_navigation_4 div>ul>li {
+	display: inline-block;
+	padding: 0px;
+}
 
-		.nd_options_navigation_4 div>ul>li:after {
-			content: "|";
-			display: inline-block;
-			margin: 0px 20px;
-			color: #f1f1f1;
-		}
+.nd_options_navigation_4 div>ul>li:after {
+	content: "|";
+	display: inline-block;
+	margin: 0px 20px;
+	color: #f1f1f1;
+}
 
-		.nd_options_navigation_4 div>ul>li:last-child:after {
-			content: "";
-			margin: 0px;
-		}
+.nd_options_navigation_4 div>ul>li:last-child:after {
+	content: "";
+	margin: 0px;
+}
 
-		.nd_options_navigation_4 div li a {
-			color: #727475;
-			font-size: 13px;
-			line-height: 13px;
-			font-family: Open Sans;
-			font-weight: lighter;
-			letter-spacing: 3px;
-		}
+.nd_options_navigation_4 div li a {
+	color: #727475;
+	font-size: 13px;
+	line-height: 13px;
+	font-family: Open Sans;
+	font-weight: lighter;
+	letter-spacing: 3px;
+}
 
-		.nd_options_navigation_4 div>ul li:hover>ul.sub-menu {
-			display: block;
-		}
+.nd_options_navigation_4 div>ul li:hover>ul.sub-menu {
+	display: block;
+}
 
-		.nd_options_navigation_4 div>ul li>ul.sub-menu {
-			z-index: 999;
-			position: absolute;
-			margin: 0px;
-			padding: 0px;
-			list-style: none;
+.nd_options_navigation_4 div>ul li>ul.sub-menu {
+	z-index: 999;
+	position: absolute;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
 			display: none;
 			margin-left: -20px;
 			padding-top: 16px;
@@ -1811,31 +1811,31 @@
       opacity: 1;
     }
     #nd_options_shortcode_cf7_451 input[type="text"],
-									#nd_options_shortcode_cf7_451 input[type="email"],
-									#nd_options_shortcode_cf7_451 input[type="url"],
-									#nd_options_shortcode_cf7_451 input[type="tel"],
-									#nd_options_shortcode_cf7_451 input[type="number"],
-									#nd_options_shortcode_cf7_451 input[type="date"],
-									#nd_options_shortcode_cf7_451 input[type="checkbox"],
-									#nd_options_shortcode_cf7_451 input[type="file"],
-									#nd_options_shortcode_cf7_451 textarea,
-									#nd_options_shortcode_cf7_451 label,
-									#nd_options_shortcode_cf7_451 select {
+	#nd_options_shortcode_cf7_451 input[type="email"],
+	#nd_options_shortcode_cf7_451 input[type="url"],
+	#nd_options_shortcode_cf7_451 input[type="tel"],
+	#nd_options_shortcode_cf7_451 input[type="number"],
+	#nd_options_shortcode_cf7_451 input[type="date"],
+	#nd_options_shortcode_cf7_451 input[type="checkbox"],
+	#nd_options_shortcode_cf7_451 input[type="file"],
+	#nd_options_shortcode_cf7_451 textarea,
+	#nd_options_shortcode_cf7_451 label,
+	#nd_options_shortcode_cf7_451 select {
 
-										width: 100%;
+		width: 100%;
 
-									}
+	}
 
 
-									.nd_options_customizer_forms span.wpcf7-not-valid-tip,
-									.nd_options_customizer_forms .wpcf7-response-output.wpcf7-validation-errors,
-									.nd_options_customizer_forms .wpcf7-response-output.wpcf7-mail-sent-ok {
+	.nd_options_customizer_forms span.wpcf7-not-valid-tip,
+	.nd_options_customizer_forms .wpcf7-response-output.wpcf7-validation-errors,
+	.nd_options_customizer_forms .wpcf7-response-output.wpcf7-mail-sent-ok {
 
-										float: left;
-										width: 100%;
-										box-sizing: border-box;
+		float: left;
+		width: 100%;
+		box-sizing: border-box;
 
-									}
-									.footer-widget .newsletter-widget button {
-										border-radius: 0;
-									}
+	}
+	.footer-widget .newsletter-widget button {
+		border-radius: 0;
+	}
