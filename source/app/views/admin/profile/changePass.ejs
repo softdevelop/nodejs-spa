@@ -50,28 +50,28 @@
                                 <div class="form-group">
                                     <label class="control-label">PassWord</label>
                                     <input class="form-control" name="password"  type="password" required/>
-                                    <small class="form-control-feedback"><%=errors?errors.password:''%></small>
+                                    <small class="form-control-feedback text-danger"><%=errPass?errPass:''%></small>
                                 </div>
                             </div>
                             <div class="p-t-20 col-12">
                                 <div class="form-group">
                                     <label class="control-label">New PassWord</label>
                                     <input class="form-control" name="newPass"  type="password" required/>
-                                    <small class="form-control-feedback"><%=errors?errors.newPass:''%></small>
+                                    <small class="form-control-feedback text-danger"><%=errors?errors.newPass:''%></small>
                                 </div>
                             </div>
                             <div class="p-t-20 col-12">
                                 <div class="form-group">
                                     <label class="control-label">Re-PassWord</label>
                                     <input class="form-control" name="newPassRetype"  type="password" required />
-                                    <small class="form-control-feedback"><%=errors?errors.newPassRetype:''%></small>
+                                    <small class="form-control-feedback text-danger"><%=errors?errors.newPassRetype:''%></small>
                                 </div>
                             </div>
                         </div>
                        
                             
                             <div class="form-actions">
-                                <button type="submit" class="btn btn-primary"> <i class="icon-note"></i> Edit</button>
+                                <button type="submit" class="btn waves-effect waves-light btn-success"> <i class="icon-note"></i> Save</button>
                                 <a href="/admin/profile">
                                     <button type="button" class="btn btn-inverse">Cancel</button>
                                 </a>
