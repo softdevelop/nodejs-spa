@@ -9,11 +9,6 @@
     "start_server": "NODE_ENV=production node ./server.js",
     "stop:server": "pm2 stop server",
     "migration": "npm run start:backup && node ./scripts/migration.js",
-    "start:backup": "node ./scripts/backup-db.js",
-    "start:restore": "node ./scripts/restore-db.js",
-    "unit_test": "nyc --all --exclude app/cronjobs --exclude app/controllers/test --exclude app/controllers/admin --exclude assets --exclude coverage --exclude client --exclude boot --exclude scripts --exclude test --reporter=html --report-dir ./coverage/unit mocha --exit test/unit/**/*.js",
-    "integration_test": "nyc --all --exclude app/cronjobs --exclude app/controllers/test --exclude app/controllers/admin --exclude assets --exclude coverage --exclude client --exclude boot --exclude scripts --exclude test --reporter=html --report-dir ./coverage/integration mocha --timeout 0 --exit test/integration/**/*.js",
-    "api_test": "mocha --timeout 0 --exit test/integration/api/*.js",
     "sass:compile": "node-sass ./assets/scss/main.scss ./assets/scss/main.css"
   },
   "keywords": [],
