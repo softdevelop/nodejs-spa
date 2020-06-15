@@ -13,6 +13,25 @@ const CODE = {
     INTERNAL_SERVER_ERROR: 500,
 }
 
+const locations = {
+  hai_chau: 'Quận Hải Châu',
+  cam_le: 'Quận Cẩm Lệ',
+  thanh_khe: 'Quận Thanh Khê',
+  lien_chieu: 'Quận Liên Chiểu',
+  ngu_hanh_son: 'Quận Ngũ Hành Sơn',
+  son_tra: 'Quận Sơn Trà',
+  khac: 'Khác'
+}
+
+const locationsArr = Object.keys(locations).map(item=>{
+  return {
+    name: locations[item],
+    value: item
+  }
+})
+
 module.exports = {
-    CODE
+    CODE,
+    locations,
+    locationsArr
 };
