@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Category = mongoose.model('Category')
-
+const {
+  constants
+} = require("../../utils");
 const index = async (req, res) => {
 
   let categoryLevel1 = await Category.getChildrenTree({
@@ -9,8 +11,8 @@ const index = async (req, res) => {
   });
 
   res.render("client/homes/index", {
-    categoryLevel1
-
+    categoryLevel1,
+    locationsArr: constants.locationsArr
   });
 };
 
