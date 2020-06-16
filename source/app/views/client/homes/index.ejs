@@ -15,23 +15,21 @@
           <div class="row">
               <div class="col-xl-12">
                   <div class="booking-wrapper mt-45">
-                      <form action="#" method="post" class="clearfix">
+                      <form action="/search" method="get" class="clearfix">
                           <div class="beauty-service clearfix">
-                              <select class="wide" name="beauty-service" required>
-                              <option selected>Location</option>
-                              <option value="facial">Son Tra</option>
-                              <option value="nailCare">Thanh Khe</option>
-                              <option value="eyeCare">Lien Chieu</option>
-                              <option value="waxing">Ngu Hanh Son</option>
-                          </select>
+                              <select class="wide" name="location" required>
+                                <% locationsArr.forEach(item=>{ %>
+                                  <option value="<%=item.value%>"><%=item.name%></option>
+                                <% }) %>
+                            </select>
                           </div>
 
                           <div class="date">
                               <input type="" name="date" id="booking-date" placeholder="Date start" required />
                           </div>
 
-                          <div class="num_sit">
-                              <input type="number" id="num_sit" name="num_sit" min="1" max="50" placeholder="Seat number">
+                          <div class="seat">
+                              <input type="number" id="seat" name="seat" min="1" max="50" placeholder="Seat number">
                           </div>
 
                           <button type="submit">Search</button>
