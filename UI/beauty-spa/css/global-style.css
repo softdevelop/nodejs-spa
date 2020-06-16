@@ -706,7 +706,6 @@ a {
 .mr-10 {
     margin-right: 10px
 }
-
 *,
 body,
 p,
@@ -1414,7 +1413,6 @@ a {
 .mr-10 {
     margin-right: 10px
 }
-
 *,
 body,
 p,
@@ -1444,7 +1442,9 @@ p {
 }
 
 body,
-html {}
+html {
+    height: 100%
+}
 
 a,
 figur,

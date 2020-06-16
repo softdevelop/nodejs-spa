@@ -14,41 +14,41 @@
 
 
         /*--------home page slider---------*/
-        $("#home1-slider").slick({
-            autoplay: false,
-            autoplaySpeed: 7000,
-            speed: 600,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            pauseOnHover: false,
-            dots: false,
-            pauseOnDotsHover: true,
-            cssEase: 'linear',
-            fade: true,
-            draggable: true,
-            prevArrow: '<button class="PrevArrow"><i class="fa fa-angle-left"></i></button>',
-            nextArrow: '<button class="NextArrow"><i class="fa fa-angle-right"></i></button>',
+        // $("#home1-slider").slick({
+        //     autoplay: false,
+        //     autoplaySpeed: 7000,
+        //     speed: 600,
+        //     slidesToShow: 1,
+        //     slidesToScroll: 1,
+        //     pauseOnHover: false,
+        //     dots: false,
+        //     pauseOnDotsHover: true,
+        //     cssEase: 'linear',
+        //     fade: true,
+        //     draggable: true,
+        //     prevArrow: '<button class="PrevArrow"><i class="fa fa-angle-left"></i></button>',
+        //     nextArrow: '<button class="NextArrow"><i class="fa fa-angle-right"></i></button>',
+        // });
+
+
+        //------------nice select-----------
+        $('select').niceSelect();
+
+        //-----------video venobox--------
+        $('.venobox').venobox();
+
+        //----------moving to welcome section on clicking mouse icon---------
+        $("#mouse").on("click", function() {
+            $("html, body").animate({
+                scrollTop: $("#welcome").offset().top - 0 + 'px'
+            }, 1200);
         });
 
-
-        // //------------nice select-----------
-        // $('select').niceSelect();
-
-        // //-----------video venobox--------
-        // $('.venobox').venobox();
-
-        // //----------moving to welcome section on clicking mouse icon---------
-        // $("#mouse").on("click", function() {
-        //     $("html, body").animate({
-        //         scrollTop: $("#welcome").offset().top - 0 + 'px'
-        //     }, 1200);
-        // });
-
-        // //-----------facts counter----------
-        // $('.counter').counterUp({
-        //     //delay: 10, // the delay time in ms
-        //     time: 800 // the speed time in ms
-        // });
+        //-----------facts counter----------
+        $('.counter').counterUp({
+            //delay: 10, // the delay time in ms
+            time: 800 // the speed time in ms
+        });
 
 
     }); //--end document ready function--
@@ -90,42 +90,42 @@
 
 
     //--------slick carousel for welcome sectioin----------
-    $('#carousel-img').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        speed: 1200,
-        cssEase: 'ease-in-out',
-        fade: true,
-        asNavFor: '#carousel-text'
-    });
-    $('#carousel-text').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        asNavFor: '#carousel-img',
-        speed: 900,
-        cssEase: 'ease-in-out',
-        focusOnSelect: true
-    });
+    // $('#carousel-img').slick({
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     arrows: false,
+    //     speed: 1200,
+    //     cssEase: 'ease-in-out',
+    //     fade: true,
+    //     asNavFor: '#carousel-text'
+    // });
+    // $('#carousel-text').slick({
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     asNavFor: '#carousel-img',
+    //     speed: 900,
+    //     cssEase: 'ease-in-out',
+    //     focusOnSelect: true
+    // });
 
 
     /*---------booking date picker---------*/
-    $("#booking-date").datepicker({
-        dateFormat: 'dd - mm - yy',
-        minDate: "new Date()",
-    });
-    // $("#booking-date2").daterangepicker();
+    // $("#booking-date").datepicker({
+    //     dateFormat: 'dd - mm - yy',
+    //     minDate: "new Date()",
+    // });
+    // // $("#booking-date2").daterangepicker();
 
-    $("#booking-date2").datepicker({
-        dateFormat: 'dd - mm - yy',
-        minDate: "new Date()",
-    });
+    // $("#booking-date2").datepicker({
+    //     dateFormat: 'dd - mm - yy',
+    //     minDate: "new Date()",
+    // });
 
 
-    //----------product gallery-----------
-    $('#product-gallery-v1').isotope({
-        itemSelector: '.mason',
-    });
+    // //----------product gallery-----------
+    // $('#product-gallery-v1').isotope({
+    //     itemSelector: '.mason',
+    // });
 
 
     //---------product list view and grid view---------
@@ -142,18 +142,6 @@
 
 
     //--------------pricing range slider----------
-    $("#range").slider({
-        range: true,
-        min: 200,
-        max: 10000,
-        values: [200, 5000],
-        slide: function(event, ui) {
-            $("#minVal").html(ui.values[0]);
-            $("#maxVal").html(ui.values[1]);
-        }
-    });
-    $("#minVal").html($("#range").slider("values", 0));
-    $("#maxVal").html($("#range").slider("values", 1));
 
 
     //--------product quantity increase or decrease-----
@@ -206,29 +194,7 @@
 
 
     /*------------product carousel-------------*/
-    $("#product-carousel").owlCarousel({
-        items: 4,
-        loop: true,
-        dots: false,
-        nav: true,
-        margin: 25,
-        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-        autoplay: true,
-        smartSpeed: 1200,
-        autoplayHoverPause: true,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            768: {
-                items: 3,
-            },
-            992: {
-                items: 4,
-            }
-        }
-    });
+
 
 
     //-------experts carousel-------
@@ -261,6 +227,28 @@
     });
     */
 
+    //-------testimonial carousel-------
+
+
+
+    //--------Scroll Top---------
+    main_wind.on('scroll', function() {
+        if ($(this).scrollTop() > 200) {
+            $('.scroll-top').fadeIn();
+            $('.scroll-top').removeClass('not-visible');
+        } else {
+            $('.scroll-top').fadeOut();
+        }
+    });
+    $('.scroll-top').on('click', function(event) {
+        event.preventDefault();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 500);
+    });
+
+
+}(jQuery));
     //-------testimonial carousel-------
     $(".testimoial-wrapper").owlCarousel({
         items: 1,
