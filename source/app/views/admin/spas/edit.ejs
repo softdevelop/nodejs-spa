@@ -76,13 +76,17 @@
                        </div>
                     </div>
                     <div class="row p-t-20">
-                       <div class="col-md-6">
-                          <div class="form-group <%=errors.phone?'has-danger':''%>">
-                             <label class="control-label">Phone</label>
-                             <input type="text" id="phone" class="form-control" name="phone" value="<%=data.phone?data.phone:''%>">
-                             <small class="form-control-feedback"><%=errors?errors.phone:''%></small>
-                          </div>
-                       </div>
+                     <div class="col-md-6">
+                        <div class="form-group form-group-status <%=errors.status?'has-danger':''%>">
+                           <label class="control-label">Location</label>
+                           <select class="form-control custom-select" name="location">
+                               <% for (let [key, value] of Object.entries(locations)) { %>
+                                 <option value="<%=key%>" <% key==data.location?"selected":'' %> > <%= value %> </option>
+                               <% } %>
+                           </select>
+                           <small class="form-control-feedback "><%=errors?errors.location:''%></small> 
+                        </div>
+                     </div>
                        <div class="col-md-6">
                           <div class="form-group <%=errors.address?'has-danger':''%>">
                              <label class="control-label">Address</label>
@@ -92,6 +96,23 @@
                        </div>
                     </div>
                     <!--/row-->
+                    <div class="row p-t-20">
+                     <div class="col-md-6">
+                        <div class="form-group <%=errors.phone?'has-danger':''%>">
+                           <label class="control-label">Phone</label>
+                           <input type="text" id="phone" class="form-control" name="phone" value="<%=data.phone?data.phone:''%>">
+                           <small class="form-control-feedback"><%=errors?errors.phone:''%></small>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group <%=errors.email?'has-danger':''%>">
+                           <label class="control-label">Email</label>
+                           <input type="text" id="email" class="form-control" name="email" value="<%=data.email?data.email:''%>">
+                           <small class="form-control-feedback"><%=errors?errors.email:''%></small>
+                        </div>
+                     </div>
+                  </div>
+                  <!--/row-->
                     <!--/row-->
                     <div class="row p-t-20">
                        <div class="col-md-6">

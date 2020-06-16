@@ -21,9 +21,6 @@ const dashboardUrl = () => APP_DOMAIN + `/dashboard`;
 mongoose.Promise = global.Promise;
 
 const getListSpas = async (req, res) => {
-  console.log('====================================');
-  console.log(locations);
-  console.log('====================================');
   if (req.user) {
     let { page, limit } = req.query;
     let search = req.query.search || '';
@@ -88,6 +85,9 @@ const create = async (req, res) => {
 const getFormEdit = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
+  console.log('====================================');
+  console.log(record);
+  console.log('====================================');
   let usersOwnedSpa = await Spa.find({ owner: { $ne: null } }).select('owner name').exec();
   let idsUsersOwnedSpa = [];
   usersOwnedSpa.forEach(item=>{
@@ -97,7 +97,7 @@ const getFormEdit = async (req, res) => {
     }
   });
   let spaOwners = await User.find({role: "SPA_OWNER", _id: { $nin: idsUsersOwnedSpa }}).exec();
-  res.render('admin/spas/edit', {errors: {}, data: record, urlMediaUpload, spaOwners})
+  res.render('admin/spas/edit', {errors: {}, data: record, urlMediaUpload, spaOwners,locations})
 }
 
 const edit = async (req, res) => {
@@ -141,6 +141,9 @@ const delMany = async (req, res) => {
 const viewDetail = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
+  console.log('====================================');
+  console.log(record);
+  console.log('====================================');
   let usersOwnedSpa = await Spa.find({ owner: { $ne: null } }).select('_id name').exec();
   let idsUsersOwnedSpa = usersOwnedSpa.map(item=>''+item._id);
   let spaOwners = await User.find({role: "SPA_OWNER", _id: { $nin: idsUsersOwnedSpa }}).exec();
