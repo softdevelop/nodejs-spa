@@ -12,16 +12,16 @@
     <meta name="robots" content="" />
     <meta name="description" content="" />
 
-    <!-- FAVICONS ICON -->
+    <!--favicon icon-->
     <link rel="icon" href="images/favicon.png" type="image/x-icon" />
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
 
     <!-- PAGE TITLE HERE -->
-    <title>Spa Template | Home Page 5</title>
-
+    <title>Beauty Lab | Home</title>
+    
     <!-- MOBILE SPECIFIC -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <!-- global style css -->
+    <link rel="stylesheet" href="../HTML/css/global-style.css">
     <!-- [if lt IE 9]>
         <script src="js/html5shiv.min.js"></script>
         <script src="js/respond.min.js"></script>
@@ -30,7 +30,7 @@
     <!-- BOOTSTRAP STYLE SHEET -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <!-- FONTAWESOME STYLE SHEET -->
-    <link rel="stylesheet" type="text/css" href="../HTML/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
     <!-- FLATICON STYLE SHEET -->
     <link rel="stylesheet" type="text/css" href="css/flaticon.min.css">
     <!-- ANIMATE STYLE SHEET -->
@@ -52,227 +52,478 @@
     <!-- SIDE SWITCHER STYLE SHEET -->
     <link rel="stylesheet" type="text/css" href="css/switcher.css">
 
-
     <!-- REVOLUTION SLIDER CSS -->
     <link rel="stylesheet" type="text/css" href="css/settings.css">
     <!-- REVOLUTION NAVIGATION STYLE -->
     <link rel="stylesheet" type="text/css" href="css/navigation.css">
 
     <!-- GOOGLE FONTS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-        <link rel="icon" href="../HTML/images/favicon.png">
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-	<!-- flaticon css -->
-	<link rel="stylesheet" href="../HTML/css/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="../HTML/css/font-awesome.min.css" />
 
-	<!--jquery-ui css-->
-	<link rel="stylesheet" href="../HTML/css/jquery-ui.min.css">
+    <!--menuzord css-->
+    <link rel="stylesheet" href="css/menuzord.css">
 
-	<!--menuzord css-->
-	<link rel="stylesheet" href="../HTML/css/menuzord.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="../HTML/css/style.css">
 
-	<!-- style css -->
-	<link rel="stylesheet" href="../HTML/css/style.css">
+    <!-- color css -->
+    <link rel="stylesheet" href="../HTML/css/colors/color-1.css">
 
-	<!-- color css -->
-	<link rel="stylesheet" href="../HTML/css/colors/color-1.css">
+    <!--responsive css-->
+    <link rel="stylesheet" href="../HTML/css/responsive.css">
 
-	<!--responsive css-->
-	<link rel="stylesheet" href="../HTML/css/responsive.css">
 </head>
 
 <body id="bg">
 
     <div class="page-wraper">
-        	<!-- search-modal -->
-	<div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-						aria-hidden="true">&times;</span></button>
-				<img src="../HTML/images/search-popup-logo.png" alt="search-popup-logo">
-				<form action="" class="form-inline">
-					<input type="text" name="search" placeholder="Search here...">
-					<button><i class="fa fa-search"></i></button>
-				</form>
-				<div class="quick-search">
-					<h6 class="color-ff pos-relative ptb-30">Quick search</h6>
-					<ul>
-						<li><a href="#">parlour</a></li>
-						<li><a href="#">massage</a></li>
-						<li><a href="#">yoga</a></li>
-						<li><a href="#">spa</a></li>
-						<li><a href="#">beauty</a></li>
-						<li><a href="#">exparts</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
 
+        <!-- HEADER START -->
+         <!-- search-modal -->
+    <div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <img src="images/search-popup-logo.png" alt="search-popup-logo">
+                <form action="" class="form-inline">
+                    <input type="text" name="search" placeholder="Search here...">
+                    <button><i class="fa fa-search"></i></button>
+                </form>
+                <div class="quick-search">
+                    <h6 class="color-ff pos-relative ptb-30">Quick search</h6>
+                    <ul>
+                        <li><a href="#">parlour</a></li>
+                        <li><a href="#">massage</a></li>
+                        <li><a href="#">yoga</a></li>
+                        <li><a href="#">spa</a></li>
+                        <li><a href="#">beauty</a></li>
+                        <li><a href="#">exparts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<!-- ======================================= 
+    <!-- ======================================= 
         ==Start Header section==  
     =======================================-->
-	<header class="beauty-header" id="beauty-header" style="position: fixed;">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div id="menuzord" class="menuzord">
-						<a href="index.html" class="menuzord-brand custom-logo"><img id="logo"
-								src="../HTML/images/logo.png" alt="logo"></a>
-						<ul class="menuzord-menu menuzord-right">
-							<li class="active"><a href="#" title="Home">Home</a>
-								<ul class="dropdown triangle">
-									<li><a href="index.html">Home-1 </a></li>
-									<li><a href="index-2.html">Home-2</a></li>
-									<li><a href="index-3.html">Home-3</a></li>
-									<li><a href="index-4.html">Home-4</a></li>
-								</ul>
-							</li>
-							<li><a href="#" title="Service">Service</a>
-								<ul class="dropdown triangle">
-									<li><a href="service.html">Service page</a></li>
-									<li><a href="service-details.html">Service Details</a></li>
-								</ul>
-							</li>
-							<li><a href="booking.html" title="Booking">Booking</a></li>
-							<li><a href="#" title="Pages">pages</a>
-								<ul class="dropdown triangle">
-									<li><a href="about.html">about us</a></li>
-									<li><a href="gallery.html">gallery</a></li>
-									<li><a href="product-details.html">product details</a></li>
-									<li><a href="error.html">404 page</a></li>
-								</ul>
-							</li>
-							<li><a href="#" title="Shop">Shop</a>
-								<div class="megamenu">
-									<div class="megamenu-row">
-										<div class="col3 clearfix">
-											<ul>
-												<li>
-													<h6>Shop Full Width</h6>
-												</li>
-												<li><a href="shop-fullwidth.html">Shop Full Width (4 Column)</a></li>
-											</ul>
-											<ul>
-												<li>
-													<h6>Shop With Sidebar</h6>
-												</li>
-												<li><a href="shop-left-sidebar.html">Shop (Left Sidebar)</a></li>
-												<li><a href="shop-right-sidebar.html">Shop (Right Sidebar)</a></li>
-											</ul>
-										</div>
+    <header class="beauty-header" id="beauty-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div id="menuzord" class="menuzord">
+                        <a href="index.html" class="menuzord-brand custom-logo"><img id="logo" src="images/logo.png" alt="logo"></a>
+                        <ul class="menuzord-menu menuzord-right">
+                            <li class="active"><a href="#" title="Home">Home</a>
+                                <ul class="dropdown triangle">
+                                    <li><a href="index.html">Home-1 </a></li>
+                                    <li><a href="index-2.html">Home-2</a></li>
+                                    <li><a href="index-3.html">Home-3</a></li>
+                                    <li><a href="index-4.html">Home-4</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" title="Service">Service</a>
+                                <ul class="dropdown triangle">
+                                    <li><a href="service.html">Service page</a></li>
+                                    <li><a href="service-details.html">Service Details</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="booking.html" title="Booking">Booking</a></li>
+                            <li><a href="#" title="Pages">pages</a>
+                                <ul class="dropdown triangle">
+                                    <li><a href="about.html">about us</a></li>
+                                    <li><a href="gallery.html">gallery</a></li>
+                                    <li><a href="product-details.html">product details</a></li>
+                                    <li><a href="error.html">404 page</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" title="Shop">Shop</a>
+                                <div class="megamenu">
+                                    <div class="megamenu-row">
+                                        <div class="col3 clearfix">
+                                            <ul>
+                                                <li>
+                                                    <h6>Shop Full Width</h6>
+                                                </li>
+                                                <li><a href="shop-fullwidth.html">Shop Full Width (4 Column)</a></li>
+                                            </ul>
+                                            <ul>
+                                                <li>
+                                                    <h6>Shop With Sidebar</h6>
+                                                </li>
+                                                <li><a href="shop-left-sidebar.html">Shop (Left Sidebar)</a></li>
+                                                <li><a href="shop-right-sidebar.html">Shop (Right Sidebar)</a></li>
+                                            </ul>
+                                        </div>
 
-										<div class="col3 clearfix">
-											<ul>
-												<li>
-													<h6>Shop-Eyelash</h6>
-												</li>
-												<li><a href="#">Beetroot collection</a></li>
-												<li><a href="#">Lobster ravioli</a></li>
-												<li><a href="#">Pollo farcito</a></li>
-											</ul>
-											<ul>
-												<li>
-													<h6>Shop-Nail care</h6>
-												</li>
-												<li><a href="#">organic egg</a></li>
-												<li><a href="#">Beetroot collection</a></li>
-											</ul>
-										</div>
+                                        <div class="col3 clearfix">
+                                            <ul>
+                                                <li>
+                                                    <h6>Shop-Eyelash</h6>
+                                                </li>
+                                                <li><a href="#">Beetroot collection</a></li>
+                                                <li><a href="#">Lobster ravioli</a></li>
+                                                <li><a href="#">Pollo farcito</a></li>
+                                            </ul>
+                                            <ul>
+                                                <li>
+                                                    <h6>Shop-Nail care</h6>
+                                                </li>
+                                                <li><a href="#">organic egg</a></li>
+                                                <li><a href="#">Beetroot collection</a></li>
+                                            </ul>
+                                        </div>
 
-										<div class="col6">
-											<div class="header-ad">
-												<img src="images/vibes-laser.png" alt="add img" class="img-fluid">
-											</div>
-										</div>
-										<!--/col-->
-									</div>
-								</div>
-							</li>
-							<li><a href="#" title="Blog">Blog</a>
-								<ul class="dropdown triangle">
-									<li><a href="#">Blog pages</a>
-										<ul class="dropdown dropdown-left">
-											<li><a href="blog-fullwidth.html">Blog full width</a></li>
-											<li><a href="blog-grid-col-2.html">Blog Grid (2 column)</a></li>
-											<li><a href="blog-left-sidebar-col-1.html">Blog left sidebar (1 Column)</a>
-											</li>
-											<li><a href="blog-left-sidebar-col-2.html">Blog left sidebar (2 Column)</a>
-											</li>
-											<li><a href="blog-right-sidebar-col-1.html">Blog Right sidebar (1
-													Column)</a></li>
-											<li><a href="blog-right-sidebar-col-2.html">Blog right sidebar (2
-													Column)</a></li>
-										</ul>
-									</li>
-									<li><a href="blog-details.html">blog details</a></li>
-								</ul>
-							</li>
-							<li><a href="contact.html" title="Contact">Contact</a></li>
-						</ul>
-						<button type="button" id="search-button" data-toggle="modal" data-target="#search-modal"><i
-								class="fa fa-search"></i></button>
-					</div>
-					<!--/#menuzord-->
-				</div>
-				<!--/col-md-12-->
-			</div>
-		</div>
-	</header>
-
-
-
+                                        <div class="col6">
+                                            <div class="header-ad">
+                                                <img src="images/vibes-laser.png" alt="add img" class="img-fluid">
+                                            </div>
+                                        </div>
+                                        <!--/col-->
+                                    </div>
+                                </div>
+                            </li>
+                            <li><a href="#" title="Blog">Blog</a>
+                                <ul class="dropdown triangle">
+                                    <li><a href="#">Blog pages</a>
+                                        <ul class="dropdown dropdown-left">
+                                            <li><a href="blog-fullwidth.html">Blog full width</a></li>
+                                            <li><a href="blog-grid-col-2.html">Blog Grid (2 column)</a></li>
+                                            <li><a href="blog-left-sidebar-col-1.html">Blog left sidebar (1 Column)</a></li>
+                                            <li><a href="blog-left-sidebar-col-2.html">Blog left sidebar (2 Column)</a></li>
+                                            <li><a href="blog-right-sidebar-col-1.html">Blog Right sidebar (1 Column)</a></li>
+                                            <li><a href="blog-right-sidebar-col-2.html">Blog right sidebar (2 Column)</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="blog-details.html">blog details</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html" title="Contact">Contact</a></li>
+                        </ul>
+                        <button type="button" id="search-button" data-toggle="modal" data-target="#search-modal"><i class="fa fa-search"></i></button>
+                    </div>
+                    <!--/#menuzord-->
+                </div>
+                <!--/col-md-12-->
+            </div>
+        </div>
+    </header>
+    <!-- ======================================= 
+        ==End Header section==  
+    =======================================-->
+        <!-- HEADER END -->
 
         <!-- CONTENT START -->
         <div class="page-content">
-            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="overlay"></div>
-                        <img src="images/slide1.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption">
-                            <h5>Beauty Spa</h5>
-                            <p>Dummy text is text that used in the publishing</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="overlay"></div>
-                        <img src="images/slide2.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption">
-                            <h5>Modern And Attractive</h5>
-                            <p>General the content of dummy text is nonsensical</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="overlay"></div>
-                        <img src="images/slide3.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption">
-                            <h5>Looking For a beauty</h5>
-                            <p>One disadvantage of Lorum Ipsum is that in Latin certain</p>
-                        </div>
+
+
+            <div id="rev_slider_149_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="snowaddon1"
+                data-source="gallery" style="background-color:#2d3032;padding:0px;">
+                <div id="rev_slider_149_1" class="rev_slider fullscreenbanner" style="display:none;"
+                    data-version="5.4.1">
+                    <ul>
+                        <!-- SLIDE  -->
+                        <li data-index="rs-407" data-transition="fade" data-slotamount="default" data-hideafterloop="0"
+                            data-hideslideonmobile="off" data-easein="default" data-easeout="default"
+                            data-masterspeed="2000" data-thumb="images/slide1.jpg" data-rotate="0"
+                            data-fstransition="fade" data-fsmasterspeed="1000" data-fsslotamount="7"
+                            data-saveperformance="off" data-title="One" data-param1="" data-param2="" data-param3=""
+                            data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
+                            data-param10="" data-description="">
+                            <!-- MAIN IMAGE -->
+                            <img src="images/slide1.jpg" alt="" data-bgposition="center center" data-kenburns="on"
+                                data-duration="20000" data-ease="Linear.easeNone" data-scalestart="130"
+                                data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0"
+                                data-offsetend="0 0" data-bgparallax="6" class="rev-slidebg" data-no-retina>
+                            <!-- LAYERS -->
+                            <div id="rrzm_407" class="rev_row_zone rev_row_zone_middle" style="z-index: 6;">
+
+                                <!-- LAYER NR. 1 -->
+                                <div class="tp-caption  " id="slide-407-layer-14" data-x="['left','left','left','left']"
+                                    data-hoffset="['100','100','100','100']"
+                                    data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                    data-width="none" data-height="none" data-whitespace="nowrap" data-type="row"
+                                    data-columnbreak="2" data-basealign="slide" data-responsive_offset="on"
+                                    data-responsive="off"
+                                    data-frames='[{"delay":10,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                    data-margintop="[0,0,0,0]" data-marginright="[0,0,0,0]"
+                                    data-marginbottom="[0,0,0,0]" data-marginleft="[0,0,0,0]"
+                                    data-textAlign="['inherit','inherit','inherit','inherit']"
+                                    data-paddingtop="[0,0,0,0]" data-paddingright="[100,50,50,50]"
+                                    data-paddingbottom="[0,0,0,0]" data-paddingleft="[100,50,50,50]"
+                                    style="z-index: 6; white-space: nowrap; font-size: 20px; line-height: 22px; font-weight: 400; color: rgba(255, 255, 255, 1.00);">
+                                    <!-- LAYER NR. 2 -->
+                                    <div class="tp-caption  " id="slide-407-layer-15"
+                                        data-x="['left','left','left','left']" data-hoffset="['100','100','100','100']"
+                                        data-y="['top','top','top','top']" data-voffset="['100','100','100','100']"
+                                        data-width="none" data-height="none" data-whitespace="nowrap" data-type="column"
+                                        data-responsive_offset="on" data-responsive="off"
+                                        data-frames='[{"delay":"+0","speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},
+                                {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-columnwidth="100%"
+                                        data-margintop="[0,0,0,0]" data-marginright="[0,0,0,0]"
+                                        data-marginbottom="[0,0,0,0]" data-marginleft="[0,0,0,0]"
+                                        data-textAlign="['center','center','center','center']"
+                                        data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                        data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
+                                        style="z-index: 7; width: 100%;">
+                                        <!-- LAYER NR. 3 -->
+                                        <div class="tp-caption   tp-resizeme" id="slide-407-layer-1"
+                                            data-x="['left','left','center','center']" data-hoffset="['0','0','0','0']"
+                                            data-y="['top','top','top','top']" data-voffset="['0','0','230','110']"
+                                            data-fontsize="['110','90','100','70']"
+                                            data-lineheight="['100','90','100','70']"
+                                            data-width="['none','none','697','399']" data-height="none"
+                                            data-whitespace="['nowrap','nowrap','normal','normal']" data-type="text"
+                                            data-basealign="slide" data-responsive_offset="on"
+                                            data-frames='[{"delay":"+290","split":"chars","splitdelay":0.05,"speed":750,"frame":"0","from":"y:40px;sX:1.5;sY:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},
+                                {"delay":"wait","speed":1000,"frame":"999","to":"sX:1;sY:1;opacity:0;fb:10px;","ease":"Power4.easeOut"}]' data-margintop="[0,0,0,0]"
+                                            data-marginright="[0,0,0,0]" data-marginbottom="[30,20,30,30]"
+                                            data-marginleft="[0,0,0,0]"
+                                            data-textAlign="['inherit','inherit','center','center']"
+                                            data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,40,40]"
+                                            data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,40,40]"
+                                            style="z-index: 8; white-space: nowrap; font-size: 110px; line-height: 100px; font-weight: 600;
+                                color: rgba(255, 255, 255, 1.00); display: inline-block;font-family:Poppins;letter-spacing:-5px;">Beauty Spa </div>
+
+                                        <!-- LAYER NR. 4 -->
+                                        <div class="tp-caption   tp-resizeme" id="slide-407-layer-2"
+                                            data-x="['left','left','center','center']" data-hoffset="['0','50','0','0']"
+                                            data-y="['top','top','top','top']" data-voffset="['0','430','460','290']"
+                                            data-fontsize="['30','30','40','25']"
+                                            data-lineheight="['40','40','50','30']"
+                                            data-width="['none','100%','100%','100%']" data-height="none"
+                                            data-whitespace="normal" data-type="text" data-basealign="slide"
+                                            data-responsive_offset="on"
+                                            data-frames='[{"delay":"+890","split":"chars","splitdelay":0.03,"speed":300,"frame":"0","from":"sX:2;sY:2;opacity:0;fb:5px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},
+                                {"delay":"wait","speed":1000,"frame":"999","to":"opacity:0;fb:10px;","ease":"Power4.easeOut"}]'
+                                            data-margintop="[0,0,0,0]" data-marginright="[0,0,0,0]"
+                                            data-marginbottom="[0,0,0,0]" data-marginleft="[0,0,0,0]"
+                                            data-textAlign="['inherit','inherit','center','center']"
+                                            data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                            data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 9; white-space: normal; font-size: 30px; line-height: 40px; font-weight: 300;
+                                color: rgba(255, 255, 255, 1.00); display: block;font-family:Poppins;">Dummy text is
+                                            text that is used in the publishing.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- LAYER NR. 5 -->
+                            <div class="tp-caption tp-shape tp-shapewrapper " id="slide-407-layer-16"
+                                data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                data-width="full" data-height="full" data-whitespace="normal" data-type="shape"
+                                data-basealign="slide" data-responsive_offset="off" data-responsive="off"
+                                data-frames='[{"delay":10,"speed":2000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power4.easeOut"},
+                                {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']"
+                                data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                data-paddingleft="[0,0,0,0]" style="z-index: 5;background-color:rgba(0, 0, 0, 0.35);">
+                            </div>
+                        </li>
+                        <!-- SLIDE  -->
+                        <li data-index="rs-408" data-transition="fade" data-slotamount="default" data-hideafterloop="0"
+                            data-hideslideonmobile="off" data-easein="default" data-easeout="default"
+                            data-masterspeed="2000" data-thumb="images/slide2.jpg" data-rotate="0"
+                            data-saveperformance="off" data-title="Two" data-param1="" data-param2="" data-param3=""
+                            data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
+                            data-param10="" data-description="">
+                            <!-- MAIN IMAGE -->
+                            <img src="images/slide2.jpg" alt="" data-bgposition="center center" data-kenburns="on"
+                                data-duration="20000" data-ease="Linear.easeNone" data-scalestart="130"
+                                data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0"
+                                data-offsetend="0 0" data-bgparallax="6" class="rev-slidebg" data-no-retina>
+                            <!-- LAYERS -->
+                            <div id="rrzm_408" class="rev_row_zone rev_row_zone_middle" style="z-index: 6;">
+
+                                <!-- LAYER NR. 6 -->
+                                <div class="tp-caption  " id="slide-408-layer-14" data-x="['left','left','left','left']"
+                                    data-hoffset="['100','100','100','100']"
+                                    data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                    data-width="none" data-height="none" data-whitespace="nowrap" data-type="row"
+                                    data-columnbreak="2" data-basealign="slide" data-responsive_offset="on"
+                                    data-responsive="off"
+                                    data-frames='[{"delay":10,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},
+                                {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                    data-margintop="[0,0,0,0]" data-marginright="[0,0,0,0]"
+                                    data-marginbottom="[0,0,0,0]" data-marginleft="[0,0,0,0]"
+                                    data-textAlign="['inherit','inherit','inherit','inherit']"
+                                    data-paddingtop="[0,0,0,0]" data-paddingright="[100,50,40,40]"
+                                    data-paddingbottom="[0,0,0,0]" data-paddingleft="[100,50,40,40]"
+                                    style="z-index: 6; white-space: nowrap; font-size: 20px; line-height: 22px; font-weight: 400; color: rgba(255, 255, 255, 1.00);">
+                                    <!-- LAYER NR. 7 -->
+                                    <div class="tp-caption  " id="slide-408-layer-15"
+                                        data-x="['left','left','left','left']" data-hoffset="['100','100','100','100']"
+                                        data-y="['top','top','top','top']" data-voffset="['100','100','100','100']"
+                                        data-width="none" data-height="none" data-whitespace="nowrap" data-type="column"
+                                        data-responsive_offset="on" data-responsive="off"
+                                        data-frames='[{"delay":"+0","speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},
+                                {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-columnwidth="100%"
+                                        data-margintop="[0,0,0,0]" data-marginright="[0,0,0,0]"
+                                        data-marginbottom="[0,0,0,0]" data-marginleft="[0,0,0,0]"
+                                        data-textAlign="['center','center','center','center']"
+                                        data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                        data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
+                                        style="z-index: 7; width: 100%;">
+                                        <!-- LAYER NR. 8 -->
+                                        <div class="tp-caption   tp-resizeme" id="slide-408-layer-1"
+                                            data-x="['left','left','center','center']" data-hoffset="['0','0','0','0']"
+                                            data-y="['top','top','top','top']" data-voffset="['0','0','230','110']"
+                                            data-fontsize="['110','90','100','70']"
+                                            data-lineheight="['100','90','100','70']"
+                                            data-width="['none','none','697','399']" data-height="none"
+                                            data-whitespace="['nowrap','nowrap','normal','normal']" data-type="text"
+                                            data-basealign="slide" data-responsive_offset="on"
+                                            data-frames='[{"delay":"+290","split":"chars","splitdelay":0.05,"speed":750,"frame":"0","from":"y:40px;sX:1.5;sY:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},
+                                {"delay":"wait","speed":1000,"frame":"999","to":"sX:1;sY:1;opacity:0;fb:10px;","ease":"Power4.easeOut"}]' data-margintop="[0,0,0,0]"
+                                            data-marginright="[0,0,0,0]" data-marginbottom="[30,20,30,30]"
+                                            data-marginleft="[0,0,0,0]"
+                                            data-textAlign="['inherit','inherit','center','center']"
+                                            data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,40,40]"
+                                            data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,40,40]" style="z-index: 8; white-space: nowrap; font-size: 110px; line-height: 100px; font-weight: 600; color: rgba(255, 255, 255, 1.00);
+                                display: inline-block;font-family:Poppins;letter-spacing:-5px;">Modern And Attractive
+                                        </div>
+
+                                        <!-- LAYER NR. 9 -->
+                                        <div class="tp-caption   tp-resizeme" id="slide-408-layer-2"
+                                            data-x="['left','left','center','center']" data-hoffset="['0','50','0','0']"
+                                            data-y="['top','top','top','top']" data-voffset="['0','430','460','290']"
+                                            data-fontsize="['30','30','40','25']"
+                                            data-lineheight="['40','40','50','30']"
+                                            data-width="['none','100%','100%','100%']" data-height="none"
+                                            data-whitespace="normal" data-type="text" data-basealign="slide"
+                                            data-responsive_offset="on"
+                                            data-frames='[{"delay":"+890","split":"chars","splitdelay":0.03,"speed":300,"frame":"0","from":"sX:2;sY:2;opacity:0;fb:5px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},
+                                {"delay":"wait","speed":1000,"frame":"999","to":"opacity:0;fb:10px;","ease":"Power4.easeOut"}]'
+                                            data-margintop="[0,0,0,0]" data-marginright="[0,0,0,0]"
+                                            data-marginbottom="[0,0,0,0]" data-marginleft="[0,0,0,0]"
+                                            data-textAlign="['inherit','inherit','center','center']"
+                                            data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                            data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 9; white-space: normal; font-size: 30px; line-height: 40px; font-weight: 300;
+                                color: rgba(255, 255, 255, 1.00); display: block;font-family:Poppins;">General the
+                                            content of dummy text is nonsensical.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- LAYER NR. 10 -->
+                            <div class="tp-caption tp-shape tp-shapewrapper " id="slide-408-layer-16"
+                                data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                data-width="full" data-height="full" data-whitespace="normal" data-type="shape"
+                                data-basealign="slide" data-responsive_offset="off" data-responsive="off"
+                                data-frames='[{"delay":10,"speed":2000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power4.easeOut"},
+                                {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']"
+                                data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                data-paddingleft="[0,0,0,0]" style="z-index: 5;background-color:rgba(0, 0, 0, 0.35);">
+                            </div>
+                        </li>
+                        <!-- SLIDE  -->
+                        <li data-index="rs-409" data-transition="fade" data-slotamount="default" data-hideafterloop="0"
+                            data-hideslideonmobile="off" data-easein="default" data-easeout="default"
+                            data-masterspeed="2000" data-thumb="images/slide3.jpg" data-rotate="0"
+                            data-saveperformance="off" data-title="Three" data-param1="" data-param2="" data-param3=""
+                            data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
+                            data-param10="" data-description="">
+                            <!-- MAIN IMAGE -->
+                            <img src="images/slide3.jpg" alt="" data-bgposition="center center" data-kenburns="on"
+                                data-duration="20000" data-ease="Linear.easeNone" data-scalestart="130"
+                                data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0"
+                                data-offsetend="0 0" data-bgparallax="6" class="rev-slidebg" data-no-retina>
+                            <!-- LAYERS -->
+                            <div id="rrzm_409" class="rev_row_zone rev_row_zone_middle" style="z-index: 6;">
+
+                                <!-- LAYER NR. 11 -->
+                                <div class="tp-caption  " id="slide-409-layer-14" data-x="['left','left','left','left']"
+                                    data-hoffset="['100','100','100','100']"
+                                    data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                    data-width="none" data-height="none" data-whitespace="nowrap" data-type="row"
+                                    data-columnbreak="2" data-basealign="slide" data-responsive_offset="on"
+                                    data-responsive="off"
+                                    data-frames='[{"delay":10,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},
+                                {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                    data-margintop="[0,0,0,0]" data-marginright="[0,0,0,0]"
+                                    data-marginbottom="[0,0,0,0]" data-marginleft="[0,0,0,0]"
+                                    data-textAlign="['inherit','inherit','inherit','inherit']"
+                                    data-paddingtop="[0,0,0,0]" data-paddingright="[100,50,40,40]"
+                                    data-paddingbottom="[0,0,0,0]" data-paddingleft="[100,50,40,40]"
+                                    style="z-index: 6; white-space: nowrap; font-size: 20px; line-height: 22px; font-weight: 400; color: rgba(255, 255, 255, 1.00);">
+                                    <!-- LAYER NR. 12 -->
+                                    <div class="tp-caption  " id="slide-409-layer-15"
+                                        data-x="['left','left','left','left']" data-hoffset="['100','100','100','100']"
+                                        data-y="['top','top','top','top']" data-voffset="['100','100','100','100']"
+                                        data-width="none" data-height="none" data-whitespace="nowrap" data-type="column"
+                                        data-responsive_offset="on" data-responsive="off"
+                                        data-frames='[{"delay":"+0","speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},
+                                {"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-columnwidth="100%"
+                                        data-margintop="[0,0,0,0]" data-marginright="[0,0,0,0]"
+                                        data-marginbottom="[0,0,0,0]" data-marginleft="[0,0,0,0]"
+                                        data-textAlign="['center','center','center','center']"
+                                        data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                        data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
+                                        style="z-index: 7; width: 100%;">
+                                        <!-- LAYER NR. 13 -->
+                                        <div class="tp-caption   tp-resizeme" id="slide-409-layer-1"
+                                            data-x="['left','left','center','center']" data-hoffset="['0','0','0','0']"
+                                            data-y="['top','top','top','top']" data-voffset="['0','0','230','110']"
+                                            data-fontsize="['110','90','100','70']"
+                                            data-lineheight="['100','90','100','70']"
+                                            data-width="['none','none','697','399']" data-height="none"
+                                            data-whitespace="['nowrap','nowrap','normal','normal']" data-type="text"
+                                            data-basealign="slide" data-responsive_offset="on"
+                                            data-frames='[{"delay":"+290","split":"chars","splitdelay":0.05,"speed":750,"frame":"0","from":"y:40px;sX:1.5;sY:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},
+                                {"delay":"wait","speed":1000,"frame":"999","to":"sX:1;sY:1;opacity:0;fb:10px;","ease":"Power4.easeOut"}]' data-margintop="[0,0,0,0]"
+                                            data-marginright="[0,0,0,0]" data-marginbottom="[30,20,30,30]"
+                                            data-marginleft="[0,0,0,0]"
+                                            data-textAlign="['inherit','inherit','center','center']"
+                                            data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,40,40]"
+                                            data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,40,40]"
+                                            style="z-index: 8; white-space: nowrap; font-size: 110px; line-height: 100px;
+                                font-weight: 600; color: rgba(255, 255, 255, 1.00); display: inline-block;font-family:Poppins;letter-spacing:-5px;">Looking For a beauty </div>
+
+                                        <!-- LAYER NR. 14 -->
+                                        <div class="tp-caption   tp-resizeme" id="slide-409-layer-2"
+                                            data-x="['left','left','center','center']" data-hoffset="['0','50','0','0']"
+                                            data-y="['top','top','top','top']" data-voffset="['0','430','460','290']"
+                                            data-fontsize="['30','30','40','25']"
+                                            data-lineheight="['40','40','50','30']"
+                                            data-width="['none','100%','100%','100%']" data-height="none"
+                                            data-whitespace="normal" data-type="text" data-basealign="slide"
+                                            data-responsive_offset="on"
+                                            data-frames='[{"delay":"+890","split":"chars","splitdelay":0.03,"speed":300,"frame":"0","from":"sX:2;sY:2;opacity:0;fb:5px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},
+                                {"delay":"wait","speed":1000,"frame":"999","to":"opacity:0;fb:10px;","ease":"Power4.easeOut"}]'
+                                            data-margintop="[0,0,0,0]" data-marginright="[0,0,0,0]"
+                                            data-marginbottom="[0,0,0,0]" data-marginleft="[0,0,0,0]"
+                                            data-textAlign="['inherit','inherit','center','center']"
+                                            data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
+                                            data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 9; white-space: normal; font-size: 30px; line-height: 40px; font-weight: 300;
+                                color: rgba(255, 255, 255, 1.00); display: block;font-family:Poppins;">One disadvantage
+                                            of Lorum Ipsum is that in Latin certain.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- LAYER NR. 15 -->
+                            <div class="tp-caption tp-shape tp-shapewrapper " id="slide-409-layer-16"
+                                data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                data-width="full" data-height="full" data-whitespace="normal" data-type="shape"
+                                data-basealign="slide" data-responsive_offset="off" data-responsive="off"
+                                data-frames='[{"delay":10,"speed":2000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power4.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
+                                data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                data-paddingleft="[0,0,0,0]" style="z-index: 5;background-color:rgba(0, 0, 0, 0.35);">
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="tp-bannertimer" style="height: 10px; background-color: rgba(255, 255, 255, 0.25);">
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
+
 
 
             <!-- ABOUT SECTION START -->
@@ -708,7 +959,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s1.jpg" alt="">
+                                                            <img src="images/large/s1.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -741,7 +992,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s2.jpg" alt="">
+                                                            <img src="images/large/s2.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -773,7 +1024,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s3.jpg" alt="">
+                                                            <img src="images/large/s3.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -805,7 +1056,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s4.jpg" alt="">
+                                                            <img src="images/large/s4.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -837,7 +1088,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s5.jpg" alt="">
+                                                            <img src="images/large/s5.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -869,7 +1120,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s6.jpg" alt="">
+                                                            <img src="images/large/s6.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -922,7 +1173,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s2.jpg" alt="">
+                                                            <img src="images/large/s2.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -954,7 +1205,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s3.jpg" alt="">
+                                                            <img src="images/large/s3.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -987,7 +1238,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s4.jpg" alt="">
+                                                            <img src="images/large/s4.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -1020,7 +1271,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s5.jpg" alt="">
+                                                            <img src="images/large/s5.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -1053,7 +1304,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s6.jpg" alt="">
+                                                            <img src="images/large/s6.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -1085,7 +1336,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s1.jpg" alt="">
+                                                            <img src="images/large/s1.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -1137,7 +1388,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s3.jpg" alt="">
+                                                            <img src="images/large/s3.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -1169,7 +1420,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s4.jpg" alt="">
+                                                            <img src="images/large/s4.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -1201,7 +1452,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s5.jpg" alt="">
+                                                            <img src="images/large/s5.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -1234,7 +1485,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="wt-media">
-                                                            <img src="images/s6.jpg" alt="">
+                                                            <img src="images/large/s6.jpg" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -2254,7 +2505,7 @@
                                     <div class="wt-thum-bx wt-img-effect wt-img-overlay7">
 
                                         <a href="javascript:void(0);">
-                                            <img src="images/pic1.jpg" alt="">
+                                            <img src="images/gallery/portrait-half/pic1.jpg" alt="">
                                         </a>
 
                                         <div class="overlay-bx">
@@ -2262,7 +2513,7 @@
                                                 <a href="javascript:void(0);">
                                                     <i class="fa fa-link wt-icon-box-xs"></i>
                                                 </a>
-                                                <a href="images/pic1.jpg" class="mfp-link">
+                                                <a href="images/gallery/portrait-half/pic1.jpg" class="mfp-link">
                                                     <i class="fa fa-picture-o wt-icon-box-xs"></i>
                                                 </a>
                                             </div>
@@ -2300,7 +2551,7 @@
                                     <div class="wt-thum-bx wt-img-effect wt-img-overlay7">
 
                                         <a href="javascript:void(0);">
-                                            <img src="images/pic2.jpg" alt="">
+                                            <img src="images/gallery/portrait-half/pic2.jpg" alt="">
                                         </a>
 
                                         <div class="overlay-bx">
@@ -2308,7 +2559,7 @@
                                                 <a href="javascript:void(0);">
                                                     <i class="fa fa-link wt-icon-box-xs"></i>
                                                 </a>
-                                                <a href="images/pic2.jpg" class="mfp-link">
+                                                <a href="images/gallery/portrait-half/pic2.jpg" class="mfp-link">
                                                     <i class="fa fa-picture-o wt-icon-box-xs"></i>
                                                 </a>
                                             </div>
@@ -2323,7 +2574,7 @@
                                     <div class="wt-thum-bx wt-img-effect wt-img-overlay7">
 
                                         <a href="javascript:void(0);">
-                                            <img src="images/pic3.jpg" alt="">
+                                            <img src="images/gallery/portrait-half/pic3.jpg" alt="">
                                         </a>
 
                                         <div class="overlay-bx">
@@ -2331,7 +2582,7 @@
                                                 <a href="javascript:void(0);">
                                                     <i class="fa fa-link wt-icon-box-xs"></i>
                                                 </a>
-                                                <a href="images/pic3.jpg" class="mfp-link">
+                                                <a href="images/gallery/portrait-half/pic3.jpg" class="mfp-link">
                                                     <i class="fa fa-picture-o wt-icon-box-xs"></i>
                                                 </a>
                                             </div>
@@ -2346,7 +2597,7 @@
                                     <div class="wt-thum-bx wt-img-effect wt-img-overlay7">
 
                                         <a href="javascript:void(0);">
-                                            <img src="images/pic1 (1).jpg" alt="">
+                                            <img src="images/gallery/landscape-half/pic1.jpg" alt="">
                                         </a>
 
                                         <div class="overlay-bx">
@@ -2354,7 +2605,7 @@
                                                 <a href="javascript:void(0);">
                                                     <i class="fa fa-link wt-icon-box-xs"></i>
                                                 </a>
-                                                <a href="images/pic1.jpg" class="mfp-link">
+                                                <a href="images/gallery/landscape-half/pic1.jpg" class="mfp-link">
                                                     <i class="fa fa-picture-o wt-icon-box-xs"></i>
                                                 </a>
                                             </div>
@@ -2372,7 +2623,7 @@
 
             <!-- CONTACT US SECTION END  -->
             <div class="section-full overlay-wraper bg-parallax" data-stellar-background-ratio="0.2"
-                style="background-image:url(images/bg-11.jpg);">
+                style="background-image:url(images/background/bg-11.jpg);">
                 <div class="overlay-main bg-white opacity-07"></div>
                 <div class="container">
 
@@ -2471,7 +2722,8 @@
                             <div class="col-md-4 col-sm-4 p-tb15">
                                 <div class="wt-team-one bg-white">
                                     <div class="wt-team-media">
-                                        <a href="javascript:void(0);"><img src="images/ex1.jpg" class="" alt=""></a>
+                                        <a href="javascript:void(0);"><img src="images/our-team4/ex1.jpg" class=""
+                                                alt=""></a>
                                     </div>
                                     <div class="wt-team-info text-center bg-white p-a10">
                                         <h4 class="wt-team-title"><a href="javascript:void(0);">Camila</a></h4>
@@ -2491,7 +2743,8 @@
                             <div class="col-md-4 col-sm-4 p-tb15">
                                 <div class="wt-team-one bg-white">
                                     <div class="wt-team-media">
-                                        <a href="javascript:void(0);"><img src="images/ex2.jpg" class="" alt=""></a>
+                                        <a href="javascript:void(0);"><img src="images/our-team4/ex2.jpg" class=""
+                                                alt=""></a>
                                     </div>
                                     <div class="wt-team-info text-center bg-white p-a10">
                                         <h4 class="wt-team-title"><a href="javascript:void(0);">Milagros</a></h4>
@@ -2511,7 +2764,8 @@
                             <div class="col-md-4 col-sm-4 p-tb15">
                                 <div class="wt-team-one bg-white">
                                     <div class="wt-team-media">
-                                        <a href="javascript:void(0);"><img src="images/ex3.jpg" class="" alt=""></a>
+                                        <a href="javascript:void(0);"><img src="images/our-team4/ex3.jpg" class=""
+                                                alt=""></a>
                                     </div>
                                     <div class="wt-team-info text-center bg-white p-a10">
                                         <h4 class="wt-team-title"><a href="javascript:void(0);">Agustina.</a></h4>
@@ -2538,7 +2792,7 @@
 
             <!-- OUR PRICING TABLE SECTION START  -->
             <div class="section-full  overlay-wraper bg-white bg-parallax  p-tb80" data-stellar-background-ratio="0.5"
-                style="background-image:url(images/bg-12.jpg);">
+                style="background-image:url(images/background/bg-12.jpg);">
                 <div class="overlay-main bg-white opacity-07"></div>
                 <div class="container">
 
@@ -2725,7 +2979,7 @@
                             <div class="col-md-3 col-sm-6 p-tb15">
                                 <div class="wt-box bg-white wt-product-box">
                                     <div class="wt-media text-primary">
-                                        <img src="images/pic-5.jpg" alt="">
+                                        <img src="images/pic-2.jpg" alt="">
                                     </div>
                                     <div class="wt-info p-a20 text-center">
                                         <h3>Flower</h3>
@@ -2845,7 +3099,7 @@
 
                                 <div class="blog-post latest-blog-3 blog-md date-style-1 clearfix">
                                     <div class="wt-post-media wt-img-effect zoom-slow">
-                                        <a href="javascript:void(0);"><img src="images/pic1 (1).jpg" alt=""></a>
+                                        <a href="javascript:void(0);"><img src="images/pic1.jpg" alt=""></a>
                                     </div>
                                     <div class="wt-post-info">
                                         <div class="wt-post-title ">
@@ -2872,7 +3126,7 @@
 
                                 <div class="blog-post latest-blog-3 blog-md date-style-1 clearfix">
                                     <div class="wt-post-media wt-img-effect zoom-slow">
-                                        <a href="javascript:void(0);"><img src="images/pic3.jpg" alt=""></a>
+                                        <a href="javascript:void(0);"><img src="images/pic2.jpg" alt=""></a>
                                     </div>
                                     <div class="wt-post-info">
                                         <div class="wt-post-title ">
@@ -3077,84 +3331,78 @@
         <!-- CONTENT END -->
 
         <!-- FOOTER START -->
-        	<!-- ======================================= 
+  <!-- ======================================= 
             ==Start footer widget section==  
     =======================================-->
-		<section class="footer-widget">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4">
-						<div class="single-widget contact-widget">
-							<a href="index.html"><img alt="logo" src="../HTML/images/widget-logo.png"></a>
-							<p>The beauty lab is a luxury beauty &amp; spa solution. The beauty spa strives to deliver
-								top
-								class.</p>
-							<address>
-								<p class="address"><i class="fa fa-home"></i><span>Address:</span> 121 King St,
-									Melbourne
-									Vic 3000, Australia.</p>
-								<p class="phone"><i class="fa fa-phone"></i><span>Phone:</span> +66 1800-111-333</p>
-								<p class="email"><i class="fa fa-envelope"></i><span>Email:</span> <a
-										href=":mailto:info@beautylab.com">info@beautylab.com</a></p>
-								<p class="web"><i class="fa fa-globe"></i><span>Web:</span> <a href="www.Beautylab.com"
-										target="_blank">www.Beautylab.com</a></p>
-							</address>
-						</div>
-					</div>
+    <section class="footer-widget">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="single-widget contact-widget">
+                        <a href="index.html"><img alt="logo" src="images/widget-logo.png"></a>
+                        <p>The beauty lab is a luxury beauty &amp; spa solution. The beauty spa strives to deliver top class.</p>
+                        <address>
+                            <p class="address"><i class="fa fa-home"></i><span>Address:</span> 121 King St, Melbourne Vic 3000, Australia.</p>
+                            <p class="phone"><i class="fa fa-phone"></i><span>Phone:</span> +66 1800-111-333</p>
+                            <p class="email"><i class="fa fa-envelope"></i><span>Email:</span> <a href=":mailto:info@beautylab.com">info@beautylab.com</a></p>
+                            <p class="web"><i class="fa fa-globe"></i><span>Web:</span> <a href="www.Beautylab.com" target="_blank">www.Beautylab.com</a></p>
+                        </address>
+                    </div>
+                </div>
 
-					<div class="col-lg-4">
-						<div class="single-widget recent-post-widget">
-							<h5>Recent Posts</h5>
-							<ul>
-								<li>
-									<p>The power of golden ratio typography cannot be understated. By choosing the..</p>
-									<span>November 25, 2018</span>
-									<a href="#">read more</a>
-								</li>
-								<li>
-									<p>The power of golden ratio typography cannot be understated. By choosing the..</p>
-									<span>November 23, 2018</span>
-									<a href="#">read more</a>
-								</li>
-							</ul>
-						</div>
-					</div>
+                <div class="col-lg-4">
+                    <div class="single-widget recent-post-widget">
+                        <h5>Recent Posts</h5>
+                        <ul>
+                            <li>
+                                <p>The power of golden ratio typography cannot be understated. By choosing the..</p>
+                                <span>November 25, 2018</span>
+                                <a href="#">read more</a>
+                            </li>
+                            <li>
+                                <p>The power of golden ratio typography cannot be understated. By choosing the..</p>
+                                <span>November 23, 2018</span>
+                                <a href="#">read more</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-					<div class="col-lg-4">
-						<div class="single-widget newsletter-widget">
-							<h5>Newsletter</h5>
-							<form action="#" method="post" class="clearfix">
-								<input type="text" placeholder="Name" id="name" class="form-control">
-								<input type="email" placeholder="Email" id="email" class="form-control">
-								<button type="submit">Send</button>
-							</form>
-						</div>
-					</div>
-					<!--/col-->
-				</div>
-			</div>
-		</section>
-		<!-- ======================================= 
+                <div class="col-lg-4">
+                    <div class="single-widget newsletter-widget">
+                        <h5>Newsletter</h5>
+                        <form action="#" method="post" class="clearfix">
+                            <input type="text" placeholder="Name" id="name" class="form-control">
+                            <input type="email" placeholder="Email" id="email" class="form-control">
+                            <button type="submit">Send</button>
+                        </form>
+                    </div>
+                </div>
+                <!--/col-->
+            </div>
+        </div>
+    </section>
+    <!-- ======================================= 
             ==End footer widget section== 
     =======================================-->
 
-
-		<!-- ======================================= 
+    
+    <!-- ======================================= 
             ==Start footer section==  
     =======================================-->
-		<footer>
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<p class="copyright">&copy; 2018 All rights reserved. Developed by <a target="_blank"
-								href="https://themeforest.net/user/theme_builder">Theme Builder</a></p>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- ======================================= 
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="copyright">&copy; 2018 All rights reserved. Developed by <a target="_blank" href="https://themeforest.net/user/theme_builder">Theme Builder</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ======================================= 
             ==End footer section== 
     =======================================-->
+
         <!-- FOOTER END -->
 
 
@@ -3162,7 +3410,6 @@
         <button class="scroltop"><span class=" iconmoon-house relative" id="btn-vibrate"></span>Top</button>
 
     </div>
-
 
     <!-- LOADING AREA START ===== -->
     <div class="loading-area">
@@ -3177,7 +3424,10 @@
     </div>
     <!-- LOADING AREA  END ====== -->
     <!-- JAVASCRIPT  FILES ========================================= -->
-    <script src="js/jquery-1.12.4.min.js"></script><!-- JQUERY.MIN JS -->
+      <!-- jQuary library -->
+      <script src="../HTML/js/jquery-3.2.1.min.js"></script>
+     
+    <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
 
     <script src="js/bootstrap-select.min.js"></script><!-- FORM JS -->
@@ -3206,7 +3456,7 @@
     <script src="js/jquery.themepunch.revolution.min.js"></script>
 
     <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-    <script src="js/revolution-plugin.js"></script>
+    <script src="js/extensions/revolution-plugin.js"></script>
 
     <!-- REVOLUTION SLIDER FUNCTION  ===== -->
     <script src="js/rev-script-5.js"></script>
@@ -3215,6 +3465,14 @@
             $(this).tab('show');
         });
     </script>
+    <script type="text/javascript" src="js/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="js/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="js/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="js/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="js/revolution.extension.parallax.min.js"></script>
+    <script src="js/menuzord.js"></script>
+    <!-- all jQuary activation code here and always it will be bottom of all script tag -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>
