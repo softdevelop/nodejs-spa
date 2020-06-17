@@ -1,0 +1,95 @@
+<% extend('../layouts/base',{
+  title: "News"
+}) %>
+
+
+    <!-- ======================================= 
+        ==Start banner section== 
+    =======================================-->
+    <section class="banner-section blog-banner top-margin">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="banner-content">
+                        <h4 class="fw-500 color-ff">blog details</h4>
+                        <p class="color-ff">Welcome to beauty lab, where you can relax and enjoy life.</p>
+                    </div>
+                    <ol class="breadcrumb">
+                        <li><a href="#">home</a></li>
+                        <li class="active">blog details</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======================================= 
+        ==End banner section==  
+    =======================================-->
+
+
+    <!-- ======================================= 
+            ==Start Blog section==  
+    =======================================-->
+    <section class="blog-section blog-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="blog-details-wrapper">
+                        <img src="<%=urlMediaUpload.imageObj(data.image)%>" alt="blog-details-img" class="img-fluid" />
+                        <h5 class="title color-d5"><%=data.name%></h5>
+                        <ul class="tags ptb-20">
+                            <li><i class="fa fa-heart color-72"></i>22</li>
+                            <li><i class="fa fa-eye color-72"></i><%=data.numOfViews%></li>
+                            <li><i class="fa fa-home color-72"></i> <%-data.spas.address%></li>
+                            <li><i class="fa fa-calendar color-72"></i><%=moment(data.date).format('DD/MM/YYYY')%></li>
+                        </ul>
+                        <p>
+                            <%-data.content%>
+                        </p>
+
+                        <div class="admin-details">
+                            <img src="<%=urlMediaUpload.imageObj(data.spas.logo)%>" alt="admin">
+                            <div class="admin-description color-ff">
+                                <h5> <span class="fw-500"> <%-data.spas.name%></span></h5>
+                                <p class="color-ff"><%-data.spas.description%></p>
+                            </div>
+                        </div>
+                        <!--/admin details-->
+
+                       
+                    </div>
+                    <!--/blog post wrapper-->
+
+               
+                    <!--/comment-form-section-->
+                </div>
+                <!--/col-->
+
+            
+            </div>
+            <!--/row-->
+        </div>
+    </section>
+    <!-- ======================================= 
+            ==End blog section== 
+    =======================================-->
+
+
+    <!-- ======================================= 
+            ==Start call to action section==  
+    =======================================-->
+    <section class="cta-section booking-cta-section">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <p>Book a session and get up to <span class="color-d5">25%</span> discount!</p>
+                        <a href="#">Book A Session Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  

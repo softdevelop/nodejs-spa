@@ -13,7 +13,7 @@ const profile = require("./profile");
 const products = require("./products");
 const categories = require("./categories");
 const booking = require("./booking")
-
+const news = require("./news")
 // Controllers
 const {
 } = require("../../../app/controllers/admin");
@@ -63,6 +63,7 @@ router.use(products);
 // categories
 router.use(categories);
 router.use(booking);
+router.use(news)
 router.get("*", (req, res) => {
   res.render('admin/404');
 });

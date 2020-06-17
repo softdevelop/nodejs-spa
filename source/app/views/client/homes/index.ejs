@@ -1,8 +1,12 @@
+
+
 <% extend('../layouts/base',{
-  title: "Homepage"
+  title: "Homepage",
+  css: `
+  <link  href="/scss/home.css" rel="stylesheet">
+`,
 }) %>
- 
- 
+
  <!-- ======================================= 
         ==End Header section==  
     =======================================-->
@@ -160,213 +164,36 @@
               <div class="col-lg-8 order-lg-2">
 
                   <div class="row">
-                      <!--blog 1-->
-                      <div class="col-md-6">
-                          <div class="single-blog">
-                              <div class="blog-img pos-relative">
-                                  <div class="img-area">
-                                      <a href="blog-details.html"><img src="images/blog10.jpg" alt="blog img" class="img-fluid"></a>
-                                  </div>
-                                  <ul class="brand">
-                                      <li><i class="fa fa-heart"></i>18</li>
-                                      <li><i class="fa fa-commenting-o"></i>10</li>
-                                      <li><i class="fa fa-folder-open"></i>Decoration</li>
-                                      <li class="gallery"><i class="fa fa-picture-o"></i></li>
-                                  </ul>
-                                  <div class="date">
-                                      <h5 class="fw-700 color-ff">25</h5>
-                                      <span class="fw-500 roboto color-ff text-uppercase">oct</span>
-                                  </div>
-                              </div>
-                              <div class="blog-content">
-                                  <a href="blog-details.html" class="title fw-500 pt-20">Nivea for men’s sensitive hydro gel the perfect cure.</a>
-                                  <p>The power of golden ratio typography cannot be understated. By choosing the line-height of your primary text.</p>
-                                  <a href="blog-details.html" class="readmore" title="Read More for Details" target="-blank">Read More <i class="fa fa-angle-right"></i></a>
-                              </div>
-                          </div>
-                      </div>
-
                       <!--blog 2-->
+                      <% data.docs.forEach(function(item) { %>
                       <div class="col-md-6">
                           <div class="single-blog">
                               <div class="blog-img pos-relative">
                                   <div class="img-area">
-                                      <a href="blog-details.html"><img src="images/blog11.jpg" alt="blog img" class="img-fluid"></a>
+                                      <a href="blog-details.html"><img src="<%=urlMediaUpload.imageObj(item.image)%>"  alt="blog img" class="img-fluid"></a>
                                   </div>
                                   <ul class="brand">
                                       <li><i class="fa fa-heart"></i>18</li>
                                       <li><i class="fa fa-commenting-o"></i>10</li>
-                                      <li><i class="fa fa-folder-open"></i>Spa Tips</li>
+                                      <!-- <li><i class="fa fa-folder-open"></i>Spa Tips</li>ontent -->
                                       <li class="gallery"><i class="fa fa-picture-o"></i></li>
                                   </ul>
                                   <div class="date">
-                                      <h5 class="fw-700 color-ff">23</h5>
-                                      <span class="fw-500 roboto color-ff text-uppercase">oct</span>
+                                      <h5 class="fw-700 color-ff"><%=moment(item.date).format('DD')%></h5>
+                                      <span class="fw-500 roboto color-ff ">Tháng <%=moment(item.date).format('MM')%></span>
                                   </div>
                               </div>
                               <div class="blog-content">
-                                  <a href="blog-details.html" class="title fw-500 pt-20">Nivea for men’s sensitive hydro gel the perfect cure.</a>
-                                  <p>The power of golden ratio typography cannot be understated. By choosing the line-height of your primary text.</p>
-                                  <a href="blog-details.html" class="readmore" title="Read More for Details" target="-blank">Read More <i class="fa fa-angle-right"></i></a>
+                                  <a href="blog-details.html" class="title fw-500 pt-20"><%=item.name%></a>
+                                  <div class="cut-content" ><%-item.content.substring(0,275)%>...</div>
+                                  <a href="/news/<%=item.slug%>" class="readmore" title="Read More for Details" target="-blank">Read More <i class="fa fa-angle-right"></i></a>
                               </div>
                           </div>
                       </div>
-
+                      <% }) %>
                       <!--blog 3-->
-                      <div class="col-md-6">
-                          <div class="single-blog">
-                              <div class="blog-img pos-relative">
-                                  <div class="img-area">
-                                      <a href="blog-details.html"><img src="images/blog9.jpg" alt="blog img" class="img-fluid"></a>
-                                  </div>
-                                  <ul class="brand">
-                                      <li><i class="fa fa-heart"></i>18</li>
-                                      <li><i class="fa fa-commenting-o"></i>10</li>
-                                      <li><i class="fa fa-folder-open"></i>Spa Procedures</li>
-                                      <li class="gallery"><i class="fa fa-picture-o"></i></li>
-                                  </ul>
-                                  <div class="date">
-                                      <h5 class="fw-700 color-ff">20</h5>
-                                      <span class="fw-500 roboto color-ff text-uppercase">oct</span>
-                                  </div>
-                              </div>
-                              <div class="blog-content">
-                                  <a href="blog-details.html" class="title fw-500 pt-20">Nivea for men’s sensitive hydro gel the perfect cure.</a>
-                                  <p>The power of golden ratio typography cannot be understated. By choosing the line-height of your primary text.</p>
-                                  <a href="blog-details.html" class="readmore" title="Read More for Details" target="-blank">Read More <i class="fa fa-angle-right"></i></a>
-                              </div>
-                          </div>
-                      </div>
-
-                      <!--blog 4-->
-                      <div class="col-md-6">
-                          <div class="single-blog">
-                              <div class="blog-img pos-relative">
-                                  <div class="img-area">
-                                      <a href="blog-details.html"><img src="images/blog4.jpg" alt="blog img" class="img-fluid"></a>
-                                  </div>
-                                  <ul class="brand">
-                                      <li><i class="fa fa-heart"></i>18</li>
-                                      <li><i class="fa fa-commenting-o"></i>10</li>
-                                      <li><i class="fa fa-folder-open"></i>Skin Tips</li>
-                                      <li class="gallery"><i class="fa fa-play-circle"></i></li>
-                                  </ul>
-                                  <div class="date">
-                                      <h5 class="fw-700 color-ff">18</h5>
-                                      <span class="fw-500 roboto color-ff text-uppercase">oct</span>
-                                  </div>
-                              </div>
-                              <div class="blog-content">
-                                  <a href="blog-details.html" class="title fw-500 pt-20">Nivea for men’s sensitive hydro gel the perfect cure.</a>
-                                  <p>The power of golden ratio typography cannot be understated. By choosing the line-height of your primary text.</p>
-                                  <a href="blog-details.html" class="readmore" title="Read More for Details" target="-blank">Read More <i class="fa fa-angle-right"></i></a>
-                              </div>
-                          </div>
-                      </div>
-
-                      <!--blog 5-->
-                      <div class="col-md-6">
-                          <div class="single-blog">
-                              <div class="blog-img pos-relative">
-                                  <div class="img-area">
-                                      <a href="blog-details.html"><img src="images/blog5.jpg" alt="blog img" class="img-fluid"></a>
-                                  </div>
-                                  <ul class="brand">
-                                      <li><i class="fa fa-heart"></i>18</li>
-                                      <li><i class="fa fa-commenting-o"></i>10</li>
-                                      <li><i class="fa fa-folder-open"></i>Body Massage</li>
-                                      <li class="gallery"><i class="fa fa-picture-o"></i></li>
-                                  </ul>
-                                  <div class="date">
-                                      <h5 class="fw-700 color-ff">15</h5>
-                                      <span class="fw-500 roboto color-ff text-uppercase">oct</span>
-                                  </div>
-                              </div>
-                              <div class="blog-content">
-                                  <a href="blog-details.html" class="title fw-500 pt-20">Nivea for men’s sensitive hydro gel the perfect cure.</a>
-                                  <p>The power of golden ratio typography cannot be understated. By choosing the line-height of your primary text.</p>
-                                  <a href="blog-details.html" class="readmore" title="Read More for Details" target="-blank">Read More <i class="fa fa-angle-right"></i></a>
-                              </div>
-                          </div>
-                      </div>
-
-                      <!--blog 6-->
-                      <div class="col-md-6">
-                          <div class="single-blog">
-                              <div class="blog-img pos-relative">
-                                  <div class="img-area">
-                                      <a href="blog-details.html"><img src="images/blog6.jpg" alt="blog img" class="img-fluid"></a>
-                                  </div>
-                                  <ul class="brand">
-                                      <li><i class="fa fa-heart"></i>18</li>
-                                      <li><i class="fa fa-commenting-o"></i>10</li>
-                                      <li><i class="fa fa-folder-open"></i>Hair cut</li>
-                                      <li class="gallery"><i class="fa fa-picture-o"></i></li>
-                                  </ul>
-                                  <div class="date">
-                                      <h5 class="fw-700 color-ff">14</h5>
-                                      <span class="fw-500 roboto color-ff text-uppercase">oct</span>
-                                  </div>
-                              </div>
-                              <div class="blog-content">
-                                  <a href="blog-details.html" class="title fw-500 pt-20">Nivea for men’s sensitive hydro gel the perfect cure.</a>
-                                  <p>The power of golden ratio typography cannot be understated. By choosing the line-height of your primary text.</p>
-                                  <a href="blog-details.html" class="readmore" title="Read More for Details" target="-blank">Read More <i class="fa fa-angle-right"></i></a>
-                              </div>
-                          </div>
-                      </div>
-
-                      <!--blog 7-->
-                      <div class="col-md-6">
-                          <div class="single-blog">
-                              <div class="blog-img pos-relative">
-                                  <div class="img-area">
-                                      <a href="blog-details.html"><img src="images/blog7.jpg" alt="blog img" class="img-fluid"></a>
-                                  </div>
-                                  <ul class="brand">
-                                      <li><i class="fa fa-heart"></i>18</li>
-                                      <li><i class="fa fa-commenting-o"></i>10</li>
-                                      <li><i class="fa fa-folder-open"></i>Nail Tips</li>
-                                      <li class="gallery"><i class="fa fa-picture-o"></i></li>
-                                  </ul>
-                                  <div class="date">
-                                      <h5 class="fw-700 color-ff">12</h5>
-                                      <span class="fw-500 roboto color-ff text-uppercase">oct</span>
-                                  </div>
-                              </div>
-                              <div class="blog-content">
-                                  <a href="blog-details.html" class="title fw-500 pt-20">Nivea for men’s sensitive hydro gel the perfect cure.</a>
-                                  <p>The power of golden ratio typography cannot be understated. By choosing the line-height of your primary text.</p>
-                                  <a href="blog-details.html" class="readmore" title="Read More for Details" target="-blank">Read More <i class="fa fa-angle-right"></i></a>
-                              </div>
-                          </div>
-                      </div>
-
-                      <!--blog 8-->
-                      <div class="col-md-6">
-                          <div class="single-blog">
-                              <div class="blog-img pos-relative">
-                                  <div class="img-area">
-                                      <a href="blog-details.html"><img src="images/blog8.jpg" alt="blog img" class="img-fluid"></a>
-                                  </div>
-                                  <ul class="brand">
-                                      <li><i class="fa fa-heart"></i>18</li>
-                                      <li><i class="fa fa-commenting-o"></i>10</li>
-                                      <li><i class="fa fa-folder-open"></i>Body Massage</li>
-                                      <li class="gallery"><i class="fa fa-picture-o"></i></li>
-                                  </ul>
-                                  <div class="date">
-                                      <h5 class="fw-700 color-ff">10</h5>
-                                      <span class="fw-500 roboto color-ff text-uppercase">oct</span>
-                                  </div>
-                              </div>
-                              <div class="blog-content">
-                                  <a href="blog-details.html" class="title fw-500 pt-20">Nivea for men’s sensitive hydro gel the perfect cure.</a>
-                                  <p>The power of golden ratio typography cannot be understated. By choosing the line-height of your primary text.</p>
-                                  <a href="blog-details.html" class="readmore" title="Read More for Details" target="-blank">Read More <i class="fa fa-angle-right"></i></a>
-                              </div>
-                          </div>
-                      </div>
+                     
+                     
                       <!--/col-->
                   </div>
                   <!--/row-->

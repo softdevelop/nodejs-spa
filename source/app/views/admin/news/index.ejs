@@ -1,5 +1,5 @@
 <% extend('../layouts/base', { 
-    title: "Booking management",
+    title: "New management",
     subTitle: "Index",
     script: `
     
@@ -77,15 +77,15 @@
       <!-- ============================================================== -->
       <div class="row page-titles">
           <div class="col-md-5 align-self-center">
-              <h4 class="text-themecolor">Booking</h4>
+              <h4 class="text-themecolor">New</h4>
           </div>
           <div class="col-md-7 align-self-center text-right">
               <div class="d-flex justify-content-end align-items-center">
                   <ol class="breadcrumb">
                       <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                      <li class="breadcrumb-item active">Booking</li>
+                      <li class="breadcrumb-item active">New</li>
                   </ol>
-                  <a href="/admin/booking/create"><button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i
+                  <a href="/admin/news/create"><button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i
                           class="fa fa-plus-circle"></i> Create New</button></a>
               </div>
           </div>
@@ -100,8 +100,8 @@
           <div class="col-12">
               <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Booking Table</h4>
-                    <h6 class="card-subtitle">Booking table example</h6>
+                    <h4 class="card-title">New Table</h4>
+                    <h6 class="card-subtitle">New table example</h6>
   
                     <div class="row">
                       <div class="col-sm-12 col-md-6">
@@ -115,11 +115,11 @@
                                   </select> entries</label>
                           </div>
                           <div>
-                            <button ype="button" class="BtnDelete btn btn-secondary font-18" ctl="booking"><i class="mdi mdi-delete"></i></button>
+                            <button ype="button" class="BtnDelete btn btn-secondary font-18" ctl="news"><i class="mdi mdi-delete"></i></button>
                           </div>
                       </div>
                       <div class="col-sm-12 col-md-6">
-                          <div id="myTable_filter_booking" class="dataTables_filter">
+                          <div id="myTable_filter_news" class="dataTables_filter">
                               <label>Search:
                                   <input type="search" class="InputSearch form-control-sm" placeholder="" aria-controls="myTable" value="<%=data.search?data.search:''%>">
                                   <button ype="button" class="BtnSearch btn btn-secondary font-18" ctl="users"><i class="mdi mdi-magnify"></i></button>
@@ -140,14 +140,13 @@
                                         </div>
                                       </th>
                                       <th>Name</th>
-                                      <th>Phone</th>
-                                      <th>Address</th>
+                                      <th>Slug</th>
                                       <th>Date</th>
-                                      <th>Message</th>
-                                      <th>Note</th>
+                                      <th>Image</th>
                                       <th>Status</th>
                                       <th>Spa Name</th>
-                                      <th>Service Title</th>
+                                      <th>Number Of VIews</th>
+                                      <th>Create By</th>
                                       <th>Action</th>
                                   </tr>
                               </thead>
@@ -161,19 +160,19 @@
                                       </div>
                                     </td>
                                     <td><%=item.name%></td>
-                                    <td><%=item.phone%></td>
-                                    <td><%=item.address%> </td>
+                                    <td><%=item.slug%></td>
                                     <td><%= moment(item.date).format('DD/MM/YYYY') %></td>
-                                    <td><%-item.message%> </td>
-                                    <td><%=item.note%> </td>
-                                    <td><%=item.status%> </td>
+                                    <td><img class="avatar" src="<%=urlMediaUpload.imageObj(item.image)%>" /></td>
+                                    <td><%=item.status%></td>
                                     <td><%=item.spas['name']%> </td>
-                                    <td><%=item.services['title']%> </td>
+
+                                    <td><%=item.numOfViews%></td>
+                                    <td><%=item.user['first_name']%> <%=item.user['last_name']%>  </td>
                                     <td>
-                                      <a href="/admin/booking/<%=item._id%>/view">
+                                      <a href="/admin/news/<%=item._id%>/view">
                                         <i class="ti-eye"></i>
                                       </a>
-                                      <a href="/admin/booking/<%=item._id%>/edit">
+                                      <a href="/admin/news/<%=item._id%>/edit">
                                         <i class="icon-note"></i>
                                       </a>
                                     </td>

@@ -20,7 +20,7 @@ router.get("/search", search.index) ;
 router.get('/contact', contact.index)
 router.get('/booking', booking.index)
 router.get('/service', service.index)
-router.get('/news', newsDetail.index)
+router.get('/news/:slug', newsDetail.index)
 router.get('/question-and-answer', qa.index)
 router.get('/spa/:slug', spa.landingPage)
 router.post('/spa/:slug', spa.booking)
