@@ -248,7 +248,7 @@
     });
 
 
-}(jQuery));
+
     //-------testimonial carousel-------
     $(".testimoial-wrapper").owlCarousel({
         items: 1,

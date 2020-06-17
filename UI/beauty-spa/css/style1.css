@@ -216,7 +216,7 @@ a.top:hover {
 /* ================================= */
 a.logo {
 	background-color: rgba(255, 255, 255, 0.9);
-	top: 0;
+	top: 118px;
 	right: 0;
 	bottom: auto;
 	left: 0;
@@ -233,8 +233,8 @@ a.logo {
 	box-shadow: 0 5px 1px 0 rgba(0, 0, 0, 0.1);
 }
 #slides {
-	position: relative;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+	top: 84px;
 }
 #slides .scrollable {
  *zoom: 1;
