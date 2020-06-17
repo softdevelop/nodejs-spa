@@ -107,7 +107,7 @@
                      <div class="col-md-6">
                         <div class="form-group <%=errors.email?'has-danger':''%>">
                            <label class="control-label">Email</label>
-                           <input type="text" id="email" class="form-control" name="email" value="<%=data.email?data.email:''%>">
+                           <input type="text" id="email" class="form-control" name="email" value="<%=data.email?data.email:''%>" required>
                            <small class="form-control-feedback"><%=errors?errors.email:''%></small>
                         </div>
                      </div>

@@ -1,6 +1,6 @@
 <div class="CardItem card" id="<%=item._id%>">
   <div class="card-header">
-    <%=item.title%>
+    <%=item.title || item.service.title%>
     <div class="card-actions">
         <a class="" data-action="collapse"><i class="ti-minus"></i></a>
         <a class="btn-close" data-action=""><i class="ti-close"></i></a>
@@ -8,16 +8,29 @@
   </div>
   <div class="card-body collapse hide">
     <div class="row">
+      <div class="col-md-12">
+          <div class="form-group">
+              <label>Chọn một dịch vụ trong hệ thống</label>
+              <select class="form-control custom-select" name="service-select" key="${key}">
+                <option value='0'>Đề xuất dịch vụ mới</option>
+                <% services.forEach(service=>{ %>
+                  <option value="<%=service._id%>" <%=service._id==''+item.service_id?'selected':''%>><%=service.title%> <%=(service.spa_id_recommend)?" - Dịch vụ bạn đề xuất (Đang xử lý)":""  %></option>
+                <% }) %>
+              </select>
+          </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
           <div class="form-group">
               <label>Title</label>
-              <input type="text" class="form-control" name='title' value="<%=item.title%>"> 
+              <input type="text" class="form-control" name='title' value="<%=item.title || item.service.title%>"> 
           </div>
         </div>
         <div class="col-md-12 ">
           <div class="form-group form-group-content ">
               <labelclass="control-label">Content</label>
-              <textarea class="summernote" style="z-index: 1;" name="content"><%=item.content%></textarea>
+              <textarea class="summernote" style="z-index: 1;" name="content"><%=item.content || item.service.content%></textarea>
               <small class="form-control-feedback"></small>
           </div>
         </div>
@@ -25,7 +38,7 @@
           <div class="form-group">
               <label>Image</label>
               <input type="file" class="ImageUpload form-control" name='image' id="<%=item._id%>"> 
-              <img class="avatar-100" src="<%=urlMediaUpload.imageObj(item.image)%>" />
+              <img class="avatar-100" src="<%=urlMediaUpload.imageObj(item.image || item.service.image)%>" />
           </div>
         </div>
         <div class="col-md-12">

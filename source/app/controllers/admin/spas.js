@@ -9,11 +9,13 @@ const {validateSpaService,validateSpaServiceEdit} = require('../../models/spas_s
 const bcrypt = require("bcryptjs");
 var ObjectId = require('mongodb').ObjectID;
 const {locations} = require("../../utils/constants");
+const Service = mongoose.model('Service')
 
 const { 
   spaIntroService,
   spaServiceService,
-  spaTeamService
+  spaTeamService,
+  serviceService,
 } = require("../../services");
 
 const APP_DOMAIN = require("../../../config/index").APP_DOMAIN;
@@ -154,10 +156,24 @@ const landingPage = async (req, res) => {
   try{
     let user = await User.findById(req.user._id).populate('spa').exec();
     let spa = user.spa;
-    let spaLandingData = await Spa.findById(spa._id).populate('intros').populate('services').populate('members').exec();
+    let spaLandingData = await Spa.findById(spa._id).populate('intros').populate({
+      path: 'services',
+      populate: {
+        path: 'service'
+      }
+    }).populate('members').exec();
+    let services = await Service.find({ 
+      $or: [
+        { status: 'active'},
+        { spa_id_recommend: spa._id}
+      ]
+    }).exec();
+
     res.render('admin/spas/landing-page', {
       spaLandingData, 
       urlMediaUpload,
+      services,
+      servicesJSON: JSON.stringify(services).replace(/\\"/g, '\\\\"'),
       spaLandingDataJSON: JSON.stringify(spaLandingData).replace(/\\"/g, '\\\\"'),
     })
   } catch(e){
@@ -177,7 +193,7 @@ const setTemplate = async (req, res) => {
     }
   }, {})
 
-  await data.intros.forEach(async item=>{
+  await data.intros && data.intros.forEach(async item=>{
     if(item.id){
       item.image = fileObj[item.id];
       if(!item.image) delete item.image
@@ -189,7 +205,7 @@ const setTemplate = async (req, res) => {
     }
   })
 
-  await data.services.forEach(async item=>{
+  await data.services && data.services.forEach(async item=>{
     if(item.id){
       item.image = fileObj[item.id];
       if(!item.image) delete item.image
@@ -197,11 +213,28 @@ const setTemplate = async (req, res) => {
     }else{
       item.spa_id = spa._id
       item.image = fileObj[item.image]
-      await spaServiceService.createSpasService(item);
+      if(item.service_id){
+        let service = await Service.findById(item.service_id).exec();
+        if(item.title   == service.title)   delete item.title;
+        if(item.content == service.content) delete item.content;
+        if(item.image   == service.image)   delete item.image;
+        await spaServiceService.createSpasService(item);
+
+      }else{
+        item.spa_id_recommend = spa._id
+        let service = await serviceService.createService(item);
+        let spaService = {
+          price: item.price,
+          service_id: service._id,
+          spa_id: item.spa_id
+        }
+        await spaServiceService.createSpasService(spaService);
+      }
+      
     }
   })
 
-  await data.members.forEach(async item=>{
+  await data.members && data.members.forEach(async item=>{ 
     if(item.id){
       item.avatar = fileObj[item.id];
       if(!item.avatar) delete item.avatar
@@ -226,7 +259,12 @@ const setTemplate = async (req, res) => {
 const getTemplatePreview = async (req, res) => {
   let user = await User.findById(req.user._id).populate('spa').exec();
   let spa = user.spa;
-  let spaDetail = await Spa.findById(spa._id).populate('intros').populate('services').populate('members').exec();
+  let spaDetail = await Spa.findById(spa._id).populate('intros').populate({
+    path: 'services',
+    populate: {
+      path: 'service'
+    }
+  }).populate('members').exec();
   let template_id = spaDetail.template_id;
   res.render("template/"+template_id, {
     spaDetail,
@@ -237,7 +275,12 @@ const getTemplatePreview = async (req, res) => {
 const getTemplateId = async (req, res) => {
   let user = await User.findById(req.user._id).populate('spa').exec();
   let spa = user.spa;
-  let spaDetail = await Spa.findById(spa._id).populate('intros').populate('services').populate('members').exec();
+  let spaDetail = await Spa.findById(spa._id).populate('intros').populate({
+    path: 'services',
+    populate: {
+      path: 'service'
+    }
+  }).populate('members').exec();
   let template_id = spaDetail.template_id;
   res.render('template/'+req.params.id, {
     spaDetail,

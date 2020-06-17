@@ -10,11 +10,12 @@ const Joi = require('joi');
 const STATUS = ["blocked", "active", "pending"];
 
 const SpaServiceSchema = new Schema({
-    title: { type: String, required: true },
-    content: { type: String, required: true },
-    image: { type: Object, required: true },
-    price: { type: Number, required: true },
-    spa_id: { type: Schema.Types.ObjectId, required: true }
+    title: { type: String, required: false },
+    content: { type: String, required: false },
+    image: { type: Object, required: false },
+    price: { type: Number, required: false },
+    spa_id: { type: Schema.Types.ObjectId, required: true },
+    service_id: { type: Schema.Types.ObjectId, required: false }
   }, {
     timestamps: true,
 })
@@ -45,6 +46,14 @@ function validateSpaServiceEdit(data) {
 /**
  * virtual
  */
+
+SpaServiceSchema.virtual('service', {
+  ref: 'Service',
+  localField: 'service_id',
+  foreignField: '_id',
+  justOne: true
+});
+
 SpaServiceSchema.virtual('created_at').get(function () {
     return moment(this.createdAt).format("DD-MM-YYYY hh:mm:ss");
 })

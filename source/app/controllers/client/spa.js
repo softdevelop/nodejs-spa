@@ -6,7 +6,12 @@ const {genHtmlPagination, urlMediaUpload} = require('../../utils')
 
 const landingPage = async (req, res) => {
   let slug = req.params.slug
-  let spaDetail = await Spa.findOne({slug, status: 'active'}).populate('intros').populate('services').populate('members').exec();
+  let spaDetail = await Spa.findOne({slug, status: 'active'}).populate('intros').populate({
+    path: 'services',
+    populate: {
+      path: 'service'
+    }
+  }).populate('members').exec();
   if(spaDetail){
     let template_id = spaDetail.template_id || '1';
     res.render("template/"+template_id, {
