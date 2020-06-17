@@ -70,17 +70,6 @@
         }
     });
 
-    /*---------booking date picker---------*/
-    $("#booking-date").datepicker({
-        dateFormat: 'dd - mm - yy',
-        minDate: "new Date()",
-    });
-    // $("#booking-date2").daterangepicker();
-
-    $("#booking-date2").datepicker({
-        dateFormat: 'dd - mm - yy',
-        minDate: "new Date()",
-    });
 
 
     //----------product gallery-----------
