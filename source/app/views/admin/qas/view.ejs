@@ -10,25 +10,8 @@
 
     <script src="/libs/node_modules/summernote/dist/summernote-bs4.min.js"></script>
     <script src="/js/slugify.js"></script>
-    <script>
-      $(document).ready(function() {
-          $(function() {
-      
-              $('.summernote').summernote({
-                  height: 350, // set editor height
-                  minHeight: null, // set minimum height of editor
-                  maxHeight: null, // set maximum height of editor
-                  focus: false, // set focus to editable area after initializing summernote
-              });
-      
-              $('.inline-editor').summernote({
-                  airMode: true
-              });
-      
-          });
-      
-      });
-    </script>
+    <script src="/js/admin/summernote-init.js"></script>
+
     
   `
   }) %>

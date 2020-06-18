@@ -43,3 +43,14 @@ form .avatar-100{
 .card.CardItem{
   border: 3px solid blue;
 }
+
+
+// custom for summernote
+.modal-backdrop{
+  display: none;
+}
+
+.modal-dialog{
+  top: 100px;
+}
+// END custom for summernote

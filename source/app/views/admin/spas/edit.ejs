@@ -269,6 +269,7 @@
 <script>
   L.marker([<%=data.latitude?data.latitude:''%>, <%=data.longitude?data.longitude:''%>]).addTo(mymap);
 </script>
+<script src="/js/admin/summernote-init.js"></script>
 
 
 <script>
@@ -288,20 +289,7 @@
       $("#logo").change(function() {
          readURL(this);
       });
-      $(function() {
-  
-          $('.summernote').summernote({
-              height: 350, // set editor height
-              minHeight: null, // set minimum height of editor
-              maxHeight: null, // set maximum height of editor
-              focus: false, // set focus to editable area after initializing summernote
-          });
-  
-          $('.inline-editor').summernote({
-              airMode: true
-          });
-  
-      });
+    
       $('form').on('submit', function(e){
            e.preventDefault();
            var formData = new FormData(this);
