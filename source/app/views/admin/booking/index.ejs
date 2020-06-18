@@ -167,8 +167,8 @@
                                     <td><%-item.message%> </td>
                                     <td><%=item.note%> </td>
                                     <td><%=item.status%> </td>
-                                    <td><%=item.spas['name']%> </td>
-                                    <td><%=item.services['title']%> </td>
+                                    <td><a href="/admin/spas/<%=item.spas._id%>"><%=item.spas['name']%></a> </td>
+                                    <td><a href="/admin/spas/<%=item.spas._id%>/service/<%=item.service_id%>"><%=item.services['title']%></a> </td>
                                     <td>
                                       <a href="/admin/booking/<%=item._id%>/view">
                                         <i class="ti-eye"></i>

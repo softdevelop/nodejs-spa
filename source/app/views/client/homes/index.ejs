@@ -170,11 +170,11 @@
                           <div class="single-blog">
                               <div class="blog-img pos-relative">
                                   <div class="img-area">
-                                      <a href="blog-details.html"><img src="<%=urlMediaUpload.imageObj(item.image)%>"  alt="blog img" class="img-fluid"></a>
+                                      <a href="/news/<%=item.slug%>"><img src="<%=urlMediaUpload.imageObj(item.image)%>"  alt="blog img" class="img-fluid"></a>
                                   </div>
                                   <ul class="brand">
                                       <li><i class="fa fa-heart"></i>18</li>
-                                      <li><i class="fa fa-commenting-o"></i>10</li>
+                                      <li><i class="fa fa-eye"></i><%=item.numOfViews%></li>
                                       <!-- <li><i class="fa fa-folder-open"></i>Spa Tips</li>ontent -->
                                       <li class="gallery"><i class="fa fa-picture-o"></i></li>
                                   </ul>
@@ -184,7 +184,7 @@
                                   </div>
                               </div>
                               <div class="blog-content">
-                                  <a href="blog-details.html" class="title fw-500 pt-20"><%=item.name%></a>
+                                  <a href="/news/<%=item.slug%>" class="title fw-500 pt-20"><%=item.name%></a>
                                   <div class="cut-content" ><%-item.content.substring(0,275)%>...</div>
                                   <a href="/news/<%=item.slug%>" class="readmore" title="Read More for Details" target="-blank">Read More <i class="fa fa-angle-right"></i></a>
                               </div>
