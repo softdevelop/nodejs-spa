@@ -31,7 +31,7 @@
               <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
               <li class="breadcrumb-item active">Spa</li>
            </ol>
-           <a href="/admin/spas/landing-page/preview"><button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-eye"></i> Preview</button></a>
+           <a href="/admin/spas/landing-page/preview"><button type="button" class="btn btn-info d-lg-block m-l-15"><i class="fa fa-eye"></i> Preview</button></a>
         </div>
      </div>
   </div>
@@ -144,7 +144,7 @@
 
                               </div>
                               <div class="row">
-                                  <button type="button" class="Landing-Intro-Create btn btn-info d-none d-lg-block m-l-15 mb-3"><i class="fa fa-plus-circle"></i> Add slide</button>
+                                  <button type="button" class="Landing-Intro-Create btn btn-info d-lg-block m-l-15 mb-3"><i class="fa fa-plus-circle"></i> Add slide</button>
                               </div>
                             </section>
 
@@ -158,7 +158,7 @@
 
                                 <% if(spaLandingData.services && spaLandingData.services.length>0){
                                   spaLandingData.services.forEach(item=>{ %>
-                                    <%- include('./elements/card_service', { item, urlMediaUpload}) %>
+                                    <%- include('./elements/card_service', { item, urlMediaUpload, services}) %>
                                   <%
                                   })
                                 }
@@ -167,7 +167,7 @@
                               </div>
 
                               <div class="row">
-                                  <button type="button" class="Landing-Service-Create btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add service</button>
+                                  <button type="button" class="Landing-Service-Create btn btn-info d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add service</button>
                               </div>
                             </section>
                             <!-- Step 4 -->
@@ -214,7 +214,7 @@
                              </div>
 
                              <div class="row">
-                                 <button type="button" class="Landing-Team-Create btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Member</button>
+                                 <button type="button" class="Landing-Team-Create btn btn-info d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Member</button>
                              </div>
                            </section>
                         </form>
@@ -351,10 +351,11 @@
   });
 
   class LandingManageForm {
-    constructor(id, spaLandingData) {
+    constructor(id, spaLandingData, services) {
       this.form = $(id)
       this.id = id
       this.imageUpload = {}
+      this.services = services;
       this.data = {
         templateId: spaLandingData.template_id,
         intros: [],
@@ -407,14 +408,26 @@
       let arr = $(`${this.id} .Landing-Service .card.CardItem`);
       let services = [];
       arr.each((index, item)=>{
-
-        services.push({
-          title: $(item).find('input[name=title]').val(),
-          content: $(item).find('textarea[name=content]').val(),
-          image: $(item).attr('key'),
-          price: $(item).find('input[name=price]').val(),
-          id: $(item).attr('id'),
-        })
+        let service_id = $(item).find('select[name=service-select]').val();
+        if( service_id == '0'){
+          services.push({
+            title: $(item).find('input[name=title]').val(),
+            content: $(item).find('textarea[name=content]').val(),
+            image: $(item).attr('key'),
+            price: $(item).find('input[name=price]').val(),
+            id: $(item).attr('id'),
+          })
+        }else{
+          services.push({
+            title: $(item).find('input[name=title]').val(),
+            content: $(item).find('textarea[name=content]').val(),
+            image: $(item).attr('key'),
+            price: $(item).find('input[name=price]').val(),
+            id: $(item).attr('id'),
+            service_id: service_id
+          })
+        }
+       
       })
       this.data.services = services;
     }
@@ -558,6 +571,11 @@
 
     onAddCardService(wrapper){
       let key = this.genStringRandom();
+      let servicesHtml = '';
+      this.services.forEach(item=>{
+        servicesHtml += `<option value=${item._id}>${item.title}</option>`
+      })
+
       let card = `
         <!-- ------------- -->
           <div class="CardItem card" key="${key}">
@@ -570,16 +588,27 @@
               </div>
               <div class="card-body collapse show">
                 <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label>Chọn một dịch vụ trong hệ thống</label>
+                          <select class="form-control custom-select" name="service-select" key="${key}">
+                            <option value='0'>Đề xuất dịch vụ mới</option>
+                            ${servicesHtml}
+                          </select>
+                      </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
                           <label>Title</label>
-                          <input type="text" class="form-control" name='title'> 
+                          <input type="text" class="form-control" name='title' key="${key}"> 
                       </div>
                     </div>
                     <div class="col-md-12 ">
                       <div class="form-group form-group-content ">
                           <labelclass="control-label">Content</label>
-                          <textarea class="summernote" style="z-index: 1;" name="content"></textarea>
+                          <textarea class="summernote" id="summernote${key}" style="z-index: 1;" name="content" key="${key}"></textarea>
                           <small class="form-control-feedback"></small>
                       </div>
                     </div>
@@ -678,7 +707,9 @@
   let spaLandingDataJSON = `<%-spaLandingDataJSON%>`;  
   let spaLandingData = JSON.parse(spaLandingDataJSON)
 
-  let landing = new LandingManageForm('#Landing-Form', spaLandingData);
+  let services = JSON.parse(`<%-servicesJSON%>`)
+
+  let landing = new LandingManageForm('#Landing-Form', spaLandingData, services);
 
   $('.Landing-Intro-Create').on('click', function(){
     landing.onAddCard('.Landing-Intro', 'intro');
@@ -722,5 +753,25 @@
   }
 
   setView();
+
+  // remove card 
+  $('body').on('click', '.btn-close', function(){
+    console.log('parent', $(this).parent().parent().parent());
+    $(this).parent().parent().parent().remove();
+  })
+
+  // select service 
+  $('body').on('change', 'select[name=service-select]', function(){
+    let value = $(this).val();
+    let key = $(this).attr('key');
+    if(value !=  '0'){
+      let service = services.filter(item=>item._id===value)[0]
+      $(`input[name=title][key=${key}]`).val(service.title)
+      $(`#summernote${key}`).summernote('code', service.content);
+    }else{
+      $(`input[name=title][key=${key}]`).val('')
+      $(`#summernote${key}`).summernote('code', '');
+    }
+  })
 
 </script>

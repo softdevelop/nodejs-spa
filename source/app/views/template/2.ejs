@@ -177,15 +177,15 @@
               <% spaDetail.services.forEach(item=>{ %>
                 <div class="col-md-6 col-lg-4">
                   <div class="service-widget mb-4">
-                     <div class="service-image overflow-hidden"> <img src="<%=urlMediaUpload.imageObj(item.image)%>" style="max-height: 200px;" alt="bodymassage"></div>
+                     <div class="service-image overflow-hidden"> <img src="<%=urlMediaUpload.imageObj( item.image || item.service.image )%>" style="max-height: 200px;" alt="bodymassage"></div>
                      <div class="service-iconprice">
                         <div class="ser-icon bg-gradient icon-font-30 color-white"> <i class="flaticon-massage"></i></div>
                         <div class="ser-price bg-gradient color-white"> <span><%=item.price%></span></div>
                      </div>
                      <div class="text-box py-4 px-3">
-                        <h4 class="inner-title text-center text-capitalize color-black"><%=item.title%></h4>
+                        <h4 class="inner-title text-center text-capitalize color-black"><%=item.title || item.service.title%></h4>
                         <div>
-                          <%-item.content%>
+                          <%-item.content || item.service.content%>
                         </div>
                      </div>
                   </div>
@@ -643,7 +643,7 @@
                             <div class="form-group">
                               <select class="form-control no-border" id="service" name="service_id" placeholder="Service*">
                                 <% spaDetail.services.forEach(item=>{ %>
-                                  <option value="<%=item._id%>"><%=item.title%></option>
+                                  <option value="<%=item._id%>"><%=item.title || item.service.title%></option>
                                 <% }) %>
                               </select>
                             </div>

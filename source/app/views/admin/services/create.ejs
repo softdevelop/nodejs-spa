@@ -1,5 +1,5 @@
 <% extend('../layouts/base', { 
-    title: "Booking management",
+    title: "Services management",
     subTitle: "Create",
     css: `
       <link rel="stylesheet" href="/libs/node_modules/dropify/dist/css/dropify.min.css">
@@ -26,10 +26,7 @@
                 $('.inline-editor').summernote({
                     airMode: true
                 });
-
             });
-
-          
         });
     </script>
 
@@ -41,18 +38,18 @@
     <!-- ============================================================== -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h4 class="text-themecolor">Booking</h4>
+            <h4 class="text-themecolor">Service</h4>
         </div>
         <div class="col-md-7 align-self-center text-right">
             <div class="d-flex justify-content-end align-items-center">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item active">Booking</li>
+                    <li class="breadcrumb-item active">Service</li>
                 </ol>
-                <a href="/admin/booking" <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i
+                <a href="/admin/services" <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i
                         class="fa fa-plus-circle"></i> List</button></a>
             </div>
-        </div>
+        </div> 
     </div>
     <!-- ============================================================== -->
     <!-- End Bread crumb and right sidebar toggle -->
@@ -65,113 +62,58 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="/admin/booking/create" method="post">
+                    <form action="/admin/services/create" method="post" enctype="multipart/form-data">
                         <div class="form-body">
-                            <h3 class="card-title">Booking Info</h3>
+                            <h3 class="card-title">Service Info</h3>
                             <hr>
                             <div class="row p-t-20">
-                                <div class="col-md-6">
-                                    <div class="form-group form-group-name <%=errors.name?'has-danger':''%>">
-                                        <label class="control-label">Name</label>
-                                        <input type="text" id="name" class="form-control" placeholder="" name="name"
-                                            required value="<%=data.name?data.name:''%>">
-                                        <small class="form-control-feedback"><%=errors?errors.name:''%></small>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group form-group-phone <%=errors.phone?'has-danger':''%>">
-                                        <label class="control-label">Phone</label>
-                                        <input type="number" id="phone" class="form-control" placeholder="" name="phone"
-                                            required value="<%=data.phone?data.phone:''%>">
-                                        <small class="form-control-feedback"><%=errors?errors.phone:''%></small>
-                                    </div>
-                                </div>
-                            </div>
-                           
-                            <div class="row">
-                                <div class="col-md-6 ">
-                                    <div class="form-group form-group-address <%=errors.address?'has-danger':''%>">
-                                        <label class="control-label">Address</label>
-                                        <input type="text" id="address" class="form-control" placeholder="" name="address"
-                                            required value="<%=data.address?data.address:''%>">
-                                        <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 ">
-                                    <div class="form-group form-group-date <%=errors.date?'has-danger':''%>">
-                                        <label class="control-label">Date</label>
-                                        <input type="date" id="date" class="form-control" placeholder="" name="date"
-                                            required value="<%=data.date?data.date:''%>">
-                                        <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 ">
-                                    <div class="form-group form-group-message <%=errors.message? 'has-danger': ''%>">
-                                        <label class="control-label">Message</label>
-                                        <textarea class="summernote" style="z-index: 1;" name="message"></textarea>
-                                        <small class="form-control-feedback"><%=errors?errors.message:''%></small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                           
-                                <div class="col-md-6 ">
-                                    <div class="form-group form-group-note <%=errors.note?'has-danger':''%>">
-                                        <label class="control-label">Note</label>
-                                        <input type="text" id="note" class="form-control" placeholder="" name="note"
-                                            required value="<%=data.note?data.note:''%>">
-                                        <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group <%=errors.status?'has-danger':''%>">
-                                        <label class="control-label">Status</label>
-                                        <select class="form-control custom-select" name="status">
-                                            <option value="pending">Pending</option>
-                                            <option value="active" ">Active</option>
-                                        <option value="blocked ">Blocked</option>
-                                    </select>
-                                    <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
+                              <div class="col-md-12">
+                                  <div class="form-group form-group-title <%=errors.title?'has-danger':''%>">
+                                      <label class="control-label">Title</label>
+                                      <input type="text" id="title" class="form-control" placeholder="" name="title"
+                                          required value="<%=data.title?data.title:''%>">
+                                      <small class="form-control-feedback"><%=errors?errors.title:''%></small>
                                   </div>
-                                </div>
+                              </div>
 
-                            </div>
-                            <!--/row-->
-                            <div class="row p-t-20">
-                                <div class="col-md-6">
-                                   <div class="form-group form-group-spa_id <%=errors.spa_id?'has-danger':''%>">
-                                      <label class="control-label">Spa name</label>
-                                      <select class="form-control custom-select" name="spa_id">
-                                        <% data.forEach(item=>{ %>
-                                          <option value="<%=item._id%>"><%=item.name%></option>
-                                        <% }) %>
-                                      </select>
-                                      <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
-                                   </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12 ">
+                                  <div class="form-group form-group-content <%=errors.content? 'has-danger': ''%>">
+                                      <label class="control-label">Content</label>
+                                      <textarea class="summernote" style="z-index: 1;" name="content"></textarea>
+                                      <small class="form-control-feedback"><%=errors?errors.content:''%></small>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6 ">
+                                  <div class="form-group form-group-image <%=errors.image? 'has-danger': ''%>">
+                                      <label class="control-label">Image</label>
+                                      <input type="file" id="image" class="form-control" name="image"
+                                          value="<%=data.image?data.image:''%>">
+                                      <small class="form-control-feedback"><%=errors?errors.image:''%></small>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group <%=errors.status?'has-danger':''%>">
+                                    <label class="control-label">Status</label>
+                                    <select class="form-control custom-select" name="status">
+                                        <option value="pending">Pending</option>
+                                        <option value="active" ">Active</option>
+                                    <option value="blocked ">Blocked</option>
+                                  </select>
+                                  <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group form-group-service_id <%=errors.service_id?'has-danger':''%>">
-                                       <label class="control-label">Service name</label>
-                                       <select class="form-control custom-select" name="service_id">
-                                         <% data[0].services.forEach(item=>{ %>
-                                           <option value="<%=item._id%>"><%=item.title%></option>
-                                         <% }) %>
-                                       </select>
-                                       <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
-                                    </div>
-                                 </div>
-                             </div>
-                            <!--/row-->
-                           
-                       
+                              </div>
+                          </div>
+                        
                             <!--/row-->
                             <!--/row-->
                        
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                <a href="/admin/booking">
+                                <a href="/admin/services">
                                     <button type="button" class="btn btn-inverse">Cancel</button>
                                 </a>
                             </div>
@@ -261,24 +203,3 @@
 </div>
 </div>
 
-
-<script>
-
-    let data = `<%-JSON.stringify(data)%>`;
-    let newData = JSON.parse(data)
-    $('select').on('change', function() {
-     
-        const result = newData.filter(item=>{
-            return item._id === this.value 
-        })[0]
-        let option =""
-        result.services.forEach(ele => {
-            option += `<option value="${ele._id}">${ele.title}</option>`
-            
-        });
-        $('select[name=service_id]').html(option)
-        console.log(option);
-        // alert( this.value );
-      });
-</script>
-    

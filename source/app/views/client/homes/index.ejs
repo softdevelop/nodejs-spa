@@ -59,78 +59,37 @@
           </div>
 
           <ul class="tab-menu nav nav-tabs mb-4 position-relative" role="tablist">
-              <% categoryLevel1.forEach((item, index)=>{ %>
-                <li class="nav-item"><a class="nav-link <%=index===2?'active':''%>" href="#cat<%=item._id%>" aria-controls="cat<%=item._id%>" role="tab" data-toggle="tab" aria-selected="true"><%=item.name%></a></li>
+              <% services.forEach((item, index)=>{ %>
+                <li class="nav-item"><a class="nav-link <%=index===0?'active':''%>" href="#service<%=item._id%>" aria-controls="service<%=item._id%>" role="tab" data-toggle="tab" aria-selected="true"><%=item.title%></a></li>
               <% }) %>
             
               <li class="view-more position-absolute"><a href="">View more</a></li>
           </ul>
           <div class="tab-content" id="myTabContent">
 
-              <% categoryLevel1.forEach((item, index)=>{ %>
-                <div class="tab-pane fade show <%=index===2?'active':''%>" id="cat<%=item._id%>" role="tabpanel" aria-labelledby="<%=item._id%>-tab">
+              <% services.forEach((item, index)=>{ %>
+                <div class="tab-pane fade show <%=index===0?'active':''%>" id="service<%=item._id%>" role="tabpanel" aria-labelledby="<%=item._id%>-tab">
                   <div class="row">
                       <div class="col-md-12">
                           <div class="product-carousel-wrapper owl-carousel" id="experts-carousel">
                               <div class="row">
-                                  <div class="single-carousel col-md-4">
-                                      <img src="images/blog<%=Math.floor(Math.random() * (10 - 5) ) + 5; %>.jpg" alt="experts person" class="img-fluid">
-                                      <div class="expert-hover text-center">
-                                          <h6 class="name fw-700 color-ff">Nivea for men’s sensitive hydro gel the perfect cure.</h6>
-                                          <span class="degignation">The power of golden ratio typography cannot be understated. By choosing the line-height of your primary text.</span>
-                                          <!--<p class="color-ff ptb-20">Most designers set their </p>-->
-                                      </div>
-                                      <div class="social-contact">
-                                          <a href="#" title="E-Mail" target="_blank"><i class="fa fa-envelope-o"></i></a>
-                                          <a href="#" title="Phone" target="_blank"><i class="fa fa-phone"></i></a>
-                                          <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-                                          <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
-                                      </div>
-                                  </div>
 
-                                  <div class="single-carousel col-md-4">
-                                      <img src="images/blog<%=Math.floor(Math.random() * (10 - 5) ) + 5; %>.jpg" alt="experts person" class="img-fluid">
-                                      <div class="expert-hover text-center">
-                                          <h6 class="name fw-700 color-ff">Nivea for men’s sensitive hydro gel the perfect cure.</h6>
-                                          <span class="degignation">The power of golden ratio typography cannot be understated. By choosing the line-height of your primary text.</span>
-                                          <!--<p class="color-ff ptb-20">Most designers set their </p>-->
-                                      </div>
-                                      <div class="social-contact">
-                                          <a href="#" title="E-Mail" target="_blank"><i class="fa fa-envelope-o"></i></a>
-                                          <a href="#" title="Phone" target="_blank"><i class="fa fa-phone"></i></a>
-                                          <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-                                          <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
-                                      </div>
-                                  </div>
-                                  <div class="single-carousel col-md-4">
-                                    <img src="images/blog<%=Math.floor(Math.random() * (10 - 5) ) + 5; %>.jpg" alt="experts person" class="img-fluid">
-                                    <div class="expert-hover text-center">
-                                        <h6 class="name fw-700 color-ff">Nivea for men’s sensitive hydro gel the perfect cure.</h6>
-                                        <span class="degignation">The power of golden ratio typography cannot be understated. By choosing the line-height of your primary text.</span>
-                                        <!--<p class="color-ff ptb-20">Most designers set their </p>-->
+                                  <% item.spaservice.forEach((spaservice, index)=>{ %>
+                                    <div class="single-carousel col-md-4">
+                                        <img src="images/blog<%=Math.floor(Math.random() * (10 - 5) ) + 5; %>.jpg" alt="experts person" class="img-fluid">
+                                        <div class="expert-hover text-center">
+                                            <h6 class="name fw-700 color-ff"><%=spaservice.spa.name%></h6>
+                                            <span class="degignation"><%-spaservice.spa.address%></span>
+                                            <!--<p class="color-ff ptb-20">Most designers set their </p>-->
+                                        </div>
+                                        <div class="social-contact">
+                                            <a href="#" title="E-Mail" target="_blank"><i class="fa fa-envelope-o"></i></a>
+                                            <a href="#" title="Phone" target="_blank"><i class="fa fa-phone"></i></a>
+                                            <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                                            <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                                        </div>
                                     </div>
-                                    <div class="social-contact">
-                                        <a href="#" title="E-Mail" target="_blank"><i class="fa fa-envelope-o"></i></a>
-                                        <a href="#" title="Phone" target="_blank"><i class="fa fa-phone"></i></a>
-                                        <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
-                                    </div>
-                                  </div>
-                                  <div class="single-carousel col-md-4">
-                                    <img src="images/blog<%=Math.floor(Math.random() * (10 - 5) ) + 5; %>.jpg" alt="experts person" class="img-fluid">
-                                    <div class="expert-hover text-center">
-                                        <h6 class="name fw-700 color-ff">Nivea for men’s sensitive hydro gel the perfect cure.</h6>
-                                        <span class="degignation">The power of golden ratio typography cannot be understated. By choosing the line-height of your primary text.</span>
-                                        <!--<p class="color-ff ptb-20">Most designers set their </p>-->
-                                    </div>
-                                    <div class="social-contact">
-                                        <a href="#" title="E-Mail" target="_blank"><i class="fa fa-envelope-o"></i></a>
-                                        <a href="#" title="Phone" target="_blank"><i class="fa fa-phone"></i></a>
-                                        <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
-                                    </div>
-                                  </div>
-                              
+                                  <% }) %>
 
                               </div>
                           </div>
