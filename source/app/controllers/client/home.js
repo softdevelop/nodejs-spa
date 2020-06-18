@@ -24,12 +24,16 @@ const index = async (req, res) => {
 
   let { limit } = req.query;
   let page = req.params.page
+  let categorySlug = req.query['danh-muc'];
+  let category = null;
+  if(categorySlug) category = await Category.findOne({slug: categorySlug}).exec();
   let search = req.query.search || '';
   let text = '.*'+search.split(' ').join('.*')+'.*'
   let reg = new RegExp(text);
   var query = {
     name: { $regex: reg, $options: 'gmi' },
   };
+  if(category) query.category_ids = { $elemMatch: { $eq: ''+category._id}}
   var options = {
     select: "", //"username email"
     sort: { createdAt: -1 },

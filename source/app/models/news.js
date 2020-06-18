@@ -18,7 +18,7 @@ const NewSchema = new Schema({
     numOfViews:{type: Number, require},
     spa_id: {type: String, require: true},
     createBy: {type: String, require: true},
-    category_ids: {type: Object, required: true },
+    category_ids: {type: Array, required: true },
 },{
     timestamps: true
 }
