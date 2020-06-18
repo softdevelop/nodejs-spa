@@ -131,7 +131,7 @@
                                       <th>Content</th>
                                       <th>Image</th>
                                       <th>Price</th>
-                                      <th>Spa_id</th>
+                                      <th>Spa name</th>
                                       <th>Action</th>
                                   </tr>
                               </thead>
@@ -151,7 +151,7 @@
                                     <td><img class="avatar" src="<%=urlMediaUpload.imageObj(item.image)%>" /></td>
 
                                     <td><%=item.price%></td>
-                                    <td><%=item.spa_id%></td>
+                                    <td> <a href="/admin/spas/<%=item.spa_id%>"> <%=record.name%></a></td>
                                     <td>
                                       <a href="/admin/spas/<%=item.spa_id%>/service/<%=item._id%>">
                                         <i class="ti-eye"></i>

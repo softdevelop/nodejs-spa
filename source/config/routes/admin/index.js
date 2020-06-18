@@ -15,6 +15,7 @@ const categories = require("./categories");
 const booking = require("./booking")
 const services = require("./services")
 
+const news = require("./news")
 // Controllers
 const {
 } = require("../../../app/controllers/admin");
@@ -68,6 +69,7 @@ router.use(booking);
 // service
 router.use(services);
 
+router.use(news)
 router.get("*", (req, res) => {
   res.render('admin/404');
 });

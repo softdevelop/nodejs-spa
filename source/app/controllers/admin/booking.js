@@ -126,7 +126,7 @@ const delMany = async (req, res) => {
   try {
     let ids = req.body.ids;
     ids.map(async val => {
-      const user = await Booking.deleteOne({ _id: val }, (err, result) => {
+      const book = await Booking.deleteOne({ _id: val }, (err, result) => {
         if (err) return res.status(400).json({ status: "error" });
       }).exec();
     });

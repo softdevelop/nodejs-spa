@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const Category = mongoose.model('Category')
 const Service = mongoose.model('Service')
+const New = mongoose.model("New");
+const moment = require("moment-timezone");
+const {genHtmlPagination, urlMediaUpload} = require('../../utils')
+
 const {
   constants
 } = require("../../utils");
@@ -17,10 +21,40 @@ const index = async (req, res) => {
     populate: 'spa'
   }).lean();
 
+  let { page, limit } = req.query;
+  let search = req.query.search || '';
+  let text = '.*'+search.split(' ').join('.*')+'.*'
+  let reg = new RegExp(text);
+  var query = {
+    name: { $regex: reg, $options: 'gmi' },
+  };
+  var options = {
+    select: "", //"username email"
+    sort: { createdAt: -1 },
+    lean: true,
+    limit: parseInt(limit, 10) || 10,
+    page: parseInt(page, 10) || 1,
+    populate: [{
+      path: 'spas',
+    },{
+      path: 'user',
+      select: 'last_name first_name'
+    }
+  ]
+  };
+  let data = await New.paginate(query, options);
+  data.search = search
+  
+
   res.render("client/homes/index", {
     categoryLevel1,
-    locationsArr: constants.locationsArr,
-    services
+    data,
+    services,
+    urlMediaUpload,
+    moment: moment.tz.setDefault("Asia/Ho_Chi_Minh"),
+    genHtmlPagination: genHtmlPagination(data.total, data.limit, data.page, data.pages, data.search),
+    categoryLevel1,
+    locationsArr: constants.locationsArr
   });
 };
 

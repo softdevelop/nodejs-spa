@@ -289,9 +289,8 @@ const getTemplateExampleId = async (req, res) => {
 const getFormService = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
-  let spaOwners = await User.find({role: "SPA_OWNER"}).exec();
   let spaLandingData = await Spa.findById(record._id).populate('services').exec();
-  res.render('admin/spas/service/index', {errors: {}, data: spaLandingData.services,record, urlMediaUpload, spaOwners})
+  res.render('admin/spas/service/index', {errors: {}, data: spaLandingData.services,record, urlMediaUpload})
 }
 const getFormCreateService = async (req, res) => {
   let id = req.params.id
@@ -394,7 +393,7 @@ const viewDetailService = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
   let idService = req.params.idService
-  let resole = await SpaService.findById(idService).exec();
+  let resole = await SpaService.findById(idService).populate('spas').exec();
   res.render('admin/spas/service/view', {errors: {}, data: record,resole, urlMediaUpload})
 }
 
