@@ -49,7 +49,14 @@ form .avatar-100 {
   padding-top: 10px;
   padding-bottom: 10px; }
   .product-gallery aside .categorie .card .card-body a:before {
-    top: 8px !important; }
+    top: 8px !important;
+    display: none; }
+  .product-gallery aside .categorie .card .card-body a.link:before {
+    display: inline-block; }
+  .product-gallery aside .categorie .card .card-body a {
+    padding-left: 0; }
+  .product-gallery aside .categorie .card .card-body a.link {
+    padding-left: 20px; }
   .product-gallery aside .categorie .card .card-body button {
     padding-left: 20px !important;
     font-weight: bold; }

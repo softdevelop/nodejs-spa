@@ -61,7 +61,7 @@ function genCategoryClient (categories){
       <li>
       <div class="card">
         <div class="card-header">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#cat${category._id}" aria-expanded="false" aria-controls="cat${category._id}">${category.name} </button>
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#cat${category._id}" aria-expanded="false" aria-controls="cat${category._id}"><a href='/index?danh-muc=${category.slug}'>${category.name}</a> </button>
         </div>
 
         <div id="cat${category._id}" class="collapse" data-parent="#product-categorie">
@@ -76,7 +76,7 @@ function genCategoryClient (categories){
       `
     }else{
       result += `
-        <li><a href="#">${category.name}</a></li>
+        <li><a class="link" href="/index?danh-muc=${category.slug}">${category.name}</a></li>
       `
     }
   })

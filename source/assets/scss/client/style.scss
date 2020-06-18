@@ -22,6 +22,16 @@
         .card-body{
           a:before{
             top: 8px !important;
+            display: none;
+          }
+          a.link:before{
+            display: inline-block;
+          }
+          a{
+            padding-left: 0;
+          }
+          a.link{
+            padding-left: 20px;
           }
           button{
             padding-left: 20px !important;

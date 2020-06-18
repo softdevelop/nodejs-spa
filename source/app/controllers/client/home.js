@@ -46,7 +46,7 @@ const index = async (req, res) => {
   };
   let data = await New.paginate(query, options);
   data.search = search
-  
+  let newsLatest = await New.find().limit(3).exec();
 
   res.render("client/homes/index", {
     data,
@@ -57,7 +57,8 @@ const index = async (req, res) => {
     categories,
     truncate,
     locationsArr: constants.locationsArr,
-    genCategory: genCategory.genCategoryClient(categories)
+    genCategory: genCategory.genCategoryClient(categories),
+    newsLatest
   });
 };
 

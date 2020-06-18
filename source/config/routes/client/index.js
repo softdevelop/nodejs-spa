@@ -17,12 +17,13 @@ router.use(getHeader);
 
 router.get("/", home.index );
 router.get("/index/trang-:page", home.index );
-router.get("/search", search.index) ;
-router.get('/contact', contact.index)
+router.get("/index", home.index );
+router.get("/tim-kiem", search.index) ;
+router.get('/lien-he', contact.index)
 router.get('/booking', booking.index)
 router.get('/service', service.index)
-router.get('/news/:slug', newsDetail.index)
-router.get('/question-and-answer', qa.index)
+router.get('/news/:slug', newsDetail.view)
+router.get('/hoi-dap', qa.index)
 router.get('/spa/:slug', spa.landingPage)
 router.post('/spa/:slug', spa.booking)
 router.get("/:slug", staticPage.index);

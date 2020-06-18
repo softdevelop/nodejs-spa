@@ -19,7 +19,7 @@
           <div class="row">
               <div class="col-xl-12">
                   <div class="booking-wrapper mt-45">
-                      <form action="/search" method="get" class="clearfix">
+                      <form action="/tim-kiem" method="get" class="clearfix">
                           <div class="beauty-service clearfix">
                               <select class="wide" name="location" required>
                                 <% locationsArr.forEach(item=>{ %>
@@ -194,46 +194,20 @@
 
                       <div class="latest-blog-area single-widget">
                           <h5 class="widget-title fw-500 pos-relative">Tin tức mới nhất</h5>
-
-                          <!--latest post-1-->
-                          <div class="single-latest-post">
-                              <a href="#"><img src="images/latest-blog.jpg" alt="latest-blog"></a>
+                          <% newsLatest.forEach(item=>{ %>
+                            <div class="single-latest-post">
+                              <a href="#"><img src="<%=urlMediaUpload.imageObj(item.image)%>" style="max-width: 70px;" alt="latest-blog"></a>
                               <ul>
                                   <li>
-                                      <h6><a href="#">Nivea for men’s sensitive hydro gel.</a></h6>
+                                      <h6><a href="#"><%=item.name%></a></h6>
                                   </li>
                                   <li><a href="#">Làm đẹp</a></li>
-                                  <li>26 Tháng 4 2018</li>
+                                  <li><%=moment(item.date).format('DD/MM/YYYY')%></li>
                               </ul>
-                          </div>
-
-                          <!--latest post-2-->
-                          <div class="single-latest-post">
-                              <a href="#"><img src="images/latest-blog2.jpg" alt="latest-blog"></a>
-                              <ul>
-                                  <li>
-                                      <h6><a href="#">Nivea for men’s sensitive hydro gel.</a></h6>
-                                  </li>
-                                  <li><a href="#">Làm đẹp</a></li>
-                                  <li>24 Tháng 4 2018</li>
-                              </ul>
-                          </div>
-
-                          <!--latest post-3-->
-                          <div class="single-latest-post">
-                              <a href="#"><img src="images/latest-blog3.jpg" alt="latest-blog"></a>
-                              <ul>
-                                  <li>
-                                      <h6><a href="#">Nivea for men’s sensitive hydro gel.</a></h6>
-                                  </li>
-                                  <li><a href="#">Làm đẹp</a></li>
-                                  <li>20 Tháng 4 2018</li>
-                              </ul>
-                          </div>
-                          <!-- /single latest blog-->
+                            </div>
+                          <% }) %>
                       </div>
                       <!-- /latest blog area-->
-
 
                       <div class="post-categories single-widget">
                           <h5 class="widget-title fw-500 pos-relative">Lưu trữ</h5>
@@ -256,15 +230,15 @@
 
                       <div class="instagram-gallery single-widget">
                           <h5 class="widget-title fw-500 pos-relative">Instagram</h5>
-                          <a href="#"><img src="images/insta-img/insta-img1.jpg" alt="insta-img" /></a>
-                          <a href="#"><img src="images/insta-img/insta-img2.jpg" alt="insta-img" /></a>
-                          <a href="#"><img src="images/insta-img/insta-img3.jpg" alt="insta-img" /></a>
-                          <a href="#"><img src="images/insta-img/insta-img4.jpg" alt="insta-img" /></a>
-                          <a href="#"><img src="images/insta-img/insta-img5.jpg" alt="insta-img" /></a>
-                          <a href="#"><img src="images/insta-img/insta-img6.jpg" alt="insta-img" /></a>
-                          <a href="#"><img src="images/insta-img/insta-img7.jpg" alt="insta-img" /></a>
-                          <a href="#"><img src="images/insta-img/insta-img8.jpg" alt="insta-img" /></a>
-                          <a href="#"><img src="images/insta-img/insta-img9.jpg" alt="insta-img" /></a>
+                          <a href="#"><img src="/images/insta-img/insta-img1.jpg" alt="insta-img" /></a>
+                          <a href="#"><img src="/images/insta-img/insta-img2.jpg" alt="insta-img" /></a>
+                          <a href="#"><img src="/images/insta-img/insta-img3.jpg" alt="insta-img" /></a>
+                          <a href="#"><img src="/images/insta-img/insta-img4.jpg" alt="insta-img" /></a>
+                          <a href="#"><img src="/images/insta-img/insta-img5.jpg" alt="insta-img" /></a>
+                          <a href="#"><img src="/images/insta-img/insta-img6.jpg" alt="insta-img" /></a>
+                          <a href="#"><img src="/images/insta-img/insta-img7.jpg" alt="insta-img" /></a>
+                          <a href="#"><img src="/images/insta-img/insta-img8.jpg" alt="insta-img" /></a>
+                          <a href="#"><img src="/images/insta-img/insta-img9.jpg" alt="insta-img" /></a>
                       </div>
                       <!--/instagram gallery-->
                   </aside>
