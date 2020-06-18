@@ -82,8 +82,38 @@ function genCategoryClient (categories){
   })
   return result;
 }
+
+function genMultiOptions (categories, currentCategoryName = '', idSelected = [], listChildId = []){
+  // idSelected is a field that to check parentId of category, to show in edit page
+  // listChildId is a file that to check that these options are child of current category, so when edit, a category can't set as child of its' child
+  let result = '';
+  categories.forEach(category => {
+    if(category.children && category.children.length>0){
+      let children = genMultiOptions(category.children, `${currentCategoryName} - ${category.name}`, idSelected, listChildId);
+      // let isSelected = idSelected == ''+category._id ? 'selected' : '';
+      let isSelected = idSelected.filter(item=>''+item === ''+category._id)[0]? 'selected' : '';
+      
+      if(!listChildId.includes(''+category._id))
+      result += `
+        <option ${isSelected} value="${category._id}">${currentCategoryName} - ${category.name}</option>
+        ${children}
+      `
+    }else{
+      // let isSelected = idSelected == ''+category._id ? 'selected' : '';
+      let isSelected = idSelected.filter(item=>''+item === ''+category._id)[0]? 'selected' : '';
+
+      if(!listChildId.includes(''+category._id))
+      result += `
+      <option ${isSelected} value="${category._id}">${currentCategoryName} - ${category.name}</option>
+      `
+    }
+  })
+  return result;
+}
+
 module.exports = {
   genCategoryTree,
   genOptions,
-  genCategoryClient
+  genCategoryClient,
+  genMultiOptions
 }
