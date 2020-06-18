@@ -50,12 +50,12 @@ const getListNew = async (req, res) => {
   };
   const getFormCreate = async (req, res) => {
     var spas = await Spa.find().select('_id name').exec()
-    res.render('admin/news/create', {errors: {}, data:  spas,urlMediaUpload})
+    res.render('admin/news/create', {errors: {}, data: {}, spas,urlMediaUpload})
   }
 
   const create = async (req, res) => {
     let createBy = req.user.id
-    let data = {...req.body,createBy};
+    let data = { ...req.body, createBy };
     let err = validateNew(data);
     if (err && err.error) {
       let errors =
@@ -66,7 +66,8 @@ const getListNew = async (req, res) => {
             [item.path[0]]: item.message,
           };
         }, {});
-      return res.render("admin/news/create", { errors, data });
+      var spas = await Spa.find().select('_id name').exec()
+      return res.render("admin/news/create", { errors, data, spas });
     } else {
       if(req.files.image){
         data.image = req.files.image[0]

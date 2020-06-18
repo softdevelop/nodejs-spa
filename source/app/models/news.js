@@ -25,8 +25,8 @@ const NewSchema = new Schema({
 
 function validateNew(news){
     const schema = {
-        name: Joi.string().min(1).max(50).required(),
-        slug: Joi.string().min(1).max(50).required(),
+        name: Joi.string().min(1).max(100).required(),
+        slug: Joi.string().min(1).max(100).required(),
         content: Joi.string(),
         date: Joi.date(),
         image: Joi.any(),
@@ -40,8 +40,8 @@ function validateNew(news){
 
 function validateNewEdit(news){
     const schema = {
-        name: Joi.string().min(1).max(50).required(),
-        slug: Joi.string().min(1).max(50).required(),
+        name: Joi.string().min(1).max(100).required(),
+        slug: Joi.string().min(1).max(100).required(),
         content: Joi.string(),
         date: Joi.date(),
         image: Joi.any(),

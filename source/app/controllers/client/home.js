@@ -4,6 +4,7 @@ const Service = mongoose.model('Service')
 const New = mongoose.model("New");
 const moment = require("moment-timezone");
 const {genHtmlPagination, urlMediaUpload} = require('../../utils')
+const truncate = require('html-truncate');
 
 const {
   constants
@@ -54,6 +55,7 @@ const index = async (req, res) => {
     moment: moment.tz.setDefault("Asia/Ho_Chi_Minh"),
     genHtmlPagination: genHtmlPagination(data.total, data.limit, data.page, data.pages, data.search),
     categoryLevel1,
+    truncate,
     locationsArr: constants.locationsArr
   });
 };

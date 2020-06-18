@@ -104,7 +104,7 @@
                                         <label class="control-label">Date</label>
                                         <input type="date" id="date" class="form-control" placeholder="" name="date"
                                             required value="<%=data.date?data.date:''%>">
-                                        <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
+                                        <small class="form-control-feedback"><%=errors?errors.date:''%></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6 ">
@@ -144,7 +144,7 @@
                                     <div class="form-group form-group-spa_id <%=errors.spa_id?'has-danger':''%>">
                                         <label class="control-label">Spa name</label>
                                         <select class="form-control custom-select" name="spa_id">
-                                            <% data.forEach(item=>{ %>
+                                            <% spas.forEach(item=>{ %>
                                             <option value="<%=item._id%>"><%=item.name%></option>
                                             <% }) %>
                                         </select>

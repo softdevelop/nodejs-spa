@@ -45,6 +45,7 @@
     "express-ejs-layouts": "^2.5.0",
     "express-mailer": "^0.3.1",
     "express-session": "^1.15.6",
+    "html-truncate": "^1.2.2",
     "joi": "^13.7.0",
     "json2xls": "^0.1.2",
     "jsonwebtoken": "^8.3.0",
