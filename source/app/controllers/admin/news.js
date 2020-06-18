@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 const New = mongoose.model("New");
 const Spa = mongoose.model("Spa");
+const Category = mongoose.model("Category");
 const User = mongoose.model("User");
 const moment = require("moment-timezone");
-const {genHtmlPagination, urlMediaUpload} = require('../../utils')
+const {genHtmlPagination, urlMediaUpload,genCategory} = require('../../utils')
 const {validateNew, validateNewEdit} = require('../../models/news')
 const bcrypt = require("bcryptjs");
 
@@ -49,13 +50,20 @@ const getListNew = async (req, res) => {
     }
   };
   const getFormCreate = async (req, res) => {
+    let today = new Date()
     var spas = await Spa.find().select('_id name').exec()
-    res.render('admin/news/create', {errors: {}, data: {}, spas,urlMediaUpload})
+    let categories = await Category.getChildrenTree({
+      fields: "_id name slug parent path",
+      options: { lean: true },
+    });
+    let optionsHtml = genCategory.genMultiOptions(categories);
+    res.render('admin/news/create', {errors: {}, data: {}, spas,urlMediaUpload, optionsHtml,today})
+    
   }
 
   const create = async (req, res) => {
     let createBy = req.user.id
-    let data = { ...req.body, createBy };
+    let data = {...req.body,createBy};
     let err = validateNew(data);
     if (err && err.error) {
       let errors =
@@ -93,7 +101,12 @@ const getListNew = async (req, res) => {
     let news = await New.findById(id).exec()
     let spas = await Spa.find().exec()
     let nameSpa = spas.find(item => item._id == news.spa_id)   
-    res.render('admin/news/edit', {errors: {}, data: news, urlMediaUpload, nameSpa, spas })
+    let categories = await Category.getChildrenTree({
+      fields: "_id name slug parent path",
+      options: { lean: true },
+    });
+    let optionsHtml = genCategory.genMultiOptions(categories, '', news.category_ids);
+    res.render('admin/news/edit', {errors: {}, data: news, urlMediaUpload, nameSpa, spas,optionsHtml })
   };
 
   const edit = async (req, res) => {

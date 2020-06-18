@@ -164,10 +164,10 @@
                                     <td><%= moment(item.date).format('DD/MM/YYYY') %></td>
                                     <td><img class="avatar" src="<%=urlMediaUpload.imageObj(item.image)%>" /></td>
                                     <td><%=item.status%></td>
-                                    <td><%=item.spas['name']%> </td>
+                                    <td><a href="/admin/spas/<%=item.spa_id%>"><%=item.spas['name']%> </a></td>
 
                                     <td><%=item.numOfViews%></td>
-                                    <td><a href="/admin/spas/<%=item.spa_id%>"><%=item.user['first_name']%> <%=item.user['last_name']%> </a> </td>
+                                    <td><a href="/admin/users/<%=item.createBy%>"><%=item.user['first_name']%> <%=item.user['last_name']%> </a> </td>
                                     <td>
                                       <a href="/admin/news/<%=item._id%>/view">
                                         <i class="ti-eye"></i>

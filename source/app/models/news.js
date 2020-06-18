@@ -18,6 +18,7 @@ const NewSchema = new Schema({
     numOfViews:{type: Number, require},
     spa_id: {type: String, require: true},
     createBy: {type: String, require: true},
+    category_ids: {type: Object, required: true },
 },{
     timestamps: true
 }
@@ -34,6 +35,7 @@ function validateNew(news){
         numOfViews: Joi.number(),
         spa_id: Joi.string().min(1).max(50).required(),
         createBy: Joi.string().min(1).max(50).required(),
+        category_ids: Joi.allow(),
     }
     return Joi.validate(news , schema, { abortEarly: false });
 }
@@ -49,6 +51,7 @@ function validateNewEdit(news){
         numOfViews: Joi.number(),
         spa_id: Joi.string().min(1).max(50).required(),
         createBy: Joi.string().min(1).max(50).required(),
+        category_ids: Joi.allow(),
     }
     return Joi.validate(news, schema, { abortEarly: false });
 }
@@ -71,9 +74,16 @@ NewSchema.virtual('user', {
     foreignField: '_id',
     justOne: true
 });
+NewSchema.virtual('category', {
+    ref: 'Category',
+    localField: 'category_ids',
+    foreignField: '_id',
+    justOne: true
+});
 NewSchema.virtual('date_form').get(function () {
     return moment(this.createdAt).format("YYYY-MM-DD");
 })
+
 
 NewSchema.set('toObject', { virtuals: true });
 NewSchema.set('toJSON', { virtuals: true });
