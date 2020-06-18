@@ -42,9 +42,7 @@ const getFormCreate = async (req, res) => {
 
 const create = async (req, res) => {
   let data = req.body
-  if(req.files.image){
-    data.image = req.files.image[0]
-  }
+  
   let err = validateService(data)
   if(err && err.error){
     let errors = err.error && err.error.details.reduce((result, item)=>{
@@ -56,6 +54,9 @@ const create = async (req, res) => {
     let roles = await Role.find().select('name value').exec();
     return res.render('admin/services/create', {errors, data, roles})
   }else{
+    if(req.files.image){
+      data.image = req.files.image[0]
+    }
     let newService = new Service(data)
     newService.save().then((e)=>{
       res.redirect('/admin/services')

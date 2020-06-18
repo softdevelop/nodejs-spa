@@ -3,7 +3,7 @@ const Category = mongoose.model('Category')
 const Service = mongoose.model('Service')
 const New = mongoose.model("New");
 const moment = require("moment-timezone");
-const {genHtmlPagination, urlMediaUpload} = require('../../utils')
+const {genHtmlPaginationClient, urlMediaUpload, genCategory} = require('../../utils')
 const truncate = require('html-truncate');
 
 const {
@@ -11,9 +11,9 @@ const {
 } = require("../../utils");
 const index = async (req, res) => {
 
-  let categoryLevel1 = await Category.getChildrenTree({
+  let categories = await Category.getChildrenTree({
     fields: "_id name slug parent path",
-    options: { lean: false },
+    options: { lean: true },
   });
 
   let services = await Service.find({ status: 'active'}).select('title').populate({
@@ -22,7 +22,8 @@ const index = async (req, res) => {
     populate: 'spa'
   }).lean();
 
-  let { page, limit } = req.query;
+  let { limit } = req.query;
+  let page = req.params.page
   let search = req.query.search || '';
   let text = '.*'+search.split(' ').join('.*')+'.*'
   let reg = new RegExp(text);
@@ -48,15 +49,15 @@ const index = async (req, res) => {
   
 
   res.render("client/homes/index", {
-    categoryLevel1,
     data,
     services,
     urlMediaUpload,
     moment: moment.tz.setDefault("Asia/Ho_Chi_Minh"),
-    genHtmlPagination: genHtmlPagination(data.total, data.limit, data.page, data.pages, data.search),
-    categoryLevel1,
+    genHtmlPaginationClient: genHtmlPaginationClient(data.total, data.limit, data.page, data.pages, data.search, 'center'),
+    categories,
     truncate,
-    locationsArr: constants.locationsArr
+    locationsArr: constants.locationsArr,
+    genCategory: genCategory.genCategoryClient(categories)
   });
 };
 

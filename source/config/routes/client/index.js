@@ -16,6 +16,7 @@ const { getHeader } = require("../../middleware");
 router.use(getHeader);
 
 router.get("/", home.index );
+router.get("/index/trang-:page", home.index );
 router.get("/search", search.index) ;
 router.get('/contact', contact.index)
 router.get('/booking', booking.index)

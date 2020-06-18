@@ -1,7 +1,7 @@
 const constants = require("./constants");
 const funcUtil = require("./func");
 const fileUtil = require("./file");
-const genHtmlPagination = require("./genHtmlPagination");
+const {genHtmlPagination, genHtmlPaginationClient} = require("./genHtmlPagination");
 const genCategory = require("./genCategory");
 const urlMediaUpload = require("./urlMediaUpload")
 
@@ -13,6 +13,7 @@ module.exports = {
     envApiKeys: require('./envApiKeys'),
     dateUtil: require('./dateHandler'),
     genHtmlPagination,
+    genHtmlPaginationClient,
     urlMediaUpload,
     genCategory
 }

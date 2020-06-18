@@ -78,7 +78,7 @@
                                 <div class="col-md-6">
                                     <div class="blog-content">
                                         <a href="/spa/<%=item.slug%>" class="title fw-500 pt-20"><%=item.name%></a>
-                                        <p>The power of golden ratio typography cannot be understated</p>
+                                        <div><%-truncate(item.description, 100)%></div>
                                         <div class="address">
                                             <p class="address"><i class="fa fa-home"></i><span> Address:</span> <%=item.address%></p>
                                             <p class="phone"><i class="fa fa-phone"></i><span> Phone:</span> <%=item.phone%></p>

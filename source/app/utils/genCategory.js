@@ -52,7 +52,38 @@ function genOptions (categories, currentCategoryName = '', idSelected = '', list
   return result;
 }
 
+function genCategoryClient (categories){
+  let result = '';
+  categories.forEach(category => {
+    if(category.children && category.children.length>0){
+      let children = genCategoryClient(category.children);
+      result += `
+      <li>
+      <div class="card">
+        <div class="card-header">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#cat${category._id}" aria-expanded="false" aria-controls="cat${category._id}">${category.name} </button>
+        </div>
+
+        <div id="cat${category._id}" class="collapse" data-parent="#product-categorie">
+            <div class="card-body">
+                <ul>
+                ${children}
+                </ul>
+            </div>
+        </div>
+      </div>
+      </li>
+      `
+    }else{
+      result += `
+        <li><a href="#">${category.name}</a></li>
+      `
+    }
+  })
+  return result;
+}
 module.exports = {
   genCategoryTree,
-  genOptions
+  genOptions,
+  genCategoryClient
 }

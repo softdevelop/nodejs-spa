@@ -42,5 +42,31 @@ form .avatar-100 {
   margin-top: 120px;
   margin-bottom: 100px; }
 
+.dataTables_paginate .pagination .page-item.active .page-link {
+  background-color: #d5275a; }
+
+.product-gallery {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+  .product-gallery aside .categorie .card .card-body a:before {
+    top: 8px !important; }
+  .product-gallery aside .categorie .card .card-body button {
+    padding-left: 20px !important;
+    font-weight: bold; }
+    .product-gallery aside .categorie .card .card-body button:before {
+      top: 8px !important;
+      color: #d5275a;
+      content: "\f101";
+      font-family: FontAwesome;
+      font-size: 17px;
+      left: 0;
+      position: absolute;
+      top: -1px;
+      line-height: normal; }
+  .product-gallery aside .categorie .card-header button {
+    padding: 6px 0 !important;
+    border: 0;
+    font-weight: bold; }
+
 .leaflet-bottom {
   display: none; }
