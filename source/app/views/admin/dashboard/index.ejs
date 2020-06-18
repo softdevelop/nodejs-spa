@@ -27,6 +27,8 @@
   <!-- ============================================================== -->
   <!-- Row -->
   <div class="row">
+
+     <% if(userLocal.permissions.includes('user.index')){ %>
       <!-- Column -->
       <div class="col-lg-3 col-md-6" >
           <div class="card" data-toggle="tooltip" title="<%= numOfUserPending %> Users Pending" >
@@ -41,6 +43,9 @@
           </div>
       </div>
       <!-- Column -->
+      <% } %>
+
+      <% if(userLocal.permissions.includes('spa.index')){ %>
       <!-- Column -->
       <div class="col-lg-3 col-md-6">
           <div class="card">
@@ -55,6 +60,9 @@
           </div>
       </div>
       <!-- Column -->
+      <% } %>
+
+      <% if(userLocal.permissions.includes('service.index')){ %>
       <!-- Column -->
         <div class="col-lg-3 col-md-6">
           <div class="card">
@@ -69,6 +77,9 @@
           </div>
       </div>
       <!-- Column -->
+      <% } %>
+
+      <% if(userLocal.permissions.includes('booking.index')){ %>
       <!-- Column -->
       <div class="col-lg-3 col-md-6">
           <div class="card">
@@ -83,6 +94,9 @@
           </div>
       </div>
       <!-- Column -->
+      <% } %>
+
+      <% if(userLocal.permissions.includes('news.index')){ %>
        <!-- Column -->
        <div class="col-lg-3 col-md-6">
         <div class="card">
@@ -97,8 +111,11 @@
         </div>
       </div>
       <!-- Column -->
-        <!-- Column -->
-        <div class="col-lg-3 col-md-6">
+      <% } %>
+
+      <% if(userLocal.permissions.includes('staticpage.index')){ %>
+      <!-- Column -->
+      <div class="col-lg-3 col-md-6">
         <div class="card">
             <div class="card-body">
                 <div class="d-flex flex-row"  data-toggle="tooltip" title="<%= numOfStaticpagePending %> Staticpages Pending">
@@ -111,6 +128,9 @@
         </div>
       </div>
       <!-- Column -->
+      <% } %>
+
+      <% if(userLocal.permissions.includes('qa.index')){ %>
       <!-- Column -->
       <div class="col-lg-3 col-md-6">
         <div class="card">
@@ -125,6 +145,9 @@
         </div>
       </div>
       <!-- Column -->
+      <% } %>
+
+
   </div>
   <!-- Row -->
   <!-- ============================================================== -->

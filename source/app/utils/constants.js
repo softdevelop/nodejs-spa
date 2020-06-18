@@ -30,8 +30,66 @@ const locationsArr = Object.keys(locations).map(item=>{
   }
 })
 
+const permissions = [
+  'user.index',
+  'user.edit',
+  'user.view',
+  'user.delete',
+  'user.create',
+
+  'spa.index',
+  'spa.edit',
+  'spa.view',
+  'spa.delete',
+  'spa.create',
+
+  'service.index',
+  'service.edit',
+  'service.view',
+  'service.delete',
+  'service.create',
+
+  'booking.index',
+  'booking.edit',
+  'booking.view',
+  'booking.delete',
+  'booking.create',
+
+  'category.index',
+  'category.edit',
+  'category.view',
+  'category.delete',
+  'category.create',
+
+  'news.index',
+  'news.edit',
+  'news.view',
+  'news.delete',
+  'news.create',
+
+  'role.index',
+  'role.edit',
+  'role.view',
+  'role.delete',
+  'role.create',
+
+  'staticpage.index',
+  'staticpage.edit',
+  'staticpage.view',
+  'staticpage.delete',
+  'staticpage.create',
+
+  'qa.index',
+  'qa.edit',
+  'qa.view',
+  'qa.delete',
+  'qa.create',
+  
+]
+
 module.exports = {
     CODE,
     locations,
-    locationsArr
+    locationsArr,
+    permissions
 };

@@ -81,20 +81,20 @@
                                       </div>
                                     </th>
                                     <th>Value</th>
-                                    <th>CreatedAt</th>
+                                    <!-- <th>CreatedAt</th> -->
                                 </tr>
                             </thead>
                             <tbody>
                               <% permissions.forEach(function(item) { %>
-                                <tr id="Row-<%=item._id%>">
+                                <tr id="Row-<%=item%>">
                                   <td>
                                     <div class="CheckRecord custom-control custom-checkbox mr-sm-2">
-                                      <input type="checkbox" class="custom-control-input" id="checkbox<%=item._id%>" value="<%=item.value%>" alt="<%=item._id%>" name="permissions" <%=data.permissions.includes(item.value)?'checked':'' %>>
-                                      <label class="custom-control-label" for="checkbox<%=item._id%>"></label>
+                                      <input type="checkbox" class="custom-control-input" id="checkbox<%=item%>" value="<%=item%>" alt="<%=item%>" name="permissions" <%=data.permissions.includes(item)?'checked':'' %>>
+                                      <label class="custom-control-label" for="checkbox<%=item%>"></label>
                                     </div>
                                   </td>
-                                  <td><%=item.value%></td>
-                                  <td><%= moment(item.createdAt).format('DD/MM/YYYY') %></td>
+                                  <td><%=item%></td>
+                                  <!-- <td><%= moment(item.createdAt).format('DD/MM/YYYY') %></td> -->
                                 </tr>
                               <% }) %>
                             </tbody>

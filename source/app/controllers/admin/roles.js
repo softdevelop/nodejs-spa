@@ -3,7 +3,7 @@ const User = mongoose.model("User");
 const Role = mongoose.model("Role");
 const Permission = mongoose.model("Permission");
 const moment = require("moment-timezone");
-const {genHtmlPagination, urlMediaUpload} = require('../../utils')
+const {genHtmlPagination, urlMediaUpload, constants} = require('../../utils')
 const {validateRole, validateRoleEdit} = require('../../models/roles')
 const bcrypt = require("bcryptjs");
 
@@ -21,7 +21,8 @@ const getListRoles = async (req, res) => {
 const getFormEdit = async (req, res) => {
   let value = req.params.value
   let record = await Role.findOne({value}).exec();
-  let permissions = await Permission.find().exec();
+  // let permissions = await Permission.find().exec();
+  let permissions = constants.permissions;
   res.render('admin/roles/edit', {errors: {}, data: record, permissions})
 }
 
@@ -46,14 +47,17 @@ const edit = async (req, res) => {
       await User.find({ role: roleValue}).update({ role: data.value})
       res.redirect('/admin/roles')
     }).catch(async e=>{
-      let permissions = await Permission.find().exec();
+      // let permissions = await Permission.find().exec();
+      let permissions = constants.permissions;
       return res.render('admin/roles/create', {errors: {name: 'The value is duplicated.', value: 'The value is duplicated.'}, data, permissions})
     })
   }
 }
 
 const getFormCreate = async (req, res) => {
-  let permissions = await Permission.find().exec();
+  // let permissions = await Permission.find().exec();
+  let permissions = constants.permissions;
+
   res.render('admin/roles/create', {errors: {}, permissions, data: {}})
 }
 
@@ -67,15 +71,16 @@ const create = async (req, res) => {
         [item.path[0]]: item.message
       }
     }, {})
-    let permissions = await Permission.find().exec();
-    console.log('roleeeee', errors);
+    // let permissions = await Permission.find().exec();
+    let permissions = constants.permissions;
     return res.render('admin/roles/create', {errors, data, permissions})
   }else{
     let newRole = new Role(data)
     newRole.save().then((e)=>{
       res.redirect('/admin/roles')
     }).catch(async e=>{
-      let permissions = await Permission.find().exec();
+      // let permissions = await Permission.find().exec();
+      let permissions = constants.permissions;
       return res.render('admin/roles/create', {errors: {name: 'The value is duplicated.', value: 'The value is duplicated.'}, data, permissions})
     })
   }
@@ -99,7 +104,8 @@ const viewDetail = async (req, res) => {
   let value = req.params.value
   let record = await Role.findOne({value}).exec();
   if(record){
-    let permissions = await Permission.find().exec();
+    // let permissions = await Permission.find().exec();
+    let permissions = constants.permissions;
     res.render('admin/roles/view', {errors: {}, data: record, permissions})
   }else{
     res.render('admin/404')

@@ -113,7 +113,7 @@
                                       </div>
                                     </th>
                                     <th>Value</th>
-                                    <th>CreatedAt</th>
+                                    <!-- <th>CreatedAt</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -121,12 +121,12 @@
                                 <tr id="Row-<%=item._id%>">
                                   <td>
                                     <div class="CheckRecord custom-control custom-checkbox mr-sm-2">
-                                      <input disabled type="checkbox" class="custom-control-input" id="checkbox<%=item._id%>" value="check" alt="<%=item._id%>" <%=data.permissions.includes(item.value)?'checked':'' %>>
-                                      <label class="custom-control-label" for="checkbox<%=item._id%>"></label>
+                                      <input disabled type="checkbox" class="custom-control-input" id="checkbox<%=item%>" value="check" alt="<%=item%>" <%=data.permissions.includes(item)?'checked':'' %>>
+                                      <label class="custom-control-label" for="checkbox<%=item%>"></label>
                                     </div>
                                   </td>
-                                  <td><%=item.value%></td>
-                                  <td><%= moment(item.createdAt).format('DD/MM/YYYY') %></td>
+                                  <td><%=item%></td>
+                                  <!-- <td><%= moment(item.createdAt).format('DD/MM/YYYY') %></td> -->
                                 </tr>
                               <% }) %>
                             </tbody>
