@@ -47,6 +47,12 @@ ServiceSchema.virtual('date_form').get(function () {
     return moment(this.createdAt).format("YYYY-MM-DD");
 })
 
+ServiceSchema.virtual('spaservice', {
+  ref: 'SpasService',
+  localField: '_id',
+  foreignField: 'service_id',
+});
+
 ServiceSchema.set('toObject', { virtuals: true });
 ServiceSchema.plugin(mongoosePaginate);
 const Service = mongoose.model('Service',ServiceSchema);

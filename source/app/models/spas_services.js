@@ -54,6 +54,13 @@ SpaServiceSchema.virtual('service', {
   justOne: true
 });
 
+SpaServiceSchema.virtual('spa', {
+  ref: 'Spa',
+  localField: 'spa_id',
+  foreignField: '_id',
+  justOne: true
+});
+
 SpaServiceSchema.virtual('created_at').get(function () {
     return moment(this.createdAt).format("DD-MM-YYYY hh:mm:ss");
 })
