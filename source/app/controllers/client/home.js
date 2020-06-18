@@ -4,6 +4,9 @@ const New = mongoose.model("New");
 const moment = require("moment-timezone");
 const {genHtmlPagination, urlMediaUpload} = require('../../utils')
 
+const {
+  constants
+} = require("../../utils");
 const index = async (req, res) => {
 
   let categoryLevel1 = await Category.getChildrenTree({
@@ -42,6 +45,8 @@ const index = async (req, res) => {
     urlMediaUpload,
     moment: moment.tz.setDefault("Asia/Ho_Chi_Minh"),
     genHtmlPagination: genHtmlPagination(data.total, data.limit, data.page, data.pages, data.search),
+    categoryLevel1,
+    locationsArr: constants.locationsArr
   });
 };
 

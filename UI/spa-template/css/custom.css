@@ -1,0 +1,22 @@
+/*===================================== 
+YOU CAN WRIGHT CUSTOME CSS 
+======================================*/
+@media (max-width:996px){
+    .menuzord-responsive{
+        padding-right: 12px!important;
+    }
+}
+.tparrows.tp-rightarrow:before {
+    font-family: FontAwesome!important;
+    content: '\f054'!important;
+    font-size: 25px!important;
+}
+.tparrows.tp-leftarrow:before {
+    font-family: FontAwesome!important;
+    content: '\f053'!important;
+    font-size: 25px!important;
+}
+#product-cart{
+    width: 80%;
+    margin: auto;
+}

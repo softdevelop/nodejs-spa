@@ -49,7 +49,7 @@
                                   <label class="control-label">Avatar</label>
                                   <input type="file" id="avatar" class="form-control" name="avatar" value="<%=user.avatar?user.avatar:''%>">
                                   <img class="avatar-100" src="<%=urlMediaUpload.imageObj(user.avatar)%>" />
-                                  <small class="form-control-feedback"><%=errors?errors.avatar:''%></small>
+                                  <small class="form-control-feedback text-danger"><%=errors?errors.avatar:''%></small>
                                </div>
                               </div>
                               
@@ -61,7 +61,7 @@
                                       <label class="control-label">First Name</label>
                                       <input class="form-control" name="first_name" value="<%= user.first_name %>" type="text"
                                         />
-                                        <small class="form-control-feedback"><%=errors?errors.first_name:''%></small>
+                                        <small class="form-control-feedback text-danger"><%=errors?errors.first_name:''%></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -69,7 +69,7 @@
                                       <label class="control-label">Last Name</label>
                                       <input class="form-control" name="last_name" value="<%= user.last_name %>" type="text"
                                         />
-                                        <small class="form-control-feedback"><%=errors?errors.last_name:''%></small>
+                                        <small class="form-control-feedback text-danger"><%=errors?errors.last_name:''%></small>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                                       <label class="control-label">Email</label>
                                       <input class="form-control" name="email" value="<%= user.email %>" type="email"
                                         />
-                                        <small class="form-control-feedback"><%=errors?errors.email:''%></small>
+                                        <small class="form-control-feedback text-danger"><%=errors?errors.email:''%></small>
                                     </div>
                                 </div>
                                 <!--/span-->
@@ -88,7 +88,7 @@
                                   <div class="form-group">
                                     <label class="control-label">Date of birth</label>
                                     <input type="date" class="form-control" placeholder="dd/mm/yyyy" name="birthday" required value="1990-12-31" value="<%=user.birthday?user.birthday:''%>">
-                                    <small class="form-control-feedback"><%=errors?errors.birthday:''%></small>
+                                    <small class="form-control-feedback text-danger"><%=errors?errors.birthday:''%></small>
                                 </div>
                                 </div>
                                 <!--/span-->
@@ -108,7 +108,7 @@
                                     <div class="form-group">
                                       <label class="control-label">Phone</label>
                                       <input class="form-control" name="phone" value="<%= user.phone?user.phone:'' %>" type="text"/>
-                                      <small class="form-control-feedback"><%=errors?errors.phone:''%></small>
+                                      <small class="form-control-feedback text-danger"><%=errors?errors.phone:''%></small>
                                     </div>
                                   </div>
                             </div>
@@ -117,13 +117,13 @@
                                   <div class="form-group">
                                     <label class="control-label">Address</label>
                                     <input  class="form-control" name="address" value="<%= user.address?user.address:'' %>" type="text"/>
-                                    <small class="form-control-feedback"><%=errors?errors.address:''%></small>
+                                    <small class="form-control-feedback text-danger"><%=errors?errors.address:''%></small>
                                 </div>
                                 </div>
                             </div>
                             <!-- /row  -->
                             <div class="form-actions">
-                                <a href="edit"><button type="submit" class="btn btn-primary"> <i class="icon-note"></i> Edit</button></a>
+                                <a href="edit"><button type="submit" class="btn waves-effect waves-light btn-success"> <i class="icon-note"></i> Save</button></a>
                                 <a href="/admin/profile">
                                     <button type="button" class="btn btn-inverse">Cancel</button>
                                 </a>

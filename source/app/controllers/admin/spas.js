@@ -8,6 +8,7 @@ const {validateSpa, validateSpaEdit} = require('../../models/spas')
 const {validateSpaService,validateSpaServiceEdit} = require('../../models/spas_services')
 const bcrypt = require("bcryptjs");
 var ObjectId = require('mongodb').ObjectID;
+const {locations} = require("../../utils/constants");
 
 const { 
   spaIntroService,
@@ -54,7 +55,7 @@ const getFormCreate = async (req, res) => {
   let usersOwnedSpa = await Spa.find({ owner: { $ne: null } }).select('_id name owner').exec();
   let idsUsersOwnedSpa = usersOwnedSpa.map(item=>''+item.owner);
   let spaOwners = await User.find({role: "SPA_OWNER", _id: { $nin: idsUsersOwnedSpa }}).exec();
-  res.render('admin/spas/create', {errors: {}, data: {}, spaOwners})
+  res.render('admin/spas/create', {errors: {}, data: {}, spaOwners,locations})
 }
 
 const create = async (req, res) => {
@@ -93,7 +94,7 @@ const getFormEdit = async (req, res) => {
     }
   });
   let spaOwners = await User.find({role: "SPA_OWNER", _id: { $nin: idsUsersOwnedSpa }}).exec();
-  res.render('admin/spas/edit', {errors: {}, data: record, urlMediaUpload, spaOwners})
+  res.render('admin/spas/edit', {errors: {}, data: record, urlMediaUpload, spaOwners,locations})
 }
 
 const edit = async (req, res) => {

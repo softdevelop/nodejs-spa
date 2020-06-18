@@ -95,10 +95,10 @@
                     <!--/row-->
                     <div class="row p-t-20">
                        <div class="col-md-6">
-                          <div class="form-group <%=errors.phone?'has-danger':''%>">
-                             <label class="control-label">Phone</label>
-                             <input disabled type="text" id="phone" class="form-control" name="phone" value="<%=data.phone?data.phone:''%>">
-                             <small class="form-control-feedback"><%=errors?errors.phone:''%></small>
+                          <div class="form-group <%=errors.location?'has-danger':''%>">
+                             <label class="control-label">Location</label>
+                             <input disabled type="text" id="location" class="form-control" name="location" value="<%=data.location?data.location:''%>">
+                             <small class="form-control-feedback"><%=errors?errors.location:''%></small>
                           </div>
                        </div>
                        <div class="col-md-6">
@@ -110,6 +110,23 @@
                        </div>
                     </div>
                     <!--/row-->
+                     <!--/row-->
+                     <div class="row p-t-20">
+                     <div class="col-md-6">
+                        <div class="form-group <%=errors.phone?'has-danger':''%>">
+                           <label class="control-label">Phone</label>
+                           <input disabled type="text" id="phone" class="form-control" name="phone" value="<%=data.phone?data.phone:''%>">
+                           <small class="form-control-feedback"><%=errors?errors.phone:''%></small>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group <%=errors.email?'has-danger':''%>">
+                           <label class="control-label">Email</label>
+                           <input disabled type="text" id="email" class="form-control" name="email" value="<%=data.email?data.email:''%>">
+                           <small class="form-control-feedback"><%=errors?errors.email:''%></small>
+                        </div>
+                     </div>
+                  </div>
                     <!--/row-->
                     <div class="row p-t-20">
                        <div class="col-md-6">

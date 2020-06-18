@@ -7,7 +7,6 @@
 
   `,
   script: `
-  <script src="/libs_client/js/page-search.js"></script>
   
   `
 
@@ -18,37 +17,34 @@
             ==start Seassion booking section== 
     =======================================-->
     <section class="home-booking">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="booking-wrapper mt-45">
-                        <form action="#" method="post" class="clearfix">
-                            <div class="beauty-service clearfix">
-                                <select class="wide" name="beauty-service" required>
-                              <option selected>Location</option>
-                              <option value="facial">Son Tra</option>
-                              <option value="nailCare">Thanh Khe</option>
-                              <option value="eyeCare">Lien Chieu</option>
-                              <option value="waxing">Ngu Hanh Son</option>
-                          </select>
-                            </div>
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-12">
+                  <div class="booking-wrapper mt-45">
+                      <form action="/search" method="get" class="clearfix">
+                          <div class="beauty-service clearfix">
+                              <select class="wide" name="location" required>
+                                <% locationsArr.forEach(item=>{ %>
+                                  <option value="<%=item.value%>" <%=item.value==query.location?'selected':''%>><%=item.name%></option>
+                                <% }) %>
+                            </select>
+                          </div>
 
-                            <div class="date">
-                                <input type="" name="date" id="booking-date" placeholder="Date start" required />
-                            </div>
+                          <div class="date">
+                              <input type="" name="date" id="booking-date" placeholder="Date start" required value="<%=query.date%>"/>
+                          </div>
 
-                            <div class="num_sit">
-                                <input type="number" id="num_sit" name="num_sit" min="1" max="50" placeholder="Seat number">
-                            </div>
+                          <div class="seat">
+                              <input type="number" id="seat" name="seat" min="1" max="50" placeholder="Seat number" value="<%=query.seat%>">
+                          </div>
 
-
-                            <button type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                          <button type="submit">Search</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
     <!-- ======================================= 
           ==End Seassion booking section== 
   =======================================-->
@@ -58,18 +54,19 @@
             <div class="row">
                 <div class="col-xl-7 col-sm-12">
                     <div class="search-section-results">
-                        <div class="search-section-results-item">
+                        <% data.forEach(item=>{ %>
+                          <div class="search-section-results-item">
                             <div>
                                 <div class="col-md-6">
                                     <div class="single-blog">
                                         <div class="blog-img pos-relative">
                                             <div class="img-area">
-                                                <a href="blog-details.html"><img src="images/blog3.jpg" alt="blog img" class="img-fluid"></a>
+                                                <a href="/spa/<%=item.slug%>"><img src="<%=urlMediaUpload.imageObj(item.logo)%>" alt="blog img" class="img-fluid"></a>
                                             </div>
                                             <ul class="brand">
                                                 <li><i class="fa fa-heart"></i>18</li>
                                                 <li><i class="fa fa-commenting-o"></i>10</li>
-                                                <li><i class="fa fa-clock-o"></i>8:00 - 17:00</li>
+                                                <li><i class="fa fa-clock-o"></i><%=item.working_hour && item.working_hour.start || '8:00'%> - <%=item.working_hour && item.working_hour.end || '17:00'%></li>
                                             </ul>
                                             <div class="date">
                                                 <h5 class="fw-700 color-ff">12</h5>
@@ -80,149 +77,18 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="blog-content">
-                                        <a href="blog-details.html" class="title fw-500 pt-20">Spa name 1</a>
+                                        <a href="/spa/<%=item.slug%>" class="title fw-500 pt-20"><%=item.name%></a>
                                         <p>The power of golden ratio typography cannot be understated</p>
                                         <div class="address">
-                                            <p class="address"><i class="fa fa-home"></i><span> Address:</span> 121 King St, Melbourne Vic 30</p>
-                                            <p class="phone"><i class="fa fa-phone"></i><span> Phone:</span> +66 1800-111-333</p>
-                                            <p class="email"><i class="fa fa-envelope"></i><span> Email:</span> <a href="#">info@beautylab.com</a></p>
+                                            <p class="address"><i class="fa fa-home"></i><span> Address:</span> <%=item.address%></p>
+                                            <p class="phone"><i class="fa fa-phone"></i><span> Phone:</span> <%=item.phone%></p>
+                                            <p class="email"><i class="fa fa-envelope"></i><span> Email:</span> <a href="#"><%=item.email%></a></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="search-section-results-item">
-                            <div>
-                                <div class="col-md-6">
-                                    <div class="single-blog">
-                                        <div class="blog-img pos-relative">
-                                            <div class="img-area">
-                                                <a href="blog-details.html"><img src="images/blog2.jpg" alt="blog img" class="img-fluid"></a>
-                                            </div>
-                                            <ul class="brand">
-                                                <li><i class="fa fa-heart"></i>18</li>
-                                                <li><i class="fa fa-commenting-o"></i>10</li>
-                                                <li><i class="fa fa-clock-o"></i>8:00 - 17:00</li>
-                                            </ul>
-                                            <div class="date">
-                                                <h5 class="fw-700 color-ff">12</h5>
-                                                <span class="fw-500 roboto color-ff text-uppercase">oct</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="blog-content">
-                                        <a href="blog-details.html" class="title fw-500 pt-20">Spa name 2</a>
-                                        <p>The power of golden ratio typography cannot be understated</p>
-                                        <div class="address">
-                                            <p class="address"><i class="fa fa-home"></i><span> Address:</span> 121 King St, Melbourne Vic 30</p>
-                                            <p class="phone"><i class="fa fa-phone"></i><span> Phone:</span> +66 1800-111-333</p>
-                                            <p class="email"><i class="fa fa-envelope"></i><span> Email:</span> <a href="#">info@beautylab.com</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="search-section-results-item">
-                            <div>
-                                <div class="col-md-6">
-                                    <div class="single-blog">
-                                        <div class="blog-img pos-relative">
-                                            <div class="img-area">
-                                                <a href="blog-details.html"><img src="images/blog1.jpg" alt="blog img" class="img-fluid"></a>
-                                            </div>
-                                            <ul class="brand">
-                                                <li><i class="fa fa-heart"></i>18</li>
-                                                <li><i class="fa fa-commenting-o"></i>10</li>
-                                                <li><i class="fa fa-clock-o"></i>8:00 - 17:00</li>
-                                            </ul>
-                                            <div class="date">
-                                                <h5 class="fw-700 color-ff">12</h5>
-                                                <span class="fw-500 roboto color-ff text-uppercase">oct</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="blog-content">
-                                        <a href="blog-details.html" class="title fw-500 pt-20">Spa name 3</a>
-                                        <p>The power of golden ratio typography cannot be understated</p>
-                                        <div class="address">
-                                            <p class="address"><i class="fa fa-home"></i><span> Address:</span> 121 King St, Melbourne Vic 30</p>
-                                            <p class="phone"><i class="fa fa-phone"></i><span> Phone:</span> +66 1800-111-333</p>
-                                            <p class="email"><i class="fa fa-envelope"></i><span> Email:</span> <a href="#">info@beautylab.com</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="search-section-results-item">
-                            <div>
-                                <div class="col-md-6">
-                                    <div class="single-blog">
-                                        <div class="blog-img pos-relative">
-                                            <div class="img-area">
-                                                <a href="blog-details.html"><img src="images/blog4.jpg" alt="blog img" class="img-fluid"></a>
-                                            </div>
-                                            <ul class="brand">
-                                                <li><i class="fa fa-heart"></i>18</li>
-                                                <li><i class="fa fa-commenting-o"></i>10</li>
-                                                <li><i class="fa fa-clock-o"></i>8:00 - 17:00</li>
-                                            </ul>
-                                            <div class="date">
-                                                <h5 class="fw-700 color-ff">12</h5>
-                                                <span class="fw-500 roboto color-ff text-uppercase">oct</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="blog-content">
-                                        <a href="blog-details.html" class="title fw-500 pt-20">Spa name 4</a>
-                                        <p>The power of golden ratio typography cannot be understated</p>
-                                        <div class="address">
-                                            <p class="address"><i class="fa fa-home"></i><span> Address:</span> 121 King St, Melbourne Vic 30</p>
-                                            <p class="phone"><i class="fa fa-phone"></i><span> Phone:</span> +66 1800-111-333</p>
-                                            <p class="email"><i class="fa fa-envelope"></i><span> Email:</span> <a href="#">info@beautylab.com</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="search-section-results-item">
-                            <div>
-                                <div class="col-md-6">
-                                    <div class="single-blog">
-                                        <div class="blog-img pos-relative">
-                                            <div class="img-area">
-                                                <a href="blog-details.html"><img src="images/blog5.jpg" alt="blog img" class="img-fluid"></a>
-                                            </div>
-                                            <ul class="brand">
-                                                <li><i class="fa fa-heart"></i>18</li>
-                                                <li><i class="fa fa-commenting-o"></i>10</li>
-                                                <li><i class="fa fa-clock-o"></i>8:00 - 17:00</li>
-                                            </ul>
-                                            <div class="date">
-                                                <h5 class="fw-700 color-ff">12</h5>
-                                                <span class="fw-500 roboto color-ff text-uppercase">oct</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="blog-content">
-                                        <a href="blog-details.html" class="title fw-500 pt-20">Spa name 5</a>
-                                        <p>The power of golden ratio typography cannot be understated</p>
-                                        <div class="address">
-                                            <p class="address"><i class="fa fa-home"></i><span> Address:</span> 121 King St, Melbourne Vic 30</p>
-                                            <p class="phone"><i class="fa fa-phone"></i><span> Phone:</span> +66 1800-111-333</p>
-                                            <p class="email"><i class="fa fa-envelope"></i><span> Email:</span> <a href="#">info@beautylab.com</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                          </div>
+                        <% }) %>
                     </div>
                 </div>
                 <div class="col-xl-5 col-sm-12 search-section-map">
@@ -231,4 +97,15 @@
             </div>
         </div>
     </section>
+
+
+<script>
+  var spas = JSON.parse(`<%-JSON.stringify(data.map(item=> { return {
+    name: item.name,
+    latitude: item.latitude,
+    longitude: item.longitude
+  }}))%>`);
+
+</script>
+<script src="/libs_client/js/page-search.js"></script>
     

@@ -51,6 +51,9 @@ const getFormCreate = async (req, res) => {
     path: "services",
     select: "_id title"
   }).exec()
+  console.log('====================================');
+  console.log(spas);
+  console.log('====================================');
   res.render('admin/booking/create', {errors: {}, data:  spas})
 }
 

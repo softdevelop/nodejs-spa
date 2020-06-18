@@ -156,7 +156,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group form-group-service_id <%=errors.service_id?'has-danger':''%>">
-                                       <label class="control-label">Service title</label>
+                                       <label class="control-label">Service name</label>
                                        <select class="form-control custom-select" name="service_id">
                                          <% services.services.forEach(item=>{ 
                                             var selected = ( item._id == data.service_id ) ? "selected" : ""; 

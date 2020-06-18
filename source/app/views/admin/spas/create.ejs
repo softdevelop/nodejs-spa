@@ -9,8 +9,6 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
   `,
   script: `
-    <script src="/libs/dist/js/custom.min.js"></script>
-
     <script src="/libs/node_modules/summernote/dist/summernote-bs4.min.js"></script>
     <script src="/js/slugify.js"></script>
     <script>
@@ -70,6 +68,22 @@
                 $('.form-group-location small').html('Please choose location on the map')
               }
           })
+
+          function readURL(input) {
+            if (input.files && input.files[0]) {
+               var reader = new FileReader();
+               
+               reader.onload = function(e) {
+                  $('#blah').attr('src', e.target.result).removeClass("d-none");
+               }
+               
+               reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+            }
+
+            $("#logo").change(function() {
+            readURL(this);
+         });
       });
     </script>
     
@@ -103,8 +117,27 @@
     
     mymap.on('click', onMapClick);
     
-    </script>
-  
+    document.getElementById('picField').onchange = function (evt) {
+    var tgt = evt.target || window.event.srcElement,
+        files = tgt.files;
+
+    // FileReader support
+    if (FileReader && files && files.length) {
+        var fr = new FileReader();
+        fr.onload = function () {
+            document.getElementById(outImage).src = fr.result;
+        }
+        fr.readAsDataURL(files[0]);
+    }
+
+    // Not supported
+    else {
+        // fallback -- perhaps submit the input to an iframe and temporarily store
+        // them on the server until the user's session ends.
+    }
+}
+</script>
+
   `
   }) %>
 <div class="container-fluid">
@@ -165,6 +198,27 @@
                          </div>
                       </div>
                    </div>
+                   <div class="row p-t-20">
+                     <div class="col-md-6">
+                        <div class="form-group form-group-status <%=errors.status?'has-danger':''%>">
+                           <label class="control-label">Location</label>
+                           <select class="form-control custom-select" name="location">
+                               <% for (let [key, value] of Object.entries(locations)) { %>
+                                 <option value="<%=key%>"><%= value %> </option>
+                               <% } %>
+                           </select>
+                           <small class="form-control-feedback "><%=errors?errors.location:''%></small> 
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group form-group-address <%=errors.address?'has-danger':''%>">
+                           <label class="control-label">Address</label>
+                           <input type="text" id="address" class="form-control" name="address" value="<%=data.address?data.address:''%>">
+                           <small class="form-control-feedback"><%=errors?errors.address:''%></small>
+                        </div>
+                     </div>
+                  </div>
+                  <!--/row-->
                     <div class="row">
                        <div class="col-md-12 ">
                           <div class="form-group form-group-description <%=errors.description? 'has-danger': ''%>">
@@ -184,51 +238,41 @@
                           </div>
                        </div>
                        <div class="col-md-6">
-                          <div class="form-group form-group-address <%=errors.address?'has-danger':''%>">
-                             <label class="control-label">Address</label>
-                             <input type="text" id="address" class="form-control" name="address" value="<%=data.address?data.address:''%>">
-                             <small class="form-control-feedback"><%=errors?errors.address:''%></small>
-                          </div>
-                       </div>
+                           <div class="form-group <%=errors.email?'has-danger':''%>">
+                              <label class="control-label">Email</label>
+                              <input type="email" id="email" class="form-control" placeholder="" name="email" required value="<%=data.email?data.email:''%>">
+                              <small class="form-control-feedback"><%=errors?errors.email:''%></small>
+                           </div>
+                     </div>
                     </div>
                     <!--/row-->
                     <!--/row-->
                     <div class="row p-t-20">
-                       <div class="col-md-6">
-                          <div class="form-group form-group-status <%=errors.status?'has-danger':''%>">
-                             <label class="control-label">Status</label>
-                             <select class="form-control custom-select" name="status">
-                                <option value="pending">Pending</option>
-                                <option value="active" ">Active</option>
-                                <option value="blocked ">Blocked</option>
-                             </select>
-                             <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
-                          </div>
-                       </div>
-                       <div class="col-md-6 ">
-                          <div class="form-group form-group-logo <%=errors.logo? 'has-danger': ''%>">
-                             <label class="control-label">Logo</label>
-                             <input type="file" id="logo" class="form-control" name="logo" value="<%=data.logo?data.logo:''%>">
-                             <small class="form-control-feedback"><%=errors?errors.logo:''%></small>
-                          </div>
-                       </div>
+                     <div class="col-md-6">
+                        <div class="form-group form-group-owner <%=errors.owner?'has-danger':''%>">
+                           <label class="control-label">Spa owner</label>
+                           <select class="form-control custom-select" name="owner">
+                             <% spaOwners.forEach(item=>{ %>
+                               <option value="<%=item._id%>"><%=item.first_name%> <%=item.last_name%> - <%=item.email%></option>
+                             <% }) %>
+                           </select>
+                           <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group form-group-status <%=errors.status?'has-danger':''%>">
+                           <label class="control-label">Status</label>
+                           <select class="form-control custom-select" name="status">
+                              <option value="pending">Pending</option>
+                              <option value="active" ">Active</option>
+                              
+                           </select>
+                           <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
+                        </div>
+                     </div>
+                       
                     </div>
                     <!--/row-->
-                     <!--/row-->
-                     <div class="row p-t-20">
-                      <div class="col-md-6">
-                         <div class="form-group form-group-owner <%=errors.owner?'has-danger':''%>">
-                            <label class="control-label">Spa owner</label>
-                            <select class="form-control custom-select" name="owner">
-                              <% spaOwners.forEach(item=>{ %>
-                                <option value="<%=item._id%>"><%=item.first_name%> <%=item.last_name%> - <%=item.email%></option>
-                              <% }) %>
-                            </select>
-                            <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
-                         </div>
-                      </div>
-                   </div>
-                   <!--/row-->
                     <!--/row-->
                     <div class="row p-t-20">
                        <div class="col-md-6">
@@ -238,6 +282,14 @@
                              <small class="form-control-feedback"><%=errors?errors.note:''%></small>
                           </div>
                        </div>
+                       <div class="col-md-6 ">
+                        <div class="form-group form-group-logo <%=errors.logo? 'has-danger': ''%>">
+                           <label class="control-label">Logo</label>
+                           <input type="file" id="logo" class="form-control" name="logo" value="<%=data.logo?data.logo:''%>">
+                           <img class="w-100 mt-2 d-none" id="blah" src="#" alt="your image" />
+                           <small class="form-control-feedback"><%=errors?errors.logo:''%></small>
+                        </div>
+                     </div>
                     </div>
                     <!--/row-->
                     <div class="form-actions">
@@ -304,7 +356,25 @@
                  </li>
                  <li>
                     <a href="javascript:void(0)"><img src="../assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
-                 </li>
+                 </li>document.getElementById('picField').onchange = function (evt) {
+                  var tgt = evt.target || window.event.srcElement,
+                      files = tgt.files;
+              
+                  // FileReader support
+                  if (FileReader && files && files.length) {
+                      var fr = new FileReader();
+                      fr.onload = function () {
+                          document.getElementById(outImage).src = fr.result;
+                      }
+                      fr.readAsDataURL(files[0]);
+                  }
+              
+                  // Not supported
+                  else {
+                      // fallback -- perhaps submit the input to an iframe and temporarily store
+                      // them on the server until the user's session ends.
+                  }
+              }
               </ul>
            </div>
         </div>

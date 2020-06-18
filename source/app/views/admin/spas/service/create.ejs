@@ -84,7 +84,7 @@
                             <div class="row">
                                 <div class="col-md-12 ">
                                     <div class="form-group form-group-content <%=errors.content? 'has-danger': ''%>">
-                                        <label class="control-label">content</label>
+                                        <label class="control-label">Content</label>
                                         <textarea class="summernote" style="z-index: 1;" name="content"></textarea>
                                         <small class="form-control-feedback"><%=errors?errors.content:''%></small>
                                     </div>
@@ -93,18 +93,19 @@
                             <div class="row">
                                 <div class="col-md-6 ">
                                     <div class="form-group form-group-image <%=errors.image? 'has-danger': ''%>">
-                                        <label class="control-label">image</label>
+                                        <label class="control-label">Image</label>
                                         <input type="file" id="image" class="form-control" name="image"
                                             value="<%=data.image?data.image:''%>">
+                                            <img id="blah" class="w-100 d-none mt-2" src="#" />
                                         <small class="form-control-feedback"><%=errors?errors.image:''%></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6 ">
                                     <div class="form-group form-group-price <%=errors.price?'has-danger':''%>">
-                                        <label class="control-label">price</label>
+                                        <label class="control-label">Price</label>
                                         <input type="text" id="price" class="form-control" placeholder="" name="price"
                                             required value="<%=data.price?data.price:''%>">
-                                        <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
+                                        <small class="form-control-feedback"><%=errors?errors.price:''%></small>
                                     </div>
                                 </div>
 
@@ -208,3 +209,24 @@
     <!-- ============================================================== -->
 </div>
 </div>
+
+
+<script>
+    $(document).ready(function(){
+      function readURL(input) {
+         if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function(e) {
+               $('#blah').attr('src', e.target.result).removeClass("d-none");
+            }
+            
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+         }
+      }
+
+      $("#image").change(function() {
+         readURL(this);
+      });
+    })
+</script>
