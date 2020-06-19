@@ -3,6 +3,7 @@ const Category = mongoose.model('Category')
 const Spa = mongoose.model('Spa')
 const Booking = mongoose.model('Booking')
 const {genHtmlPagination, urlMediaUpload} = require('../../utils')
+const truncate = require('html-truncate');
 
 const landingPage = async (req, res) => {
   let slug = req.params.slug
@@ -16,7 +17,8 @@ const landingPage = async (req, res) => {
     let template_id = spaDetail.template_id || '1';
     res.render("template/"+template_id, {
       spaDetail,
-      urlMediaUpload
+      urlMediaUpload,
+      truncate
     });
   }else{
     res.render("client/404")
