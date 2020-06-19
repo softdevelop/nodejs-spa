@@ -32,6 +32,7 @@ const index = async (req, res) => {
   let reg = new RegExp(text);
   var query = {
     name: { $regex: reg, $options: 'gmi' },
+    status: 'active'
   };
   if(category) query.category_ids = { $elemMatch: { $eq: ''+category._id}}
   var options = {
