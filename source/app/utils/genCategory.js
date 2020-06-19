@@ -61,7 +61,7 @@ function genCategoryClient (categories){
       <li>
       <div class="card">
         <div class="card-header">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#cat${category._id}" aria-expanded="false" aria-controls="cat${category._id}"><a href='/index?danh-muc=${category.slug}'>${category.name}</a> </button>
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#cat${category._id}" aria-expanded="false" aria-controls="cat${category._id}"><a href='/tin-tuc?danh-muc=${category.slug}'>${category.name}</a> </button>
         </div>
 
         <div id="cat${category._id}" class="collapse" data-parent="#product-categorie">
@@ -76,7 +76,28 @@ function genCategoryClient (categories){
       `
     }else{
       result += `
-        <li><a class="link" href="/index?danh-muc=${category.slug}">${category.name}</a></li>
+        <li><a class="link" href="/tin-tuc?danh-muc=${category.slug}">${category.name}</a></li>
+      `
+    }
+  })
+  return result;
+}
+
+function genCategoryClientHeader (categories){
+  let result = '';
+  categories.forEach(category => {
+    if(category.children && category.children.length>0){
+      let children = genCategoryClientHeader(category.children);
+      result += `
+      <li><a href='/tin-tuc?danh-muc=${category.slug}'>${category.name}</a>
+        <ul class="dropdown dropdown-right">
+          ${children}
+        </ul>
+      </li>
+      `
+    }else{
+      result += `
+        <li><a href="/tin-tuc?danh-muc=${category.slug}">${category.name}</a></li>
       `
     }
   })
@@ -115,5 +136,6 @@ module.exports = {
   genCategoryTree,
   genOptions,
   genCategoryClient,
+  genCategoryClientHeader,
   genMultiOptions
 }

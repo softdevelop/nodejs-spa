@@ -169,15 +169,19 @@ const edit = async (req, res) => {
     data._id = id;
     return res.render("admin/categories/edit", { errors, data, optionsHtml });
   } else {
-    let parent = await Category.findById(data.parent).exec();
-    data.path = `${parent.path}#${id}`;
-    let record = await Category.findById(id).exec();
-    let children = await record.getAllChildren();
-    children.forEach(async item=>{
-      let regex = new RegExp(`^${record.path}`, 'g');
-      let newPath = item.path.replace(regex, data.path)
-      await Category.findOneAndUpdate({ _id: item._id}, {path: newPath})
-    })
+    if(data.parent !== ''){
+      let parent = await Category.findById(data.parent).exec();
+      data.path = `${parent.path}#${id}`;
+      let record = await Category.findById(id).exec();
+      let children = await record.getAllChildren();
+      children.forEach(async item=>{
+        let regex = new RegExp(`^${record.path}`, 'g');
+        let newPath = item.path.replace(regex, data.path)
+        await Category.findOneAndUpdate({ _id: item._id}, {path: newPath})
+      })
+    }else{
+      delete data.parent
+    }
 
     await Category.findById(id).update(data);
     res.redirect("/admin/categories");

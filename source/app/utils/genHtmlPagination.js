@@ -150,7 +150,7 @@ function genHtmlPaginationClient(total, limit, page, pages, search, float){
   }
   return `
   <div class="dataTables_paginate paging_simple_numbers">
-    <ul class="pagination" style="float:${float?float:'right'};">
+    <ul class="pagination" style="float:${float?float:'right'};justify-content: center;">
       ${html}
     </ul>
   </div>

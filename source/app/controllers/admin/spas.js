@@ -10,6 +10,7 @@ const bcrypt = require("bcryptjs");
 var ObjectId = require('mongodb').ObjectID;
 const {locations} = require("../../utils/constants");
 const Service = mongoose.model('Service')
+const truncate = require('html-truncate');
 
 const { 
   spaIntroService,
@@ -262,7 +263,8 @@ const getTemplatePreview = async (req, res) => {
   let template_id = spaDetail.template_id;
   res.render("template/"+template_id, {
     spaDetail,
-    urlMediaUpload
+    urlMediaUpload,
+    truncate
   });
 }
 
@@ -278,7 +280,8 @@ const getTemplateId = async (req, res) => {
   let template_id = spaDetail.template_id;
   res.render('template/'+req.params.id, {
     spaDetail,
-    urlMediaUpload
+    urlMediaUpload,
+    truncate
   })
 }
 

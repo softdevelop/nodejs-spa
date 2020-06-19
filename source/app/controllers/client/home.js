@@ -24,9 +24,6 @@ const index = async (req, res) => {
 
   let { limit } = req.query;
   let page = req.params.page
-  let categorySlug = req.query['danh-muc'];
-  let category = null;
-  if(categorySlug) category = await Category.findOne({slug: categorySlug}).exec();
   let search = req.query.search || '';
   let text = '.*'+search.split(' ').join('.*')+'.*'
   let reg = new RegExp(text);
@@ -34,12 +31,11 @@ const index = async (req, res) => {
     name: { $regex: reg, $options: 'gmi' },
     status: 'active'
   };
-  if(category) query.category_ids = { $elemMatch: { $eq: ''+category._id}}
   var options = {
     select: "", //"username email"
     sort: { createdAt: -1 },
     lean: true,
-    limit: parseInt(limit, 10) || 10,
+    limit: parseInt(limit, 10) || 12,
     page: parseInt(page, 10) || 1,
     populate: [{
       path: 'spas',
