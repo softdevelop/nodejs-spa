@@ -184,12 +184,13 @@
                             <div class="row">
                                 <div class="col-md-12 ">
                                     <div class="form-group <%=errors.content? 'has-danger': ''%>">
-                                       <label class="control-label">Content</label>
-                                       <textarea class="summernote" style="z-index: 1;" name="content"><%=data.content?data.content:''%></textarea>
-                                       <small class="form-control-feedback"><%=errors?errors.content:''%></small>
+                                        <label class="control-label">Content</label>
+                                        <textarea class="summernote" style="z-index: 1;"
+                                            name="content"><%=data.content?data.content:''%></textarea>
+                                        <small class="form-control-feedback"><%=errors?errors.content:''%></small>
                                     </div>
-                                 </div>
-                             </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6 ">
                                     <div class="form-group form-group-date <%=errors.date?'has-danger':''%>">
@@ -201,31 +202,36 @@
                                 </div>
                                 <div class="col-md-6 ">
                                     <div class="form-group <%=errors.image? 'has-danger': ''%>">
-                                       <label class="control-label">Image</label>
-                                       <input type="file" id="image" class="form-control" name="image" value="<%=data.image?data.image:''%>">
-                                       <small class="form-control-feedback"><%=errors?errors.image:''%></small>
-                                       <img class="avatar-100" src="<%=urlMediaUpload.imageObj(data.image)%>" />
-          
+                                        <label class="control-label">Image</label>
+                                        <input type="file" id="image" class="form-control" name="image"
+                                            value="<%=data.image?data.image:''%>">
+                                        <small class="form-control-feedback"><%=errors?errors.image:''%></small>
+                                        <img class="avatar-100" src="<%=urlMediaUpload.imageObj(data.image)%>" />
+
                                     </div>
-                                 </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group form-group-status <%=errors.status?'has-danger':''%>">
-                                       <label class="control-label">Status</label>
-                                       <select class="form-control custom-select" name="status">
-                                          <option value="pending">Pending</option>
-                                          <option value="active" ">Active</option>
-                                          <option value="blocked ">Blocked</option>
-                                       </select>
-                                       <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
+                                    <div class="form-group <%=errors.status?'has-danger':''%>">
+                                        <label class="control-label">Status</label>
+                                        <select class="form-control custom-select" name="status">
+                                            <option value="pending" <%=data.status=='pending'?'selected':''%>>Pending
+                                            </option>
+                                            <option value="active" <%=data.status=='active'?'selected':''%>>Active
+                                            </option>
+                                            <option value="blocked" <%=data.status=='blocked'?'selected':''%>>Blocked
+                                            </option>
+                                        </select>
+                                        <small class="form-control-feedback "><%=errors?errors.status:''%></small>
                                     </div>
-                                 </div>
-                                 <div class="col-md-6 ">
-                                    <div class="form-group form-group-numOfViews <%=errors.numOfViews?'has-danger':''%>">
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div
+                                        class="form-group form-group-numOfViews <%=errors.numOfViews?'has-danger':''%>">
                                         <label class="control-label">Number Of Views</label>
-                                        <input type="number" id="numOfViews" class="form-control" placeholder="" name="numOfViews"
-                                            required value="<%=data.numOfViews?data.numOfViews:''%>">
+                                        <input type="number" id="numOfViews" class="form-control" placeholder=""
+                                            name="numOfViews" required value="<%=data.numOfViews?data.numOfViews:''%>">
                                         <small class="form-control-feedback"><%=errors?errors.numOfViews:''%></small>
                                     </div>
                                 </div>
@@ -240,21 +246,23 @@
                                             <%spas.forEach(item=>{
                                                 var selected = ( item._id == data.spa_id ) ? "selected" : ""; 
                                                 %>
-                                              <option value="<%=item._id%>"  <%=selected %>><%=item.name%></option>
+                                            <option value="<%=item._id%>" <%=selected %>><%=item.name%></option>
                                             <% }) %>
                                         </select>
                                         <small class="form-control-feedback "><%=errors?errors.status:''%></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group form-group-category_ids <%=errors.category_ids?'has-danger':''%>">
+                                    <div
+                                        class="form-group form-group-category_ids <%=errors.category_ids?'has-danger':''%>">
                                         <label class="control-label">Category</label>
-                                        <select name="category_ids" class="form-control custom-select selectpicker" multiple >
+                                        <select name="category_ids" class="form-control custom-select selectpicker"
+                                            multiple>
                                             <%-optionsHtml%>
                                         </select>
                                         <small class="form-control-feedback "><%=errors?errors.category_ids:''%></small>
                                     </div>
-                                  
+
                                 </div>
                             </div>
                             <!--/row-->

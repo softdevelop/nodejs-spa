@@ -149,11 +149,16 @@ const delMany = async (req, res) => {
 };
 
 const viewDetail = async (req, res) => {
-  let id = req.params.id
+  let id = req.params.id;
   let news = await New.findById(id).exec()
   let spas = await Spa.find().exec()
   let nameSpa = spas.find(item => item._id == news.spa_id)   
-  res.render('admin/news/view', {errors: {}, data: news,urlMediaUpload, nameSpa, spas })
+  let categories = await Category.getChildrenTree({
+    fields: "_id name slug parent path",
+    options: { lean: true },
+  });
+  let optionsHtml = genCategory.genMultiOptions(categories, '', news.category_ids);
+  res.render('admin/news/view', {errors: {}, data: news, urlMediaUpload, nameSpa, spas,optionsHtml })
 }
 
 module.exports = {
