@@ -197,12 +197,12 @@
                           <h5 class="widget-title fw-500 pos-relative">Tin tức mới nhất</h5>
                           <% newsLatest.forEach(item=>{ %>
                             <div class="single-latest-post">
-                              <a href="#"><img src="<%=urlMediaUpload.imageObj(item.image)%>" style="max-width: 70px;" alt="latest-blog"></a>
+                              <a href="/news/<%=item.slug%>"><img src="<%=urlMediaUpload.imageObj(item.image)%>" style="max-width: 70px;" alt="latest-blog"></a>
                               <ul>
                                   <li>
-                                      <h6><a href="#"><%=item.name%></a></h6>
+                                      <h6><a href="/news/<%=item.slug%>"><%=item.name%></a></h6>
                                   </li>
-                                  <li><a href="#">Làm đẹp</a></li>
+                                  <!-- <li><a href="#">Làm đẹp</a></li> -->
                                   <li><%=moment(item.date).format('DD/MM/YYYY')%></li>
                               </ul>
                             </div>

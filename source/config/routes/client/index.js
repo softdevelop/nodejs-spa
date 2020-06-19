@@ -2,6 +2,7 @@ const path = require("path")
 const router = require('express').Router();
 const search = require("../../../app/controllers/client/search")
 const home = require("../../../app/controllers/client/home")
+const auth = require("../../../app/controllers/client/auth")
 const contact = require('../../../app/controllers/client/contact')
 const booking = require('../../../app/controllers/client/booking')
 const service = require('../../../app/controllers/client/service')
@@ -18,6 +19,10 @@ router.use(getHeader);
 router.get("/", home.index );
 router.get("/index/trang-:page", home.index );
 router.get("/index", home.index );
+router.get("/login", auth.login );
+router.get("/dang-nhap", auth.login );
+router.get("/register", auth.register );
+router.get("/dang-ki", auth.register );
 router.get("/tim-kiem", search.index) ;
 router.get('/lien-he', contact.index)
 router.get('/booking', booking.index)

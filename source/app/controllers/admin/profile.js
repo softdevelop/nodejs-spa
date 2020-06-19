@@ -197,8 +197,12 @@ changeAvatar = async (req, res) => {
 
 // logout account
 logoutAccount = (req, res) => {
+  let user = req.user;
   req.session.token = null;
 
+  if(user.role === 'SPA_OWNER' || user.role === 'USER'){
+    return res.redirect("/login");
+  }else 
   return res.redirect("/admin/login");
 };
 

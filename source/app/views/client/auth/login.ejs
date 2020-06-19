@@ -1,0 +1,51 @@
+<% extend('../layouts/base',{
+  title: "Booking",
+  css: `
+  <style>
+    form.login input{
+      height: 50px !important;
+    }
+    .booking-section .booking-wrapper .single-input{
+      margin-bottom: 0 !important;
+    }
+  </style>
+  
+  `
+}) %>
+
+
+
+    <!-- ======================================= 
+            ==start Seassion booking section== 
+    =======================================-->
+    <section class="booking-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 offset-xl-4 col-lg-4 offset-lg-4">
+                    <div class="section-title text-center">
+                        <h3 class="color-72 fw-500 mt-5">Đăng nhập</h3>
+                    </div>
+
+                    <div class="booking-wrapper mt-45">
+                        <form action="/admin/login" method="post" class="clearfix login">
+                         
+                            <div class="single-input name msg">
+                                <input type="text" name="email"" placeholder="Email" required />
+                            </div>
+
+                            <div class="single-input phone msg">
+                                <input type="password" name="password" placeholder="Password" required/>
+                            </div>
+                            <button type="submit" class="mb-3">Đăng nhập</button>
+
+                            <div class="single-input name msg"><span>Chưa có tài khoản, <a href='/register'>Đăng kí</a> ngay bây giờ</span></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======================================= 
+            ==End Seassion booking section== 
+    =======================================-->
+

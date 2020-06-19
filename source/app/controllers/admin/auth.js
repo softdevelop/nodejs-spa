@@ -45,6 +45,9 @@ login = async (req, res) => {
 
     let user = await User.findOne({ email, status: 'active' }).populate({ path: 'permissions' }).exec();
 
+    if(!user && req.url === '/login'){
+      res.redirect('/login')
+    }
     if (!user) {
       return res.render("admin/auth/login");
     }

@@ -132,7 +132,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light w-100">
                     <a class="navbar-brand p_0" href="#top"><img src="<%=urlMediaUpload.imageObj(spaDetail.logo)%>" style="max-width: 50px;" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        
+                      <%=spaDetail.name%>
                     </div>
                 </nav>
             </div>
@@ -611,12 +611,12 @@
                 <div id="mapid" class="map-canvas" style="width: 100%;height: 700px;"></div>
                </div>
                <div class="col-md-6 col-lg-6 py-80">
-                  <h2 class="main-title mb-3 text-uppercase letter-space-1 text-center color-primary">contact us</h2>
+                  <h2 class="main-title mb-3 text-uppercase letter-space-1 text-center color-primary">Đặt lịch</h2>
                   <form method="POST" >
                     <div class="col-md-12 col-lg-12">
                        <div class="row">
                           <div class="col-md-6 col-lg-6">
-                             <div class="form-group"> <input required class="form-control no-border" type="text" name="name" placeholder="Name*"/></div>
+                             <div class="form-group"> <input required class="form-control no-border" type="text" name="name" placeholder="Tên*"/></div>
                           </div>
                           <div class="col-md-6 col-lg-6">
                              <div class="form-group"> <input required class="form-control no-border" type="text" name="email" placeholder="Email*"/></div>
@@ -626,22 +626,22 @@
                     <div class="col-md-12 col-lg-12">
                        <div class="row">
                         <div class="col-md-6 col-lg-6">
-                           <div class="form-group"> <input required class="form-control no-border" id="phone" type="number" name="phone" placeholder="Phone*"/></div>
+                           <div class="form-group"> <input required class="form-control no-border" id="phone" type="number" name="phone" placeholder="Số điện thoại*"/></div>
                         </div>
                         <div class="col-md-6 col-lg-6">
-                           <div class="form-group"> <input required class="form-control no-border" id="address" type="text" name="address" placeholder="Address*"/></div>
+                           <div class="form-group"> <input required class="form-control no-border" id="address" type="text" name="address" placeholder="Địa chỉ*"/></div>
                         </div>
                       </div>
 
                     </div>
                     <div class="col-md-12 col-lg-12">
-                       <div class="form-group"> <input required class="form-control no-border" id="subject" type="text" name="subject" placeholder="Subject*"/></div>
+                       <div class="form-group"> <input required class="form-control no-border" id="subject" type="text" name="subject" placeholder="Tiêu đề*"/></div>
                     </div>
                     <div class="col-md-12 col-lg-12">
                       <div class="row">
                         <div class="col-md-6 col-lg-6">
                             <div class="form-group">
-                              <select class="form-control no-border" id="service" name="service_id" placeholder="Service*">
+                              <select class="form-control no-border" id="service" name="service_id" placeholder="Dịch vụ*">
                                 <% spaDetail.services.forEach(item=>{ %>
                                   <option value="<%=item._id%>"><%=item.title || item.service.title%></option>
                                 <% }) %>
@@ -649,15 +649,15 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-6">
-                            <div class="form-group"> <input required class="form-control no-border" id="date" type="date" name="date" placeholder="Date*"/></div>
+                            <div class="form-group"> <input required class="form-control no-border" id="date" type="date" name="date" placeholder="Ngày đặt*"/></div>
                         </div>
                       </div>
                     </div>
                     <div class="col-md-12 col-lg-12">
-                       <div class="form-group"><textarea required class="form-control no-border" id="message" rows="7" name="message" placeholder="Message*"></textarea></div>
+                       <div class="form-group"><textarea required class="form-control no-border" id="message" rows="7" name="message" placeholder="Nội dung*"></textarea></div>
                     </div>
                     <div class="col-md-12 col-lg-12">
-                       <div class="form-group m-0"> <input required class="btn btn-black" id="send" type="submit" value="send"/></div>
+                       <div class="form-group m-0"> <input required class="btn btn-black" id="send" type="submit" value="Gửi"/></div>
                     </div>
                     <div class="col-md-12 col-lg-12">
                        <div class="error-handel">
