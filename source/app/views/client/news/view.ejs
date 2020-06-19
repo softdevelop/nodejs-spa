@@ -3,80 +3,160 @@
 }) %>
 
 
-    <!-- ======================================= 
+<!-- ======================================= 
         ==Start banner section== 
     =======================================-->
-    <section class="banner-section blog-banner top-margin">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="banner-content">
-                        <h4 class="fw-500 color-ff"><%=data.name%></h4>
-                    </div>
-                    <ol class="breadcrumb">
-                        <li><a href="/">Trang chủ</a></li>
-                        <li class="active"><%=data.name%></li>
-                    </ol>
+<section class="banner-section blog-banner top-margin">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="banner-content">
+                    <h4 class="fw-500 color-ff"><%=data.name%></h4>
                 </div>
+                <ol class="breadcrumb">
+                    <li><a href="/">Trang chủ</a></li>
+                    <li class="active"><%=data.name%></li>
+                </ol>
             </div>
         </div>
-    </section>
-    <!-- ======================================= 
+    </div>
+</section>
+<!-- ======================================= 
         ==End banner section==  
     =======================================-->
 
 
-    <!-- ======================================= 
+<!-- ======================================= 
             ==Start Blog section==  
     =======================================-->
-    <section class="blog-section blog-details">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="blog-details-wrapper">
-                        <img src="<%=urlMediaUpload.imageObj(data.image)%>" alt="blog-details-img" class="img-fluid" />
-                        <h5 class="title color-d5"><%=data.name%></h5>
-                        <ul class="tags ptb-20">
-                            <li><i class="fa fa-heart color-72"></i>22</li>
-                            <li><i class="fa fa-eye color-72"></i><%=data.numOfViews%></li>
-                            <li><i class="fa fa-home color-72"></i> <%-data.spas.address%></li>
-                            <li><i class="fa fa-calendar color-72"></i><%=moment(data.date).format('DD/MM/YYYY')%></li>
-                        </ul>
-                        <p>
-                            <%-data.content%>
-                        </p>
+<section class="blog-section blog-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blog-details-wrapper">
+                    <img src="<%=urlMediaUpload.imageObj(data.image)%>" alt="blog-details-img" class="img-fluid" />
+                    <h5 class="title color-d5"><%=data.name%></h5>
+                    <ul class="tags ptb-20">
+                        <li><i class="fa fa-heart color-72"></i>22</li>
+                        <li><i class="fa fa-eye color-72"></i><%=data.numOfViews%></li>
+                        <li><i class="fa fa-home color-72"></i> <%-data.spas.address%></li>
+                        <li><i class="fa fa-calendar color-72"></i><%=moment(data.date).format('DD/MM/YYYY')%></li>
+                    </ul>
+                    <p>
+                        <%-data.content%>
+                    </p>
 
-                        <div class="admin-details">
-                            <img src="<%=urlMediaUpload.imageObj(data.spas.logo)%>" alt="admin">
-                            <div class="admin-description color-ff">
-                                <h5> <span class="fw-500"> <%-data.spas.name%></span></h5>
-                                <p class="color-ff"><%-data.spas.description%></p>
+                    <div class="admin-details">
+                        <img src="<%=urlMediaUpload.imageObj(data.spas.logo)%>" alt="admin">
+                        <div class="admin-description color-ff">
+                            <h5> <span class="fw-500"> <%-data.spas.name%></span></h5>
+                            <p class="color-ff"><%-data.spas.description%></p>
+                        </div>
+                    </div>
+                    <!--/admin details-->
+
+
+                </div>
+                <!--/blog post wrapper-->
+
+
+                <!--/comment-form-section-->
+            </div>
+            <!--/col-->
+            <div class="col-lg-4 order-lg-1">
+                <aside class="blog-sidebar">
+                    <div class="search-widget single-widget" style="margin-bottom: 20px;">
+                        <form action="#" method="post">
+                            <input type="text" name="search" placeholder="Tìm kiếm">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+
+                    <div class="post-categories single-widget" style="margin-bottom: 0;">
+                        <h5 class="widget-title fw-500 pos-relative">Danh mục</h5>
+                        <div class="product-gallery with-sidebar">
+                            <aside class="sidebar order-lg-1">
+                                <div class="single-block categorie">
+                                    <ul>
+                                        <li><a class="link" href="/index">Tất cả</a></li>
+                                        <%-genCategory%>
+                                    </ul>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="panel-group" id="accordion">
+                            <div class="accordion" id="product-categorie">
                             </div>
                         </div>
-                        <!--/admin details-->
-
-                       
                     </div>
-                    <!--/blog post wrapper-->
+                    <!--/post categories-->
 
-               
-                    <!--/comment-form-section-->
-                </div>
-                <!--/col-->
+                    <div class="latest-blog-area single-widget">
+                        <h5 class="widget-title fw-500 pos-relative">Tin tức mới nhất</h5>
+                        <% newsLatest.forEach(item=>{ %>
+                        <div class="single-latest-post">
+                            <a href="#"><img src="<%=urlMediaUpload.imageObj(item.image)%>" style="max-width: 70px;"
+                                    alt="latest-blog"></a>
+                            <ul>
+                                <li>
+                                    <h6><a href="#"><%=item.name%></a></h6>
+                                </li>
+                                <li><a href="#">Làm đẹp</a></li>
+                                <li><%=moment(item.date).format('DD/MM/YYYY')%></li>
+                            </ul>
+                        </div>
+                        <% }) %>
+                    </div>
+                    <!-- /latest blog area-->
 
-            
+                    <div class="post-categories single-widget">
+                        <h5 class="widget-title fw-500 pos-relative">Lưu trữ</h5>
+                        <ul>
+                            <li><a href="#">Tháng 1 - 2020</a></li>
+                            <li><a href="#">Tháng 2 - 2020</a></li>
+                            <li><a href="#">Tháng 3 - 2020</a></li>
+                            <li><a href="#">Tháng 4 - 2020</a></li>
+                            <li><a href="#">Tháng 5 - 2020</a></li>
+                            <li><a href="#">Tháng 6 - 2020</a></li>
+                            <li><a href="#">Tháng 7 - 2020</a></li>
+                            <li><a href="#">Tháng 8 - 2020</a></li>
+                            <li><a href="#">Tháng 9 - 2020</a></li>
+                            <li><a href="#">Tháng 10 - 2020</a></li>
+                            <li><a href="#">Tháng 11 - 2020</a></li>
+                            <li><a href="#">Tháng 12 - 2020</a></li>
+                        </ul>
+                    </div>
+                    <!--/archives-->
+
+                    <div class="instagram-gallery single-widget">
+                        <h5 class="widget-title fw-500 pos-relative">Instagram</h5>
+                        <a href="#"><img src="/images/insta-img/insta-img1.jpg" alt="insta-img" /></a>
+                        <a href="#"><img src="/images/insta-img/insta-img2.jpg" alt="insta-img" /></a>
+                        <a href="#"><img src="/images/insta-img/insta-img3.jpg" alt="insta-img" /></a>
+                        <a href="#"><img src="/images/insta-img/insta-img4.jpg" alt="insta-img" /></a>
+                        <a href="#"><img src="/images/insta-img/insta-img5.jpg" alt="insta-img" /></a>
+                        <a href="#"><img src="/images/insta-img/insta-img6.jpg" alt="insta-img" /></a>
+                        <a href="#"><img src="/images/insta-img/insta-img7.jpg" alt="insta-img" /></a>
+                        <a href="#"><img src="/images/insta-img/insta-img8.jpg" alt="insta-img" /></a>
+                        <a href="#"><img src="/images/insta-img/insta-img9.jpg" alt="insta-img" /></a>
+                    </div>
+                    <!--/instagram gallery-->
+                </aside>
             </div>
-            <!--/row-->
+
         </div>
-    </section>
-    <!-- ======================================= 
+
+        <!--/row-->
+    </div>
+
+</section>
+
+<!-- ======================================= 
             ==End blog section== 
     =======================================-->
 
 
-    <!-- ======================================= 
+<!-- ======================================= 
             ==Start call to action section==  
     =======================================-->
-   
-  
