@@ -148,6 +148,14 @@
                             <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
                          </div>
                       </div>
+                      <div class="col-md-6 ">
+                        <div class="form-group <%=errors.imgs? 'has-danger': ''%>">
+                           <label class="control-label">imgs</label>
+                           <input type="file" id="imgs" class="form-control" name="imgs" value="<%=data.imgs?data.imgs:''%>">
+                           <small class="form-control-feedback"><%=errors?errors.imgs:''%></small>
+                           <img id="blah" class="avatar-100 mt-2" src="<%=urlMediaUpload.imageObj(data.imgs)%>" />
+                        </div>
+                     </div>
                       </div>
                    </div>
                    <!--/row-->

@@ -22,7 +22,7 @@ const SpaSchema = new Schema({
     email: { type: String, unique: true, required: true },
     note: { type: String, default: '' },
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
-    imgs: { type: [{ type: Object}], default: []},
+    imgs: { type: Object},
     logo: { type: Object },
     working_hour: {
       start: { type: String },
