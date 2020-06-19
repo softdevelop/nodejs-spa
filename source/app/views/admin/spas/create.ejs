@@ -280,6 +280,17 @@
                      </div>
                     </div>
                     <!--/row-->
+                    <div class="row p-t-20">
+                     <div class="col-md-6 ">
+                      <div class="form-group form-group-imgs <%=errors.imgs? 'has-danger': ''%>">
+                         <label class="control-label">imgs</label>
+                         <input type="file" id="imgs" class="form-control" name="imgs" value="<%=data.imgs?data.imgs:''%>">
+                         <img class="w-100 mt-2 d-none" id="blah" src="#" alt="your image" />
+                         <small class="form-control-feedback"><%=errors?errors.imgs:''%></small>
+                      </div>
+                   </div>
+                  </div>
+
                     <div class="form-actions">
                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
                        <a href="/admin/users">
