@@ -144,11 +144,11 @@
                                         <label class="custom-control-label" for="checkbox<%=item._id%>"></label>
                                       </div>
                                     </td>
-                                    <td><%=item.title%></td>
+                                    <td><%=item.title || item.service.title%><%=item.title?' (Custom)':''%></td>
                                     <td>
-                                      <%-item.content%>
+                                      <%-item.content || item.service.content%><%=item.content?' (Custom)':''%>
                                     </td>
-                                    <td><img class="avatar" src="<%=urlMediaUpload.imageObj(item.image)%>" /></td>
+                                    <td><img class="avatar" src="<%=urlMediaUpload.imageObj(item.image || item.service.image)%>" /> <%=item.image?' (Custom)':''%></td>
 
                                     <td><%=item.price%></td>
                                     <td> <a href="/admin/spas/<%=item.spa_id%>"> <%=record.name%></a></td>

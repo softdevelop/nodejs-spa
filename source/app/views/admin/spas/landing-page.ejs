@@ -380,7 +380,12 @@
         services: [],
         members: [],
         workingHour: {},
-        description: ""
+        description: "",
+        delete: { //when send to server, if there are list id, records will be deleted
+          intros:[],
+          services:[],
+          members:[],
+        }
       }
     }
 
@@ -477,7 +482,12 @@
       this.data.workingHour = working;
       this.data.description = description;
     }
- 
+
+    setDeleteCard(type, id){
+      let deleteIds = this.data.delete;
+      deleteIds[type].push(id);
+      this.data.delete = deleteIds;
+    }
  
     onAddCard(cardTypeId, type){
       let wrapper = $(cardTypeId);
@@ -634,12 +644,13 @@
                       <div class="form-group">
                           <label>Image</label>
                           <input type="file" class="ImageUpload form-control" name='image' key="${key}"> 
+                          <img src="" key="${key}" style="max-width: 100%;"/>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
                           <label>Price</label>
-                          <input type="text" class="form-control" name='price'> 
+                          <input type="text" class="form-control" name='price' required> 
                       </div>
                     </div>
                 </div>
@@ -775,7 +786,12 @@
   // remove card 
   $('body').on('click', '.btn-close', function(){
     console.log('parent', $(this).parent().parent().parent());
+    let id = $(this).attr('data-id')
+    let type = $(this).attr('data-type')
     $(this).parent().parent().parent().remove();
+    if(id && type){
+      landing.setDeleteCard(type, id)
+    }
   })
 
   // select service 
@@ -786,6 +802,8 @@
       let service = services.filter(item=>item._id===value)[0]
       $(`input[name=title][key=${key}]`).val(service.title)
       $(`#summernote${key}`).summernote('code', service.content);
+      $(`img[key=${key}]`).attr('src', '/uploads/'+service.image.filename)
+
     }else{
       $(`input[name=title][key=${key}]`).val('')
       $(`#summernote${key}`).summernote('code', '');

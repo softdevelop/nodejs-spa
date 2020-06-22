@@ -195,6 +195,16 @@ const setTemplate = async (req, res) => {
       [item.fieldname]: item
     }
   }, {})
+  
+  if(data.delete){
+    let deleteIntros = data.delete.intros
+    deleteIntros && await spaIntroService.deleteListSpasIntro(deleteIntros)
+    let deleteServices = data.delete.services
+    deleteServices && await spaServiceService.deleteListSpasService(deleteServices)
+    let deleteMembers = data.delete.members
+    deleteMembers && await spaTeamService.deleteListSpasTeam(deleteMembers)
+    delete data.delete
+  }
 
   await data.intros && data.intros.forEach(async item=>{
     if(item.id){
@@ -212,7 +222,14 @@ const setTemplate = async (req, res) => {
     if(item.id){
       item.image = fileObj[item.id];
       if(!item.image) delete item.image
-      await spaServiceService.editSpasService(item.id, item)
+      if(item.service_id){
+        let service = await Service.findById(item.service_id).exec();
+        if(item.title   == service.title)   delete item.title;
+        if(item.content == service.content) delete item.content;
+        if(item.image   == service.image)   delete item.image;
+        spaServiceService.editSpasService(item.id, item)
+      }
+      else await spaServiceService.editSpasService(item.id, item)
     }else{
       item.spa_id = spa._id
       item.image = fileObj[item.image]
@@ -297,19 +314,21 @@ const getTemplateExampleId = async (req, res) => {
   res.render('template/'+req.params.id+'_example')
 }
 
-const getFormService = async (req, res) => {
+const getListService = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
-  let spaLandingData = await Spa.findById(record._id).populate('services').exec();
-  res.render('admin/spas/service/index', {errors: {}, data: spaLandingData.services,record, urlMediaUpload})
+  let data = await SpaService.find({spa_id: id}).populate('service').exec();
+  res.render('admin/spas/service/index', {errors: {}, data, record, urlMediaUpload})
 }
+
 const getFormCreateService = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
   
   let spaOwners = await User.find({role: "SPA_OWNER"}).exec();
-  res.render('admin/spas/service/create', {errors: {}, data: {},record, spaOwners})
+  res.render('admin/spas/service/create', {errors: {}, data: {}, record, spaOwners})
 }
+
 const createService = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
@@ -404,8 +423,8 @@ const viewDetailService = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
   let idService = req.params.idService
-  let resole = await SpaService.findById(idService).populate('spas').exec();
-  res.render('admin/spas/service/view', {errors: {}, data: record,resole, urlMediaUpload})
+  let spaService = await SpaService.findById(idService).populate('spas').populate('service').exec();
+  res.render('admin/spas/service/view', {errors: {}, data: record, spaService, urlMediaUpload})
 }
 
 module.exports = {
@@ -423,7 +442,7 @@ module.exports = {
   getTemplateExampleId,
   getFormCreateService,
   createService,
-  getFormService,
+  getListService,
   getFormEditService,
   editService,
   delManyService,

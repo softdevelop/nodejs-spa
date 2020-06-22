@@ -63,7 +63,7 @@ const index = async(req, res)=>{
     select: "", //"username email"
     sort: { createdAt: -1 },
     lean: true,
-    limit: parseInt(limit, 10) || 10,
+    limit: parseInt(limit, 10) || 12,
     page: parseInt(page, 10) || 1,
     populate: [{
       path: 'spas',

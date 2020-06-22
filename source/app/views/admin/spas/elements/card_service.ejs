@@ -1,9 +1,9 @@
 <div class="CardItem card" id="<%=item._id%>">
   <div class="card-header">
-    <%=item.title || item.service.title%>
+    <%=item.title || item.service.title%> - <%=item.price || "Chưa báo giá" %>
     <div class="card-actions">
         <a class="" data-action="collapse"><i class="ti-minus"></i></a>
-        <a class="btn-close" data-action=""><i class="ti-close"></i></a>
+        <a class="btn-close" data-action="" data-type="services" data-id="<%=item._id%>"><i class="ti-close"></i></a>
     </div>
   </div>
   <div class="card-body collapse hide">
@@ -44,7 +44,7 @@
         <div class="col-md-12">
           <div class="form-group">
               <label>Price</label>
-              <input type="text" class="form-control" name='price' value="<%=item.price%>"> 
+              <input type="text" class="form-control" name='price' required value="<%=item.price%>"> 
           </div>
         </div>
     </div>

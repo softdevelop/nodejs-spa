@@ -22,7 +22,7 @@ router.get("/spas/:id/edit", hasPermission('spa.edit'), spas.getFormEdit);
 router.post("/spas/:id/edit",  uploadMedia.fields([
   { name: 'logo', maxCount: 1 },{ name: 'imgs', maxCount: 1 }]), hasPermission('spa.edit'), spas.edit);
 router.post("/spas/delmany", hasPermission('spa.delete'), spas.delMany);
-router.get('/spas/:id/service/index', hasPermission('spa.index'), spas.getFormService);
+router.get('/spas/:id/service/index', hasPermission('spa.index'), spas.getListService);
 router.get('/spas/:id/service/create', hasPermission('spa.create'), spas.getFormCreateService);
 router.post('/spas/:id/service/create', uploadMedia.fields([
   { name: 'image', maxCount: 1 }

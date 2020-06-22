@@ -54,7 +54,7 @@
                                     <div class="form-group  <%=errors.title?'has-danger':''%>">
                                         <label class="control-label">Title</label>
                                         <input disabled type="text" id="title" class="form-control" placeholder="" name="title"
-                                             value="<%=resole.title?resole.title:''%>">
+                                             value="<%=spaService.title?spaService.title:spaService.service.title%> <%=spaService.image?' (Custom)':''%>">
                                         <small class="form-control-feedback"><%=errors?errors.title:''%></small>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@
                                 <div class="col-md-12 ">
                                     <div class="form-group form-group-content <%=errors.content? 'has-danger': ''%>">
                                         <label class="control-label">Content</label>
-                                        <%-resole.content?resole.content:''%>
+                                        <%-spaService.content?spaService.content:spaService.service.content%> <%=spaService.image?' (Custom)':''%>
                                         <small class="form-control-feedback"><%=errors?errors.content:''%></small>
                                     </div>
                                 </div>
@@ -72,9 +72,9 @@
                                 <div class="col-md-6 ">
                                     <div class="form-group <%=errors.image? 'has-danger': ''%>">
                                        <label class="control-label">Image</label>
-                                       <input disabled type="file" id="image" class="form-control" name="image" value="<%=resole.image?resole.image:''%>">
+                                       <input disabled type="file" id="image" class="form-control" name="image" value="<%=spaService.image?spaService.image:spaService.service.image%>">
                                        <small class="form-control-feedback"><%=errors?errors.image:''%></small>
-                                       <img class="avatar-100" src="<%=urlMediaUpload.imageObj(resole.image)%>" />
+                                       <img class="avatar-100" src="<%=urlMediaUpload.imageObj(spaService.image || spaService.service.image)%>" /> <%=spaService.image?' (Custom)':''%>
           
                                     </div>
                                  </div>
@@ -82,7 +82,7 @@
                                     <div class="form-group form-group-price <%=errors.price?'has-danger':''%>">
                                         <label class="control-label">price</label>
                                         <input disabled type="text" id="price" class="form-control" placeholder="" name="price"
-                                            required value="<%=resole.price?resole.price:''%>">
+                                            required value="<%=spaService.price?spaService.price:''%>">
                                         <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
                                     </div>
                                 </div>
@@ -97,7 +97,7 @@
                             <!--/row-->
                        
                             <div class="form-actions">
-                                <a href="/admin/spas/<%=data._id%>/service/<%=resole._id%>/edit">
+                                <a href="/admin/spas/<%=data._id%>/service/<%=spaService._id%>/edit">
                                     <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Edit</button>
                                 </a>
                                 <button type="button" class="btn btn-inverse">Cancel</button>
