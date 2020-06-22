@@ -333,11 +333,11 @@ shortlink-section .single-shortlink-list>p {
 
 .search-section .search-section-results .search-section-results-item>div {
   display: flex;
-  height: 200px;
+  /* height: 200px; */
 }
 
 .search-section .search-section-results .search-section-results-item .img-area img {
-  max-height: 135px;
+  /* max-height: 135px; */
 }
 
 .search-section .search-section-results .search-section-results-item div.address p {
@@ -399,4 +399,23 @@ shortlink-section .single-shortlink-list>p {
 .view-more {
   right: 0px;
   top: 10px;
+}
+
+.experts-section .expert-hover h6,
+.experts-section .expert-hover span.degignation {
+  opacity: 1;
+}
+
+.single-blog .brand li .map {
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.pl-190 {
+  padding-left: 190px;
+}
+
+#mapModal .modal-dialog {
+  max-width: 600px;
 }

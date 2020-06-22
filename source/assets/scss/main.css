@@ -81,5 +81,14 @@ table .avatar {
     border: 0;
     font-weight: bold; }
 
+.btn-register {
+  background-color: #e83e8c;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: bold; }
+  .btn-register:hover {
+    background-color: #d5275a; }
+
 .leaflet-bottom {
   display: none; }

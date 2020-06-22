@@ -24,12 +24,26 @@
       });;
     })
 
-
-    $(document).ready(function(){
-      $(window).on('resize', function(){
-        if($(window).width() > 480)
-        $('.search-section-map').css('height', `${$(window).height() - 50}px`)
+    $(document).ready(function() {
+      $(window).on('resize', function() {
+          if ($(window).width() > 480)
+              $('.search-section-map').css('height', `${$(window).height() - 50}px`)
       });
-      if($(window).width() > 480)
-      $('.search-section-map').css('height', `${$(window).height() - 50}px`)
+      if ($(window).width() > 480)
+          $('.search-section-map').css('height', `${$(window).height() - 50}px`)
+      $('#mapModal').on('show.bs.modal', function(event) {
+          var button = $(event.relatedTarget) // Button that triggered the modal
+          var title = button.data('title') // Extract info from data-* attributes
+          var modal = $(this)
+          modal.find('.modal-title').text(title)
+          var lng = button.data('lng')
+          var lat = button.data('lat')
+          mymap.setView(new L.LatLng(lat, lng), 13);
+      })
+      $(".map.home-search").click(function() {
+          var lng = Number($(this).attr("data-lng"))
+          var lat = Number($(this).attr("data-lat"))
+          mymap.setView(new L.LatLng(lat, lng), 13);
+          return false;
+      })
     })
