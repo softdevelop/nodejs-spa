@@ -322,6 +322,7 @@ shortlink-section .single-shortlink-list>p {
     display: flex;
     align-items: stretch;
     padding-top: 20px;
+    padding-bottom: 8px;
 }
 
 .search-section .search-section-results .search-section-results-item {
@@ -418,4 +419,8 @@ shortlink-section .single-shortlink-list>p {
 
 #mapModal .modal-dialog {
     max-width: 600px;
+}
+
+.search-section .search-section-map {
+    height: 600px!important;
 }

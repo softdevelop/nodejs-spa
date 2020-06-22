@@ -54,9 +54,10 @@ $(document).ready(function() {
     $(window).on('resize', function() {
         if ($(window).width() > 480)
             $('.search-section-map').css('height', `${$(window).height() - 50}px`)
+        console.log($(window).height())
     });
-    if ($(window).width() > 480)
-        $('.search-section-map').css('height', `${$(window).height() - 50}px`)
+    // if ($(window).width() > 480)
+    //     $('.search-section-map').css('height', `${$(window).height() - 50}px`)
     $('#mapModal').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
         var title = button.data('title') // Extract info from data-* attributes
