@@ -85,6 +85,12 @@ const permissions = [
   'qa.delete',
   'qa.create',
   
+  'experts.index',
+  'experts.edit',
+  'experts.view',
+  'experts.delete',
+  'experts.create',
+  
 ]
 
 module.exports = {

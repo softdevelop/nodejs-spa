@@ -14,7 +14,7 @@ const products = require("./products");
 const categories = require("./categories");
 const booking = require("./booking")
 const services = require("./services")
-
+const experts = require('./experts')
 const news = require("./news")
 // Controllers
 const {
@@ -70,6 +70,7 @@ router.use(booking);
 router.use(services);
 
 router.use(news)
+router.use(experts)
 router.get("*", (req, res) => {
   res.render('admin/404');
 });

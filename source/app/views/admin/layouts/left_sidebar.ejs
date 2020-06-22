@@ -89,7 +89,13 @@
               </ul>
           </li>
         <% } %>
-
+        <li> 
+          <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-badge"></i><span class="hide-menu">Experts</span></a>
+            <ul aria-expanded="false" class="collapse">
+                <li><a href="/admin/experts">All Experts</a></li>
+                <li><a href="/admin/experts/create">Add Expert</a></li>
+            </ul>
+        </li>
         <% if(userLocal.permissions.includes('role.index')){ %>
         <li> 
           <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-lock-open"></i><span class="hide-menu">Role management</span></a>
