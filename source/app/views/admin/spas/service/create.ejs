@@ -52,6 +52,18 @@
                             <hr>
                             <div class="row p-t-20">
                                 <div class="col-md-6">
+                                  <div class="form-group <%=errors.service?'has-danger':''%>">
+                                      <label class="control-label">Select service</label>
+                                      <select class="form-control custom-select" name="service_id">
+                                          <option value="0">Create new</option>
+                                          <% services.forEach(item=>{ %>
+                                            <option value="<%=item._id%>"><%=item.title%></option>
+                                          <% }) %>
+                                    </select>
+                                    <small class="form-control-feedback "><%=errors?errors.service:''%></small> 
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group form-group-title <%=errors.title?'has-danger':''%>">
                                         <label class="control-label">Title</label>
                                         <input type="text" id="title" class="form-control" placeholder="" name="title"
@@ -59,7 +71,6 @@
                                         <small class="form-control-feedback"><%=errors?errors.title:''%></small>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="row">
                                 <div class="col-md-12 ">
@@ -78,6 +89,8 @@
                                             value="<%=data.image?data.image:''%>">
                                             <img id="blah" class="w-100 d-none mt-2" src="#" />
                                         <small class="form-control-feedback"><%=errors?errors.image:''%></small>
+                                        <img src="" id="image" style="max-width: 100%;"/>
+
                                     </div>
                                 </div>
                                 <div class="col-md-6 ">
@@ -192,6 +205,8 @@
 
 
 <script>
+    let services = JSON.parse(`<%-servicesJSON%>`)
+
     $(document).ready(function(){
       function readURL(input) {
          if (input.files && input.files[0]) {
@@ -208,5 +223,21 @@
       $("#image").change(function() {
          readURL(this);
       });
+
+      // select service 
+      $('body').on('change', 'select[name=service_id]', function(){
+        let value = $(this).val();
+        let key = $(this).attr('key');
+        if(value !=  '0'){
+          let service = services.filter(item=>item._id===value)[0]
+          $(`input[name=title]`).val(service.title)
+          $(`.summernote`).summernote('code', service.content);
+          $(`img#image`).attr('src', '/uploads/'+service.image.filename)
+        }else{
+          $(`input[name=title]`).val('')
+          $(`.summernote`).summernote('code', '');
+        }
+      })
+
     })
 </script>

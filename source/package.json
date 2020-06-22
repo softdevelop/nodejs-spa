@@ -9,7 +9,9 @@
     "start_server": "NODE_ENV=production node ./server.js",
     "stop:server": "pm2 stop server",
     "migration": "npm run start:backup && node ./scripts/migration.js",
-    "sass:compile": "node-sass ./assets/scss/main.scss ./assets/scss/main.css"
+    "sass:compile": "node-sass ./assets/scss/main.scss ./assets/scss/main.css",
+    "start:backup": "node ./scripts/backup-db.js",
+    "start:restore": "node ./scripts/restore-db.js"
   },
   "keywords": [],
   "author": "",

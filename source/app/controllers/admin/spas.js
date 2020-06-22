@@ -324,87 +324,159 @@ const getListService = async (req, res) => {
 const getFormCreateService = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
-  
+  let services = await Service.find({ status: 'active'}).exec();
   let spaOwners = await User.find({role: "SPA_OWNER"}).exec();
-  res.render('admin/spas/service/create', {errors: {}, data: {}, record, spaOwners})
+  res.render('admin/spas/service/create', {
+    errors: {}, 
+    data: {}, 
+    record, 
+    spaOwners, 
+    services,
+    servicesJSON: JSON.stringify(services).replace(/\\"/g, '\\\\"')
+  })
 }
 
 const createService = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
   let spa_id = record._id
-  let data = {...req.body,spa_id};
-  // delete data.image;
-  let err = validateSpaService(data);
-  
-  if (err && err.error) {
-    let errors =
-      err.error &&
-      err.error.details.reduce((result, item) => {
-        return {
-          ...result,
-          [item.path[0]]: item.message,
-        };
-      }, {});
-    return res.render("admin/spas/service/create", { errors,record, data });
-  } else {
-    if(req.files.image){
-      data.image = req.files.image[0]
-    }
-    let newSpaService = new SpaService(data);
-    newSpaService
-      .save()
-      .then((data) => {
-        res.redirect('/admin/spas/' +req.params.id+'/service/index');
-       
-      })
-      .catch((err) => {
-        return res.render("admin/spas/service/create", {
-          errors: {
-            name: "The value is duplicated.",
-            slug: "The value is duplicated.",
-          },
-          data,record,
-        });
+  let data = {...req.body, spa_id};
+  let services = await Service.find({ status: 'active'}).exec();
+
+  if(data.service_id && data.service_id != '0'){
+    let service = await Service.findById(data.service_id).exec();
+    if(data.title   == service.title)   delete data.title;
+    if(data.content == service.content) delete data.content;
+    if(data.image   == service.image)   delete data.image;
+    await spaServiceService.createSpasService(data);
+    res.redirect('/admin/spas/' +req.params.id+'/service/index');
+
+  }else{
+    delete data.service_id;
+    let err = validateSpaService(data);
+    if (err && err.error) {
+      let errors =
+        err.error &&
+        err.error.details.reduce((result, item) => {
+          return {
+            ...result,
+            [item.path[0]]: item.message,
+          };
+        }, {});
+      return res.render("admin/spas/service/create", { 
+        errors,
+        record, 
+        data,
+        services,
+        servicesJSON: JSON.stringify(services).replace(/\\"/g, '\\\\"')
       });
+    } else {
+      try{
+        if(req.files.image){
+          data.image = req.files.image[0]
+        }
+        let service = await serviceService.createService({...data, status: 'pending'});
+        let spaService = {
+          price: data.price,
+          service_id: service._id,
+          spa_id: data.spa_id
+        }
+        await spaServiceService.createSpasService(spaService);
+        res.redirect('/admin/spas/' +req.params.id+'/service/index');
+      }catch(e){
+        console.log('e', e);
+      }
+    }
   }
+  
 };
 
 const getFormEditService = async (req, res) => {
   let id = req.params.id
-  let idService = req.params.idService
+  let services = await Service.find().exec();
+  let idSpaService = req.params.idSpaService
   let record = await Spa.findById(id).exec();
-  let resole = await SpaService.findById(idService).exec();
+  let spaService = await SpaService.findById(idSpaService).populate('service').exec();
   let spaOwners = await User.find({role: "SPA_OWNER"}).exec();
-  res.render('admin/spas/service/edit', {errors: {}, data: record,resole, urlMediaUpload, spaOwners})
+  res.render('admin/spas/service/edit', {
+    errors: {}, 
+    data: record,
+    spaService, 
+    urlMediaUpload, 
+    spaOwners,
+    services,
+    servicesJSON: JSON.stringify(services).replace(/\\"/g, '\\\\"')
+  })
 }
 const editService = async (req, res) => {
   let id = req.params.id
+  let services = await Service.find().exec();
   let record = await Spa.findById(id).exec();
   let spa_id = record._id
-  let idService = req.params.idService
-  let resole = await SpaService.findById(idService).exec();
+  let idSpaService = req.params.idSpaService
+  let spaService = await SpaService.findById(idSpaService).populate('service').exec();
   let data = {...req.body,spa_id}
   delete data.image
-  let err = validateSpaServiceEdit(data)
-  if(err && err.error){
-    let errors = err.error && err.error.details.reduce((result, item)=>{
-      return {
-        ...result,
-        [item.path[0]]: item.message
-      }
-    }, {})
-    data._id = id
-    return res.render('admin/spas/service/edit', {errors: {}, data,record,resole,urlMediaUpload})
-  }else{
+
+  if(data.service_id && data.service_id != '0'){
     if(req.files.image && req.files.image[0]){
       data.image = req.files.image[0]
     }else delete data.image
 
-    await SpaService.findById(idService).update(data);
-    return res.redirect('/admin/spas/' +req.params.id+'/service/index')
+    let service = await Service.findById(data.service_id).exec();
+    if(''+spaService.service_id == data.service_id+''){
+      if(data.title   == service.title)   data.title = null;
+      if(data.content == service.content) data.content = null;
+      if(data.image   == service.image)   data.image = null;
+    }else{
+      if(data.title   == service.title)   delete data.title;
+      if(data.content == service.content) delete data.content;
+      if(data.image   == service.image)   delete data.image;
+    }
+    await spaServiceService.editSpasService(idSpaService, data); 
+    res.redirect('/admin/spas/' +req.params.id+'/service/index');
+
+  }else{
+    delete data.service_id;
+    let err = validateSpaServiceEdit(data)
+    if(err && err.error){
+      let errors = err.error && err.error.details.reduce((result, item)=>{
+        return {
+          ...result,
+          [item.path[0]]: item.message
+        }
+      }, {})
+      data._id = id
+      return res.render('admin/spas/service/edit', {
+        errors: {}, 
+        data,
+        record,
+        spaService,
+        urlMediaUpload,
+        services,
+        servicesJSON: JSON.stringify(services).replace(/\\"/g, '\\\\"')
+      })
+    }else{
+
+      try{
+        if(req.files.image){
+          data.image = req.files.image[0]
+        }
+        let service = await serviceService.createService({...data, status: 'pending'});
+        let spaService = {
+          price: data.price,
+          service_id: service._id,
+          spa_id: data.spa_id
+        }
+        await spaServiceService.createSpasService(spaService);
+        res.redirect('/admin/spas/' +req.params.id+'/service/index');
+      }catch(e){
+        console.log('e', e);
+      }
+    }
   }
 }
+
 const delManyService = async (req, res) => {
   try {
     let ids = req.body.ids;
@@ -422,8 +494,8 @@ const delManyService = async (req, res) => {
 const viewDetailService = async (req, res) => {
   let id = req.params.id
   let record = await Spa.findById(id).exec();
-  let idService = req.params.idService
-  let spaService = await SpaService.findById(idService).populate('spas').populate('service').exec();
+  let idSpaService = req.params.idSpaService
+  let spaService = await SpaService.findById(idSpaService).populate('spas').populate('service').exec();
   res.render('admin/spas/service/view', {errors: {}, data: record, spaService, urlMediaUpload})
 }
 

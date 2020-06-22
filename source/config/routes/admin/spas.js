@@ -27,10 +27,10 @@ router.get('/spas/:id/service/create', hasPermission('spa.create'), spas.getForm
 router.post('/spas/:id/service/create', uploadMedia.fields([
   { name: 'image', maxCount: 1 }
 ]), hasPermission('spa.create'), spas.createService);
-router.get('/spas/:id/service/:idService/edit', hasPermission('spa.edit'), spas.getFormEditService);
-router.post('/spas/:id/service/:idService/edit', uploadMedia.fields([
+router.get('/spas/:id/service/:idSpaService/edit', hasPermission('spa.edit'), spas.getFormEditService);
+router.post('/spas/:id/service/:idSpaService/edit', uploadMedia.fields([
   { name: 'image', maxCount: 1 }
 ]), hasPermission('spa.edit'), spas.editService)
 router.post('/spas/:id/service/delManyService', hasPermission('spa.delete'), spas.delManyService)
-router.get('/spas/:id/service/:idService', hasPermission('spa.view'), spas.viewDetailService)
+router.get('/spas/:id/service/:idSpaService', hasPermission('spa.view'), spas.viewDetailService)
 module.exports = router;

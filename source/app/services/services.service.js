@@ -16,13 +16,10 @@ const createService = (data) => {
     return new Promise((resolve, reject) => {
         Service.create(data)
             .then(doc => {
-              console.log('####doc', doc);
                 if (doc == null) throw new Error("Insert fail")
                 resolve(doc)
             })
             .catch(err => {
-              console.log('####then-doc', err);
-
                 reject(err.message)
             })
     })
