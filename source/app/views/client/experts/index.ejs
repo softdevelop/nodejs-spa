@@ -1,0 +1,58 @@
+<% extend('../layouts/base',{
+  title: "Service"
+}) %>
+
+
+    <!-- ======================================= 
+            ==Start Testimonial section==  
+    =======================================-->
+    <section class="testimonial-section beautyLab-gallery">
+      <div class="overlay"></div>
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
+                  <div class="section-title pb-60 text-center mt-5">
+                      <h3 class="color-ff fw-500">Đội ngũ chuyên gia giàu kinh nghiệm</h3>
+                  </div>
+
+                  <div class="testimoial-wrapper owl-carousel">
+
+                      <% experts.forEach(item=>{ %>
+                        <div class="single-testimonial text-center">
+                          <a href="/chuyen-gia/<%=item.slug%>"><img src="<%=urlMediaUpload.imageObj(item.user.avatar || item.images[0])%>" alt="author"></a>
+                          <p class="testimoinal-txt color-ff pt-25"><%=item.slogan%></p>
+                          <p class="author color-ff"><a href="/chuyen-gia/<%=item.slug%>"><%=item.user.first_name%> <%=item.user.last_name%></a><span><%=item.job%></span></p>
+                        </div>
+                      <% }) %>
+                  
+                  </div>
+                  <!--/testimoial wrapper-->
+              </div>
+              <!--/col-->
+          </div>
+
+          <div class="row gallery-wrapper mt-5">
+
+            <% experts.forEach(item=>{ %>
+                <!--gallery-1-->
+                <div class="col-lg-4 col-md-6  mix interiors">
+                  <div class="single-gallery">
+                      <img style="max-height: 200px;" src="<%=urlMediaUpload.imageObj(item.images[0])%>" alt="gallery image" class="img-fluid" />
+                      <div class="single-gallery-overlay text-center">
+                          <h6><a href="/chuyen-gia/<%=item.slug%>" class="color-ff fw-500"><%=item.user.first_name%> <%=item.user.last_name%></a></h6>
+                          <div class="divider mt-15 mb-10"></div>
+                          <p class="color-ff"><%=item.slogan%></p>
+                      </div>
+                  </div>
+              </div>
+            <% }) %>
+          <!--/col-->
+        </div>
+        <!--/row-->
+
+      </div>
+  </section>
+  <!-- ======================================= 
+          ==End Testimonial section== 
+  =======================================-->
+

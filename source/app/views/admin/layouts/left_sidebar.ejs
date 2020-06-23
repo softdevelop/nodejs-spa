@@ -4,7 +4,11 @@
       <div class="user-pro-body">
           <div><img src="/libs/images/users/2.jpg" alt="user-img" class="img-circle"></div>
           <div class="dropdown">
-              <a href="javascript:void(0)" class="dropdown-toggle u-dropdown link hide-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= userLocal.email %> <span class="caret"></span></a>
+              <a href="javascript:void(0)" class="dropdown-toggle u-dropdown link hide-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <% if (typeof(userLocal) !== 'undefined' && userLocal) { %>
+                  <%= userLocal.email %>
+                <% } %>
+                 <span class="caret"></span></a>
               <div class="dropdown-menu animated flipInY">
                   <!-- text-->
                   <a href="/admin/profile" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
@@ -27,6 +31,8 @@
                 <span class="hide-menu">Dashboard</span>
             </a>
         </li>
+
+        <% if (typeof(userLocal) !== 'undefined' && userLocal) { %>
 
         <% if(userLocal.permissions.includes('user.index')){ %>
           <li> 
@@ -152,6 +158,7 @@
                 <span class="hide-menu">Update info</span>
             </a>
           </li>
+        <% } %>
         <% } %>
   
         <!-- <li> 

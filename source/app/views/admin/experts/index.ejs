@@ -169,7 +169,7 @@
                                     <td><%=item.slogan%></td>
                                     <td><%-truncate(item.about, 50)%></td>
                                     <td><img class="avatar" src="<%=urlMediaUpload.imageObj(item.images[0])%>" /></td>
-                                    <td><%-truncate(item.description, 50)%></td>
+                                    <td style="word-wrap: break-word; max-width: 150px; overflow: hidden;"><%-truncate(item.description, 50)%></td>
                                     <td><a href="/admin/users/<%=item.user._id%>"><%=item.user.first_name%>
                                             <%=item.user.last_name%> </a></td>
                                     <td><%=item.slug%></td>

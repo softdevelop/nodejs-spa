@@ -28,7 +28,7 @@ router.get("/tim-kiem", search.index) ;
 router.get('/lien-he', contact.index)
 router.get('/booking', booking.index)
 router.get('/service', service.index)
-router.get('/chuyen-gia', expert.view)
+router.get('/chuyen-gia', expert.index)
 router.get('/chuyen-gia/:slug', expert.view)
 router.get('/tin-tuc', news.index)
 router.get('/tin-tuc/:slug', news.view)
