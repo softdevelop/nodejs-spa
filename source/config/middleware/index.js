@@ -8,6 +8,7 @@ module.exports = {
     uploadMedia: require("./uploadMedia"),
     getAvatar: require("./getAvatar"),
     checkRole: require("./checkRole"),
+    hasRole: require("./hasRole"),
     hasPermission: require("./hasPermission"),
     getHeader: require("./getHeader")
 }
