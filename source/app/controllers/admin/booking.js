@@ -5,7 +5,7 @@ const User = mongoose.model("User");
 const SpaService = mongoose.model("SpasService");
 const moment = require("moment-timezone");
 const {genHtmlPagination, urlMediaUpload} = require('../../utils')
-const {validateBooking, validateBookingEdit} = require('../../models/booking')
+const {validateBooking, validateBookingEdit} = require('../../models/bookings')
 const bcrypt = require("bcryptjs");
 
 const APP_DOMAIN = require("../../../config/index").APP_DOMAIN;
