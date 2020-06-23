@@ -1541,7 +1541,8 @@ priceing-section .single-price-list>p {
     transform: scale(1.1, 1.1);
 }
 
-.single-blog .brand {
+.single-blog .brand,
+.single-carousel .brand {
     background: rgba(54, 54, 54, 0.5);
     bottom: 0;
     color: #fff;
@@ -1558,17 +1559,20 @@ priceing-section .single-price-list>p {
     transition: all 0.5s;
 }
 
-.single-blog .brand li {
+.single-blog .brand li,
+.single-carousel .brand li {
     font-size: 16px;
     color: #fff;
     padding: 0 10px;
 }
 
-.single-blog .brand li i {
+.single-blog .brand li i,
+.single-carousel .brand li i {
     margin-right: 5px;
 }
 
-.single-blog .brand li.gallery {
+.single-blog .brand li.gallery,
+.single-carousel .brand li.gallery {
     display: block;
     position: absolute;
     height: 100%;
@@ -2971,7 +2975,7 @@ footer .copyright a:hover {
 
 .experts-section .expert-hover {
     height: 100%;
-    padding: 36px 20px;
+    padding: 30px 20px;
     position: absolute;
     top: 0;
     width: 350px;

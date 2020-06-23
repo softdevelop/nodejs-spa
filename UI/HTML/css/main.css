@@ -407,7 +407,8 @@ shortlink-section .single-shortlink-list>p {
     opacity: 1;
 }
 
-.single-blog .brand li .map {
+.single-blog .brand li .map,
+.single-carousel .brand li .map {
     font-size: 16px;
     color: #fff;
     cursor: pointer;
@@ -423,4 +424,35 @@ shortlink-section .single-shortlink-list>p {
 
 .search-section .search-section-map {
     height: 600px!important;
+}
+
+.single-carousel ul.brand {
+    background: rgba(54, 54, 54, 0.5);
+    bottom: 0;
+    color: #fff;
+    position: absolute;
+    width: 92.2%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px 0px 15px 8px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.single-carousel .brand li.gallery {
+    background: rgba(213, 39, 90, .8);
+}
+
+.single-carousel .blog-content p,
+.single-carousel .blog-content a.title {
+    color: #fff;
+}
+
+.single-carousel .blog-content a.title {
+    font-size: 20px;
+    text-transform: capitalize;
 }
