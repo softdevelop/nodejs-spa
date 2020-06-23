@@ -166,7 +166,7 @@
                                             <label class="custom-control-label" for="checkbox<%=item._id%>"></label>
                                         </div>
                                     </td>
-                                    <td><%=item.slogan%></td>
+                                    <td style="word-wrap: break-word; max-width: 150px;"><%=truncate(item.slogan, 50)%></td>
                                     <td><%-truncate(item.about, 50)%></td>
                                     <td><img class="avatar" src="<%=urlMediaUpload.imageObj(item.images[0])%>" /></td>
                                     <td style="word-wrap: break-word; max-width: 150px; overflow: hidden;"><%-truncate(item.description, 50)%></td>

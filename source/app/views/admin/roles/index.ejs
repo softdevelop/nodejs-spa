@@ -129,7 +129,7 @@
                               <% data.forEach(function(item) { %>
                                 <tr id="Row-<%=item._id%>">
                                   <td>
-                                    <% if(item.value != 'ADMIN' && item.value != 'SPA_OWNER' && item.value != 'USER' ){ %>
+                                    <% if(item.value != 'ADMIN' && item.value != 'SPA_OWNER' && item.value != 'USER'  && item.value != 'EXPERT'){ %>
                                     <div class="CheckRecord custom-control custom-checkbox mr-sm-2">
                                       <input type="checkbox" class="custom-control-input" id="checkbox<%=item._id%>" value="check" alt="<%=item._id%>">
                                       <label class="custom-control-label" for="checkbox<%=item._id%>"></label>
@@ -142,7 +142,7 @@
                                     <a href="/admin/roles/<%=item.value%>">
                                       <i class="ti-eye"></i>
                                     </a>
-                                    <% if(item.value != 'ADMIN' && item.value != 'SPA_OWNER' && item.value != 'USER' ){ %>
+                                    <% if(item.value != 'ADMIN' && item.value != 'SPA_OWNER' && item.value != 'USER' && item.value != 'EXPERT'){ %>
                                     <a href="/admin/roles/<%=item.value%>/edit">
                                       <i class="icon-note"></i>
                                     </a>

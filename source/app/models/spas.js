@@ -98,6 +98,13 @@ SpaSchema.virtual('members', {
   foreignField: 'spa_id',
 });
 
+SpaSchema.virtual('numOfBookings', {
+  ref: 'Booking',
+  localField: '_id',
+  foreignField: 'spa_id',
+  count: true
+});
+
 SpaSchema.virtual('created_at').get(function () {
     return moment(this.createdAt).format("DD-MM-YYYY hh:mm:ss");
 })

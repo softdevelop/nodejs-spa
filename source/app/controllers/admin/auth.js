@@ -8,6 +8,7 @@ const bcrypt = require('bcryptjs');
 
 // utils 
 const { jwtToken, pareJwtToken } = require("../../utils/func");
+const { urlMediaUpload } = require('../../utils')
 
 const getNodeLocalstorage = (key) => {
   if (typeof localStorage === "undefined" || localStorage === null) {
@@ -64,6 +65,7 @@ login = async (req, res) => {
     // set URL_AVATAR
     req.session.URL_AVATAR = user.avatar || "/images/avt.png"
     req.app.locals.URL_AVATAR = user.avatar || "/images/avt.png"
+    req.app.locals.urlMediaUpload = urlMediaUpload;
     req.app.locals.userLocal = {
       email: user.email,
       first_name: user.first_name,
