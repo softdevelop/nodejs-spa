@@ -9,4 +9,7 @@ router.post("/experts/create",uploadMedia.fields([
     { name: 'images', maxCount: 10 }
   ]),hasPermission('experts.index'),experts.create)
 router.get('/experts/:id/edit', hasPermission('experts.index'), experts.getFormEdit)
+router.post("/experts/:id/edit",uploadMedia.fields([
+  { name: 'images', maxCount: 10 }
+]),hasPermission('experts.edit'),experts.edit)
 module.exports = router;

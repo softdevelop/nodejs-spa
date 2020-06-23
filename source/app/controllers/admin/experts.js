@@ -2,10 +2,11 @@ const mongoose = require("mongoose");
 const Expert = mongoose.model("Expert");
 const User = mongoose.model("User");
 const moment = require("moment-timezone");
-const {genHtmlPagination, urlMediaUpload,genCategory} = require('../../utils')
+const {genHtmlPagination, urlMediaUpload, genCategory, constants} = require('../../utils')
 const {validateExpert, validateExpertEdit} = require('../../models/experts')
 const bcrypt = require("bcryptjs");
 const { job } = require("cron");
+const truncate = require('html-truncate');
 
 const APP_DOMAIN = require("../../../config/index").APP_DOMAIN;
 const dashboardUrl = () => APP_DOMAIN + `/dashboard`;
@@ -35,6 +36,7 @@ const getListExpert = async (req, res) => {
       return res.render("admin/experts/index", {
         data,
         urlMediaUpload,
+        truncate,
         moment: moment.tz.setDefault("Asia/Ho_Chi_Minh"),
         genHtmlPagination: genHtmlPagination(data.total, data.limit, data.page, data.pages, data.search),
       });
@@ -44,17 +46,40 @@ const getListExpert = async (req, res) => {
   };
   
   const getFormCreate = async (req, res) => {
-    var user = await User.find().select('_id first_name last_name').exec()
-    let expert = await Expert.find().select('_id job tags').exec()
-    let jobs = [];
-    expert.forEach(item=>{
+    let usersOwnedExpert = await Expert.find({ user_id: { $ne: null } }).exec();
+    let idsUsersOwnedExpert = usersOwnedExpert.map(item=>''+item.user_id);
+    
+    var user = await User.find({role: 'EXPERT', _id: { $nin: idsUsersOwnedExpert }}).select('_id first_name last_name').exec()
+    let experts = await Expert.find().select('_id job tags').exec()
+    let jobs = constants.jobs;
+    let tags = constants.tags
+    experts.forEach(item=>{
       if(!jobs.includes(item.job)) jobs.push(item.job)
+      item.tags.forEach(tag=>{
+        if(!tags.includes(tag)) tags.push(item.job)
+      })
     })
-    res.render('admin/experts/create', {errors: {}, data: {}, urlMediaUpload, user, expert, jobs})
+    res.render('admin/experts/create', {
+      errors: {}, 
+      data: {}, 
+      urlMediaUpload, 
+      user, 
+      jobs,
+      tags
+    })
   }
 
   const create = async (req, res) => {
     let data = {...req.body};
+    let experts = await Expert.find().select('_id job tags').exec()
+    let jobs = constants.jobs;
+    let tags = constants.tags
+    experts.forEach(item=>{
+      if(!jobs.includes(item.job)) jobs.push(item.job)
+      item.tags.forEach(tag=>{
+        if(!tags.includes(tag)) tags.push(item.job)
+      })
+    })
     let err = validateExpert(data);
     if (err && err.error) {
       let errors =
@@ -65,11 +90,19 @@ const getListExpert = async (req, res) => {
             [item.path[0]]: item.message,
           };
         }, {});
-        var user = await User.find().select('_id first_name last_name').exec()
-      return res.render("admin/experts/create", { errors, data, user });
+      let usersOwnedExpert = await Expert.find({ user_id: { $ne: null } }).exec();
+      let idsUsersOwnedExpert = usersOwnedExpert.map(item=>''+item.user_id);
+      var user = await User.find({role: 'EXPERT', _id: { $nin: idsUsersOwnedExpert }}).select('_id first_name last_name').exec()
+      return res.render("admin/experts/create", { 
+        errors, 
+        data, 
+        user, 
+        jobs,
+        tags
+      });
     } else {
       if(req.files.images){
-        data.images = req.files.images[0]
+        data.images = req.files.images
       }
       let newExpert= new Expert(data);
       newExpert.save()
@@ -83,6 +116,8 @@ const getListExpert = async (req, res) => {
               slug: "The value is duplicated.",
             },
             data,
+            jobs,
+            tags
           });
         });
     }
@@ -90,19 +125,65 @@ const getListExpert = async (req, res) => {
 
   const getFormEdit = async (req, res) => {
     let id = req.params.id;
-    let expert = await Expert.findById(id).exec()
-    var user = await User.find().select('_id first_name last_name').exec()  
+    let currentExpert = await Expert.findById(id).exec()
+    
+    let usersOwnedExpert = await Expert.find({ user_id: { $ne: null } }).exec();
+    let idsUsersOwnedExpert = usersOwnedExpert.map(item=>''+item.user_id);
+    idsUsersOwnedExpert = idsUsersOwnedExpert.filter(item=>currentExpert.user_id+'' != item)
+    var user = await User.find({role: 'EXPERT', _id: { $nin: idsUsersOwnedExpert }}).select('_id first_name last_name').exec()   
+
     let experts = await Expert.find().select('_id job tags').exec()
-    let jobs = [];
+    let jobs = constants.jobs;
+    let tags = constants.tags
     experts.forEach(item=>{
       if(!jobs.includes(item.job)) jobs.push(item.job)
+      item.tags.forEach(tag=>{
+        if(!tags.includes(tag)) tags.push(item.job)
+      })
     })
-    res.render('admin/experts/edit', {errors: {}, data: expert, urlMediaUpload, user, experts, jobs })
+    res.render('admin/experts/edit', {
+      errors: {}, 
+      data: currentExpert, 
+      urlMediaUpload, 
+      user, 
+      experts, 
+      jobs,
+      jobs,
+      tags 
+    })
   };
+
+
+const edit = async (req, res) => {
+  let id = req.params.id
+  let data = req.body
+  let currentExpert = await Expert.findById(id).exec();
+  delete data.images
+  if(req.files.images){
+    data.images = req.files.images
+  }else data.images = currentExpert.images;
+ 
+  let err = validateExpertEdit(data)
+  if(err && err.error){
+    let errors = err.error && err.error.details.reduce((result, item)=>{
+      return {
+        ...result,
+        [item.path[0]]: item.message
+      }
+    }, {})
+    data._id = id
+    return res.sendError({errors, data})
+  }else{
+    await Expert.findById(id).update(data);
+    res.redirect("/admin/experts");
+
+  }
+}
+
 module.exports = {
     getListExpert,
     getFormCreate,
     create,
-    getFormEdit
-
+    getFormEdit,
+    edit
 }

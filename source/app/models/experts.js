@@ -8,6 +8,7 @@ const Schema = mongoose.Schema;
 const Joi = require('joi');
 
 const ExpertSchema = new Schema({
+    slug: {type: String, unique: true, required: true },
     about: {type: String, required: true },
     slogan: {type: String, required: false },
     images: {type: [{ type: Object}], default: []},
@@ -22,6 +23,7 @@ const ExpertSchema = new Schema({
 
 function validateExpert(expert){
     const schema ={
+        slug: Joi.string().min(1).required(),
         about: Joi.string().min(1).required(),
         slogan: Joi.string().min(1),
         images: Joi.array(),
@@ -35,6 +37,7 @@ function validateExpert(expert){
 
 function validateExpertEdit(expert){
     const schema ={
+        slug: Joi.string().min(1).required(),
         about: Joi.string().min(1).required(),
         slogan: Joi.string().min(1),
         images: Joi.array().required(),

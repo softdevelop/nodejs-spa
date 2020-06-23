@@ -162,27 +162,15 @@
                   </div>
 
                   <div class="testimoial-wrapper owl-carousel">
-                      <!--testimonial-1-->
-                      <div class="single-testimonial text-center">
-                          <a href="#"><img src="/images/author3.jpg" alt="author"></a>
-                          <p class="testimoinal-txt color-ff pt-25">I just wanted to thank you for providing a great celebration party for me. Your staff did an excellent job and the Makeup was superb. Everyone was impressed.Thanks again!</p>
-                          <p class="author color-ff">Thomas Jefferson<span>CEO of TF</span></p>
-                      </div>
 
-                      <!--testimonial-2-->
-                      <div class="single-testimonial text-center">
-                          <a href="#"><img src="/images/author1.jpg" alt="author"></a>
-                          <p class="testimoinal-txt color-ff pt-25">I just wanted to thank you for providing a great celebration party for me. Your staff did an excellent job and the Makeup was superb. Everyone was impressed.Thanks again!</p>
-                          <p class="author color-ff">Thomas Jefferson<span>CEO of TF</span></p>
-                      </div>
-
-                      <!--testimonial-3-->
-                      <div class="single-testimonial text-center">
-                          <a href="#"><img src="/images/author2.jpg" alt="author"></a>
-                          <p class="testimoinal-txt color-ff pt-25">I just wanted to thank you for providing a great celebration party for me. Your staff did an excellent job and the Makeup was superb. Everyone was impressed.Thanks again!</p>
-                          <p class="author color-ff">Thomas Jefferson<span>CEO of TF</span></p>
-                      </div>
-                      <!--/testimonial-->
+                      <% experts.forEach(item=>{ %>
+                        <div class="single-testimonial text-center">
+                          <a href="/chuyen-gia/<%=item.slug%>"><img src="<%=urlMediaUpload.imageObj(item.user.avatar || item.images[0])%>" alt="author"></a>
+                          <p class="testimoinal-txt color-ff pt-25"><%=item.slogan%></p>
+                          <p class="author color-ff"><a href="/chuyen-gia/<%=item.slug%>"><%=item.user.first_name%> <%=item.user.last_name%></a><span><%=item.job%></span></p>
+                        </div>
+                      <% }) %>
+                  
                   </div>
                   <!--/testimoial wrapper-->
               </div>
@@ -192,114 +180,19 @@
 
           <div class="row gallery-wrapper mt-5">
 
-            <!--gallery-1-->
-            <div class="col-lg-4 col-md-6  mix interiors">
-                <div class="single-gallery">
-                    <img src="/images/beauty-galleryImg1.jpg" alt="gallery image" class="img-fluid" />
-                    <div class="single-gallery-overlay text-center">
-                        <h6><a href="#" class="color-ff fw-500">Beauty Treatment</a></h6>
-                        <div class="divider mt-15 mb-10"></div>
-                        <p class="color-ff">Most designers set their type arbitrarily, either by pulling values</p>
-                    </div>
-                </div>
-            </div>
-
-            <!--gallery-2-->
-            <div class="col-lg-4 col-md-6  mix treatment">
-                <div class="single-gallery">
-                    <img src="/images/beauty-galleryImg2.jpg" alt="gallery image" class="img-fluid" />
-                    <div class="single-gallery-overlay text-center">
-                        <h6><a href="#" class="color-ff fw-500">Beauty Treatment</a></h6>
-                        <div class="divider mt-15 mb-10"></div>
-                        <p class="color-ff">Most designers set their type arbitrarily, either by pulling values</p>
-                    </div>
-                </div>
-            </div>
-
-            <!--gallery-3-->
-            <div class="col-lg-4 col-md-6  mix interiors">
-                <div class="single-gallery">
-                    <img src="/images/beauty-galleryImg3.jpg" alt="gallery image" class="img-fluid" />
-                    <div class="single-gallery-overlay text-center">
-                        <h6><a href="#" class="color-ff fw-500">Beauty Treatment</a></h6>
-                        <div class="divider mt-15 mb-10"></div>
-                        <p class="color-ff">Most designers set their type arbitrarily, either by pulling values</p>
-                    </div>
-                </div>
-            </div>
-
-            <!--gallery-4-->
-            <div class="col-lg-4 col-md-6  mix treatment">
-                <div class="single-gallery">
-                    <img src="/images/beauty-galleryImg4.jpg" alt="gallery image" class="img-fluid" />
-                    <div class="single-gallery-overlay text-center">
-                        <h6><a href="#" class="color-ff fw-500">Beauty Treatment</a></h6>
-                        <div class="divider mt-15 mb-10"></div>
-                        <p class="color-ff">Most designers set their type arbitrarily, either by pulling values</p>
-                    </div>
-                </div>
-            </div>
-
-            <!--gallery-5-->
-            <div class="col-lg-4 col-md-6  mix interiors">
-                <div class="single-gallery">
-                    <img src="/images/beauty-galleryImg5.jpg" alt="gallery image" class="img-fluid" />
-                    <div class="single-gallery-overlay text-center">
-                        <h6><a href="#" class="color-ff fw-500">Beauty Treatment</a></h6>
-                        <div class="divider mt-15 mb-10"></div>
-                        <p class="color-ff">Most designers set their type arbitrarily, either by pulling values</p>
-                    </div>
-                </div>
-            </div>
-
-            <!--gallery-6-->
-            <div class="col-lg-4 col-md-6  mix treatment">
-                <div class="single-gallery">
-                    <img src="/images/beauty-galleryImg6.jpg" alt="gallery image" class="img-fluid" />
-                    <div class="single-gallery-overlay text-center">
-                        <h6><a href="#" class="color-ff fw-500">Beauty Treatment</a></h6>
-                        <div class="divider mt-15 mb-10"></div>
-                        <p class="color-ff">Most designers set their type arbitrarily, either by pulling values</p>
-                    </div>
-                </div>
-            </div>
-            <!--/col-->
-
-             <!--gallery-4-->
-             <div class="col-lg-4 col-md-6  mix treatment">
-              <div class="single-gallery">
-                  <img src="/images/beauty-galleryImg4.jpg" alt="gallery image" class="img-fluid" />
-                  <div class="single-gallery-overlay text-center">
-                      <h6><a href="#" class="color-ff fw-500">Beauty Treatment</a></h6>
-                      <div class="divider mt-15 mb-10"></div>
-                      <p class="color-ff">Most designers set their type arbitrarily, either by pulling values</p>
+            <% experts.forEach(item=>{ %>
+                <!--gallery-1-->
+                <div class="col-lg-4 col-md-6  mix interiors">
+                  <div class="single-gallery">
+                      <img style="max-height: 200px;" src="<%=urlMediaUpload.imageObj(item.images[0])%>" alt="gallery image" class="img-fluid" />
+                      <div class="single-gallery-overlay text-center">
+                          <h6><a href="/chuyen-gia/<%=item.slug%>" class="color-ff fw-500"><%=item.user.first_name%> <%=item.user.last_name%></a></h6>
+                          <div class="divider mt-15 mb-10"></div>
+                          <p class="color-ff"><%=item.slogan%></p>
+                      </div>
                   </div>
               </div>
-          </div>
-
-          <!--gallery-5-->
-          <div class="col-lg-4 col-md-6  mix interiors">
-              <div class="single-gallery">
-                  <img src="/images/beauty-galleryImg5.jpg" alt="gallery image" class="img-fluid" />
-                  <div class="single-gallery-overlay text-center">
-                      <h6><a href="#" class="color-ff fw-500">Beauty Treatment</a></h6>
-                      <div class="divider mt-15 mb-10"></div>
-                      <p class="color-ff">Most designers set their type arbitrarily, either by pulling values</p>
-                  </div>
-              </div>
-          </div>
-
-          <!--gallery-6-->
-          <div class="col-lg-4 col-md-6  mix treatment">
-              <div class="single-gallery">
-                  <img src="/images/beauty-galleryImg6.jpg" alt="gallery image" class="img-fluid" />
-                  <div class="single-gallery-overlay text-center">
-                      <h6><a href="#" class="color-ff fw-500">Beauty Treatment</a></h6>
-                      <div class="divider mt-15 mb-10"></div>
-                      <p class="color-ff">Most designers set their type arbitrarily, either by pulling values</p>
-                  </div>
-              </div>
-          </div>
+            <% }) %>
           <!--/col-->
         </div>
         <!--/row-->
