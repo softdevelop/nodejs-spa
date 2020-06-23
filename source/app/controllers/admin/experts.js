@@ -104,6 +104,7 @@ const getListExpert = async (req, res) => {
       if(req.files.images){
         data.images = req.files.images
       }
+      data.tags = data.tags.split(',')
       let newExpert= new Expert(data);
       newExpert.save()
         .then((e) => {
@@ -174,6 +175,7 @@ const edit = async (req, res) => {
     data._id = id
     return res.sendError({errors, data})
   }else{
+    data.tags = data.tags.split(',')
     await Expert.findById(id).update(data);
     res.redirect("/admin/experts");
 

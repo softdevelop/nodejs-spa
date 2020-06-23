@@ -345,7 +345,7 @@ Css Table Of Content
   width: 100%;
 }
 
-.home1-slider .img-fill .slider-img1 {
+/* .home1-slider .img-fill .slider-img1 {
   background: url(../images/slider-img/slider-img1.jpg) no-repeat center center / cover;
 }
 
@@ -359,7 +359,7 @@ Css Table Of Content
 
 .home1-slider .img-fill .slider-img4 {
   background: url(../images/slider-img/slider-img4.jpg) no-repeat center center / cover;
-}
+} */
 
 .home1-slider .Modern-Slider .item .img-fill {
   height: 680px;

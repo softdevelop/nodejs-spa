@@ -3,26 +3,24 @@
 }) %>
 
 
-
-
     <!-- ======================================= 
         ==start Slider section==  
     =======================================-->
     <section class="home1-slider top-margin pos-relative">
       <div class="Modern-Slider" id="home1-slider">
           <!-- item -->
-          <div class="item">
+          <% expert.images.forEach(item=>{ %>
+            <div class="item">
               <div class="img-fill">
-                  <div class="img-area slider-img1"></div>
+                  <div class="img-area slider-img1" style="background: url(<%=urlMediaUpload.imageObj(item)%>) no-repeat center center / cover;"></div>
                   <div class="info">
                       <div class="align-col-left-center">
                           <div class="container">
                               <div class="row">
                                   <div class="col-12 text-left">
-                                      <h4>Just The Best Place For</h4>
-                                      <h3 class="color-d5 fw-700">Beauty & Relaxation</h3>
-                                      <h5 class="text-left">Welcome to beauty lab, where you can relax and enjoy life. A little peace in a crazy world goes a long way.</h5>
-                                      <a href="#" class="explore-btn fw-700">Explore now</a>
+                                      <h3 class="color-d5 fw-700"><%=expert.user.first_name%> <%=expert.user.last_name%></h3>
+                                      <h5 class="text-left"><%=expert.slogan%></h5>
+                                      <a href="#about" class="explore-btn fw-700">Khám phá thêm</a>
                                   </div>
                               </div>
                           </div>
@@ -31,78 +29,47 @@
               </div>
           </div>
           <!-- /item -->
+          <% }) %>
 
-          <!-- item-2 -->
-          <div class="item">
-              <div class="img-fill">
-                  <div class="img-area slider-img2"></div>
-                  <div class="info">
-                      <div class="align-col-left-center">
-                          <div class="container">
-                              <div class="row">
-                                  <div class="col-12 text-left">
-                                      <h4>Just The Best Place For</h4>
-                                      <h3 class="color-d5 fw-700">Body Masseging</h3>
-                                      <h5 class="text-left">Welcome to beauty lab, where you can relax and enjoy life. A little peace in a crazy world goes a long way.</h5>
-                                      <a href="#" class="explore-btn fw-700">Explore now</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- /item-2 -->
-
-          <!-- item-3 -->
-          <div class="item">
-              <div class="img-fill">
-                  <div class="img-area slider-img3"></div>
-                  <div class="info">
-                      <div class="align-col-left-center">
-                          <div class="container">
-                              <div class="row">
-                                  <div class="col-12 text-left">
-                                      <h4>Just The Best Place For</h4>
-                                      <h3 class="color-d5 fw-700">Hair Treatment</h3>
-                                      <h5 class="text-left">Welcome to beauty lab, where you can relax and enjoy life. A little peace in a crazy world goes a long way.</h5>
-                                      <a href="#" class="explore-btn fw-700">Explore now</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- /item-3 -->
-
-          <!-- item-4 -->
-          <div class="item">
-              <div class="img-fill">
-                  <div class="img-area slider-img4"></div>
-                  <div class="info">
-                      <div class="align-col-left-center">
-                          <div class="container">
-                              <div class="row">
-                                  <div class="col-12 text-left">
-                                      <h4>Just The Best Place For</h4>
-                                      <h3 class="color-d5 fw-700">Harbal Treatment</h3>
-                                      <h5 class="text-left">Welcome to beauty lab, where you can relax and enjoy life. A little peace in a crazy world goes a long way.</h5>
-                                      <a href="#" class="explore-btn fw-700">Explore now</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
           <!-- /item-4 -->
       </div>
   </section>
   <!-- ======================================= 
       ==End Slider section==  
   =======================================-->
+  <section class="service-section" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+              <%-expert.about%>
+            </div>
+        </div>
+    </div>
+  </section>
+  
+  <section class="service-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+              <%-expert.description%>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="mt-5">
+              <h4 class="mb-2">Tag: </h4>
+              <% expert.tags.forEach(item=>{ %>
+                <span class="btn-register"><%=item%></span> 
+              <% }) %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
 
+  <section>
+    <
+  </section>
 
     <!-- ======================================= 
             ==Start Service section== 
@@ -124,7 +91,7 @@
                 <!--service-1-->
                 <div class="col-lg-4 col-md-6">
                     <div class="single-service">
-                        <div class="img"><img src="images/service-img1.jpg" alt="service-img" class="img-fluid"></div>
+                        <div class="img"><img src="/images/service-img1.jpg" alt="service-img" class="img-fluid"></div>
                         <div class="img-over-content text-center">
                             <i class="flaticon-medical color-d5 mb-10"></i>
                             <div class="divider"></div>
@@ -137,7 +104,7 @@
                 <!--service-2-->
                 <div class="col-lg-4 col-md-6">
                     <div class="single-service">
-                        <div class="img"><img src="images/service-img2.jpg" alt="service-img" class="img-fluid"></div>
+                        <div class="img"><img src="/images/service-img2.jpg" alt="service-img" class="img-fluid"></div>
                         <div class="img-over-content text-center">
                             <i class="flaticon-spa color-d5 mb-10"></i>
                             <div class="divider"></div>
@@ -150,7 +117,7 @@
                 <!--service-3-->
                 <div class="col-lg-4 col-md-6">
                     <div class="single-service">
-                        <div class="img"><img src="images/service-img3.jpg" alt="service-img" class="img-fluid"></div>
+                        <div class="img"><img src="/images/service-img3.jpg" alt="service-img" class="img-fluid"></div>
                         <div class="img-over-content text-center">
                             <i class="flaticon-medical-1 color-d5 mb-10"></i>
                             <div class="divider"></div>
@@ -163,7 +130,7 @@
                 <!--service-4-->
                 <div class="col-lg-4 col-md-6">
                     <div class="single-service">
-                        <div class="img"><img src="images/service-img4.jpg" alt="service-img" class="img-fluid"></div>
+                        <div class="img"><img src="/images/service-img4.jpg" alt="service-img" class="img-fluid"></div>
                         <div class="img-over-content text-center">
                             <i class="flaticon-hairdryer color-d5 mb-10"></i>
                             <div class="divider"></div>
@@ -176,7 +143,7 @@
                 <!--service-5-->
                 <div class="col-lg-4 col-md-6">
                     <div class="single-service">
-                        <div class="img"><img src="images/service-img5.jpg" alt="service-img" class="img-fluid"></div>
+                        <div class="img"><img src="/images/service-img5.jpg" alt="service-img" class="img-fluid"></div>
                         <div class="img-over-content text-center">
                             <i class="flaticon-hand-wash color-d5 mb-10"></i>
                             <div class="divider"></div>
@@ -189,7 +156,7 @@
                 <!--service-6-->
                 <div class="col-lg-4 col-md-6">
                     <div class="single-service">
-                        <div class="img"><img src="images/service-img6.jpg" alt="service-img" class="img-fluid"></div>
+                        <div class="img"><img src="/images/service-img6.jpg" alt="service-img" class="img-fluid"></div>
                         <div class="img-over-content text-center">
                             <i class="flaticon-relax color-d5 mb-10"></i>
                             <div class="divider"></div>
@@ -205,54 +172,6 @@
     </section>
     <!-- ======================================= 
             ==End Service section== 
-    =======================================-->
-
-
-    <!-- ======================================= 
-        ==Start quick support section==  
-    =======================================-->
-    <section class="quick-support-section">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-10 offset-xl-1 col-lg-12">
-                    <div class="quick-support-wrapper clearfix">
-                        <div class="single-support float-left">
-                            <i class="fa fa-comments-o"></i>
-                            <div class="content">
-                                <h6 class="color-72 text-capitalize">Our Hotline</h6>
-                                <p>(+880) 1800-111-333</p>
-                            </div>
-                        </div>
-
-                        <div class="single-support float-left">
-                            <i class="flaticon-school-calendar"></i>
-                            <div class="content">
-                                <h6 class="color-72 text-capitalize">We Are Open</h6>
-                                <p>Mon - Fri : 09:00 - 18:00</p>
-                            </div>
-                        </div>
-
-                        <div class="single-support social-link float-left">
-                            <div class="content text-center">
-                                <h6 class="color-72 text-capitalize">Follow Us</h6>
-                                <ul>
-                                    <li><a href="#" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" target="_blank" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-                                    <li><a href="#" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/wrapper-->
-                </div>
-                <!--/col-->
-            </div>
-        </div>
-    </section>
-    <!-- ======================================= 
-        ==End quick support section== 
     =======================================-->
 
 

@@ -40,10 +40,38 @@
           var lat = button.data('lat')
           mymap.setView(new L.LatLng(lat, lng), 13);
       })
+
+      $(window).on('resize', function() {
+          if ($(window).width() > 480)
+              $('.search-section-map').css('height', `${$(window).height() - 50}px`)
+              // console.log($(window).height())
+      });
+      // if ($(window).width() > 480)
+      //     $('.search-section-map').css('height', `${$(window).height() - 50}px`)
       $(".map.home-search").click(function() {
           var lng = Number($(this).attr("data-lng"))
           var lat = Number($(this).attr("data-lat"))
-          mymap.setView(new L.LatLng(lat, lng), 13);
+          mymap.setView(new L.LatLng(lat, lng), 11);
+          //set default color
+          spas.forEach(spa => {
+              L.marker([spa.latitude, spa.longitude]).bindTooltip(spa.name, {
+                  permanent: true,
+                  direction: 'right'
+              }).addTo(mymap).on('click', function(e) {
+                  location.replace(`/admin/spas/${spa._id}`)
+              });;
+          })
+          var redIcon = new L.Icon({
+              iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+              shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+              iconSize: [25, 41],
+              iconAnchor: [12, 41],
+              popupAnchor: [1, -34],
+              shadowSize: [41, 41]
+          });
+
+          L.marker([lat, lng], { icon: redIcon }).addTo(mymap);
           return false;
       })
-    })
+
+})
