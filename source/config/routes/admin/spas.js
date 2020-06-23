@@ -1,9 +1,21 @@
 const router = require("express").Router();
 const spas = require("../../../app/controllers/admin/spas");
+const booking = require("../../../app/controllers/admin/booking")
 // multer
 const multer = require("multer");
 const { uploadMedia } = require("../../middleware");
-const { hasPermission } = require("../../middleware");
+const { hasPermission, checkRole, hasRole } = require("../../middleware");
+
+
+
+//spa
+
+router.get('/spas/bookings', hasRole('SPA_OWNER'), booking.getListBookingOfSpa)
+router.get('/spas/bookings/:id/edit', hasRole('SPA_OWNER'), booking.getFormEditOfSpa)
+router.post('/spas/bookings/:id/edit', hasRole('SPA_OWNER'), booking.editOfSpa)
+router.get('/spas/bookings/:id/view', hasRole('SPA_OWNER'), booking.viewDetailOfSpa)
+router.post("/spas/bookings/delmany", hasRole('SPA_OWNER'), booking.delMany)
+//End: spa
 
 
 router.get("/spas", hasPermission('spa.index'), spas.getListSpas);
@@ -33,4 +45,7 @@ router.post('/spas/:id/service/:idSpaService/edit', uploadMedia.fields([
 ]), hasPermission('spa.edit'), spas.editService)
 router.post('/spas/:id/service/delManyService', hasPermission('spa.delete'), spas.delManyService)
 router.get('/spas/:id/service/:idSpaService', hasPermission('spa.view'), spas.viewDetailService)
+
+
+
 module.exports = router;
