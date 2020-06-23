@@ -18,7 +18,7 @@ const SpaSchema = new Schema({
     address: { type: String, required: true },
     phone: { type: String },
     status: { type: String, enum: STATUS, default: STATUS[2] },
-    location:{type: String, unique: true, required: true },
+    location:{type: String, required: true },
     email: { type: String, unique: true, required: true },
     note: { type: String, default: '' },
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
@@ -127,6 +127,8 @@ const genSpas = () => {
           phone: `spa_${item}`,
           status: STATUS[2],
           note: `spa_${item}`,
+          location: 'hai_chau',
+          email: `spa${Math.random()}@gmail.com`,
           owners: []
         })
     })
