@@ -1,5 +1,13 @@
 <% extend('../layouts/base',{
   title: "Homepage",
+  css: `
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+  `,
+  script: `
+  <script src="/libs_client/js/demo-home.js"></script>
+  `
 }) %>
 
  <!-- ======================================= 
@@ -50,7 +58,7 @@
   <!-- ======================================= 
       ==Start recommendation Section==  
   =======================================-->
-  <section class="product-carousel-section experts-section">
+  <section class="product-carousel-section experts-section blog-section blog-page">
       <div class="container">
           <div class="row mb-3">
               <div class="col-md-12">
@@ -76,22 +84,48 @@
                   <div class="row">
                       <div class="col-md-12">
                           <div class="product-carousel-wrapper owl-carousel" id="experts-carousel">
+                                <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                              </button>
+                                          </div>
+                                          <div class="modal-body">
+                                              <div class="search-section-map">
+                                                  <div id="mapid" style="width: 100%; height: 100%;min-height: 400px; z-index: 1;"></div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
                               <div class="row">
 
                                   <% item.spaservice.forEach((spaservice, index)=>{ %>
-                                    <div class="single-carousel col-md-4">
-                                        <img src="<%=urlMediaUpload.imageObj(spaservice.spa.logo)%>" style="max-height: 200px;" alt="experts person" class="img-fluid">
-                                        <div class="expert-hover text-center">
-                                            <a href="/spa/<%=spaservice.spa.slug%>"><h6 class="name fw-700 color-ff"><%=spaservice.spa.name%></h6></a>
-                                            <span class="degignation"><%-spaservice.spa.address%></span>
-                                            <!--<p class="color-ff ptb-20">Most designers set their </p>-->
-                                        </div>
-                                        <div class="social-contact">
-                                            <a href="#" title="<%=spaservice.spa.email%>" target="_blank"><i class="fa fa-envelope-o"></i></a>
-                                            <a href="#" title="<%=spaservice.spa.phone%>" target="_blank"><i class="fa fa-phone"></i></a>
-                                            <a href="#" title="<%=spaservice.spa.facebook%>" target="_blank"><i class="fa fa-facebook"></i></a>
-                                            <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
-                                        </div>
+                                    <div class="col-md-4">
+                                      <div class="single-blog">
+                                          <div class="blog-img pos-relative">
+                                              <div class="img-area">
+                                                  <a href="/spa/<%=spaservice.spa.slug%>"><img style="height: 200px;" src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs || spaservice.spa.logo)%>" alt="blog img" class="img-fluid"></a>
+                                              </div>
+                                              <div class="expert-hover text-center">
+                                                <h6 class="name fw-700 color-ff"><%=spaservice.spa.name%></h6>
+                                                <span class="degignation"><%-spaservice.spa.address%></span>
+                                            </div>
+                                              <ul class="brand">
+                                                  <li><i class="fa fa-heart"></i>18</li>
+                                                  <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
+                                                  <li>
+                                                      <p data-toggle="modal" data-target="#mapModal" data-lat="<%=spaservice.spa.latitude%>" data-lng="<%=spaservice.spa.longitude%>" data-title="<%=spaservice.spa.name%>" class="map">
+                                                          <i class="fa fa-map-marker" aria-hidden="true"></i> Direct to location
+                                                      </p>
+                                                  </li>
+                                                  <li class="gallery"><i class="fa fa-picture-o"></i></li>
+                                              </ul>
+                                          </div>
+                                      </div>
                                     </div>
                                   <% }) %>
 
@@ -114,66 +148,162 @@
     ==End recommendation section== 
 =======================================-->
 
-  <!-- ======================================= 
-          ==Start Blog section==  
-  =======================================-->
-  <section class="blog-section blog-page">
+
+    <!-- ======================================= 
+            ==Start Testimonial section==  
+    =======================================-->
+    <section class="testimonial-section beautyLab-gallery">
+      <div class="overlay"></div>
       <div class="container">
           <div class="row">
-              <div class="col-lg-12">
+              <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
+                  <div class="section-title pb-60 text-center">
+                      <h3 class="color-ff fw-500">Đội ngũ chuyên gia giàu kinh nghiệm</h3>
+                  </div>
 
-                  <div class="row">
-                      <!--blog 2-->
-                      <% data.docs.forEach(function(item) { %>
-                      <div class="col-md-3">
-                          <div class="single-blog">
-                              <div class="blog-img pos-relative">
-                                  <div class="img-area">
-                                      <a href="/tin-tuc/<%=item.slug%>"><img src="<%=urlMediaUpload.imageObj(item.image)%>" style="height: 200px;" alt="blog img" class="img-fluid"></a>
-                                  </div>
-                                  <ul class="brand">
-                                      <li><i class="fa fa-heart"></i>18</li>
-                                      <li><i class="fa fa-eye"></i><%=item.numOfViews%></li>
-                                      <!-- <li><i class="fa fa-folder-open"></i>Spa Tips</li>ontent -->
-                                      <li class="gallery"><i class="fa fa-picture-o"></i></li>
-                                  </ul>
-                                  <div class="date">
-                                      <h5 class="fw-700 color-ff"><%=moment(item.date).format('DD')%></h5>
-                                      <span class="fw-500 roboto color-ff ">Tháng <%=moment(item.date).format('MM')%></span>
-                                  </div>
-                              </div>
-                              <div class="blog-content">
-                                  <a href="/tin-tuc/<%=item.slug%>" class="title fw-500 pt-20"><%=item.name%></a>
-                                  <div  ><%-truncate(item.content, 100)%></div>
-                                  <a href="/tin-tuc/<%=item.slug%>" class="readmore" title="Xem thêm" target="-blank">Xem thêm <i class="fa fa-angle-right"></i></a>
-                              </div>
-                          </div>
-                      </div>
+                  <div class="testimoial-wrapper owl-carousel">
+
+                      <% experts.forEach(item=>{ %>
+                        <div class="single-testimonial text-center">
+                          <a href="/chuyen-gia/<%=item.slug%>"><img src="<%=urlMediaUpload.imageObj(item.user.avatar || item.images[0])%>" alt="author"></a>
+                          <p class="testimoinal-txt color-ff pt-25"><%=item.slogan%></p>
+                          <p class="author color-ff"><a href="/chuyen-gia/<%=item.slug%>"><%=item.user.first_name%> <%=item.user.last_name%></a><span><%=item.job%></span></p>
+                        </div>
                       <% }) %>
-                      <!--blog 3-->
-                     
-                     
-                      <!--/col-->
+                  
                   </div>
-                  <!--/row-->
-
-                  <div class="row">
-                      <div class="col-12">
-                        <%-genHtmlPaginationClient%>
-                      </div>
-                  </div>
-                  <!--/row-->
+                  <!--/testimoial wrapper-->
               </div>
               <!--/col-->
+          </div>
 
+
+          <div class="row gallery-wrapper mt-5">
+
+            <% experts.forEach(item=>{ %>
+                <!--gallery-1-->
+                <div class="col-lg-4 col-md-6  mix interiors">
+                  <div class="single-gallery">
+                      <img style="max-height: 200px;" src="<%=urlMediaUpload.imageObj(item.images[0])%>" alt="gallery image" class="img-fluid" />
+                      <div class="single-gallery-overlay text-center">
+                          <h6><a href="/chuyen-gia/<%=item.slug%>" class="color-ff fw-500"><%=item.user.first_name%> <%=item.user.last_name%></a></h6>
+                          <div class="divider mt-15 mb-10"></div>
+                          <p class="color-ff"><%=item.slogan%></p>
+                      </div>
+                  </div>
+              </div>
+            <% }) %>
+          <!--/col-->
+        </div>
+        <!--/row-->
+
+      </div>
+  </section>
+  <!-- ======================================= 
+          ==End Testimonial section== 
+  =======================================-->
+
+    <!-- ======================================= 
+            ==Start Offer Section== 
+    =======================================-->
+    <section class="service-section">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <div class="section-title text-center">
+                      <h3 class="color-72 fw-500 pb-10">Giảm giá trong tuần</h3>
+                  </div>
+              </div>
+              <!--/col-->
+          </div>
+          <!--/row-->
+
+          <div class="row">
+              <!--service-1-->
+              <div class="col-lg-4 col-md-6">
+                  <div class="single-service">
+                      <div class="img"><img src="/images/service-img1.jpg" alt="service-img" class="img-fluid"></div>
+                      <div class="img-over-content text-center">
+                          <i class="flaticon-medical color-d5 mb-10"></i>
+                          <div class="divider"></div>
+                          <a href="service-details.html" class="fw-500 color-33 mtb-15">Beauty Treatment</a>
+                          <p>Khuyến mại hot nhất tuần này</p>
+                      </div>
+                  </div>
+              </div>
+
+              <!--service-2-->
+              <div class="col-lg-4 col-md-6">
+                  <div class="single-service">
+                      <div class="img"><img src="/images/service-img2.jpg" alt="service-img" class="img-fluid"></div>
+                      <div class="img-over-content text-center">
+                          <i class="flaticon-spa color-d5 mb-10"></i>
+                          <div class="divider"></div>
+                          <a href="service-details.html" class="fw-500 color-33 mtb-15">Spa Process</a>
+                          <p>Sale lớn, giảm đến 50%</p>
+                      </div>
+                  </div>
+              </div>
+
+              <!--service-3-->
+              <div class="col-lg-4 col-md-6">
+                  <div class="single-service">
+                      <div class="img"><img src="/images/service-img3.jpg" alt="service-img" class="img-fluid"></div>
+                      <div class="img-over-content text-center">
+                          <i class="flaticon-medical-1 color-d5 mb-10"></i>
+                          <div class="divider"></div>
+                          <a href="service-details.html" class="fw-500 color-33 mtb-15">Body Massage</a>
+                          <p>Massage nay chỉ còn 450K</p>
+                      </div>
+                  </div>
+              </div>
+
+              <!--service-4-->
+              <div class="col-lg-4 col-md-6">
+                  <div class="single-service">
+                      <div class="img"><img src="/images/service-img4.jpg" alt="service-img" class="img-fluid"></div>
+                      <div class="img-over-content text-center">
+                          <i class="flaticon-hairdryer color-d5 mb-10"></i>
+                          <div class="divider"></div>
+                          <a href="service-details.html" class="fw-500 color-33 mtb-15">Hair Treatment</a>
+                          <p>Khuyến mại hot nhất tuần này</p>
+                      </div>
+                  </div>
+              </div>
+
+              <!--service-5-->
+              <div class="col-lg-4 col-md-6">
+                  <div class="single-service">
+                      <div class="img"><img src="/images/service-img5.jpg" alt="service-img" class="img-fluid"></div>
+                      <div class="img-over-content text-center">
+                          <i class="flaticon-hand-wash color-d5 mb-10"></i>
+                          <div class="divider"></div>
+                          <a href="service-details.html" class="fw-500 color-33 mtb-15">Manicure & Pedicure</a>
+                          <p>Khuyến mại hot nhất tuần này</p>
+                      </div>
+                  </div>
+              </div>
+
+              <!--service-6-->
+              <div class="col-lg-4 col-md-6">
+                  <div class="single-service">
+                      <div class="img"><img src="/images/service-img6.jpg" alt="service-img" class="img-fluid"></div>
+                      <div class="img-over-content text-center">
+                          <i class="flaticon-relax color-d5 mb-10"></i>
+                          <div class="divider"></div>
+                          <a href="service-details.html" class="fw-500 color-33 mtb-15">Body Waxing</a>
+                          <p>Khuyến mại hot nhất tuần này</p>
+                      </div>
+                  </div>
+              </div>
               <!--/col-->
           </div>
           <!--/row-->
       </div>
   </section>
   <!-- ======================================= 
-        ==End blog section== 
-=======================================-->
+          ==End Offer Section== 
+  =======================================-->
 
   <!-- ======================================= 
           ==Start price list section==  

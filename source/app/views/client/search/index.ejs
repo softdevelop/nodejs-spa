@@ -61,17 +61,18 @@
                                     <div class="single-blog">
                                         <div class="blog-img pos-relative">
                                             <div class="img-area">
-                                                <a href="/spa/<%=item.slug%>"><img src="<%=urlMediaUpload.imageObj(item.logo)%>" alt="blog img" class="img-fluid"></a>
+                                                <a href="/spa/<%=item.slug%>"><img src="<%=urlMediaUpload.imageObj(item.logo)%>" alt="blog img" class="img-fluid" style="max-height: 200px;"></a>
                                             </div>
                                             <ul class="brand">
                                                 <li><i class="fa fa-heart"></i>18</li>
-                                                <li><i class="fa fa-commenting-o"></i>10</li>
-                                                <li><i class="fa fa-clock-o"></i><%=item.working_hour && item.working_hour.start || '8:00'%> - <%=item.working_hour && item.working_hour.end || '17:00'%></li>
+                                                <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
+                                                <li>
+                                                    <p data-lat="<%=item.latitude%>" data-lng="<%=item.longitude%>" data-title="Nivea for men’s sensitive hydro gel the perfect cure." class="map home-search">
+                                                        <i class="fa fa-map-marker" aria-hidden="true"></i> Xem địa điểm
+                                                    </p>
+                                                </li>
+                                                <li class="gallery"><i class="fa fa-picture-o"></i></li>
                                             </ul>
-                                            <div class="date">
-                                                <h5 class="fw-700 color-ff">12</h5>
-                                                <span class="fw-500 roboto color-ff text-uppercase">oct</span>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -80,14 +81,16 @@
                                         <a href="/spa/<%=item.slug%>" class="title fw-500 pt-20"><%=item.name%></a>
                                         <div><%-truncate(item.description, 100)%></div>
                                         <div class="address">
-                                            <p class="address"><i class="fa fa-home"></i><span> Address:</span> <%=item.address%></p>
-                                            <p class="phone"><i class="fa fa-phone"></i><span> Phone:</span> <%=item.phone%></p>
+                                            <p class="address"><i class="fa fa-home"></i><span> Địa chỉ:</span> <%=item.address%></p>
+                                            <p class="phone"><i class="fa fa-phone"></i><span> Điện thoại:</span> <%=item.phone%></p>
                                             <p class="email"><i class="fa fa-envelope"></i><span> Email:</span> <a href="#"><%=item.email%></a></p>
+                                            <p>Giờ làm việc: <i class="fa fa-clock-o"></i> <%=item.working_hour && item.working_hour.start || '8:00'%> - <%=item.working_hour && item.working_hour.end || '17:00'%></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                           </div>
+
                         <% }) %>
 
                         <% if(data.length===0){ %>

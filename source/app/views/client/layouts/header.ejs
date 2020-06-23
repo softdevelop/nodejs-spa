@@ -7,28 +7,23 @@
                   <ul class="menuzord-menu menuzord-right">
                       <li class="active"><a href="/" title="Trang chủ">Trang chủ</a>
                       </li>
-                      <!-- <li><a href="/booking" title="Booking">Booking</a></li> -->
-                      <!-- <li><a href="/news" title="News">News</a></li> -->
-                      <!-- <li><a href="/service" title="Service">Service</a></li> -->
-                      <!-- <li><a href="/expert" title="Pages">Expert</a>
-                          <ul class="dropdown triangle">
-                              <li><a href="gallery.html">Expert 1</a></li>
-                              <li><a href="gallery.html">Expert 2</a></li>
-                              <li><a href="gallery.html">Expert 3</a></li>
-                          </ul>
-                      </li> -->
                       <li><a href="/tin-tuc" title="Tin tức">Tin tức</a>
                         <ul class="dropdown triangle">
                             <%-categoriesHeaders%>
                         </ul>
-                    </li>
-                      <li><a href="/lien-he" title="Liên hệ">Liên hệ</a></li>
-                      <li><a href="/hoi-dap" title="Hỏi đáp">Hỏi đáp</a></li>
-                      <% staticPages.forEach(item=>{ %>
-                        <li><a href="/<%=item.slug%>" title="<%=item.name%>"><%=item.name%></a></li>
-                      <% }) %>
+                      </li>
+                      <li><a href="/chuyen-gia" title="Chuyên gia">Chuyên gia</a></li>
+                      <li><a>Khác</a>
+                        <ul class="dropdown triangle">
+                          <li><a href="/lien-he" title="Liên hệ">Liên hệ</a></li>
+                          <li><a href="/hoi-dap" title="Hỏi đáp">Hỏi đáp</a></li>
+                          <% staticPages.forEach(item=>{ %>
+                            <li><a href="/<%=item.slug%>" title="<%=item.name%>"><%=item.name%></a></li>
+                          <% }) %>
+                        </ul>
+                      </li>
                       <li><a href="/login" title="Đăng nhập">Đăng nhập</a></li>
-                      <li><a href="/register" title="Đăng kí">Đăng kí</a></li>
+                      <li><a href="/register" title="Đăng kí"><span class="btn-register">Đăng kí</span></a></li>
 
                   </ul>
                   <button type="button" id="search-button" data-toggle="modal" data-target="#search-modal"><i class="fa fa-search"></i></button>

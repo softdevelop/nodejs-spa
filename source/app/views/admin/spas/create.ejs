@@ -57,21 +57,25 @@
               }
           })
 
-          function readURL(input) {
-            if (input.files && input.files[0]) {
-               var reader = new FileReader();
-               
-               reader.onload = function(e) {
-                  $('#blah').attr('src', e.target.result).removeClass("d-none");
-               }
-               
-               reader.readAsDataURL(input.files[0]); // convert to base64 string
-            }
-            }
+          function readURL(input, id) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              
+              reader.onload = function(e) {
+                $(id).attr('src', e.target.result).removeClass("d-none");
+              }
+              
+              reader.readAsDataURL(input.files[0]); // convert to base64 string
+          }
+        }
 
-            $("#logo").change(function() {
-            readURL(this);
-         });
+        $("#logo").change(function() {
+          readURL(this, '#blah');
+        });
+
+        $("#imgs").change(function() {
+          readURL(this, '#blah2');
+        });
       });
     </script>
     
@@ -283,9 +287,9 @@
                     <div class="row p-t-20">
                      <div class="col-md-6 ">
                       <div class="form-group form-group-imgs <%=errors.imgs? 'has-danger': ''%>">
-                         <label class="control-label">imgs</label>
+                         <label class="control-label">Imgs</label>
                          <input type="file" id="imgs" class="form-control" name="imgs" value="<%=data.imgs?data.imgs:''%>">
-                         <img class="w-100 mt-2 d-none" id="blah" src="#" alt="your image" />
+                         <img class="w-100 mt-2 d-none" id="blah2" src="#" alt="your image" />
                          <small class="form-control-feedback"><%=errors?errors.imgs:''%></small>
                       </div>
                    </div>

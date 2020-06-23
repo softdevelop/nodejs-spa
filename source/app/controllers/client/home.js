@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Category = mongoose.model('Category')
 const Service = mongoose.model('Service')
 const New = mongoose.model("New");
+const Expert = mongoose.model("Expert");
 const moment = require("moment-timezone");
 const {genHtmlPaginationClient, urlMediaUpload, genCategory} = require('../../utils')
 const truncate = require('html-truncate');
@@ -49,6 +50,7 @@ const index = async (req, res) => {
   data.search = search
   let newsLatest = await New.find().limit(3).exec();
 
+  let experts = await Expert.find().populate('user').lean();
   res.render("client/homes/index", {
     data,
     services,
@@ -59,7 +61,8 @@ const index = async (req, res) => {
     truncate,
     locationsArr: constants.locationsArr,
     genCategory: genCategory.genCategoryClient(categories),
-    newsLatest
+    newsLatest,
+    experts
   });
 };
 
