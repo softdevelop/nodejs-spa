@@ -93,9 +93,40 @@ const permissions = [
   
 ]
 
+let jobs = [
+  "Receptionist",
+  "Spa/Salon Coordinator",
+  "Spa Manager",
+  "Colorist",
+  "Spa Attendant",
+  "Nail Technician",
+  "Massage Therapist",
+  "Hair Stylist",
+  "Spa Concierge",
+  "Salon Technician",
+  "Wax Specialist",
+  "Esthetician",
+  "Cosmetologist",
+]
+
+let tags = [
+  "spa",
+  "beauty",
+  "skincare",
+  "relax",
+  "massage",
+  "wellness",
+  "facial",
+  "salon",
+  "love",
+  "makeup",
+]
+
 module.exports = {
     CODE,
     locations,
     locationsArr,
-    permissions
+    permissions,
+    jobs,
+    tags
 };

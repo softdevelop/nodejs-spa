@@ -149,7 +149,8 @@
                                     <th>Images</th>
                                     <th>Description</th>
                                     <th>User Name</th>
-                                    <th>Tag</th>
+                                    <th>Slug</th>
+                                    <th>Tags</th>
                                     <th>Job
                                     <th>
                                         Action
@@ -166,12 +167,13 @@
                                         </div>
                                     </td>
                                     <td><%=item.slogan%></td>
-                                    <td><%-item.about%></td>
+                                    <td><%-truncate(item.about, 50)%></td>
                                     <td><img class="avatar" src="<%=urlMediaUpload.imageObj(item.images[0])%>" /></td>
-                                    <td><%-item.description%></td>
+                                    <td><%-truncate(item.description, 50)%></td>
                                     <td><a href="/admin/users/<%=item.user._id%>"><%=item.user.first_name%>
                                             <%=item.user.last_name%> </a></td>
-                                    <td><%=item.tags%></td>
+                                    <td><%=item.slug%></td>
+                                    <td style="word-wrap: break-word; max-width: 150px;"><%=item.tags%></td>
                                     <td><%=item.job%></td>
                                     <td>
                                         <a href="/admin/experts/<%=item._id%>/view">
