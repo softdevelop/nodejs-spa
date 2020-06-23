@@ -6,8 +6,6 @@ const multer = require("multer");
 const { uploadMedia } = require("../../middleware");
 const { hasPermission, checkRole, hasRole } = require("../../middleware");
 
-
-
 //spa
 
 router.get('/spas/bookings', hasRole('SPA_OWNER'), booking.getListBookingOfSpa)
