@@ -1,0 +1,6 @@
+form input[readonly],
+form textarea[readonly],
+form select:disabled {
+    background: none !important;
+    color: #000 !important;
+}

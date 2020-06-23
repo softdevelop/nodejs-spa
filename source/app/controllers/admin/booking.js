@@ -33,6 +33,14 @@ const getListBooking = async (req, res) => {
       }],
     };
     let data = await Booking.paginate(query, options);
+    console.log('====================================');
+    console.log(data);
+    console.log('====================================');
+    for(let i=0; i <data.docs.length; i++){
+      console.log('====================================');
+      console.log(data.docs[i]);
+      console.log('====================================');
+    }
     data.search = search
     
     return res.render("admin/booking/index", {
