@@ -7,12 +7,14 @@ const { uploadMedia } = require("../../middleware");
 const { hasPermission, checkRole, hasRole } = require("../../middleware");
 
 //spa
-
 router.get('/spas/bookings', hasRole('SPA_OWNER'), booking.getListBookingOfSpa)
 router.get('/spas/bookings/:id/edit', hasRole('SPA_OWNER'), booking.getFormEditOfSpa)
 router.post('/spas/bookings/:id/edit', hasRole('SPA_OWNER'), booking.editOfSpa)
 router.get('/spas/bookings/:id/view', hasRole('SPA_OWNER'), booking.viewDetailOfSpa)
 router.post("/spas/bookings/delmany", hasRole('SPA_OWNER'), booking.delMany)
+router.get('/spas/update-info', hasRole('SPA_OWNER'), spas.getFormUpdateInfor)
+router.post('/spas/update-info', hasRole('SPA_OWNER'), uploadMedia.fields([
+  { name: 'logo', maxCount: 1 },{ name: 'imgs', maxCount: 1 }]), spas.updateInfor)
 //End: spa
 
 
