@@ -418,9 +418,9 @@ shortlink-section .single-shortlink-list>p {
     padding-left: 190px;
 }
 
-#mapModal .modal-dialog {
+/* #mapModal .modal-dialog {
     max-width: 600px;
-}
+} */
 
 .search-section .search-section-map {
     height: 600px!important;
