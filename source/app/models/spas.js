@@ -70,6 +70,25 @@ function validateSpaEdit(spa) {
   return Joi.validate(spa, schema, { abortEarly: false });
 }
 
+function validateSpaEditOfSpa(spa) {
+  const schema = {
+      name: Joi.string().min(1).max(50),
+      slug: Joi.string().min(1).max(50),
+      description: Joi.string().min(5),
+      latitude: Joi.string().min(5).max(255),
+      longitude: Joi.string().min(5).max(255),
+      email: Joi.string().min(5).max(255).email(),
+      imgs: Joi.any(),
+      logo: Joi.any(),
+      location: Joi.string(),
+      address: Joi.string(),
+      phone: Joi.string(),
+      status: Joi.string(),
+      note: Joi.string().allow(''),
+      owner: Joi.string()
+  };
+  return Joi.validate(spa, schema, { abortEarly: false });
+}
 /**
  * virtual
  */
@@ -149,3 +168,4 @@ const Spa = mongoose.model('Spa', SpaSchema);
 exports.Spa = Spa;
 exports.validateSpa = validateSpa;
 exports.validateSpaEdit = validateSpaEdit;
+exports.validateSpaEditOfSpa = validateSpaEditOfSpa;
