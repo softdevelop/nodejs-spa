@@ -66,7 +66,6 @@ const dataMigrate = [
 ];
 
 CategorySchema.statics.getMigrateData = function () {
-  console.log('dataMigrate', dataMigrate);
     return dataMigrate;
 }
 

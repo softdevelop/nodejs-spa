@@ -218,6 +218,7 @@ const genUsers = () => {
             address: `Address_${item}`,
             birthday: `12/20/1997`,
             role: `${role}`,
+            status: 'active'
         })
     })
 }
@@ -230,7 +231,8 @@ const dataMigrate = [
         role: ROLES[0],
         phone: Math.random().toString().substring(5),
         address: `Address_admin`,
-        birthday: `12/20/1997`
+        birthday: `12/20/1997`,
+        status: 'active'
     },
     {
       first_name: `Spa`,
@@ -240,7 +242,8 @@ const dataMigrate = [
       role: ROLES[2],
       phone: Math.random().toString().substring(5),
       address: `Address_spa`,
-      birthday: `12/20/1997`
+      birthday: `12/20/1997`,
+      status: 'active'
     },
     {
       first_name: `User`,
@@ -250,7 +253,8 @@ const dataMigrate = [
       role: ROLES[1],
       phone: Math.random().toString().substring(5),
       address: `Address_user`,
-      birthday: `12/20/1997`
+      birthday: `12/20/1997`,
+      status: 'active'
     },
     ...genUsers()
 ];
