@@ -72,8 +72,7 @@
                                   <div class="form-group <%=errors.role?'has-danger':''%>">
                                       <label class="control-label">Role</label>
                                       <select disabled class="form-control custom-select" name="role">
-                                          <option value="ADMIN" <%=data.gender=='ADMIN'?'selected':''%>>Admin</option>
-                                          <option value="USER" <%=data.gender=='USER'?'selected':''%>>User</option>
+                                          <option value="ADMIN" ><%=data.role?data.role:'USER' %></option>
                                       </select>
                                       <small class="form-control-feedback"><%=errors?errors.role:''%></small>
                                   </div>
@@ -81,30 +80,13 @@
                               <!--/span-->
                           </div>
                           <!--/row-->
-                          <div class="row p-t-20">
-                              <div class="col-md-6">
-                                  <div class="form-group <%=errors.password?'has-danger':''%>">
-                                      <label class="control-label">Password</label>
-                                      <input readonly type="password" id="password" class="form-control" name="password" value="">
-                                      <small class="form-control-feedback"><%=errors?errors.password:''%></small>
-                                  </div>
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="form-group <%=errors.repassword?'has-danger':''%>">
-                                      <label class="control-label">Re-password</label>
-                                      <input readonly type="password" id="repassword" class="form-control" name="repassword" value="">
-                                      <small class="form-control-feedback"><%=errors?errors.repassword:''%></small>
-                                  </div>
-                              </div>
-                          </div>
-                          <!--/row-->
                           <div class="row">
                               <div class="col-md-6">
                                   <div class="form-group <%=errors.gender?'has-danger':''%>">
                                       <label class="control-label">Gender</label>
                                       <select disabled class="form-control custom-select" name="gender">
-                                          <option value="0" <%=data.gender=='0'?'selected':''%>>Male</option>
-                                          <option value="1" <%=data.gender=='1'?'selected':''%>>Female</option>
+                                          <option value="0" <%=data.gender=='0'?'selected':''%>>Female</option>
+                                          <option value="1" <%=data.gender=='1'?'selected':''%>>Male</option>
 
                                       </select>
                                       <small class="form-control-feedback"><%=errors?errors.gender:''%></small>
@@ -114,7 +96,7 @@
                               <div class="col-md-6">
                                   <div class="form-group <%=errors.birthday?'has-danger':''%>">
                                       <label class="control-label">Date of birth</label>
-                                      <input readonly type="date" class="form-control" placeholder="dd/mm/yyyy" name="birthday" required value="1990-12-31" value="<%=data.birthday?data.birthday:''%>">
+                                      <input readonly type="date" class="form-control text-dark" placeholder="dd/mm/yyyy" name="birthday" required value="1990-12-31" value="<%=data.birthday?data.birthday:''%>">
                                       <small class="form-control-feedback"><%=errors?errors.birthday:''%></small>
                                   </div>
                               </div>
@@ -124,7 +106,7 @@
                               <div class="col-md-6">
                                   <div class="form-group <%=errors.status?'has-danger':''%>">
                                       <label class="control-label">Status</label>
-                                      <select disabled class="form-control custom-select" name="status">
+                                      <select disabled class="form-control custom-select " name="status">
                                           <option value="pending" <%=data.status=='pending'?'selected':''%>>Pending</option>
                                           <option value="active" <%=data.status=='active'?'selected':''%>>Active</option>
                                           <option value="blocked" <%=data.status=='blocked'?'selected':''%>>Blocked</option>
@@ -136,9 +118,8 @@
                     <div class="col-md-6 ">
                       <div class="form-group <%=errors.avatar? 'has-danger': ''%>">
                                               <label class="control-label">Avatar</label>
-                                              <input readonly type="file" id="avatar" class="form-control" name="avatar" value="<%=data.avatar?data.avatar:''%>">
                                               <small class="form-control-feedback"><%=errors?errors.avatar:''%></small>
-                                              <img class="avatar-100" src="<%=urlMediaUpload.imageObj(data.avatar)%>" />
+                                              <img class="avatar-100 " src="<%=urlMediaUpload.imageObj(data.avatar)%>" />
                                   </div>
                               </div>
                           </div>
@@ -155,7 +136,7 @@
                           </div>
                           <!--/row-->
                           <div class="form-actions">
-                              <a href="edit"><button type="submit" class="btn btn-primary"> <i class="icon-note"></i> Edit</button></a>
+                              <a href="/admin/users/<%=data._id%>/edit"><button type="" class="btn btn-primary"> <i class="icon-note"></i> Edit</button></a>
                               <a href="/admin/users">
                                   <button type="button" class="btn btn-inverse">Cancel</button>
                               </a>

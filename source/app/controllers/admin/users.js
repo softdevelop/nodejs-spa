@@ -27,6 +27,8 @@ const getListUsers = async (req, res) => {
       page: parseInt(page, 10) || 1
     };
     let data = await User.paginate(query, options);
+    for(let i=0; i <data.docs.length; i++){
+    }
     data.search = search
     return res.render("admin/users/index", {
       data,
@@ -72,7 +74,7 @@ const create = async (req, res) => {
 
 const getFormEdit = async (req, res) => {
   let id = req.params.id
-  let record = await User.findById(id).exec();
+  let record = await User.findById(id).select("-password").exec();
   let roles = await Role.find().select('name value').exec();
   res.render('admin/users/edit', {errors: {}, data: record, urlMediaUpload, roles})
 }
@@ -119,7 +121,7 @@ delMany = async (req, res) => {
 
 const viewDetail = async (req, res) => {
   let id = req.params.id
-  let record = await User.findById(id).exec();
+  let record = await User.findById(id).select("-password").exec();
   res.render('admin/users/view', {errors: {}, data: record, urlMediaUpload})
 }
 

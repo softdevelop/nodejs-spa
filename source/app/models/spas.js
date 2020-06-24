@@ -18,7 +18,7 @@ const SpaSchema = new Schema({
     address: { type: String, required: true },
     phone: { type: String },
     status: { type: String, enum: STATUS, default: STATUS[2] },
-    location:{type: String, unique: true, required: true },
+    location:{type: String, required: true },
     email: { type: String, unique: true, required: true },
     note: { type: String, default: '' },
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
@@ -117,6 +117,13 @@ SpaSchema.virtual('members', {
   foreignField: 'spa_id',
 });
 
+SpaSchema.virtual('numOfBookings', {
+  ref: 'Booking',
+  localField: '_id',
+  foreignField: 'spa_id',
+  count: true
+});
+
 SpaSchema.virtual('created_at').get(function () {
     return moment(this.createdAt).format("DD-MM-YYYY hh:mm:ss");
 })
@@ -139,6 +146,8 @@ const genSpas = () => {
           phone: `spa_${item}`,
           status: STATUS[2],
           note: `spa_${item}`,
+          location: 'hai_chau',
+          email: `spa${Math.random()}@gmail.com`,
           owners: []
         })
     })

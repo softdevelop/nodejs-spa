@@ -2,7 +2,7 @@
   <!-- User Profile-->
   <div class="user-profile">
       <div class="user-pro-body">
-          <div><img src="/libs/images/users/2.jpg" alt="user-img" class="img-circle"></div>
+          <div><img src="<%=urlMediaUpload.imageObj(userLocal.avatar)%>" alt="user-img" class="img-circle" style="width: 70px; height: 70px;"></div>
           <div class="dropdown">
               <a href="javascript:void(0)" class="dropdown-toggle u-dropdown link hide-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <% if (typeof(userLocal) !== 'undefined' && userLocal) { %>
@@ -12,8 +12,6 @@
               <div class="dropdown-menu animated flipInY">
                   <!-- text-->
                   <a href="/admin/profile" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
-                  <!-- text-->
-                  <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
                   <!-- text-->
                   <a href="/admin/logout" class="dropdown-item"><i class="fas fa-power-off"></i> Logout</a>
                   <!-- text-->
@@ -176,6 +174,9 @@
             </ul>
         </li> -->
         <li class="nav-small-cap">--- SUPPORTS</li>
+        <li>
+          <a href="/admin/profile" class="waves-effect waves-dark" ><i class="ti-user"></i> My Profile</a>
+        </li>
         <li>
             <a class="waves-effect waves-dark" href="/admin/logout" aria-expanded="false">
                 <i class="icon-logout"></i>

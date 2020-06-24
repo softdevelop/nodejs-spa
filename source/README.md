@@ -29,3 +29,6 @@ mongorestore -d  pscd-spa /var/backups/mongobackups/pscd-spa
 admin@gmail.com/12345
 spa@gmail.com/12345
 user@gmail.com/12345
+
+
+mongodb+srv://spa-project:spa-project@cluster0-ehldv.mongodb.net/pscd-spa?retryWrites=true&w=majority
