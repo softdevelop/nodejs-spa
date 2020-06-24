@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const spas = require("../../../app/controllers/admin/spas");
 const booking = require("../../../app/controllers/admin/booking")
+const offer = require("../../../app/controllers/admin/offer")
 // multer
 const multer = require("multer");
 const { uploadMedia } = require("../../middleware");
@@ -13,6 +14,7 @@ router.get('/spas/bookings/:id/edit', hasRole('SPA_OWNER'), booking.getFormEditO
 router.post('/spas/bookings/:id/edit', hasRole('SPA_OWNER'), booking.editOfSpa)
 router.get('/spas/bookings/:id/view', hasRole('SPA_OWNER'), booking.viewDetailOfSpa)
 router.post("/spas/bookings/delmany", hasRole('SPA_OWNER'), booking.delMany)
+router.get("/spas/discount", offer.viewOffer);
 //End: spa
 
 

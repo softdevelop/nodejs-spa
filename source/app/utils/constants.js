@@ -90,6 +90,8 @@ const permissions = [
   'experts.view',
   'experts.delete',
   'experts.create',
+
+  'offer.index'
   
 ]
 

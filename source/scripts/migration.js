@@ -18,6 +18,7 @@ const getModels = () => modelsName
     .map(str => str.slice(0, -1))
     .map(modelName => {
       if(modelName=='Categorie') return mongoose.model("Category")
+      if(modelName=='Bookin') return mongoose.model("Booking")
       return mongoose.model(modelName) 
     });
 

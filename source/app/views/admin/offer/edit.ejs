@@ -48,7 +48,7 @@
                                 <div class="form-group">
                                   <label class="control-label">Avatar</label>
                                   <input type="file" id="avatar" class="form-control" name="avatar" value="<%=user.avatar?user.avatar:''%>">
-                                  <img id="blah" class="avatar-100 mt-1 w-100" src="<%=urlMediaUpload.imageObj(user.avatar)%>" />
+                                  <img class="avatar-100" src="<%=urlMediaUpload.imageObj(user.avatar)%>" />
                                   <small class="form-control-feedback text-danger"><%=errors?errors.avatar:''%></small>
                                </div>
                               </div>
@@ -197,23 +197,3 @@
         <!-- ============================================================== -->
     </div>
   </div>
-
-  <script>
-    $(document).ready(function(){
-      function readURL(input) {
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            
-            reader.onload = function(e) {
-               $('#blah').attr('src', e.target.result).removeClass("d-none");
-            }
-            
-            reader.readAsDataURL(input.files[0]); // convert to base64 string
-         }
-      }
-
-      $("#avatar").change(function() {
-         readURL(this);
-      });
-    })
-</script>
