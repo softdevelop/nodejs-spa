@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const spas = require("../../../app/controllers/admin/spas");
 const booking = require("../../../app/controllers/admin/booking")
-const offer = require("../../../app/controllers/admin/offer")
+const discount = require("../../../app/controllers/admin/discount")
 // multer
 const multer = require("multer");
 const { uploadMedia } = require("../../middleware");
@@ -14,7 +14,14 @@ router.get('/spas/bookings/:id/edit', hasRole('SPA_OWNER'), booking.getFormEditO
 router.post('/spas/bookings/:id/edit', hasRole('SPA_OWNER'), booking.editOfSpa)
 router.get('/spas/bookings/:id/view', hasRole('SPA_OWNER'), booking.viewDetailOfSpa)
 router.post("/spas/bookings/delmany", hasRole('SPA_OWNER'), booking.delMany)
-router.get("/spas/discount", offer.viewOffer);
+router.get("/spas/discount",hasRole('SPA_OWNER'), discount.getListDiscount);
+router.get("/spas/discount/create",hasRole('SPA_OWNER'), discount.getFormCreate);
+router.post("/spas/discount/create", hasRole('SPA_OWNER'),uploadMedia.fields([{ name: 'image', maxCount: 1 }]),  discount.create);
+router.get("/spas/discount/:id",hasRole('SPA_OWNER'), discount.viewDetail);
+router.get("/spas/discount/:id/edit",hasRole('SPA_OWNER'), discount.getFormEdit);
+router.post("/spas/discount/:id/edit", hasRole('SPA_OWNER'), uploadMedia.fields([
+  { name: 'image', maxCount: 1 }
+]), discount.edit);
 //End: spa
 
 

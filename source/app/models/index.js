@@ -16,5 +16,6 @@ module.exports = [
   "bookings",
   "services",
   "news",
-  "experts"
+  "experts",
+  "discounts"
 ];
