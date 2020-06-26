@@ -53,7 +53,7 @@
                                 <div class="form-group <%=errors.service?'has-danger':''%>">
                                     <label class="control-label">Select service</label>
                                     <select disabled class="form-control custom-select" name="spa_service_id">
-                                        <option><%=data.spaservice.service.title%></option>
+                                        <option><%=data.is_all_service?'Choose All':data.spaservice.service.title%></option>
                                   </select>
                                   <small class="form-control-feedback "><%=errors?errors.service:''%></small> 
                                 </div>

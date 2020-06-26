@@ -21,6 +21,7 @@ router.get("/spas/discount/:id/edit",hasRole('SPA_OWNER'), discount.getFormEdit)
 router.post("/spas/discount/:id/edit", hasRole('SPA_OWNER'), uploadMedia.fields([
   { name: 'image', maxCount: 1 }
 ]), discount.edit);
+router.post("/spas/discount/delmany",hasRole('SPA_OWNER'), discount.delMany);
 router.get('/spas/update-info', hasRole('SPA_OWNER'), spas.getFormUpdateInfor)
 router.post('/spas/update-info', hasRole('SPA_OWNER'), uploadMedia.fields([
   { name: 'logo', maxCount: 1 },{ name: 'imgs', maxCount: 1 }]), spas.updateInfor)

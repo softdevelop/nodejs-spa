@@ -129,6 +129,9 @@ const viewDetail = async (req, res) => {
       // match: {status: 'active'},
     }
   }).exec()
+  console.log('====================================');
+  console.log(data);
+  console.log('====================================');
   res.render('admin/discount/view', {
     errors: {},
     data, 
@@ -176,6 +179,23 @@ const create = async (req, res) => {
   }
 }
 
+delMany = async (req, res) => {
+  try {
+    let ids = req.body.ids;
+    console.log('====================================');
+    console.log(ids);
+    console.log('====================================');
+    ids.map(async val => {
+      const discount = await Discount.deleteOne({ _id: val }, (err, result) => {
+        if (err) return res.status(400).json({ status: "error" });
+      }).exec();
+    });
+    return res.status(200).json({ success: true });
+  } catch (err) {
+    return res.status(400).json({ success: false });
+  }
+};
+
 
 
 
@@ -185,6 +205,7 @@ module.exports = {
   create,
   viewDetail,
   getFormEdit,
-  edit
+  edit,
+  delMany
 
 };
