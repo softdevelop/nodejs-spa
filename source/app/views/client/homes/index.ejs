@@ -85,7 +85,7 @@
                       <div class="col-md-12">
                           <div class="product-carousel-wrapper owl-carousel" id="experts-carousel">
                                 <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog">
+                                  <div class="modal-dialog modal-lg">
                                       <div class="modal-content">
                                           <div class="modal-header">
                                               <h5 class="modal-title" id="exampleModalLabel"></h5>
@@ -104,28 +104,30 @@
                               <div class="row">
 
                                   <% item.spaservice.forEach((spaservice, index)=>{ %>
-                                    <div class="col-md-4">
-                                      <div class="single-blog">
-                                          <div class="blog-img pos-relative">
-                                              <div class="img-area">
-                                                  <a href="/spa/<%=spaservice.spa.slug%>"><img style="height: 200px;" src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs || spaservice.spa.logo)%>" alt="blog img" class="img-fluid"></a>
+                                    <div class="single-carousel col-md-4">
+                                      <img style="height: 220px; width: 100%;" src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs || spaservice.spa.logo)%>" alt="experts person" class="img-fluid">
+                                      <div class="expert-hover">
+                                          <div class="blog-content">
+                                              <div class="text-center">
+                                                  <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500 pt-20"><%=spaservice.spa.name%></a>
                                               </div>
-                                              <div class="expert-hover text-center">
-                                                <h6 class="name fw-700 color-ff"><%=spaservice.spa.name%></h6>
-                                                <span class="degignation"><%-spaservice.spa.address%></span>
-                                            </div>
-                                              <ul class="brand">
-                                                  <li><i class="fa fa-heart"></i>18</li>
-                                                  <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
-                                                  <li>
-                                                      <p data-toggle="modal" data-target="#mapModal" data-lat="<%=spaservice.spa.latitude%>" data-lng="<%=spaservice.spa.longitude%>" data-title="<%=spaservice.spa.name%>" class="map">
-                                                          <i class="fa fa-map-marker" aria-hidden="true"></i> Direct to location
-                                                      </p>
-                                                  </li>
-                                                  <li class="gallery"><i class="fa fa-picture-o"></i></li>
-                                              </ul>
+                                              <div class="address">
+                                                  <p class="spa-info address"><i class="fa fa-home"></i><span> Address:</span> <%-spaservice.spa.address%></p>
+                                                  <p class="spa-info phone"><i class="fa fa-phone"></i><span> Phone:</span> <%-spaservice.spa.phone%></p>
+                                                  <p class="spa-info email"><i class="fa fa-envelope"></i><span> Email:</span> <a href="#"><%-spaservice.spa.email%></a></p>
+                                              </div>
                                           </div>
                                       </div>
+                                      <ul class="brand">
+                                          <li><i class="fa fa-heart"></i>18</li>
+                                          <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
+                                          <li>
+                                              <p data-toggle="modal" data-target="#mapModal" data-lat="<%=spaservice.spa.latitude%>" data-lng="<%=spaservice.spa.longitude%>" data-title="<%=spaservice.spa.name%>" class="map">
+                                                  <i class="fa fa-map-marker" aria-hidden="true"></i> Direct to location
+                                              </p>
+                                          </li>
+                                          <li class="gallery"><i class="fa fa-picture-o"></i></li>
+                                      </ul>
                                     </div>
                                   <% }) %>
 
@@ -184,7 +186,7 @@
                 <!--gallery-1-->
                 <div class="col-lg-4 col-md-6  mix interiors">
                   <div class="single-gallery">
-                      <img style="max-height: 200px;" src="<%=urlMediaUpload.imageObj(item.images[0])%>" alt="gallery image" class="img-fluid" />
+                      <img style="height: 200px; width: 100%;" src="<%=urlMediaUpload.imageObj(item.images[0])%>" alt="gallery image" class="img-fluid" />
                       <div class="single-gallery-overlay text-center">
                           <h6><a href="/chuyen-gia/<%=item.slug%>" class="color-ff fw-500"><%=item.user.first_name%> <%=item.user.last_name%></a></h6>
                           <div class="divider mt-15 mb-10"></div>

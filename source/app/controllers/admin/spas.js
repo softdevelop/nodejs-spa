@@ -4,7 +4,7 @@ const User = mongoose.model("User");
 const SpaService = mongoose.model("SpasService")
 const moment = require("moment-timezone");
 const {genHtmlPagination, urlMediaUpload} = require('../../utils')
-const {validateSpa, validateSpaEdit} = require('../../models/spas')
+const {validateSpa, validateSpaEdit,validateSpaEditOfSpa} = require('../../models/spas')
 const {validateSpaService,validateSpaServiceEdit} = require('../../models/spas_services')
 const bcrypt = require("bcryptjs");
 var ObjectId = require('mongodb').ObjectID;
@@ -499,6 +499,49 @@ const viewDetailService = async (req, res) => {
   res.render('admin/spas/service/view', {errors: {}, data: record, spaService, urlMediaUpload})
 }
 
+const getFormUpdateInfor = async (req, res) => {
+  let id = req.user._id
+  let record = await Spa.findOne({owner: id}).populate('ownerDetail').exec();
+  let usersOwnedSpa = await Spa.find({ owner: { $ne: null } }).select('owner name').exec();
+  let idsUsersOwnedSpa = [];
+  usersOwnedSpa.forEach(item=>{
+    if(''+item.owner === record.owner+''){
+    }else{
+      idsUsersOwnedSpa.push(''+item.owner)
+    }
+  });
+  let spaOwners = await User.find({role: "SPA_OWNER", _id: { $nin: idsUsersOwnedSpa }}).exec();
+  res.render('admin/spas/update-info', {errors: {}, data: record, urlMediaUpload, spaOwners,locations})
+}
+
+const updateInfor = async (req, res) => {
+  let id = req.user._id
+  let data = req.body
+  delete data.logo
+  delete data.imgs
+  let err = validateSpaEditOfSpa(data)
+  if(err && err.error){
+    let errors = err.error && err.error.details.reduce((result, item)=>{
+      return {
+        ...result,
+        [item.path[0]]: item.message
+      }
+    }, {})
+    data._id = id
+    return res.render("admin/spas/update-info", { errors, data, locations, urlMediaUpload });
+  }else{
+    if(req.files.logo && req.files.logo[0]){
+      data.logo = req.files.logo[0]
+    }else delete data.logo
+
+    if(req.files.imgs && req.files.imgs[0]){
+      data.imgs = req.files.imgs[0]
+    }else delete data.imgs
+    await Spa.findOne({owner: id}).populate('ownerDetail').update(data);
+    res.redirect("/admin");
+  }
+}
+
 module.exports = {
   getListSpas,
   getFormCreate,
@@ -518,5 +561,7 @@ module.exports = {
   getFormEditService,
   editService,
   delManyService,
-  viewDetailService
+  viewDetailService,
+  getFormUpdateInfor,
+  updateInfor
 };
