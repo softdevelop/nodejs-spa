@@ -13,13 +13,17 @@ mongoose.Promise = global.Promise;
 
 const getListDiscount = async (req, res) => {
     if (req.user) {
+        let user_id = req.user._id
+        let spa_id = await Spa.findOne({owner:user_id,status:"active"}).select("id").exec();
         let { page, limit } = req.query;
         let search = req.query.search || '';
         let text = '.*'+search.split(' ').join('.*')+'.*'
         let reg = new RegExp(text);
         var query = {
-        //   title: { $regex: reg, $options: 'gmi' },
+          title: { $regex: reg, $options: 'gmi' },
+          spa_id : spa_id._id,
         };
+        console.log(query);
         var options = {
           select: "", //"username email"
           sort: { createdAt: -1 },
@@ -29,12 +33,12 @@ const getListDiscount = async (req, res) => {
           populate: [{
             path: 'spaservice',
             populate: {
-              path: 'service'
+              path: 'service',
             }
           }],
         };
+        let data = await Discount.paginate(query, options)
 
-        let data = await Discount.paginate(query, options);
         data.search = search
         return res.render("admin/discount/index", {
           data,
@@ -43,27 +47,38 @@ const getListDiscount = async (req, res) => {
           genHtmlPagination: genHtmlPagination(data.total, data.limit, data.page, data.pages, data.search),
         });
       } else {
+        res.render('admin/404')
       }
 };
 
 const getFormEdit = async (req, res) => {
   
   let user_id = req.user._id
-  let spa_id = await Spa.find({owner:user_id}).select("id").exec();
+  let spa_id = await Spa.findOne({owner:user_id,status:"active"}).select("_id").exec();
   let services = await SpaService.find({spa_id: spa_id}).populate({
     path: 'service',
     select: 'title'
   }).exec();
+  console.log('===========spa_id================');
+  console.log(spa_id);
+  console.log('====================================');
  
   let id = req.params.id;
   let discount = await Discount.findById(id).exec();
-  res.render('admin/discount/edit', {
-    errors: {},
-    services,
-    discount,
-    moment: moment.tz.setDefault("Asia/Ho_Chi_Minh"),
-    urlMediaUpload,
-  })
+  console.log('===========discount================');
+  console.log(discount);
+  console.log('====================================');
+  if(spa_id.equals(discount.spa_id)){
+    res.render('admin/discount/edit', {
+      errors: {},
+      services,
+      discount,
+      moment: moment.tz.setDefault("Asia/Ho_Chi_Minh"),
+      urlMediaUpload,
+    })
+  }else{
+    res.render('admin/404')
+  }
 }
 
 const edit = async (req, res) => {
@@ -78,16 +93,14 @@ const edit = async (req, res) => {
       }
     }, {})
     data._id = id
-    let roles = await Role.find().select('name value').exec();
     let id = req.user._id
-    let spa_id = await Spa.find({owner:id}).select("id").exec();
+    let spa_id = await Spa.find({owner:id,status:"active"}).select("id").exec();
     let services = await SpaService.find({spa_id: spa_id}).populate('service').populate('spa').exec();
     return res.render('admin/discount/edit', {
       errors,
       data: {}, 
       services,
       moment: moment.tz.setDefault("Asia/Ho_Chi_Minh"),
-      servicesJSON: JSON.stringify(services).replace(/\\"/g, '\\\\"')
     })
     
   }else{
@@ -105,13 +118,12 @@ const edit = async (req, res) => {
 const getFormCreate = async (req, res) => {
   
   let id = req.user._id
-  let spa_id = await Spa.find({owner:id}).select("id").exec();
-  let services = await SpaService.find({spa_id: spa_id}).populate('service').exec();
+  let spa_id = await Spa.findOne({owner:id}).select("id").exec();
+  let services = await SpaService.find({spa_id: spa_id.id}).populate('service').exec();
   res.render('admin/discount/create', {
     errors: {},
     services,
     moment: moment.tz.setDefault("Asia/Ho_Chi_Minh"),
-    servicesJSON: JSON.stringify(services).replace(/\\"/g, '\\\\"')
   })
 }
 
@@ -119,19 +131,14 @@ const getFormCreate = async (req, res) => {
 const viewDetail = async (req, res) => {
   
   let id = req.params.id
-
   let data = await Discount.findById(id).populate({
     path: 'spaservice',
     select:'service service_id',
     populate: {
       path: 'service',
       select:'title',
-      // match: {status: 'active'},
     }
   }).exec()
-  console.log('====================================');
-  console.log(data);
-  console.log('====================================');
   res.render('admin/discount/view', {
     errors: {},
     data, 
@@ -141,9 +148,12 @@ const viewDetail = async (req, res) => {
 }
 
 const create = async (req, res) => {
+  let id = req.user._id
+  let spa_id = await Spa.findOne({owner:id}).select("id").exec();
   let data = req.body
+  data.spa_id = spa_id.id;
   if(data.spa_service_id==0) {
-    delete data.spa_service_id;
+    delete data.spaspaservice
     data.is_all_service = true;
   }
   data.status = 'pending';
@@ -155,18 +165,14 @@ const create = async (req, res) => {
         [item.path[0]]: item.message
       }
     }, {})
-    let id = req.user._id
-    let spa_id = await Spa.find({owner:id}).select("id").exec();
-    let services = await SpaService.find({spa_id: spa_id}).populate('service').populate('spa').exec();
+    let services = await SpaService.find({spa_id: spa_id.id}).populate('service').populate('spa').exec();
     return res.render('admin/discount/create', {
       errors,
       data: {}, 
       services,
       moment: moment.tz.setDefault("Asia/Ho_Chi_Minh"),
-      servicesJSON: JSON.stringify(services).replace(/\\"/g, '\\\\"')
     })
   }else{
-
     if(req.files.image){
       data.image = req.files.image[0]
     }
@@ -182,9 +188,6 @@ const create = async (req, res) => {
 delMany = async (req, res) => {
   try {
     let ids = req.body.ids;
-    console.log('====================================');
-    console.log(ids);
-    console.log('====================================');
     ids.map(async val => {
       const discount = await Discount.deleteOne({ _id: val }, (err, result) => {
         if (err) return res.status(400).json({ status: "error" });

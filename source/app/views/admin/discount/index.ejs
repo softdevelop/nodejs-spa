@@ -77,13 +77,13 @@
     <!-- ============================================================== -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h4 class="text-themecolor">Users</h4>
+            <h4 class="text-themecolor">Discount</h4>
         </div>
         <div class="col-md-7 align-self-center text-right">
             <div class="d-flex justify-content-end align-items-center">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                    <li class="breadcrumb-item active">Users</li>
+                    <li class="breadcrumb-item active">Discount</li>
                 </ol>
                 <a href="/admin/spas/discount/create"><button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i
                         class="fa fa-plus-circle"></i> Create New</button></a>
@@ -100,8 +100,8 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">User Table</h4>
-                  <h6 class="card-subtitle">User table example</h6>
+                  <h4 class="card-title">Discount Table</h4>
+                  <h6 class="card-subtitle">Discount table example</h6>
 
                   <div class="row">
                     <div class="col-sm-12 col-md-6">
@@ -168,6 +168,8 @@
                                       <%= item.is_all_service?'All Service': item.spaservice.title || item.spaservice.service.title %>
                                   </td>
                                   <td>
+                                      <%let dateLimit = moment(item.date_end).diff(moment(item.date_start),'days') %> 
+                                      <%= dateLimit>1?dateLimit+ " Days": dateLimit +" Day" %> <br>
                                       <%= moment(item.date_start).format('YYYY-MM-DD') %> (Start) <br>
                                       <%= moment(item.date_end).format('YYYY-MM-DD') %> (End)
                                   </td>

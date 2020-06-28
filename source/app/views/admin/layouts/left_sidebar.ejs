@@ -84,6 +84,15 @@
           </li>
         <% } %>
 
+        <% if(userLocal.role === 'ADMIN'){ %>
+          <li> 
+            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-pin"></i><span class="hide-menu">Offer - Discount</span></a>
+              <ul aria-expanded="false" class="collapse">
+                  <li><a href="/admin/discount">Discount for service</a></li>
+              </ul>
+          </li>
+        <% } %>
+
         <% if(userLocal.permissions.includes('news.index')){ %>
           <li> 
             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-feed"></i><span class="hide-menu">Spa news</span></a>

@@ -20,7 +20,7 @@
     <!-- ============================================================== -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h4 class="text-themecolor">DisCount</h4>
+            <h4 class="text-themecolor">Discount</h4>
         </div>
         <div class="col-md-7 align-self-center text-right">
             <div class="d-flex justify-content-end align-items-center">
@@ -84,14 +84,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group <%=errors.birthday?'has-danger':''%>">
                                         <label class="control-label">Date Start</label>
-                                        <input id="date_start" type="date" class="form-control" min="<%= moment(discount.date_start).format('YYYY-MM-DD') %>" placeholder="dd/mm/yyyy" name="date_start" required value="<%= moment(discount.date_start).format('YYYY-MM-DD') %>">
+                                        <input id="date_start" type="date" class="form-control"  placeholder="dd/mm/yyyy" name="date_start" required value="<%= moment(discount.date_start).format('YYYY-MM-DD') %>">
                                         <small class="form-control-feedback"><%=errors?errors.birthday:''%></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group <%=errors.birthday?'has-danger':''%>">
                                         <label class="control-label">Date End</label>
-                                        <input id="date_end" type="date" class="form-control"placeholder="dd/mm/yyyy" name="date_end" required <%= moment(discount.date_end).format('YYYY-MM-DD') %>>
+                                        <input id="date_end" type="date" class="form-control"placeholder="dd/mm/yyyy" name="date_end" required value="<%= moment(discount.date_end).format('YYYY-MM-DD') %>">
                                         <small class="form-control-feedback"><%=errors?errors.birthday:''%></small>
                                     </div>
                                 </div>
@@ -123,7 +123,7 @@
                        
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                <a href="/admin/spas">
+                                <a href="/admin/spas/discount">
                                     <button type="button" class="btn btn-inverse">Cancel</button>
                                 </a>
                             </div>
@@ -236,23 +236,16 @@
       // set time
       $('#date_start').change(function() {
             $('#date_end').attr({
-                "value":$(this).val(),
               "min":$(this).val(),
             })
       }) 
-      $('#date_start').trigger("change");
+      $('#date_start').trigger("change")
 
         $('input[name="daterange"]').daterangepicker({
     opens: 'left'
   }, function(start, end, label) {
     console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
   });
-
-
-
-
-
-
 
 
     })
