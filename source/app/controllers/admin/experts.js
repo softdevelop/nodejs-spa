@@ -1,9 +1,15 @@
 const mongoose = require("mongoose");
 const Expert = mongoose.model("Expert");
 const User = mongoose.model("User");
+const ExpertService = mongoose.model("ExpertsService");
 const moment = require("moment-timezone");
 const {genHtmlPagination, urlMediaUpload, genCategory, constants} = require('../../utils')
 const {validateExpert, validateExpertEdit} = require('../../models/experts')
+const {validateExpertService,validateExpertServiceEdit} = require('../../models/experts_services')
+const { 
+  expertServiceService,
+} = require("../../services");
+
 const bcrypt = require("bcryptjs");
 const { job } = require("cron");
 const truncate = require('html-truncate');
@@ -182,10 +188,163 @@ const edit = async (req, res) => {
   }
 }
 
+const viewDetail = async (req, res) => {
+  let id = req.params.id;
+  let currentExpert = await Expert.findById(id).exec()
+  let usersOwnedExpert = await Expert.find({ user_id: { $ne: null } }).exec();
+  let idsUsersOwnedExpert = usersOwnedExpert.map(item=>''+item.user_id);
+  idsUsersOwnedExpert = idsUsersOwnedExpert.filter(item=>currentExpert.user_id+'' != item)
+  var user = await User.find({role: 'EXPERT', _id: { $nin: idsUsersOwnedExpert }}).select('_id first_name last_name').exec()   
+  res.render('admin/experts/view', {
+    errors: {}, 
+    data: currentExpert, 
+    urlMediaUpload, 
+    user,
+  })
+}
+
+const getListService = async (req, res) => {
+  let id = req.params.id
+  let record = await Expert.findById(id).exec();
+  let data = await ExpertService.find({expert_id: id}).populate('service').exec();
+  res.render('admin/experts/service/index', {errors: {}, data, record, urlMediaUpload})
+}
+
+const getFormCreateService = async (req, res) => {
+  let id = req.params.id
+  let record = await Expert.findById(id).exec();
+  let spaOwners = await User.find({role: "SPA_OWNER"}).exec();
+  res.render('admin/experts/service/create', {
+    errors: {}, 
+    data: {}, 
+    record, 
+    spaOwners, 
+  })
+}
+
+const createService = async (req, res) => {
+  let id = req.params.id
+  let record = await Expert.findById(id).exec();
+  let expert_id = record._id
+  let data = {...req.body, expert_id};
+
+  let err = validateExpertService(data);
+    if (err && err.error) {
+      let errors =
+        err.error &&
+        err.error.details.reduce((result, item) => {
+          return {
+            ...result,
+            [item.path[0]]: item.message,
+          };
+        }, {});
+      return res.render("admin/experts/service/create", { 
+        errors,
+        record, 
+        data,
+      });
+    } else {
+      try{
+        if(req.files.image){
+          data.image = req.files.image[0]
+        }
+      
+        await expertServiceService.createExpertsService(data);
+        res.redirect('/admin/experts/' +req.params.id+'/service/index');
+      }catch(e){
+        console.log('e', e);
+      }
+    }
+  
+};
+
+const getFormEditService = async (req, res) => {
+  let id = req.params.id
+  let idExpertService = req.params.idExpertService
+  let record = await Expert.findById(id).exec();
+  let expertService = await ExpertService.findById(idExpertService).exec();
+  res.render('admin/experts/service/edit', {
+    errors: {}, 
+    data: record,
+    expertService, 
+    urlMediaUpload, 
+  })
+}
+
+const editService = async (req, res) => {
+  let id = req.params.id
+  let record = await Expert.findById(id).exec();
+  let expert_id = record._id
+  let idExpertService = req.params.idExpertService
+  let expertService = await ExpertService.findById(idExpertService).exec();
+  let data = {...req.body,expert_id}
+  delete data.image
+
+  let err = validateExpertServiceEdit(data)
+  if(err && err.error){
+    let errors = err.error && err.error.details.reduce((result, item)=>{
+      return {
+        ...result,
+        [item.path[0]]: item.message
+      }
+    }, {})
+    data._id = id
+    return res.render('admin/experts/service/edit', {
+      errors: {}, 
+      data,
+      record,
+      expertService,
+      urlMediaUpload,
+    })
+  }else{
+
+    try{
+      if(req.files.image){
+        data.image = req.files.image[0]
+      }
+      await expertServiceService.editExpertsService(idExpertService, data);
+      res.redirect('/admin/experts/' +req.params.id+'/service/index');
+    }catch(e){
+      console.log('e', e);
+    }
+  }
+}
+
+const delManyService = async (req, res) => {
+  try {
+    let ids = req.body.ids;
+    ids.map(async val => {
+      const user = await ExpertService.deleteOne({ _id: val }, (err, result) => {
+        if (err) return res.status(400).json({ status: "error" });
+      }).exec();
+    });
+    return res.status(200).json({ success: true });
+  } catch (err) {
+    return res.status(400).json({ success: false });
+  }
+}
+
+const viewDetailService = async (req, res) => {
+  let id = req.params.id
+  let record = await Expert.findById(id).exec();
+  let idExpertService = req.params.idExpertService
+  let expertService = await ExpertService.findById(idExpertService).populate('expert').exec();
+  res.render('admin/experts/service/view', {errors: {}, data: record, expertService, urlMediaUpload})
+}
+
 module.exports = {
     getListExpert,
     getFormCreate,
     create,
     getFormEdit,
-    edit
+    edit,
+    viewDetail,
+
+    getListService,
+    getFormCreateService,
+    createService,
+    viewDetailService,
+    getFormEditService,
+    editService,
+    delManyService
 }

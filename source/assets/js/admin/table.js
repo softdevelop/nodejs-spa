@@ -62,9 +62,9 @@
 //   });
 // })
 
+var listChecked = [];
 
 $(document).ready(function () {
-  var listChecked = [];
   $("table.DataTable").on("click", ".CheckAll input", function () {
     if ($(this).prop("checked")) {
       listChecked = [];
