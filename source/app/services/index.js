@@ -7,6 +7,7 @@ const projectService = require("./projects.service")
 const reportService = require("./reports.service")
 const requestService = require("./requests.service")
 const serviceService = require("./services.service")
+const expertServiceService = require("./experts_services.service")
 
 module.exports = {
   userService,
@@ -17,5 +18,6 @@ module.exports = {
   projectService,
   reportService,
   requestService,
-  serviceService
+  serviceService,
+  expertServiceService
 }
