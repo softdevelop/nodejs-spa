@@ -111,6 +111,12 @@ SpaSchema.virtual('services', {
   foreignField: 'spa_id',
 });
 
+SpaSchema.virtual('service', {
+  ref: 'SpasService',
+  localField: '_id',
+  foreignField: 'spa_id_recommend',
+});
+
 SpaSchema.virtual('members', {
   ref: 'SpasTeam',
   localField: '_id',

@@ -13,6 +13,7 @@ const dashboardUrl = () => APP_DOMAIN + `/dashboard`;
 mongoose.Promise = global.Promise;
 
 const getListBooking = async (req, res) => {
+  console.log('=========data booking===============');
   if (req.user) {
     let { page, limit } = req.query;
     let search = req.query.search || '';
@@ -34,6 +35,9 @@ const getListBooking = async (req, res) => {
       }],
     };
     let data = await Booking.paginate(query, options);
+    console.log('=========data booking===============');
+    console.log(data.docs);
+    console.log('====================================');
     data.search = search
     
     return res.render("admin/booking/index", {

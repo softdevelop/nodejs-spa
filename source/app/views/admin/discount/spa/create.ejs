@@ -1,4 +1,4 @@
-<% extend('../layouts/base', { 
+<% extend('../../layouts/base', { 
     title: "Spa management",
     subTitle: "Create",
     css: `
@@ -44,9 +44,9 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="/admin/discount/<%=discount._id %>/edit" method="post" enctype="multipart/form-data">
+                    <form action="/admin/spas/discount/create" method="post" enctype="multipart/form-data">
                         <div class="form-body">
-                            <h3 class="card-title">DisCount Eidt</h3>
+                            <h3 class="card-title">DisCount Create</h3>
                             <hr>
                             <div class="row p-t-20">
                                 <div class="col-md-6">
@@ -55,7 +55,7 @@
                                       <select class="form-control custom-select" name="spa_service_id">
                                           <option value="0">Choose all</option>
                                           <% services.forEach(item=>{ %>
-                                            <option value="<%=item._id%>" <%= discount.spa_service_id.equals(item.id)?'selected':'' %> ><%=item.title || item.service.title%></option>
+                                            <option value="<%=item._id%>"><%=item.title || item.service.title%></option>
                                           <% }) %>
                                     </select>
                                     <small class="form-control-feedback "><%=errors?errors.service:''%></small> 
@@ -65,7 +65,7 @@
                                     <div class="form-group form-group-title <%=errors.title?'has-danger':''%>">
                                         <label class="control-label">Title</label>
                                         <input type="text" id="title" class="form-control" placeholder="" name="title"
-                                            required value="<%= discount.title %>" >
+                                            required >
                                         <small class="form-control-feedback"><%=errors?errors.title:''%></small>
                                     </div>
                                 </div>
@@ -75,7 +75,7 @@
                                 <div class="col-md-12 ">
                                     <div class="form-group form-group-content <%=errors.content? 'has-danger': ''%>">
                                         <label class="control-label">Content</label>
-                                        <textarea class="summernote" style="z-index: 1;" name="content"><%= discount.content %></textarea>
+                                        <textarea class="summernote" style="z-index: 1;" name="content"></textarea>
                                         <small class="form-control-feedback"><%=errors?errors.content:''%></small>
                                     </div>
                                 </div>
@@ -84,14 +84,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group <%=errors.birthday?'has-danger':''%>">
                                         <label class="control-label">Date Start</label>
-                                        <input id="date_start" type="date" class="form-control"  placeholder="dd/mm/yyyy" name="date_start" required value="<%= moment(discount.date_start).format('YYYY-MM-DD') %>">
+                                        <input id="date_start" type="date" class="form-control" min="<%= moment().format('YYYY-MM-DD') %>" placeholder="dd/mm/yyyy" name="date_start" required value="<%= moment().format('YYYY-MM-DD') %>">
                                         <small class="form-control-feedback"><%=errors?errors.birthday:''%></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group <%=errors.birthday?'has-danger':''%>">
                                         <label class="control-label">Date End</label>
-                                        <input id="date_end" type="date" class="form-control"placeholder="dd/mm/yyyy" name="date_end" required value="<%= moment(discount.date_end).format('YYYY-MM-DD') %>">
+                                        <input id="date_end" type="date" class="form-control"placeholder="dd/mm/yyyy" name="date_end" required%>">
                                         <small class="form-control-feedback"><%=errors?errors.birthday:''%></small>
                                     </div>
                                 </div>
@@ -102,8 +102,9 @@
                                         <label class="control-label">Image</label>
                                         <input type="file" id="image" class="form-control" name="image"
                                             >
-                                            <img id="blah" class="w-100 mt-2" src="<%=urlMediaUpload.imageObj(discount.image)  %>" />
+                                            <img id="blah" class="w-100 d-none mt-2" src="#" />
                                         <small class="form-control-feedback"><%=errors?errors.image:''%></small>
+                                        <img src="" id="image" style="max-width: 100%;"/>
 
                                     </div>
                                 </div>
@@ -111,32 +112,19 @@
                                     <div class="form-group form-group-price <%=errors.price?'has-danger':''%>">
                                         <label class="control-label">Price</label>
                                         <input type="text" id="price" class="form-control" placeholder="" name="price"
-                                            required value="<%= discount.price %>">
+                                            required >
                                         <small class="form-control-feedback"><%=errors?errors.price:''%></small>
                                     </div>
                                 </div>
 
                             </div>
                           
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group <%=errors.status?'has-danger':''%>">
-                                        <label class="control-label">Status</label>
-                                        <select class="form-control custom-select" name="status">
-                                            <option value="pending" <%= discount.status == 'pending'?'selected':''  %>  >Pending</option>
-                                            <option value="active" <%= discount.status == 'active'?'selected':''  %> >Active</option>
-                                            <option value="blocked" <%= discount.status == 'blocked'?'selected':''  %> >Blocked</option>
-                                      </select>
-                                      <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
-                                    </div>
-                                  </div>
-                              </div>
                             <!--/row-->
                             <!--/row-->
                        
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                <a href="/admin/discount">
+                                <a href="/admin/spas">
                                     <button type="button" class="btn btn-inverse">Cancel</button>
                                 </a>
                             </div>
@@ -249,16 +237,11 @@
       // set time
       $('#date_start').change(function() {
             $('#date_end').attr({
+                "value":$(this).val(),
               "min":$(this).val(),
             })
       }) 
-      $('#date_start').trigger("change")
-
-        $('input[name="daterange"]').daterangepicker({
-    opens: 'left'
-  }, function(start, end, label) {
-    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-  });
+      $('#date_start').trigger("change");
 
 
     })
