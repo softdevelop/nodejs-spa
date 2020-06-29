@@ -48,3 +48,9 @@ mongodump --host Cluster0-shard-0/cluster0-shard-00-00-59lbw.mongodb.net:27017,c
 mongorestore --host Cluster0-shard-0/cluster0-shard-00-00-59lbw.mongodb.net:27017,cluster0-shard-00-01-59lbw.mongodb.net:27017,cluster0-shard-00-02-59lbw.mongodb.net:27017 --ssl --username pscd-spa --password e2p0jJ70W2tHSnpM --authenticationDatabase admin 
 
 MONGOOSE_DB_URL=mongodb+srv://pscd-spa:e2p0jJ70W2tHSnpM@cluster0-59lbw.mongodb.net/pscd-spa?retryWrites=true&w=majority
+
+http://103.226.249.47:3002/admin/login
+http://103.226.249.47:3002/login
+admin@gmail.com/12345
+spa@gmail.com/12345
+editor@gmail.com/12345

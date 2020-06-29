@@ -1,0 +1,255 @@
+<% extend('../layouts/base', { 
+    title: "Expert management",
+    subTitle: "Edit",
+    css: `
+      <link rel="stylesheet" href="/libs/node_modules/dropify/dist/css/dropify.min.css">
+      <link href="/libs/dist/css/style.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="/libs/node_modules/summernote/dist/summernote-bs4.css">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+      <link rel="stylesheet" href="/libs/css/bootstrap-datepicker.min.css">
+      <link rel="stylesheet" href="/libs/css/bootstrap-select.min.css">
+      <link rel="stylesheet" href="/libs/css/bootstrap-tagsinput.css">
+      <link rel="stylesheet" href="/libs/css/jquery.bootstrap-touchspin.min.css">
+      <link rel="stylesheet" href="/libs/js/Simple-Flexible-jQuery-Autocomplete-Plugin-Flexdatalist/jquery.flexdatalist.css">
+      <link rel="stylesheet" href="/libs/js/Simple-Flexible-jQuery-Autocomplete-Plugin-Flexdatalist/jquery.flexdatalist.min.css">
+      <link rel="stylesheet" href="/libs/css/amsify.suggestags.css">
+      <!-- Custom CSS -->
+      <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+      <script src="/libs/js/Simple-Flexible-jQuery-Autocomplete-Plugin-Flexdatalist/jquery.flexdatalist.js"></script>
+      <script src="/libs/js/Simple-Flexible-jQuery-Autocomplete-Plugin-Flexdatalist/jquery.flexdatalist.min.js"></script>
+    `,
+    script: `
+    
+    `
+    }) %>
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h4 class="text-themecolor">Expert</h4>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">Expert</li>
+                </ol>
+                <a href="/admin/experts" <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i
+                        class="fa fa-plus-circle"></i> List</button></a>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <!-- Row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/admin/experts/<%=data._id%>/edit" method="post" enctype="multipart/form-data">
+                        <div class="form-body">
+                            <h3 class="card-title">Expert Info</h3>
+                            <hr>
+                            <div class="row p-t-20">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-slogan <%=errors.slogan?'has-danger':''%>">
+                                        <label class="control-label">Slogan</label>
+                                        <input disabled type="text" id="slogan" class="form-control" placeholder="" name="slogan"
+                                            required value="<%=data.slogan?data.slogan:''%>">
+                                        <small class="form-control-feedback"><%=errors?errors.slogan:''%></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="form-group form-group-images <%=errors.images? 'has-danger': ''%>">
+                                        <label class="control-label">Images</label>
+                                        <input disabled multiple type="file" id="images" class="form-control" name="images"
+                                            value="<%=data.images?data.images:''%>">
+                                        <small class="form-control-feedback"><%=errors?errors.images:''%></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row p-t-20">
+                                <div class="col-md-12 ">
+                                    <div class="form-group form-group-about <%=errors.about? 'has-danger': ''%>">
+                                        <label class="control-label">About</label>
+                                        <textarea class="summernote" style="z-index: 1;"
+                                            name="about"><%=data.about?data.about:''%></textarea>
+                                        <small class="form-control-feedback"><%=errors?errors.about:''%></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row p-t-20">
+                                <div class="col-md-12 ">
+                                    <div
+                                        class="form-group form-group-description <%=errors.description? 'has-danger': ''%>">
+                                        <label class="control-label">Description</label>
+                                        <textarea class="summernote" style="z-index: 1;"
+                                            name="description"><%=data.description?data.description:''%></textarea>
+                                        <small class="form-control-feedback"><%=errors?errors.description:''%></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/row-->
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-spa_id <%=errors.spa_id?'has-danger':''%>">
+                                        <label class="control-label">User name</label>
+                                        <select disabled class="form-control custom-select" name="user_id">
+                                            <%user.forEach(item=>{  %>
+                                            <option value="<%=item._id%>" <%=(''+data.user_id==''+item._id)?'selected':''%>><%=item.first_name%> <%=item.last_name%></option>
+                                            <% }) %>
+                                        </select>
+                                        <small class="form-control-feedback "><%=errors?errors.user_id:''%></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="form-group form-group-slug <%=errors.slug?'has-danger':''%>">
+                                      <label class="control-label">Slug</label>
+                                      <input disabled type="text" id="slug" class="form-control" placeholder="" name="slug"
+                                          required value="<%=data.slug?data.slug:''%>">
+                                      <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-job <%=errors.job?'has-danger':''%>">
+                                        <label class="control-label">Job</label>
+                                        <input disabled type='text' class='flexdatalist form-control' value="<%=data.job%>"
+                                            data-min-length='1' list='skills' name='job'>
+                                        <datalist id="skills">
+                                            <option><%=data.job%></option>
+                                        </datalist>
+                                        <small class="form-control-feedback"><%=errors?errors.job:''%></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="form-group form-group-tags <%=errors.tags?'has-danger':''%>">
+                                      <label class="control-label">Tags</label>
+                                      <input disabled type="text" class="form-control" placeholder="" name="tags"
+                                          required value="<%=data.tags?data.tags:''%>">
+                                      <small class="form-control-feedback"><%=errors?errors.tags:''%></small>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                                <a href="/admin/experts">
+                                    <button type="button" class="btn btn-inverse">Cancel</button>
+                                </a>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Row -->
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    <div class="right-sidebar">
+        <div class="slimscrollright">
+            <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+            <div class="r-panel-body">
+                <ul id="themecolors" class="m-t-20">
+                    <li><b>With Light sidebar</b></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-default" class="default-theme">1</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-green" class="green-theme">2</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-red" class="red-theme">3</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-blue" class="blue-theme">4</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-purple" class="purple-theme">5</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-megna" class="megna-theme">6</a></li>
+                    <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-default-dark"
+                            class="default-dark-theme working">7</a>
+                    </li>
+                    <li><a href="javascript:void(0)" data-skin="skin-green-dark" class="green-dark-theme">8</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-red-dark" class="red-dark-theme">9</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-blue-dark" class="blue-dark-theme">10</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-purple-dark" class="purple-dark-theme">11</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-megna-dark" class="megna-dark-theme ">12</a></li>
+                </ul>
+                <ul class="m-t-20 chatonline">
+                    <li><b>Chat option</b></li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user-img"
+                                class="img-circle"> <span>Varun Dhavan <small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/2.jpg" alt="user-img"
+                                class="img-circle"> <span>Genelia Deshmukh <small
+                                    class="text-warning">Away</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/3.jpg" alt="user-img"
+                                class="img-circle"> <span>Ritesh Deshmukh <small
+                                    class="text-danger">Busy</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/4.jpg" alt="user-img"
+                                class="img-circle"> <span>Arijit Sinh <small
+                                    class="text-muted">Offline</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/5.jpg" alt="user-img"
+                                class="img-circle"> <span>Govinda Star <small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/6.jpg" alt="user-img"
+                                class="img-circle"> <span>John Abraham<small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/7.jpg" alt="user-img"
+                                class="img-circle"> <span>Hritik Roshan<small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/8.jpg" alt="user-img"
+                                class="img-circle"> <span>Pwandeep rajan <small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+</div>
+</div>
+<script src="/libs/node_modules/summernote/dist/summernote-bs4.min.js"></script>
+<script src="/js/slugify.js"></script>
+<script src="/js/admin/summernote-init.js"></script>
+<script src="/libs/js/jquery.amsify.suggestags.js"></script>
+<script type="text/javascript">
+    $('input[name="tags"]').amsifySuggestags({
+        suggestions: []
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('form').keydown(function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                return false;
+            }
+        });
+        $('select[name=user_id]').on('change', function(){
+          let fullname = $('select[name=user_id] option:selected').html();
+          $('input[name=slug]').val(slugify(fullname))
+        })
+    });
+</script>

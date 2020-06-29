@@ -20,7 +20,10 @@ const index = async (req, res) => {
   let services = await Service.find({ status: 'active'}).select('title').populate({
     path: 'spaservice',
     select: 'title _id spa_id',
-    populate: 'spa'
+    populate: 'spa',
+    options: {
+      limit: 10
+    }
   }).lean();
 
   let { limit } = req.query;

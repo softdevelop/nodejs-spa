@@ -176,11 +176,14 @@
                                     <td style="word-wrap: break-word; max-width: 150px;"><%=item.tags%></td>
                                     <td><%=item.job%></td>
                                     <td>
-                                        <a href="/admin/experts/<%=item._id%>/view">
+                                        <a href="/admin/experts/<%=item._id%>">
                                             <i class="ti-eye"></i>
                                         </a>
                                         <a href="/admin/experts/<%=item._id%>/edit">
                                             <i class="icon-note"></i>
+                                        </a>
+                                        <a href="/admin/experts/<%=item._id%>/service/index" alt="Add service">
+                                          <i class="icon-people"></i>
                                         </a>
                                     </td>
                                 </tr>

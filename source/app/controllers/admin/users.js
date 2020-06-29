@@ -49,6 +49,7 @@ const getFormCreate = async (req, res) => {
 const create = async (req, res) => {
   let data = req.body
   let err = validateUser(data)
+  let roles = await Role.find().select('name value').exec();
   if(err && err.error){
     let errors = err.error && err.error.details.reduce((result, item)=>{
       return {
@@ -68,6 +69,12 @@ const create = async (req, res) => {
       res.redirect('/admin/users')
     }).catch(e=>{
       console.log('catch', e);
+      delete data.password
+      delete data.repassword
+      return res.render('admin/users/create', {
+        errors: {
+          email: 'Email already exist'
+        }, data, roles})
     })
   }
 }
