@@ -34,6 +34,7 @@ router.get('/tin-tuc', news.index)
 router.get('/tin-tuc/:slug', news.view)
 router.get('/hoi-dap', qa.index)
 router.get('/spa/:slug', spa.landingPage)
+router.get('/spa/:slug/:idDiscount', spa.landingPage)
 router.post('/spa/:slug', spa.booking)
 router.get("/:slug", staticPage.index);
 

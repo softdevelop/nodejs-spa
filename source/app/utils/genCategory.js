@@ -27,7 +27,7 @@ function genCategoryTree (categories){
   })
   return result;
 }
-
+// News
 function genOptions (categories, currentCategoryName = '', idSelected = '', listChildId = []){
   // idSelected is a field that to check parentId of category, to show in edit page
   // listChildId is a file that to check that these options are child of current category, so when edit, a category can't set as child of its' child

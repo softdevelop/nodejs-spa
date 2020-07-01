@@ -3,19 +3,20 @@ const Category = mongoose.model('Category')
 const Service = mongoose.model('Service')
 const New = mongoose.model("New");
 const Expert = mongoose.model("Expert");
+const Discount = mongoose.model("Discount");
 const moment = require("moment-timezone");
 const {genHtmlPaginationClient, urlMediaUpload, genCategory} = require('../../utils')
 const truncate = require('html-truncate');
 
-const {
-  constants
-} = require("../../utils");
+const { constants } = require("../../utils");
 const index = async (req, res) => {
+
 
   let categories = await Category.getChildrenTree({
     fields: "_id name slug parent path",
     options: { lean: true },
   });
+
 
   let services = await Service.find({ status: 'active'}).select('title').populate({
     path: 'spaservice',
@@ -25,6 +26,27 @@ const index = async (req, res) => {
       limit: 10
     }
   }).lean();
+
+
+  const startOfWeek = moment().startOf('isoWeek').toISOString();
+  const endOfWeek = moment().endOf('isoWeek').toISOString();
+  let discount = await await Discount.find(
+    {
+      $or: [{date_start: { $gte: startOfWeek,$lte: endOfWeek }},
+            {date_end: { $gte: startOfWeek,$lte: endOfWeek  }}],
+      status:'active'
+    }
+    ).populate([
+      {
+        path:'spa'
+      },
+      {
+        path: 'spaservice',
+        populate:{
+          path:'service'
+        }
+      }
+    ]).exec();
 
   let { limit } = req.query;
   let page = req.params.page
@@ -54,13 +76,9 @@ const index = async (req, res) => {
   let newsLatest = await New.find().limit(3).exec();
 
   let experts = await Expert.find().populate('user').lean();
-  for(let i=0; i<experts.length; i++){
-    console.log('============experts=================');
-    console.log(experts[i]);
-    console.log('====================================');
-  }
   // return res.send(experts)
   res.render("client/homes/index", {
+    discount,
     data,
     services,
     urlMediaUpload,

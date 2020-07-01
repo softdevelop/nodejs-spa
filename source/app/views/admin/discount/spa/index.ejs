@@ -165,7 +165,7 @@
                                   </td>
                                   <td>
                                       <%let dateLimit = moment(item.date_end).diff(moment(item.date_start),'days') %> 
-                                      <%= dateLimit>1?dateLimit+ " Days": dateLimit +" Day" %> <br>
+                                      <%= dateLimit+1>1?dateLimit+1+ " Days": dateLimit+1 +" Day" %> <br>
                                       <%= moment(item.date_start).format('YYYY-MM-DD') %> (Start) <br>
                                       <%= moment(item.date_end).format('YYYY-MM-DD') %> (End)
                                   </td>

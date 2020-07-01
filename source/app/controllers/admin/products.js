@@ -10,7 +10,6 @@ const dashboardUrl = () => APP_DOMAIN + `/dashboard`;
 mongoose.Promise = global.Promise;
 
 const getListProducts = async (req, res) => {
-  console.log("aaa");
   
   let { page, limit } = req.query;
   var query = {
@@ -24,7 +23,6 @@ const getListProducts = async (req, res) => {
     page: parseInt(page, 10) || 1
   };
   let data = await Product.paginate(query, options);
-  console.log('urlMediaUpload', urlMediaUpload);
   // res.send(data)
   return res.render("admin/products/index", {
     data,
@@ -41,7 +39,6 @@ const getFormCreate = (req, res) => {
 
 const create = async (req, res) => {
   let data = req.body;
-  console.log(data);
   let err = validateProduct(data)
   if(err && err.error){
     let errors = err.error && err.error.details.reduce((result, item)=>{

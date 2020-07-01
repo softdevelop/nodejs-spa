@@ -103,7 +103,7 @@
                                        <option>skin care treatment</option>
                                        <option>beauty</option>
                                        <option>nail treatment</option>
-                                       <option>Hair Treatment</option>
+                                       <option>Hair Treatment 2222</option>
                                     </select>
                                  </div>
                                  <div class="col-md-12 col-lg-12"> <strong class="color-black">Or You May Contact This Number : +981 123 456 789</strong></div>
@@ -610,7 +610,10 @@
                <div class="col-md-6 col-lg-6">
                 <div id="mapid" class="map-canvas" style="width: 100%;height: 700px;"></div>
                </div>
-               <div class="col-md-6 col-lg-6 py-80">
+               <div id="booking" class="col-md-6 col-lg-6 py-80">
+                  <div class="alert alert-primary alert-booking<%= discount?'':'d-none' %>" >
+                     <%- discount?content:'' %>
+                   </div>
                   <h2 class="main-title mb-3 text-uppercase letter-space-1 text-center color-primary">Đặt lịch</h2>
                   <form method="POST" >
                     <div class="col-md-12 col-lg-12">
@@ -635,13 +638,13 @@
 
                     </div>
                     <div class="col-md-12 col-lg-12">
-                       <div class="form-group"> <input required class="form-control no-border" id="subject" type="text" name="subject" placeholder="Tiêu đề*"/></div>
+                       <div class="form-group"> <input required class="form-control no-border" id="note" type="text" name="note" placeholder="Ghi chú*"/></div>
                     </div>
                     <div class="col-md-12 col-lg-12">
                       <div class="row">
                         <div class="col-md-6 col-lg-6">
                             <div class="form-group">
-                              <select class="form-control no-border" id="service" name="service_id" placeholder="Dịch vụ*">
+                              <select class="form-control no-border" id="service" name="spa_service_id" placeholder="Dịch vụ*">
                                 <% spaDetail.services.forEach(item=>{ %>
                                   <option value="<%=item._id%>"><%=item.title || item.service.title%></option>
                                 <% }) %>
@@ -669,6 +672,7 @@
                </div>
             </div>
          </div>
+         <div
       </section>
       
 <script>
@@ -687,4 +691,19 @@
   }).addTo(mymap);
   var theMarker = {};
   L.marker([<%=spaDetail.latitude?spaDetail.latitude:''%>, <%=spaDetail.longitude?spaDetail.longitude:''%>]).addTo(mymap);
+</script>
+
+<script>
+   $(document).ready(function(){
+      let check = `<%- discount %>`;
+      
+      if(check.trim()!=''){
+         $('html, body').animate({
+               scrollTop: $('#map-contact').offset().top
+               }, 2500, function(){
+               // Add hash (#) to URL when done scrolling (default click behavior)
+               window.location.hash = hash;
+         });
+      }
+   })
 </script>

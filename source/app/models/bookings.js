@@ -10,7 +10,8 @@ const Joi = require('joi');
 const STATUS = ["blocked", "active", "pending"]
 
 const BookingSchema = new Schema({
-    name: { type: String, require: true},
+    name: { type: String, require: true, unique: false},
+    email: { type: String, require: true, unique: false},
     phone: {type: Number, require: true },
     address: {type: String, require: true},
     date: {type: Date, require: true},
@@ -18,7 +19,7 @@ const BookingSchema = new Schema({
     note: {type: String},
     status: { type: String, enum: STATUS, default: STATUS[2] },
     spa_id: {type: String, require: true},
-    service_id: {type: String, require: true},
+    spa_service_id: {type: String, require: true},
 },{
     timestamps: true
 }
@@ -27,6 +28,7 @@ const BookingSchema = new Schema({
 function validateBooking(booking){
     const schema = {
         name: Joi.string().min(1).max(50).required(),
+        email: Joi.string().min(1).max(50).required(),
         phone: Joi.string().max(10).required(),
         address: Joi.string(),
         date: Joi.date(),
@@ -34,7 +36,7 @@ function validateBooking(booking){
         note: Joi.string().allow(''),
         status: Joi.string().valid(STATUS).required(),
         spa_id: Joi.string().min(1).max(50).required(),
-        service_id: Joi.string().min(1).max(50).required(),
+        spa_service_id: Joi.string().min(1).max(50).required(),
     }
     return Joi.validate(booking, schema, { abortEarly: false });
 }
@@ -42,6 +44,7 @@ function validateBooking(booking){
 function validateBookingEdit(booking){
     const schema = {
         name: Joi.string().min(1).max(50).required(),
+        email: Joi.string().min(1).max(50).required(),
         phone: Joi.string().required(),
         address: Joi.string(),
         date: Joi.date(),
@@ -49,20 +52,23 @@ function validateBookingEdit(booking){
         note: Joi.string().allow(''),
         status: Joi.string().valid(STATUS).required(),
         spa_id: Joi.string().min(1).max(50).required(),
-        service_id: Joi.string().min(1).max(50).required(),
+        spa_service_id: Joi.string().min(1).max(50).required(),
     }
     return Joi.validate(booking, schema, { abortEarly: false });
 }
 
 BookingSchema.post('save', function (error, doc, next) {
+    console.log(error.name, error.code)
     if (error.name === 'MongoError' && error.code === 11000)
-        next(new Error({name: 'This field is duplicated'}));
-    else next(error);
+        next(new Error({name: 'This field is duplicated 1111111'}));
+    else {
+        next(error);
+    }
 });
 
 BookingSchema.virtual('services', {
     ref: 'SpasService',
-    localField: 'service_id',
+    localField: 'spa_service_id',
     foreignField: '_id',
     justOne: true
 });
@@ -83,3 +89,4 @@ const Booking = mongoose.model('Booking',BookingSchema);
 exports.Booking = Booking;
 exports.validateBooking = validateBooking;
 exports.validateBookingEdit = validateBookingEdit;
+null

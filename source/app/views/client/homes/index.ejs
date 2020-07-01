@@ -1,9 +1,10 @@
 <% extend('../layouts/base',{
   title: "Homepage",
   css: `
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
-
+  <script src="/template/2/js/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <link rel="stylesheet" href="/template/2/css/leaflet.css">
+    <link rel="stylesheet" href="/template/2/css/writeStyle.css">
+    
   `,
   script: `
   <script src="/libs_client/js/demo-home.js"></script>
@@ -220,7 +221,7 @@
     <!-- ======================================= 
             ==Start Offer Section== 
     =======================================-->
-    <section class="service-section">
+    <section class="service-section <%= discount.length? "":'d-none' %> ">
       <div class="container">
           <div class="row">
               <div class="col-12">
@@ -233,8 +234,26 @@
           <!--/row-->
 
           <div class="row">
+            <!-- urlMediaUpload.imageObj -->
+                <% discount.forEach(item => { %>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-service">
+                            <div class="img"><img src="<%= urlMediaUpload.imageObj(item.image) %>" alt="service-img" class="img-fluid"></div>
+                            <div class="img-over-content text-center">
+                                <img src="<%= urlMediaUpload.imageObj(item.spa.logo) %>" style="width: 60px;" alt="service-img" class="img-fluid">
+                                <a href="/spa/<%=item.spa.slug%>/<%=item.id%>"  class="title fw-500"><%=item.spa.name%></a>
+                                <p class="font-weight-bold"><%= item.spaservice.title || item.spaservice.service.title%></p>
+                                <!-- <a href="service-details.html" class="fw-500 color-33 mtb-15">Beauty Treatment</a> -->
+                                <p><%- item.content %></p>
+                                <p class="date-discount"><%= moment(item.date_start).format('DD/MM') %> - <%= moment(item.date_start).format('DD/MM')%></p>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+                
+                    
               <!--service-1-->
-              <div class="col-lg-4 col-md-6">
+              <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-service">
                       <div class="img"><img src="/images/service-img1.jpg" alt="service-img" class="img-fluid"></div>
                       <div class="img-over-content text-center">
@@ -244,10 +263,10 @@
                           <p>Khuyến mại hot nhất tuần này</p>
                       </div>
                   </div>
-              </div>
+              </div> -->
 
               <!--service-2-->
-              <div class="col-lg-4 col-md-6">
+              <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-service">
                       <div class="img"><img src="/images/service-img2.jpg" alt="service-img" class="img-fluid"></div>
                       <div class="img-over-content text-center">
@@ -257,10 +276,10 @@
                           <p>Sale lớn, giảm đến 50%</p>
                       </div>
                   </div>
-              </div>
+              </div> -->
 
               <!--service-3-->
-              <div class="col-lg-4 col-md-6">
+              <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-service">
                       <div class="img"><img src="/images/service-img3.jpg" alt="service-img" class="img-fluid"></div>
                       <div class="img-over-content text-center">
@@ -270,10 +289,10 @@
                           <p>Massage nay chỉ còn 450K</p>
                       </div>
                   </div>
-              </div>
+              </div> -->
 
               <!--service-4-->
-              <div class="col-lg-4 col-md-6">
+              <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-service">
                       <div class="img"><img src="/images/service-img4.jpg" alt="service-img" class="img-fluid"></div>
                       <div class="img-over-content text-center">
@@ -283,10 +302,10 @@
                           <p>Khuyến mại hot nhất tuần này</p>
                       </div>
                   </div>
-              </div>
+              </div> -->
 
               <!--service-5-->
-              <div class="col-lg-4 col-md-6">
+              <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-service">
                       <div class="img"><img src="/images/service-img5.jpg" alt="service-img" class="img-fluid"></div>
                       <div class="img-over-content text-center">
@@ -296,10 +315,10 @@
                           <p>Khuyến mại hot nhất tuần này</p>
                       </div>
                   </div>
-              </div>
+              </div> -->
 
               <!--service-6-->
-              <div class="col-lg-4 col-md-6">
+              <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-service">
                       <div class="img"><img src="/images/service-img6.jpg" alt="service-img" class="img-fluid"></div>
                       <div class="img-over-content text-center">
@@ -309,7 +328,7 @@
                           <p>Khuyến mại hot nhất tuần này</p>
                       </div>
                   </div>
-              </div>
+              </div> -->
               <!--/col-->
           </div>
           <!--/row-->

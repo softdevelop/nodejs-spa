@@ -79,10 +79,10 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <div class="form-group form-group-date <%=errors.date?'has-danger':''%>">
-                                        <label class="control-label">Date</label>
-                                        <input type="date" id="date" class="form-control" placeholder="" name="date"
-                                            required value="<%=data.date?data.date:''%>">
+                                    <div class="form-group form-group-email <%=errors.email?'has-danger':''%>">
+                                        <label class="control-label">Email</label>
+                                        <input type="email" id="email" class="form-control" placeholder="" name="email"
+                                            required value="<%=data.email?data.email:''%>">
                                         <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
                                     </div>
                                 </div>
@@ -97,27 +97,23 @@
                                 </div>
                             </div>
                             <div class="row">
-                           
+                                
                                 <div class="col-md-6 ">
                                     <div class="form-group form-group-note <%=errors.note?'has-danger':''%>">
                                         <label class="control-label">Note</label>
                                         <input type="text" id="note" class="form-control" placeholder="" name="note"
                                             required value="<%=data.note?data.note:''%>">
+                                        <small class="form-control-feedback"><%=errors?errors.note:''%></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="form-group form-group-date <%=errors.date?'has-danger':''%>">
+                                        <label class="control-label">Date</label>
+                                        <input type="date" id="date" class="form-control" placeholder="" name="date"
+                                            required value="<%=data.date?data.date:''%>">
                                         <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group <%=errors.status?'has-danger':''%>">
-                                        <label class="control-label">Status</label>
-                                        <select class="form-control custom-select" name="status">
-                                            <option value="pending">Pending</option>
-                                            <option value="active" ">Active</option>
-                                        <option value="blocked ">Blocked</option>
-                                    </select>
-                                    <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
-                                  </div>
-                                </div>
-
                             </div>
                             <!--/row-->
                             <div class="row p-t-20">
@@ -129,21 +125,35 @@
                                           <option value="<%=item._id%>"><%=item.name%></option>
                                         <% }) %>
                                       </select>
-                                      <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
+                                      <small class="form-control-feedback "><%=errors?errors.spa_id:''%></small> 
                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group form-group-service_id <%=errors.service_id?'has-danger':''%>">
                                        <label class="control-label">Service name</label>
-                                       <select class="form-control custom-select" name="service_id">
+                                       <select class="form-control custom-select" name="spa_service_id">
                                          <% data[0].services.forEach(item=>{ %>
                                            <option value="<%=item._id%>"><%=item.title%></option>
                                          <% }) %>
                                        </select>
-                                       <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
+                                       <small class="form-control-feedback "><%=errors?errors.spa_service_id:''%></small> 
                                     </div>
                                  </div>
                              </div>
+                             <div class="row p-t-20">
+                                <div class="col-md-6">
+                                    <div class="form-group <%=errors.status?'has-danger':''%>">
+                                        <label class="control-label">Status</label>
+                                        <select class="form-control custom-select" name="status">
+                                            <option value="pending">Pending</option>
+                                            <option value="active" ">Active</option>
+                                        <option value="blocked ">Blocked</option>
+                                    </select>
+                                    <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
+                                  </div>
+                                </div>
+                             </div>
+
                             <!--/row-->
                            
                        
@@ -254,10 +264,10 @@
         })[0]
         let option =""
         result.services.forEach(ele => {
-            option += `<option value="${ele._id}">${ele.title}</option>`
+            option += `<option value="${ele._id}">${ele.title?ele.title:ele.service.title}</option>`
             
         });
-        $('select[name=service_id]').html(option)
+        $('select[name=spa_service_id]').html(option)
         console.log(option);
         // alert( this.value );
       });

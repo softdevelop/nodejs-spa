@@ -61,7 +61,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group form-group-phone <%=errors.phone?'has-danger':''%>">
                                         <label class="control-label">Phone</label>
-                                        <input type="number" id="phone" class="form-control" placeholder="" name="phone"
+                                        <input type="text" id="phone" class="form-control" placeholder="" name="phone"
                                             required value="<%=data.phone?data.phone:''%>">
                                         <small class="form-control-feedback"><%=errors?errors.phone:''%></small>
                                     </div>
@@ -136,11 +136,11 @@
                                 <div class="col-md-6">
                                     <div class="form-group form-group-service_id <%=errors.service_id?'has-danger':''%>">
                                        <label class="control-label">Service name</label>
-                                       <select class="form-control custom-select" name="service_id">
-                                         <% services.services.forEach(item=>{ 
-                                            var selected = ( item._id == data.service_id ) ? "selected" : ""; 
+                                       <select class="form-control custom-select" name="spa_service_id">
+                                        <% services.forEach(item=>{ 
+                                            var selected = ( item._id == data.spa_service_id ) ? "selected" : ""; 
                                             %>
-                                           <option value="<%=item._id%>" <%=selected %>><%=item.title%></option>
+                                           <option value="<%=item._id%>" <%=selected %>><%=item.title || item.service.title%></option>
                                          <% }) %>
                                        </select>
                                        <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
@@ -249,21 +249,20 @@
 
 <script>
 
-    let spas = `<%-JSON.stringify(spas)%>`;
-    let newspas = JSON.parse(spas)
+    let data = `<%-JSON.stringify(spas)%>`;
+    let newData = JSON.parse(data)
     $('select').on('change', function() {
-     
-        const result = newspas.filter(item=>{
+        const result = newData.filter(item=>{
             return item._id === this.value 
         })[0]
         let option =""
         result.services.forEach(ele => {
-            option += `<option value="${ele._id}">${ele.title}</option>`
+            option += `<option value="${ele._id}">${ele.title?ele.title:ele.service.title}</option>`
             
         });
-        $('select[name=service_id]').html(option)
-        console.log(option);
+        $('select[name=spa_service_id]').html(option)
         // alert( this.value );
       });
+
 </script>
     

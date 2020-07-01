@@ -68,7 +68,6 @@ const create = async (req, res) => {
     newUser.save().then((e)=>{
       res.redirect('/admin/users')
     }).catch(e=>{
-      console.log('catch', e);
       delete data.password
       delete data.repassword
       return res.render('admin/users/create', {

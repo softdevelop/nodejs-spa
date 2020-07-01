@@ -77,9 +77,6 @@ const getFormEdit = async (req, res) => {
 const edit = async (req, res) => {
   let id = req.params.id
   let data = req.body;
-  console.log('====================================');
-  console.log(data);
-  console.log('====================================');
   if(data.spa_service_id==0) {
     delete data.spa_service_id
     data.is_all_service = true;
@@ -291,9 +288,6 @@ const adminGetFormEdit = async (req, res) => {
     }).exec();
   
     
-    console.log('====================================');
-    console.log(discount);
-    console.log('====================================');
       res.render('admin/discount/edit', {
         errors: {},
         services,
