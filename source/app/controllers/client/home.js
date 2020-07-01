@@ -54,6 +54,12 @@ const index = async (req, res) => {
   let newsLatest = await New.find().limit(3).exec();
 
   let experts = await Expert.find().populate('user').lean();
+  for(let i=0; i<experts.length; i++){
+    console.log('============experts=================');
+    console.log(experts[i]);
+    console.log('====================================');
+  }
+  // return res.send(experts)
   res.render("client/homes/index", {
     data,
     services,

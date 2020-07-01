@@ -20,13 +20,13 @@
     <!-- ============================================================== -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h4 class="text-themecolor">Service</h4>
+            <h4 class="text-themecolor">Discount</h4>
         </div>
         <div class="col-md-7 align-self-center text-right">
             <div class="d-flex justify-content-end align-items-center">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item active">Service</li>
+                    <li class="breadcrumb-item active">Discount</li>
                 </ol>
                 <a href="/admin/spas/discount" <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i
                         class="fa fa-plus-circle"></i> List</button></a>
@@ -214,7 +214,6 @@
 </div>
 </div>
 <script>
-    let services = JSON.parse(`<%-servicesJSON%>`)
 
     $(document).ready(function(){
 
@@ -243,32 +242,6 @@
             })
       }) 
       $('#date_start').trigger("change");
-
-        $('input[name="daterange"]').daterangepicker({
-    opens: 'left'
-  }, function(start, end, label) {
-    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-  });
-
-
-
-
-      // select service 
-      $('body').on('change', 'select[name=service_id]', function(){
-        let value = $(this).val();
-        let key = $(this).attr('key');
-        if(value !=  '0'){
-          let service = services.filter(item=>item._id===value)[0]
-          $(`input[name=title]`).val(service.title)
-          $(`.summernote`).summernote('code', service.content);
-          $(`img#image`).attr('src', '/uploads/'+service.image.filename)
-        }else{
-          $(`input[name=title]`).val('')
-          $(`.summernote`).summernote('code', '');
-        }
-      })
-
-
 
 
     })

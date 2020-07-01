@@ -16,6 +16,7 @@ const booking = require("./booking")
 const services = require("./services")
 const experts = require('./experts')
 const news = require("./news")
+const discount = require("./discount")
 // Controllers
 const {
 } = require("../../../app/controllers/admin");
@@ -70,6 +71,7 @@ router.use(booking);
 router.use(services);
 
 router.use(news)
+router.use(discount)
 router.use(experts)
 router.get("*", (req, res) => {
   res.render('admin/404');

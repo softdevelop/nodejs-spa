@@ -1,4 +1,4 @@
-<% extend('../layouts/base', { 
+<% extend('../../layouts/base', { 
   title: "Users management",
   subTitle: "Index",
   script: `
@@ -85,8 +85,8 @@
                     <li class="breadcrumb-item"><a href="/admin">Home</a></li>
                     <li class="breadcrumb-item active">Discount</li>
                 </ol>
-                <!-- <a href="/admin/spas/discount/create"><button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i
-                        class="fa fa-plus-circle"></i> Create New</button></a> -->
+                <a href="/admin/spas/discount/create"><button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i
+                        class="fa fa-plus-circle"></i> Create New</button></a>
             </div>
         </div>
     </div>
@@ -139,7 +139,6 @@
                                         <label class="custom-control-label" for="checkbox7"></label>
                                       </div>
                                     </th>
-                                    <th>Parent</th>
                                     <th>Title</th>
                                     <th>Image</th>
                                     <th>Price</th>
@@ -148,7 +147,7 @@
                                     <th>status</th>
                                     <th>Action</th>
                                 </tr>
-                            </thead>                
+                            </thead>
                             <tbody>
                               <% data.docs.forEach(function(item) { %>
                                 <tr id="Row-<%=item._id%>">
@@ -158,12 +157,7 @@
                                       <label class="custom-control-label" for="checkbox<%=item._id%>"></label>
                                     </div>
                                   </td>
-                                  <td>
-                                      User: <a href="/admin/users/<%= item.spa.ownerDetail._id %>" ><%= item.spa.ownerDetail.first_name +" "+ item.spa.ownerDetail.last_name %> </a> <br>
-                                      Spa:  <a href="/admin/spas/<%= item.spa._id%>"><%= item.spa.name %> </a>
-                                  </td>
                                   <td><%=item.title?item.title:''%></td>
-                                 
                                   <td><img class="avatar" src="<%=urlMediaUpload.imageObj(item.image)%>" /></td>
                                   <td><%=item.price?item.price:''%></td>
                                   <td>
@@ -177,10 +171,10 @@
                                   </td>
                                   <td><%= item.status %></td>
                                   <td>
-                                    <a href="/admin/discount/<%=item._id%>">
+                                    <a href="/admin/spas/discount/<%=item._id%>">
                                       <i class="ti-eye"></i>
                                     </a>
-                                    <a href="/admin/discount/<%=item._id%>/edit">
+                                    <a href="/admin/spas/discount/<%=item._id%>/edit">
                                       <i class="icon-note"></i>
                                     </a>
                                   </td>
@@ -216,7 +210,7 @@
                     <li><a href="javascript:void(0)" data-skin="skin-purple" class="purple-theme">5</a></li>
                     <li><a href="javascript:void(0)" data-skin="skin-megna" class="megna-theme">6</a></li>
                     <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
-                    <li><a href="javascript:void(0)" data-skin="sadmin/discountkin-default-dark"
+                    <li><a href="javascript:void(0)" data-skin="skin-default-dark"
                             class="default-dark-theme working">7</a></li>
                     <li><a href="javascript:void(0)" data-skin="skin-green-dark"
                             class="green-dark-theme">8</a></li>

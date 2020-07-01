@@ -1,4 +1,4 @@
-<% extend('../layouts/base', { 
+<% extend('../../layouts/base', { 
   title: "Spa management",
   subTitle: "Create",
   css: `
@@ -128,8 +128,8 @@
                           <!--/row-->
                      
                           <div class="form-actions">
-                            <a href="/admin/discount/<%=data.id%>/edit"><button type="button" class="btn btn-primary"> <i class="icon-note"></i> Edit</button></a>
-                              <a href="/admin/discount">
+                            <a href="/admin/spas/discount/<%=data.id%>/edit"><button type="button" class="btn btn-primary"> <i class="icon-note"></i> Edit</button></a>
+                              <a href="/admin/spas/discount">
                                   <button type="button" class="btn btn-inverse">Cancel</button>
                               </a>
                           </div>
