@@ -79,8 +79,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title text-center">
-                        <h3 class="color-72 fw-500 pb-10">Our Services</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore etc.</p>
+                        <h3 class="color-72 fw-500 pb-10">Dịch vụ của tôi</h3>
+                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore etc.</p> -->
                     </div>
                 </div>
                 <!--/col-->
@@ -88,84 +88,21 @@
             <!--/row-->
 
             <div class="row">
+              <% expert.services.forEach(item=>{ %>
                 <!--service-1-->
                 <div class="col-lg-4 col-md-6">
-                    <div class="single-service">
-                        <div class="img"><img src="/images/service-img1.jpg" alt="service-img" class="img-fluid"></div>
-                        <div class="img-over-content text-center">
-                            <i class="flaticon-medical color-d5 mb-10"></i>
-                            <div class="divider"></div>
-                            <a href="service-details.html" class="fw-500 color-33 mtb-15">Beauty Treatment</a>
-                            <p>The power of golden ratio typography cannot be understated. </p>
-                        </div>
-                    </div>
+                  <div class="single-service">
+                      <div class="img"><img src="<%=urlMediaUpload.imageObj(item.image)%>" alt="service-img" class="img-fluid"></div>
+                      <div class="img-over-content text-center">
+                          <p><%=item.title%></p>
+                          <div class="divider"></div>
+                          <a href="service-details.html" class="fw-500 color-33 mtb-15"><%=item.price%></a>
+                          <p><%-item.content%></p>
+                      </div>
+                  </div>
                 </div>
-
-                <!--service-2-->
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-service">
-                        <div class="img"><img src="/images/service-img2.jpg" alt="service-img" class="img-fluid"></div>
-                        <div class="img-over-content text-center">
-                            <i class="flaticon-spa color-d5 mb-10"></i>
-                            <div class="divider"></div>
-                            <a href="service-details.html" class="fw-500 color-33 mtb-15">Spa Process</a>
-                            <p>The power of golden ratio typography cannot be understated. </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!--service-3-->
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-service">
-                        <div class="img"><img src="/images/service-img3.jpg" alt="service-img" class="img-fluid"></div>
-                        <div class="img-over-content text-center">
-                            <i class="flaticon-medical-1 color-d5 mb-10"></i>
-                            <div class="divider"></div>
-                            <a href="service-details.html" class="fw-500 color-33 mtb-15">Body Massage</a>
-                            <p>The power of golden ratio typography cannot be understated. </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!--service-4-->
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-service">
-                        <div class="img"><img src="/images/service-img4.jpg" alt="service-img" class="img-fluid"></div>
-                        <div class="img-over-content text-center">
-                            <i class="flaticon-hairdryer color-d5 mb-10"></i>
-                            <div class="divider"></div>
-                            <a href="service-details.html" class="fw-500 color-33 mtb-15">Hair Treatment</a>
-                            <p>The power of golden ratio typography cannot be understated. </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!--service-5-->
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-service">
-                        <div class="img"><img src="/images/service-img5.jpg" alt="service-img" class="img-fluid"></div>
-                        <div class="img-over-content text-center">
-                            <i class="flaticon-hand-wash color-d5 mb-10"></i>
-                            <div class="divider"></div>
-                            <a href="service-details.html" class="fw-500 color-33 mtb-15">Manicure & Pedicure</a>
-                            <p>The power of golden ratio typography cannot be understated. </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!--service-6-->
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-service">
-                        <div class="img"><img src="/images/service-img6.jpg" alt="service-img" class="img-fluid"></div>
-                        <div class="img-over-content text-center">
-                            <i class="flaticon-relax color-d5 mb-10"></i>
-                            <div class="divider"></div>
-                            <a href="service-details.html" class="fw-500 color-33 mtb-15">Body Waxing</a>
-                            <p>The power of golden ratio typography cannot be understated. </p>
-                        </div>
-                    </div>
-                </div>
-                <!--/col-->
+              <% }) %>
+               
             </div>
             <!--/row-->
         </div>

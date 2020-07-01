@@ -48,12 +48,19 @@ function validateExpertEdit(expert){
     }
     return Joi.validate(expert, schema, { abortEarly: false });
 }
+
 ExpertSchema.virtual('user', {
-    ref: 'User',
-    localField: 'user_id',
-    foreignField: '_id',
-    justOne: true
-  });  
+  ref: 'User',
+  localField: 'user_id',
+  foreignField: '_id',
+  justOne: true
+});  
+
+ExpertSchema.virtual('services', {
+  ref: 'ExpertsService',
+  localField: '_id',
+  foreignField: 'expert_id',
+})
 
 ExpertSchema.post('save', function (error, doc, next) {
     if (error.name === 'MongoError' && error.code === 11000)
