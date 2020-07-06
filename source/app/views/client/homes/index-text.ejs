@@ -4,8 +4,7 @@
   <script src="/template/2/js/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
     <link rel="stylesheet" href="/template/2/css/leaflet.css">
     <link rel="stylesheet" href="/template/2/css/writeStyle.css">
-    <link rel="stylesheet" href="/libs/js/Simple-Flexible-jQuery-Autocomplete-Plugin-Flexdatalist/jquery.flexdatalist.css">
-    <link rel="stylesheet" href="/libs/js/Simple-Flexible-jQuery-Autocomplete-Plugin-Flexdatalist/jquery.flexdatalist.min.css">
+    
   `,
   script: `
   <script src="/libs_client/js/demo-home.js"></script>
@@ -39,20 +38,15 @@
           <div class="row">
               <div class="col-xl-12">
                   <div class="booking-wrapper mt-45">
-                      
                       <form action="/tim-kiem" method="get" class="clearfix">
-                            <div class="beauty-service clearfix overflow-auto">
-                                <select class="wide" name="location" required>
-                                    <% for (const [key, value] of Object.entries(dataProvince)) { %> 
-                                        <option class="font-weight-bold" value="<%=value.slug%>"><%=value.name%></option>
-                                        <% for (const [key1, value1] of Object.entries(dataDistrict)) { %> 
-                                            <% if(key==value1.parent_code){ %> 
-                                            <option class="pl-1 text-dark" value="<%=value1.slug%>_<%=value.slug%>" parent="<%=value.name%>"><%=value1.name_with_type%></option>
-                                            <% } %> 
-                                        <% } %>         
-                                    <% } %> 
+                          <div class="beauty-service clearfix">
+                              <select class="wide" name="location" required>
+                                <% locationsArr.forEach(item=>{ %>
+                                  <option value="<%=item.value%>"><%=item.name%></option>
+                                <% }) %>
                             </select>
-                            </div>
+                          </div>
+
                           <div class="date">
                               <input type="" name="date" id="booking-date" placeholder="Ngày đặt" required />
                           </div>
@@ -71,7 +65,6 @@
   <!-- ======================================= 
         ==End Seassion booking section== 
 =======================================-->
-
 
   <!-- ======================================= 
       ==Start recommendation Section==  
@@ -171,106 +164,59 @@
 =======================================-->
 
 
-    
-<!-- ======================================= 
-        ==start welcome section==  
-    =======================================-->
-    <section class="welcome-section pos-relative">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title text-center">
-                        <h3 class="color-72 fw-500">Xin chào đến với Beauty Lab</h3>
-                        <p>Beauty lab là nơi giải pháp làm đẹp & spa sang trọng. Sử dụng công nghệ phương pháp trị liệu hàng đầu Việt Nam và thân thiện với môi trường.</p>
-                    </div>
-                </div>
-            </div>
-            <!--/row-->
-
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="welcome-feature-wrapper expert clearfix">
-                        <!--feature-1-->
-                        <div class="single-feature float-left ptb-35">
-                            <span class="circle"></span>
-                            <i class="flaticon-health-care"></i>
-                            <div class="feature-content pl-25 pr-20">
-                                <h6 class="color-33 fw-500 pb-15">Đội ngũ chuyên gia</h6>
-                                <div class="divider"></div>
-                                <p class="pt-15">As you might have guessed, most designers choose this unit arbitrarily. </p>
-                            </div>
-                        </div>
-
-                        <!--feature-2-->
-                        <div class="single-feature technology float-left ptb-35">
-                            <span class="circle"></span>
-                            <i class="flaticon-flask"></i>
-                            <div class="feature-content pl-25 pr-20">
-                                <h6 class="color-33 fw-500 pb-15">Công nghệ mới nhất</h6>
-                                <div class="divider"></div>
-                                <p class="pt-15">As you might have guessed, most designers choose this unit arbitrarily. </p>
-                            </div>
-                        </div>
-
-                        <!--feature-3-->
-                        <div class="single-feature certified float-left ptb-35">
-                            <span class="circle"></span>
-                            <i class="flaticon-graduate-diploma"></i>
-                            <div class="feature-content pl-25 pr-20">
-                                <h6 class="color-33 fw-500 pb-15">Viện chứng nhận</h6>
-                                <div class="divider"></div>
-                                <p class="pt-15">As you might have guessed, most designers choose this unit arbitrarily. </p>
-                            </div>
-                        </div>
-
-                        <!--feature-4-->
-                        <div class="single-feature appointment float-left ptb-35">
-                            <span class="circle"></span>
-                            <i class="flaticon-school-calendar"></i>
-                            <div class="feature-content pl-25 pr-20">
-                                <h6 class="color-33 fw-500 pb-15">Hổ trợ trực tuyến</h6>
-                                <div class="divider"></div>
-                                <p class="pt-15">As you might have guessed, most designers choose this unit arbitrarily. </p>
-                            </div>
-                        </div>
-                        <!--/feature-->
-                    </div>
-                    <!--/wrapper-->
-                </div>
-                <!--/col-->
-
-                <div class="col-lg-4">
-                    <div class="welcome-carousel-wrapper pos-relative">
-                        <div id="carousel-img">
-                            <img src="images/welcome-carousel2.jpg" class="img-fluid" alt="welcome-carousel-img">
-                            <img src="images/welcome-carousel3.jpg" class="img-fluid" alt="welcome-carousel-img">
-                            <img src="images/welcome-carousel1.jpg" class="img-fluid" alt="welcome-carousel-img">
-                        </div>
-
-                        <div id="carousel-text">
-                            <p>
-                                Instead of relying on arbitrary selection, wouldn’t it be nice if there were a way to determine the perfect typography.
-                                <a href="#" class="read-more color-ff fw-700">Read more</a>
-                            </p>
-                            <p>
-                                Instead of relying on arbitrary selection, wouldn’t it be nice if there were a way to determine the perfect typography.
-                                <a href="#" class="read-more color-ff fw-700">Read more</a>
-                            </p>
-                            <p>
-                                Instead of relying on arbitrary selection, wouldn’t it be nice if there were a way to determine the perfect typography.
-                                <a href="#" class="read-more color-ff fw-700">Read more</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!--/col-->
-            </div>
-        </div>
-    </section>
     <!-- ======================================= 
-        ==End welcome section==  
+            ==Start Testimonial section==  
     =======================================-->
+    <section class="testimonial-section beautyLab-gallery">
+      <div class="overlay"></div>
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
+                  <div class="section-title pb-60 text-center">
+                      <h3 class="color-ff fw-500">Đội ngũ chuyên gia giàu kinh nghiệm</h3>
+                  </div>
 
+                  <div class="testimoial-wrapper owl-carousel">
+
+                      <% experts.forEach(item=>{ %>
+                        <div class="single-testimonial text-center">
+                          <a href="/chuyen-gia/<%=item.slug%>"><img src="<%=urlMediaUpload.imageObj(item.user.avatar || item.images[0])%>" alt="author"></a>
+                          <p class="testimoinal-txt color-ff pt-25"><%=item.slogan%></p>
+                          <p class="author color-ff"><a href="/chuyen-gia/<%=item.slug%>"><%=item.user.first_name%> <%=item.user.last_name%></a><span><%=item.job%></span></p>
+                        </div>
+                      <% }) %>
+                  
+                  </div>
+                  <!--/testimoial wrapper-->
+              </div>
+              <!--/col-->
+          </div>
+
+
+          <div class="row gallery-wrapper mt-5">
+
+            <% experts.forEach(item=>{ %>
+                <!--gallery-1-->
+                <div class="col-lg-4 col-md-6  mix interiors">
+                  <div class="single-gallery">
+                      <img style="height: 200px; width: 100%;" src="<%=urlMediaUpload.imageObj(item.images[0])%>" alt="gallery image" class="img-fluid" />
+                      <div class="single-gallery-overlay text-center">
+                          <h6><a href="/chuyen-gia/<%=item.slug%>" class="color-ff fw-500"><%=item.user.first_name%> <%=item.user.last_name%></a></h6>
+                          <div class="divider mt-15 mb-10"></div>
+                          <p class="color-ff"><%=item.slogan%></p>
+                      </div>
+                  </div>
+              </div>
+            <% }) %>
+          <!--/col-->
+        </div>
+        <!--/row-->
+
+      </div>
+  </section>
+  <!-- ======================================= 
+          ==End Testimonial section== 
+  =======================================-->
 
     <!-- ======================================= 
             ==Start Offer Section== 
@@ -391,53 +337,6 @@
   <!-- ======================================= 
           ==End Offer Section== 
   =======================================-->
-
-
-  <!-- ======================================= 
-            ==Start Testimonial section==  
-    =======================================-->
-    <section class="product-carousel-section experts-section testimonial-section-lv2">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title pb-60 text-center">
-                        <h3 class="color-ff fw-500">Đội ngũ chuyên gia giàu kinh nghiệm</h3>
-                    </div>
-                </div>
-            </div>
-            <!--/row-->
-
-            <div class="product-carousel-wrapper w-100" id="experts-carousel">
-                <div class="row">
-                    <% experts.forEach(item=>{ %>
-                    <!--experts person-1-->
-                    <div class="single-carousel col-md-6 col-lg-4 col-xl-3" style="height: 300px;">
-                        <img class="w-100" style="height: 100%;" src="<%=urlMediaUpload.imageObj(item.user.avatar || item.images[0])%>" alt="author">
-                        <div class="expert-hover expert-hover-2 text-center" >
-                            <p class="name fw-700 color-ff h6"><%=item.user.first_name%> <%=item.user.last_name%></p>
-                            <p class="degignation"><%=item.job%></p>
-                            <p class="color-ff ptb-20 string-line-3"><%=item.slogan%></p>
-                            <a href="/chuyen-gia/<%=item.slug%>" title="See Full Bio" class="bio color-ff text-capitalize">Full Bio <i class="fa fa-long-arrow-right"></i></a>
-                        </div>
-                        <div class="social-contact">
-                            <a href="#" title="E-Mail" target="_blank"><i class="fa fa-envelope-o"></i></a>
-                            <a href="#" title="Phone" target="_blank"><i class="fa fa-phone"></i></a>
-                            <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
-                        </div>
-                    </div>
-                    <% }) %>
-                </div>
-            </div>
-            <!--/row-->
-        </div>
-    </section>
-  <!-- ======================================= 
-          ==End Testimonial section== 
-  =======================================-->
-
-
 
   <!-- ======================================= 
           ==Start price list section==  
@@ -576,7 +475,6 @@
 =======================================-->
 
 
-
   <!-- ======================================= 
       ==Start short link section==  
   =======================================-->
@@ -659,19 +557,7 @@
           <!--/row-->
       </div>
   </section>
-  
   <!-- ======================================= 
     ==End pricing plan section== 
 =======================================-->
 
-<script>
-
-    let dataProvince = JSON.parse(`<%-JSON.stringify(dataProvince)%>`);
-
-    $('select.wide').change(function(){
-        if($(this).val().length>3){
-            let a = $(this).val().substring(0,2)
-            $('.beauty-service').find('.current').append(" - "+dataProvince[a].name)
-        }
-    })
-</script>

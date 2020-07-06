@@ -13,38 +13,43 @@
 
 }) %>
 
-    <!-- ======================================= 
+   <!-- ======================================= 
             ==start Seassion booking section== 
     =======================================-->
     <section class="home-booking">
-      <div class="container">
-          <div class="row">
-              <div class="col-xl-12">
-                  <div class="booking-wrapper mt-45">
-                      <form action="/tim-kiem" method="get" class="clearfix">
-                          <div class="beauty-service clearfix">
-                              <select class="wide" name="location" required>
-                                <% locationsArr.forEach(item=>{ %>
-                                  <option value="<%=item.value%>" <%=item.value==query.location?'selected':''%>><%=item.name%></option>
-                                <% }) %>
-                            </select>
-                          </div>
-
-                          <div class="date">
-                              <input type="" name="date" id="booking-date" placeholder="Date start" required value="<%=query.date%>"/>
-                          </div>
-
-                          <div class="seat">
-                              <input type="number" id="seat" name="seat" min="1" max="50" placeholder="Seat number" value="<%=query.seat%>">
-                          </div>
-
-                          <button type="submit">Search</button>
-                      </form>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="booking-wrapper mt-45">
+                        
+                        <form action="/tim-kiem" method="get" class="clearfix">
+                              <div class="beauty-service clearfix overflow-auto">
+                                  <select class="wide" name="location" required>
+                                      <% for (const [key, value] of Object.entries(dataProvince)) { %> 
+                                          <option class="font-weight-bold" value="<%=value.slug%>"><%=value.name%></option>
+                                          <% for (const [key1, value1] of Object.entries(dataDistrict)) { %> 
+                                              <% if(key==value1.parent_code){ %> 
+                                              <option class="pl-1 text-dark" value="<%=value1.slug%>_<%=value.slug%>" parent="<%=value.name%>"><%=value1.name_with_type%></option>
+                                              <% } %> 
+                                          <% } %>         
+                                      <% } %> 
+                              </select>
+                              </div>
+                            <div class="date">
+                                <input type="" name="date" id="booking-date" placeholder="Ngày đặt" required />
+                            </div>
+  
+                            <div class="seat">
+                                <input type="number" id="seat" name="seat" min="1" max="50" placeholder="Số lượng">
+                            </div>
+  
+                            <button type="submit">Tìm  kiếm</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- ======================================= 
           ==End Seassion booking section== 
   =======================================-->
@@ -79,7 +84,7 @@
                                 <div class="col-md-6">
                                     <div class="blog-content">
                                         <a href="/spa/<%=item.slug%>" class="title fw-500 pt-20"><%=item.name%></a>
-                                        <div><%-truncate(item.description, 100)%></div>
+                                        <div class="remove-style"><%-truncate(item.description, 100)%></div>
                                         <div class="address">
                                             <p class="address"><i class="fa fa-home"></i><span> Địa chỉ:</span> <%=item.address%></p>
                                             <p class="phone"><i class="fa fa-phone"></i><span> Điện thoại:</span> <%=item.phone%></p>
@@ -116,4 +121,6 @@
 
 </script>
 <script src="/libs_client/js/page-search.js"></script>
-    
+<script>
+    $('.remove-style').find(' * ').removeAttr('style')
+</script>

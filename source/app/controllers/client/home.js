@@ -7,8 +7,9 @@ const Discount = mongoose.model("Discount");
 const moment = require("moment-timezone");
 const {genHtmlPaginationClient, urlMediaUpload, genCategory} = require('../../utils')
 const truncate = require('html-truncate');
+const { constants, location } = require("../../utils");
+const { dataProvince, dataDistrict } = require("../../utils/location");
 
-const { constants } = require("../../utils");
 const index = async (req, res) => {
 
 
@@ -78,6 +79,8 @@ const index = async (req, res) => {
   let experts = await Expert.find().populate('user').lean();
   // return res.send(experts)
   res.render("client/homes/index", {
+    dataProvince ,
+    dataDistrict,
     discount,
     data,
     services,

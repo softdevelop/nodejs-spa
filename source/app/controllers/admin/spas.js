@@ -11,7 +11,7 @@ var ObjectId = require('mongodb').ObjectID;
 const {locations} = require("../../utils/constants");
 const Service = mongoose.model('Service')
 const truncate = require('html-truncate');
-
+const { dataProvince, dataDistrict } = require("../../utils/location");
 
 const { 
   spaIntroService,
@@ -59,7 +59,7 @@ const getFormCreate = async (req, res) => {
   let usersOwnedSpa = await Spa.find({ owner: { $ne: null } }).select('_id name owner').exec();
   let idsUsersOwnedSpa = usersOwnedSpa.map(item=>''+item.owner);
   let spaOwners = await User.find({role: "SPA_OWNER", _id: { $nin: idsUsersOwnedSpa }}).exec();
-  res.render('admin/spas/create', {errors: {}, data: {}, spaOwners,locations})
+  res.render('admin/spas/create', {errors: {}, data: {}, spaOwners,locations, dataProvince, dataDistrict})
 }
 
 const create = async (req, res) => {
@@ -101,7 +101,7 @@ const getFormEdit = async (req, res) => {
     }
   });
   let spaOwners = await User.find({role: "SPA_OWNER", _id: { $nin: idsUsersOwnedSpa }}).exec();
-  res.render('admin/spas/edit', {errors: {}, data: record, urlMediaUpload, spaOwners,locations})
+  res.render('admin/spas/edit', {errors: {}, data: record, urlMediaUpload, spaOwners,locations,dataProvince, dataDistrict })
 }
 
 const edit = async (req, res) => {
@@ -152,7 +152,7 @@ const viewDetail = async (req, res) => {
   let usersOwnedSpa = await Spa.find({ owner: { $ne: null } }).select('_id name').exec();
   let idsUsersOwnedSpa = usersOwnedSpa.map(item=>''+item._id);
   let spaOwners = await User.find({role: "SPA_OWNER", _id: { $nin: idsUsersOwnedSpa }}).exec();
-  res.render('admin/spas/view', {errors: {}, data: record, urlMediaUpload, spaOwners})
+  res.render('admin/spas/view', {errors: {}, data: record, urlMediaUpload, spaOwners, })
 }
 
 const landingPage = async (req, res) => {

@@ -12,7 +12,7 @@ const STATUS = ["blocked", "active", "pending"]
 const BookingSchema = new Schema({
     name: { type: String, require: true, unique: false},
     email: { type: String, require: true, unique: false},
-    phone: {type: Number, require: true },
+    phone: {type: String, require: true },
     address: {type: String, require: true},
     date: {type: Date, require: true},
     message: {type: String, require: true},

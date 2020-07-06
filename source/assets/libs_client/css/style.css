@@ -1454,8 +1454,19 @@ priceing-section .single-price-list>p {
     position: relative;
     padding: 90px 0;
 }
+.testimonial-section-lv2 {
+    background: url(../images/tesimonialbg.jpg) no-repeat fixed center center / cover !important;
+    position: relative;
+    padding: 90px 0;
+}
 
 .testimonial-section .overlay {
+    background: -moz-linear-gradient(left, rgba(64, 15, 56, 0.6) 0%, rgba(166, 27, 73, 0.6) 98%, rgba(166, 27, 73, 0.6) 100%);
+    background: -webkit-linear-gradient(left, rgba(64, 15, 56, 0.6) 0%, rgba(166, 27, 73, 0.6) 98%, rgba(166, 27, 73, 0.6) 100%);
+    background: linear-gradient(to right, rgba(64, 15, 56, 0.6) 0%, rgba(166, 27, 73, 0.6) 98%, rgba(166, 27, 73, 0.6) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#80400f38', endColorstr='#80a61b49', GradientType=1);
+}
+.testimonial-section-lv2 .overlay {
     background: -moz-linear-gradient(left, rgba(64, 15, 56, 0.6) 0%, rgba(166, 27, 73, 0.6) 98%, rgba(166, 27, 73, 0.6) 100%);
     background: -webkit-linear-gradient(left, rgba(64, 15, 56, 0.6) 0%, rgba(166, 27, 73, 0.6) 98%, rgba(166, 27, 73, 0.6) 100%);
     background: linear-gradient(to right, rgba(64, 15, 56, 0.6) 0%, rgba(166, 27, 73, 0.6) 98%, rgba(166, 27, 73, 0.6) 100%);
@@ -2986,6 +2997,14 @@ footer .copyright a:hover {
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
+
+.experts-section .expert-hover-2 {
+    top: 0;
+    left: 15px;
+    right: 15px;
+    width: unset;
+}
+
 
 .experts-section .single-carousel:hover .expert-hover {
     background: rgba(114, 15, 131, 0.8) none repeat scroll 0 0;
@@ -4547,3 +4566,28 @@ footer .copyright a:hover {
 
 
 /*-------------------14. End 404 Page style---------------------*/
+.wide{
+    height: 43.75px;
+    border: 1px solid #d1d1d1;
+}
+.string-line-3{
+    height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+     display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+.beauty-service ul.list li{
+    font-weight: 700 !important;
+}
+
+.beauty-service ul.list li[data-value*='-']{
+    font-weight: unset !important;
+    padding-left: 30px;
+}
+
+.beauty-service ul.list{
+    height: 300px;
+    overflow-y: scroll;
+}

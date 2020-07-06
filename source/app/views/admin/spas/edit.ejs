@@ -78,9 +78,14 @@
                         <div class="form-group form-group-status <%=errors.status?'has-danger':''%>">
                            <label class="control-label">Location</label>
                            <select class="form-control custom-select" name="location">
-                               <% for (let [key, value] of Object.entries(locations)) { %>
-                                 <option value="<%=key%>" <% key==data.location?"selected":'' %> > <%= value %> </option>
-                               <% } %>
+                               <% for (const [key, value] of Object.entries(dataProvince)) { %> 
+                                 <option class="font-weight-bold bg-secondary text-success" value="<%=key%>" disabled><%=value.name%></option>
+                                 <% for (const [key1, value1] of Object.entries(dataDistrict)) { %> 
+                                     <% if(key==value1.parent_code){ %> 
+                                     <option class="pl-2 text-dark" value="<%=value1.slug%>_<%=value.slug%>"  <%=data.location == `${value1.slug}_${value.slug}`?'selected':'ahuhu' %> > <%=value1.name_with_type%> - <%=value.name_with_type%></option>
+                                     <% } %> 
+                                 <% } %>         
+                             <% } %> 
                            </select>
                            <small class="form-control-feedback "><%=errors?errors.location:''%></small> 
                         </div>
@@ -275,7 +280,7 @@
   </script>
   
 <script>
-  L.marker([<%=data.latitude?data.latitude:''%>, <%=data.longitude?data.longitude:''%>]).addTo(mymap);
+  L.marker([`<%=data.latitude?data.latitude:''%>, <%=data.longitude?data.longitude:''%>`]).addTo(mymap);
 </script>
 <script src="/js/admin/summernote-init.js"></script>
 
@@ -344,5 +349,8 @@
              $('.form-group-location small').html('Please choose location on the map')
            }
        })
+
  });
+
+
 </script>

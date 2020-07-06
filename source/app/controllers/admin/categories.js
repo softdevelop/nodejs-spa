@@ -82,6 +82,12 @@ const getFormCreate = async (req, res) => {
 
   let optionsHtml = genCategory.genOptions(categories);
 
+  return res.send(optionsHtml)
+  console.log('====================================');
+  console.log(categories);
+  console.log('====================================');
+
+
   res.render("admin/categories/create", { errors: {}, data: {}, optionsHtml });
 };
 
@@ -230,4 +236,4 @@ module.exports = {
   edit,
   del,
   viewDetail,
-};
+}
