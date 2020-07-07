@@ -36,3 +36,7 @@
     height: 300px;
     overflow-y: scroll;
 }
+
+.discount{
+    background: #f9f9f9 !important;
+}
