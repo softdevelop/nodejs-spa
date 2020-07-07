@@ -10,3 +10,29 @@
     text-align: right;
     padding-right: 10px;
 }
+
+.wide{
+    height: 43.75px;
+    border: 1px solid #d1d1d1;
+}
+.string-line-3{
+    height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+     display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+.beauty-service ul.list li{
+    font-weight: 700 !important;
+}
+
+.beauty-service ul.list li[data-value*='_']{
+    font-weight: unset !important;
+    padding-left: 30px;
+}
+
+.beauty-service ul.list{
+    height: 300px;
+    overflow-y: scroll;
+}

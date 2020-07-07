@@ -8,7 +8,6 @@ const truncate = require('html-truncate');
 const { dataProvince, dataDistrict } = require("../../utils/location");
 const index = async (req, res) => {
 let spas = await Spa.find({ status: 'active', location: new RegExp(req.query.location)}).exec();
-  // let spas = await Spa.find({ status: 'active', location: "/"+req.query.location+"/"}).exec();
   res.render("client/search/index", { 
     errors: {}, 
     dataProvince, 
