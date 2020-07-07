@@ -21,145 +21,159 @@
   `
 }) %>
 
- <!-- ======================================= 
+    <!-- ======================================= 
         ==End Header section==  
     =======================================-->
 
-    
-  <!-- ======================================= 
+
+    <!-- ======================================= 
       ==End Product gallery section== 
   =======================================-->
-  
+
     <!-- ======================================= 
             ==start Seassion booking section== 
     =======================================-->
     <section class="home-booking">
-      <div class="container">
-          <div class="row">
-              <div class="col-xl-12">
-                  <div class="booking-wrapper mt-45">
-                      <form action="/tim-kiem" method="get" class="clearfix">
-                          <div class="beauty-service clearfix">
-                              <select class="wide" name="location" required>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="booking-wrapper mt-45">
+                        <form action="/tim-kiem" method="get" class="clearfix">
+                            <div class="beauty-service clearfix">
+                                <select class="wide" name="location" required>
                                 <% locationsArr.forEach(item=>{ %>
                                   <option value="<%=item.value%>"><%=item.name%></option>
                                 <% }) %>
                             </select>
-                          </div>
+                            </div>
 
-                          <div class="date">
-                              <input type="" name="date" id="booking-date" placeholder="Ngày đặt" required />
-                          </div>
+                            <div class="date">
+                                <input type="" name="date" id="booking-date" placeholder="Ngày đặt" required />
+                            </div>
 
-                          <div class="seat">
-                              <input type="number" id="seat" name="seat" min="1" max="50" placeholder="Số lượng">
-                          </div>
+                            <div class="seat">
+                                <input type="number" id="seat" name="seat" min="1" max="50" placeholder="Số lượng">
+                            </div>
 
-                          <button type="submit">Tìm  kiếm</button>
-                      </form>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-  <!-- ======================================= 
+                            <button type="submit">Tìm  kiếm</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ======================================= 
         ==End Seassion booking section== 
 =======================================-->
 
-  <!-- ======================================= 
+    <!-- ======================================= 
       ==Start recommendation Section==  
   =======================================-->
-  <section class="product-carousel-section experts-section blog-section blog-page">
-      <div class="container">
-          <div class="row mb-3">
-              <div class="col-md-12">
-                  <div class="text-left">
-                      <h3 class="color-72 fw-500 pb-10">Danh mục spa</h3>
-                  </div>
-                  <p>Các spa được phân loại tại đây</p>
+    <section class="product-carousel-section experts-section blog-section blog-page">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="text-left">
+                        <h3 class="color-72 fw-500 pb-10">Danh mục spa</h3>
+                    </div>
+                    <p>Các spa được phân loại tại đây</p>
 
-              </div>
-          </div>
+                </div>
+            </div>
 
-          <ul class="tab-menu nav nav-tabs mb-4 position-relative" role="tablist">
-              <% services.forEach((item, index)=>{ %>
-                <li class="nav-item SpaRecommendationCat" length="<%=item.spaservice.length%>"><a class="nav-link <%=index===0?'active':''%>" href="#service<%=item._id%>" aria-controls="service<%=item._id%>" role="tab" data-toggle="tab" aria-selected="true"><%=item.title%></a></li>
-              <% }) %>
-            
-              <li class="view-more position-absolute"><span style="color: #d5275a; cursor: pointer;" class="LoadmoreSpaRecommendation">Xem thêm</span></li>
-          </ul>
-          <div class="tab-content" id="myTabContent">
+            <ul class="tab-menu nav nav-tabs mb-4 position-relative" role="tablist">
+                <% services.forEach((item, index)=>{ %>
+                    <li class="nav-item SpaRecommendationCat" length="<%=item.spaservice.length%>">
+                        <a class="nav-link <%=index===0?'active':''%>" href="#service<%=item._id%>" aria-controls="service<%=item._id%>" role="tab" data-toggle="tab" aria-selected="true">
+                            <%=item.title%>
+                        </a>
+                    </li>
+                    <% }) %>
 
-              <% services.forEach((item, index)=>{ %>
-                <div class="tab-pane fade show <%=index===0?'active':''%>" id="service<%=item._id%>" role="tabpanel" aria-labelledby="<%=item._id%>-tab">
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="product-carousel-wrapper owl-carousel" id="experts-carousel">
-                                <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog modal-lg">
-                                      <div class="modal-content">
-                                          <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <li class="view-more position-absolute"><span style="color: #d5275a; cursor: pointer;" class="LoadmoreSpaRecommendation">Xem thêm</span></li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+
+                <% services.forEach((item, index)=>{ %>
+                    <div class="tab-pane fade show <%=index===0?'active':''%>" id="service<%=item._id%>" role="tabpanel" aria-labelledby="<%=item._id%>-tab">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="product-carousel-wrapper owl-carousel" id="experts-carousel">
+                                    <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                   <span aria-hidden="true">&times;</span>
                                               </button>
-                                          </div>
-                                          <div class="modal-body">
-                                              <div class="search-section-map">
-                                                  <div id="mapid" style="width: 100%; height: 100%;min-height: 400px; z-index: 1;"></div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="row">
-
-                                  <% item.spaservice.forEach((spaservice, index)=>{ %>
-                                    <% if(index < 9) { %>
-                                      <div class="single-carousel col-md-4">
-                                        <img style="height: 220px; width: 100%;" src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs || spaservice.spa.logo)%>" alt="experts person" class="img-fluid">
-                                        <div class="expert-hover">
-                                            <div class="blog-content">
-                                                <div class="text-center">
-                                                    <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500 pt-20"><%=spaservice.spa.name%></a>
                                                 </div>
-                                                <div class="address">
-                                                    <p class="spa-info address"><i class="fa fa-home"></i><span> Address:</span> <%-spaservice.spa.address%></p>
-                                                    <p class="spa-info phone"><i class="fa fa-phone"></i><span> Phone:</span> <%-spaservice.spa.phone%></p>
-                                                    <p class="spa-info email"><i class="fa fa-envelope"></i><span> Email:</span> <a href="#"><%-spaservice.spa.email%></a></p>
+                                                <div class="modal-body">
+                                                    <div class="search-section-map">
+                                                        <div id="mapid" style="width: 100%; height: 100%;min-height: 400px; z-index: 1;"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <ul class="brand">
-                                            <li><i class="fa fa-heart"></i>18</li>
-                                            <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
-                                            <li>
-                                                <p data-toggle="modal" data-target="#mapModal" data-lat="<%=spaservice.spa.latitude%>" data-lng="<%=spaservice.spa.longitude%>" data-title="<%=spaservice.spa.name%>" class="map">
-                                                    <i class="fa fa-map-marker" aria-hidden="true"></i> Direct to location
-                                                </p>
-                                            </li>
-                                            <li class="gallery"><i class="fa fa-picture-o"></i></li>
-                                        </ul>
-                                      </div>
-                                    <% } %>
-                                  <% }) %>
+                                    </div>
+                                    <div class="row">
 
-                                  <% if(item.spaservice.length===0){ %>
-                                    <div>Không có dữ liệu</div>
-                                  <% } %>
+                                        <% item.spaservice.forEach((spaservice, index)=>{ %>
+                                            <% if(index < 9) { %>
+                                                <div class="single-carousel col-md-6 col-lg-4">
+                                                    <img style="height: 220px; width: 100%;" src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs || spaservice.spa.logo)%>" alt="experts person" class="img-fluid">
+                                                    <div class="expert-hover">
+                                                        <div class="blog-content">
+                                                            <div class="text-center">
+                                                                <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500 pt-20">
+                                                                    <%=spaservice.spa.name%>
+                                                                </a>
+                                                            </div>
+                                                            <div class="address">
+                                                                <p class="spa-info address"><i class="fa fa-home"></i><span> Address:</span>
+                                                                    <%-spaservice.spa.address%>
+                                                                </p>
+                                                                <p class="spa-info phone"><i class="fa fa-phone"></i><span> Phone:</span>
+                                                                    <%-spaservice.spa.phone%>
+                                                                </p>
+                                                                <p class="spa-info email"><i class="fa fa-envelope"></i><span> Email:</span>
+                                                                    <a href="#">
+                                                                        <%-spaservice.spa.email%>
+                                                                    </a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <ul class="brand">
+                                                        <li><i class="fa fa-heart"></i>18</li>
+                                                        <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
+                                                        <li>
+                                                            <p data-toggle="modal" data-target="#mapModal" data-lat="<%=spaservice.spa.latitude%>" data-lng="<%=spaservice.spa.longitude%>" data-title="<%=spaservice.spa.name%>" class="map">
+                                                                <i class="fa fa-map-marker" aria-hidden="true"></i> Direct to location
+                                                            </p>
+                                                        </li>
+                                                        <li class="gallery"><i class="fa fa-picture-o"></i></li>
+                                                    </ul>
+                                                </div>
+                                                <% } %>
+                                                    <% }) %>
 
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <% }) %>
+                                                        <% if(item.spaservice.length===0){ %>
+                                                            <div>Không có dữ liệu</div>
+                                                            <% } %>
 
-          </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
 
-      </div>
-  </section>
-  <!-- ======================================= 
+            </div>
+
+        </div>
+    </section>
+    <!-- ======================================= 
     ==End recommendation section== 
 =======================================-->
 
@@ -168,92 +182,114 @@
             ==Start Testimonial section==  
     =======================================-->
     <section class="testimonial-section beautyLab-gallery">
-      <div class="overlay"></div>
-      <div class="container">
-          <div class="row">
-              <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
-                  <div class="section-title pb-60 text-center">
-                      <h3 class="color-ff fw-500">Đội ngũ chuyên gia giàu kinh nghiệm</h3>
-                  </div>
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
+                    <div class="section-title pb-60 text-center">
+                        <h3 class="color-ff fw-500">Đội ngũ chuyên gia giàu kinh nghiệm</h3>
+                    </div>
 
-                  <div class="testimoial-wrapper owl-carousel">
+                    <div class="testimoial-wrapper owl-carousel">
 
-                      <% experts.forEach(item=>{ %>
-                        <div class="single-testimonial text-center">
-                          <a href="/chuyen-gia/<%=item.slug%>"><img src="<%=urlMediaUpload.imageObj(item.user.avatar || item.images[0])%>" alt="author"></a>
-                          <p class="testimoinal-txt color-ff pt-25"><%=item.slogan%></p>
-                          <p class="author color-ff"><a href="/chuyen-gia/<%=item.slug%>"><%=item.user.first_name%> <%=item.user.last_name%></a><span><%=item.job%></span></p>
+                        <% experts.forEach(item=>{ %>
+                            <div class="single-testimonial text-center">
+                                <a href="/chuyen-gia/<%=item.slug%>"><img src=" <%= urlMediaUpload.imageObj(item.user.avatar || item.images[0])%> " alt="author"></a>
+                                <p class="testimoinal-txt color-ff pt-25">
+                                    <%=item.slogan%>
+                                </p>
+                                <p class="author color-ff">
+                                    <a href="/chuyen-gia/<%=item.slug%>">
+                                        <%=item.user.first_name%>
+                                            <%=item.user.last_name%>
+                                    </a><span><%=item.job%></span></p>
+                            </div>
+                            <% }) %>
+
+                    </div>
+                    <!--/testimoial wrapper-->
+                </div>
+                <!--/col-->
+            </div>
+
+
+            <div class="row gallery-wrapper mt-5">
+
+                <% experts.forEach(item=>{ %>
+                    <!--gallery-1-->
+                    <div class="col-lg-4 col-md-6  mix interiors">
+                        <div class="single-gallery">
+                            <img style="height: 200px; width: 100%;" src="<%=urlMediaUpload.imageObj(item.images[0])%>" alt="gallery image" class="img-fluid" />
+                            <div class="single-gallery-overlay text-center">
+                                <h6>
+                                    <a href="/chuyen-gia/<%=item.slug%>" class="color-ff fw-500">
+                                        <%=item.user.first_name%>
+                                            <%=item.user.last_name%>
+                                    </a>
+                                </h6>
+                                <div class="divider mt-15 mb-10"></div>
+                                <p class="color-ff">
+                                    <%=item.slogan%>
+                                </p>
+                            </div>
                         </div>
-                      <% }) %>
-                  
-                  </div>
-                  <!--/testimoial wrapper-->
-              </div>
-              <!--/col-->
-          </div>
+                    </div>
+                    <% }) %>
+                        <!--/col-->
+            </div>
+            <!--/row-->
 
-
-          <div class="row gallery-wrapper mt-5">
-
-            <% experts.forEach(item=>{ %>
-                <!--gallery-1-->
-                <div class="col-lg-4 col-md-6  mix interiors">
-                  <div class="single-gallery">
-                      <img style="height: 200px; width: 100%;" src="<%=urlMediaUpload.imageObj(item.images[0])%>" alt="gallery image" class="img-fluid" />
-                      <div class="single-gallery-overlay text-center">
-                          <h6><a href="/chuyen-gia/<%=item.slug%>" class="color-ff fw-500"><%=item.user.first_name%> <%=item.user.last_name%></a></h6>
-                          <div class="divider mt-15 mb-10"></div>
-                          <p class="color-ff"><%=item.slogan%></p>
-                      </div>
-                  </div>
-              </div>
-            <% }) %>
-          <!--/col-->
         </div>
-        <!--/row-->
-
-      </div>
-  </section>
-  <!-- ======================================= 
+    </section>
+    <!-- ======================================= 
           ==End Testimonial section== 
   =======================================-->
 
     <!-- ======================================= 
             ==Start Offer Section== 
     =======================================-->
-    <section class="service-section <%= discount.length? "":'d-none' %> ">
-      <div class="container">
-          <div class="row">
-              <div class="col-12">
-                  <div class="section-title text-center">
-                      <h3 class="color-72 fw-500 pb-10">Giảm giá trong tuần</h3>
-                  </div>
-              </div>
-              <!--/col-->
-          </div>
-          <!--/row-->
+    <section class="service-section <%= discount.length? " ":'d-none' %> ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h3 class="color-72 fw-500 pb-10">Giảm giá trong tuần</h3>
+                    </div>
+                </div>
+                <!--/col-->
+            </div>
+            <!--/row-->
 
-          <div class="row">
-            <!-- urlMediaUpload.imageObj -->
+            <div class="row">
+                <!-- urlMediaUpload.imageObj -->
                 <% discount.forEach(item => { %>
                     <div class="col-lg-4 col-md-6">
                         <div class="single-service">
                             <div class="img"><img src="<%= urlMediaUpload.imageObj(item.image) %>" alt="service-img" class="img-fluid"></div>
                             <div class="img-over-content text-center">
                                 <img src="<%= urlMediaUpload.imageObj(item.spa.logo) %>" style="width: 60px;" alt="service-img" class="img-fluid">
-                                <a href="/spa/<%=item.spa.slug%>/<%=item.id%>"  class="title fw-500"><%=item.spa.name%></a>
-                                <p class="font-weight-bold"><%= item.spaservice.title || item.spaservice.service.title%></p>
+                                <a href="/spa/<%=item.spa.slug%>/<%=item.id%>" class="title fw-500">
+                                    <%=item.spa.name%>
+                                </a>
+                                <p class="font-weight-bold">
+                                    <%= item.spaservice.title || item.spaservice.service.title%>
+                                </p>
                                 <!-- <a href="service-details.html" class="fw-500 color-33 mtb-15">Beauty Treatment</a> -->
-                                <p><%- item.content %></p>
-                                <p class="date-discount"><%= moment(item.date_start).format('DD/MM') %> - <%= moment(item.date_start).format('DD/MM')%></p>
+                                <p>
+                                    <%- item.content %>
+                                </p>
+                                <p class="date-discount">
+                                    <%= moment(item.date_start).format('DD/MM') %> -
+                                        <%= moment(item.date_start).format('DD/MM')%>
+                                </p>
                             </div>
                         </div>
                     </div>
-                <% }); %>
-                
-                    
-              <!--service-1-->
-              <!-- <div class="col-lg-4 col-md-6">
+                    <% }); %>
+
+
+                        <!--service-1-->
+                        <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-service">
                       <div class="img"><img src="/images/service-img1.jpg" alt="service-img" class="img-fluid"></div>
                       <div class="img-over-content text-center">
@@ -265,8 +301,8 @@
                   </div>
               </div> -->
 
-              <!--service-2-->
-              <!-- <div class="col-lg-4 col-md-6">
+                        <!--service-2-->
+                        <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-service">
                       <div class="img"><img src="/images/service-img2.jpg" alt="service-img" class="img-fluid"></div>
                       <div class="img-over-content text-center">
@@ -278,8 +314,8 @@
                   </div>
               </div> -->
 
-              <!--service-3-->
-              <!-- <div class="col-lg-4 col-md-6">
+                        <!--service-3-->
+                        <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-service">
                       <div class="img"><img src="/images/service-img3.jpg" alt="service-img" class="img-fluid"></div>
                       <div class="img-over-content text-center">
@@ -291,8 +327,8 @@
                   </div>
               </div> -->
 
-              <!--service-4-->
-              <!-- <div class="col-lg-4 col-md-6">
+                        <!--service-4-->
+                        <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-service">
                       <div class="img"><img src="/images/service-img4.jpg" alt="service-img" class="img-fluid"></div>
                       <div class="img-over-content text-center">
@@ -304,8 +340,8 @@
                   </div>
               </div> -->
 
-              <!--service-5-->
-              <!-- <div class="col-lg-4 col-md-6">
+                        <!--service-5-->
+                        <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-service">
                       <div class="img"><img src="/images/service-img5.jpg" alt="service-img" class="img-fluid"></div>
                       <div class="img-over-content text-center">
@@ -317,8 +353,8 @@
                   </div>
               </div> -->
 
-              <!--service-6-->
-              <!-- <div class="col-lg-4 col-md-6">
+                        <!--service-6-->
+                        <!-- <div class="col-lg-4 col-md-6">
                   <div class="single-service">
                       <div class="img"><img src="/images/service-img6.jpg" alt="service-img" class="img-fluid"></div>
                       <div class="img-over-content text-center">
@@ -329,235 +365,234 @@
                       </div>
                   </div>
               </div> -->
-              <!--/col-->
-          </div>
-          <!--/row-->
-      </div>
-  </section>
-  <!-- ======================================= 
+                        <!--/col-->
+            </div>
+            <!--/row-->
+        </div>
+    </section>
+    <!-- ======================================= 
           ==End Offer Section== 
   =======================================-->
 
-  <!-- ======================================= 
+    <!-- ======================================= 
           ==Start price list section==  
   =======================================-->
-  <section class="priceing-section">
-      <div class="container">
-          <div class="row">
-              <div class="col-12">
-                  <div class="section-title pb-60 text-center">
-                      <h3 class="color-72 fw-500 pb-10">Báo giá</h3>
-                      <p>Thông tin báo giá tại đây</p>
-                  </div>
+    <section class="priceing-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title pb-60 text-center">
+                        <h3 class="color-72 fw-500 pb-10">Báo giá</h3>
+                        <p>Thông tin báo giá tại đây</p>
+                    </div>
 
-                  <div class="price-list-tab">
-                      <!-- Nav tabs -->
-                      <ul class="tab-menu nav nav-tabs" role="tablist">
-                          <li class="nav-item"><a class="nav-link" href="#beautyTreatment" aria-controls="beautyTreatment" role="tab" data-toggle="tab" aria-selected="true">Chăm sóc sắc đẹp</a></li>
-                          <li class="nav-item"><a class="nav-link" href="#makeUp" aria-controls="makeUp" role="tab" data-toggle="tab" aria-selected="false">Make-up</a></li>
-                          <li class="nav-item"><a class="nav-link active" href="#spaTherapy" aria-controls="spaTherapy" role="tab" data-toggle="tab" aria-selected="false">Spa trị liệu</a></li>
-                          <li class="nav-item"><a class="nav-link" href="#hairTreatment" aria-controls="hairTreatment" role="tab" data-toggle="tab" aria-selected="false">Tóc trị liệu</a></li>
-                          <li class="nav-item"><a class="nav-link" href="#specialOffers" aria-controls="specialOffers" role="tab" data-toggle="tab" aria-selected="false">Dịch vụ đặc biệt</a></li>
-                      </ul>
+                    <div class="price-list-tab">
+                        <!-- Nav tabs -->
+                        <ul class="tab-menu nav nav-tabs" role="tablist">
+                            <li class="nav-item"><a class="nav-link" href="#beautyTreatment" aria-controls="beautyTreatment" role="tab" data-toggle="tab" aria-selected="true">Chăm sóc sắc đẹp</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#makeUp" aria-controls="makeUp" role="tab" data-toggle="tab" aria-selected="false">Make-up</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#spaTherapy" aria-controls="spaTherapy" role="tab" data-toggle="tab" aria-selected="false">Spa trị liệu</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#hairTreatment" aria-controls="hairTreatment" role="tab" data-toggle="tab" aria-selected="false">Tóc trị liệu</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#specialOffers" aria-controls="specialOffers" role="tab" data-toggle="tab" aria-selected="false">Dịch vụ đặc biệt</a></li>
+                        </ul>
 
-                      <!-- Tab panes -->
-                      <div class="tab-content">
-                          <!-- tab-pannel 1 -->
-                          <div role="tabpanel" class="tab-pane fade clearfix" id="beautyTreatment">
-                              <div class="single-price-list stone-therapy float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Spa trị liệu 1</a><span>$1</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list massage-therapie float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Spa trị liệu 2</a> <span>$65</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list body-bassage float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Spa trị liệu 3</a> <span>$85</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list pedicure-manicure float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Spa trị liệu 4</a> <span>$32</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                          </div>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <!-- tab-pannel 1 -->
+                            <div role="tabpanel" class="tab-pane fade clearfix" id="beautyTreatment">
+                                <div class="single-price-list stone-therapy float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Spa trị liệu 1</a><span>$1</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list massage-therapie float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Spa trị liệu 2</a> <span>$65</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list body-bassage float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Spa trị liệu 3</a> <span>$85</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list pedicure-manicure float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Spa trị liệu 4</a> <span>$32</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                            </div>
 
-                          <!-- tab-pannel 2 -->
-                          <div role="tabpanel" class="tab-pane fade clearfix" id="makeUp">
-                              <div class="single-price-list stone-therapy float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Stone Therapy </a><span>$101</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list massage-therapie float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Massage Therapies</a> <span>$65</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list body-bassage float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Body Massage</a> <span>$85</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list pedicure-manicure float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Pedicure & Manicure</a> <span>$32</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                          </div>
+                            <!-- tab-pannel 2 -->
+                            <div role="tabpanel" class="tab-pane fade clearfix" id="makeUp">
+                                <div class="single-price-list stone-therapy float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Stone Therapy </a><span>$101</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list massage-therapie float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Massage Therapies</a> <span>$65</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list body-bassage float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Body Massage</a> <span>$85</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list pedicure-manicure float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Pedicure & Manicure</a> <span>$32</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                            </div>
 
-                          <!-- tab-pannel 3 -->
-                          <div role="tabpanel" class="tab-pane fade show active clearfix" id="spaTherapy">
-                              <div class="single-price-list stone-therapy float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Stone Therapy </a><span>$15</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list body-bassage float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Body Massage</a> <span>$185</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list massage-therapie float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Massage Therapies</a> <span>$65</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list pedicure-manicure float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Pedicure & Manicure</a> <span>$32</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                          </div>
+                            <!-- tab-pannel 3 -->
+                            <div role="tabpanel" class="tab-pane fade show active clearfix" id="spaTherapy">
+                                <div class="single-price-list stone-therapy float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Stone Therapy </a><span>$15</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list body-bassage float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Body Massage</a> <span>$185</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list massage-therapie float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Massage Therapies</a> <span>$65</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list pedicure-manicure float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Pedicure & Manicure</a> <span>$32</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                            </div>
 
-                          <!-- tab-pannel 4 -->
-                          <div role="tabpanel" class="tab-pane fade clearfix" id="hairTreatment">
-                              <div class="single-price-list stone-therapy float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Stone Therapy </a><span>$15</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list massage-therapie float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Massage Therapies</a> <span>$605</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list pedicure-manicure float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Pedicure & Manicure</a> <span>$32</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list body-bassage float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Body Massage</a> <span>$850</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                          </div>
+                            <!-- tab-pannel 4 -->
+                            <div role="tabpanel" class="tab-pane fade clearfix" id="hairTreatment">
+                                <div class="single-price-list stone-therapy float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Stone Therapy </a><span>$15</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list massage-therapie float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Massage Therapies</a> <span>$605</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list pedicure-manicure float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Pedicure & Manicure</a> <span>$32</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list body-bassage float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Body Massage</a> <span>$850</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                            </div>
 
-                          <!-- tab-pannel 5 -->
-                          <div role="tabpanel" class="tab-pane fade clearfix" id="specialOffers">
-                              <div class="single-price-list massage-therapie float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Massage Therapies</a> <span>$651</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list stone-therapy float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Stone Therapy </a><span>$101295</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list body-bassage float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Body Massage</a> <span>$845</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                              <div class="single-price-list pedicure-manicure float-left">
-                                  <h6><a href="#" class="fw-500 pb-10">Pedicure & Manicure</a> <span>$312</span></h6>
-                                  <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
-                              </div>
-                          </div>
-                          <!--/tab-pannel-->
-                      </div>
-                      <a href="#" class="booking-now">Liên hệ ngay</a>
-                  </div>
-              </div>
-          </div>
-          <!--/row-->
-      </div>
-  </section>
-  <!-- ======================================= 
+                            <!-- tab-pannel 5 -->
+                            <div role="tabpanel" class="tab-pane fade clearfix" id="specialOffers">
+                                <div class="single-price-list massage-therapie float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Massage Therapies</a> <span>$651</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list stone-therapy float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Stone Therapy </a><span>$101295</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list body-bassage float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Body Massage</a> <span>$845</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                                <div class="single-price-list pedicure-manicure float-left">
+                                    <h6><a href="#" class="fw-500 pb-10">Pedicure & Manicure</a> <span>$312</span></h6>
+                                    <p class="color-51">Đây là một dấu chấm hỏi lớn dành cho hầu hết các tín đồ làm đẹp. Thực tế, nhiều loại kem trị rạn da, kem dưỡng, gel, dầu… dường như không có sản phẩm nào có khả năng phục hồi tối ưu.</p>
+                                </div>
+                            </div>
+                            <!--/tab-pannel-->
+                        </div>
+                        <a href="#" class="booking-now">Liên hệ ngay</a>
+                    </div>
+                </div>
+            </div>
+            <!--/row-->
+        </div>
+    </section>
+    <!-- ======================================= 
         ==End price list section== 
 =======================================-->
 
 
-  <!-- ======================================= 
+    <!-- ======================================= 
       ==Start short link section==  
   =======================================-->
-  <section class="shortlink-section v2">
-      <div class="container">
-          <div class="row mb-3">
-              <div class="col-12">
-                  <div class="text-left">
-                      <h3 class="color-72 fw-500 pb-10">Liên kết</h3>
-                  </div>
-                  <p>Liên kết trang web liên quan</p>
-              </div>
-          </div>
-          <!--/row-->
+    <section class="shortlink-section v2">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="text-left">
+                        <h3 class="color-72 fw-500 pb-10">Liên kết</h3>
+                    </div>
+                    <p>Liên kết trang web liên quan</p>
+                </div>
+            </div>
+            <!--/row-->
 
-          <div class="row mb-5">
-              <div class="col-md-12">
-                  <div class="shortlink-wrapper clearfix">
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <div class="shortlink-wrapper clearfix">
 
-                      <!--plan-1-->
-                      <div class="single-shortlink-plan single-pack text-left float-left">
-                          <div class="shortlink-body">
-                              <div class="shortlink-content">
-                                  <a href='#'>
-                                      <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>About</h6>
-                                  </a>
-                                  <p>Curabitur ac lacus arcu. Sed vehicula lectus auctor viverra. Vehicula.</p>
-                              </div>
+                        <!--plan-1-->
+                        <div class="single-shortlink-plan single-pack text-left float-left">
+                            <div class="shortlink-body">
+                                <div class="shortlink-content">
+                                    <a href='#'>
+                                        <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>About</h6>
+                                    </a>
+                                    <p>Curabitur ac lacus arcu. Sed vehicula lectus auctor viverra. Vehicula.</p>
+                                </div>
 
-                              <div class="shortlink-content">
-                                  <a href='#'>
-                                      <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Book a service</h6>
-                                  </a>
-                                  <p>Curabitur ac lacus arcu. Sed vehicula lectus auctor viverra. Vehicula.</p>
-                              </div>
-                          </div>
-                      </div>
+                                <div class="shortlink-content">
+                                    <a href='#'>
+                                        <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Book a service</h6>
+                                    </a>
+                                    <p>Curabitur ac lacus arcu. Sed vehicula lectus auctor viverra. Vehicula.</p>
+                                </div>
+                            </div>
+                        </div>
 
-                      <!--plan-2-->
-                      <div class="single-shortlink-plan text-left float-left">
-                          <div class="shortlink-body">
-                              <div class="shortlink-content">
-                                  <a href='#'>
-                                      <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Review your spa</h6>
-                                  </a>
-                                  <p>Curabitur ac lacus arcu. Sed vehicula lectus auctor viverra. Vehicula.</p>
-                              </div>
-                              <div class="shortlink-content">
-                                  <a href='#'>
-                                      <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Get information from spa</h6>
-                                  </a>
-                                  <p>Curabitur ac lacus arcu. Sed vehicula lectus auctor viverra. Vehicula.</p>
-                              </div>
-                          </div>
-                      </div>
+                        <!--plan-2-->
+                        <div class="single-shortlink-plan text-left float-left">
+                            <div class="shortlink-body">
+                                <div class="shortlink-content">
+                                    <a href='#'>
+                                        <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Review your spa</h6>
+                                    </a>
+                                    <p>Curabitur ac lacus arcu. Sed vehicula lectus auctor viverra. Vehicula.</p>
+                                </div>
+                                <div class="shortlink-content">
+                                    <a href='#'>
+                                        <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Get information from spa</h6>
+                                    </a>
+                                    <p>Curabitur ac lacus arcu. Sed vehicula lectus auctor viverra. Vehicula.</p>
+                                </div>
+                            </div>
+                        </div>
 
-                      <!--plan-3-->
-                      <div class="single-shortlink-plan family-pack text-left float-left">
-                          <div class="shortlink-body">
-                              <div class="shortlink-content">
-                                  <a href='#'>
-                                      <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Entry from 10 pm to 8 pm</h6>
-                                  </a>
-                                  <p>Curabitur ac lacus arcu. Sed vehicula lectus auctor viverra. Vehicula.</p>
-                              </div>
-                              <div class="shortlink-content">
-                                  <a href='#'>
-                                      <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Body & foot massages</h6>
-                                  </a>
-                                  <p>Curabitur ac lacus arcu. Sed vehicula lectus auctor viverra. Vehicula.</p>
-                              </div>
-                          </div>
-                      </div>
-                      <!--/single price plan-->
-                  </div>
-                  <!--/wrapper-->
-              </div>
-              <!--/col-->
-          </div>
-          <!--/row-->
-      </div>
-  </section>
-  <!-- ======================================= 
+                        <!--plan-3-->
+                        <div class="single-shortlink-plan family-pack text-left float-left">
+                            <div class="shortlink-body">
+                                <div class="shortlink-content">
+                                    <a href='#'>
+                                        <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Entry from 10 pm to 8 pm</h6>
+                                    </a>
+                                    <p>Curabitur ac lacus arcu. Sed vehicula lectus auctor viverra. Vehicula.</p>
+                                </div>
+                                <div class="shortlink-content">
+                                    <a href='#'>
+                                        <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Body & foot massages</h6>
+                                    </a>
+                                    <p>Curabitur ac lacus arcu. Sed vehicula lectus auctor viverra. Vehicula.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/single price plan-->
+                    </div>
+                    <!--/wrapper-->
+                </div>
+                <!--/col-->
+            </div>
+            <!--/row-->
+        </div>
+    </section>
+    <!-- ======================================= 
     ==End pricing plan section== 
 =======================================-->
-

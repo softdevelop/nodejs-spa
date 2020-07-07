@@ -1,9 +1,9 @@
-.service-section .img img{
+.service-section .img img {
     width: 100%;
     height: 220px;
 }
 
-.service-section .date-discount{
+.service-section .date-discount {
     position: absolute;
     top: 5px;
     text-align: none;
@@ -11,40 +11,48 @@
     padding-right: 10px;
 }
 
-.wide{
+.wide {
     height: 43.75px;
     border: 1px solid #d1d1d1;
 }
-.string-line-3{
+
+.string-line-3 {
     height: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 3;
-     display: -webkit-box;
+    display: -webkit-box;
     -webkit-box-orient: vertical;
 }
-.beauty-service ul.list li{
+
+.beauty-service ul.list li {
     font-weight: 700 !important;
 }
 
-.beauty-service ul.list li[data-value*='_']{
+.beauty-service ul.list li[data-value*='_'] {
     font-weight: unset !important;
     padding-left: 30px;
 }
 
-.beauty-service ul.list{
+.beauty-service ul.list {
     height: 300px;
     overflow-y: scroll;
 }
 
-.discount{
+.discount {
     background: #f9f9f9 !important;
 }
-.single-carousel .img-background{
-  
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  background-size: cover,contain !important;
-width: 100%;
-height: 100%;
+
+.single-carousel .img-background {
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover, contain !important;
+    width: 100%;
+    height: 100%;
+}
+
+.experts-section .expert-hover {
+    left: 15px;
+    right: 15px;
+    width: unset !important;
 }
