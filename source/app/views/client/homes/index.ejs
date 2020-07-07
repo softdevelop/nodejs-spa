@@ -93,16 +93,61 @@
                 <li class="nav-item SpaRecommendationCat" length="<%=item.spaservice.length%>"><a class="nav-link <%=index===0?'active':''%>" href="#service<%=item._id%>" aria-controls="service<%=item._id%>" role="tab" data-toggle="tab" aria-selected="true"><%=item.title%></a></li>
               <% }) %>
             
-              <li class="view-more position-absolute"><span style="color: #d5275a; cursor: pointer;" class="LoadmoreSpaRecommendation">Xem thêm</span></li>
+              <li class="view-more position-absolute nav-item SpaRecommendationCat"><a class="nav-link" href="#service" aria-controls="service" role="tab" data-toggle="tab" aria-selected="true">Xem thêm</a></li>
           </ul>
           <div class="tab-content" id="myTabContent">
+            <div id="service" class="tab-pane fade show">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="product-carousel-wrapper owl-carousel" id="experts-carousel">
+                            <div class="row">
+                            <% services.forEach((item, index)=>{ %>
+                                <% item.spaservice.forEach((spaservice, index)=>{ %>
+                                    <% if(index < 9 ) { %>
+                                        <div class="single-carousel col-md-4">
+                                            <img style="height: 220px; width: 100%;" src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs || spaservice.spa.logo)%>" alt="experts person" class="img-fluid">
+                                            <div class="expert-hover">
+                                                <div class="blog-content">
+                                                    <div class="text-center">
+                                                        <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500 pt-20"><%=spaservice.spa.name%></a>
+                                                    </div>
+                                                    <div class="address">
+                                                        <p class="spa-info address"><i class="fa fa-home"></i><span> Address:</span> <%-spaservice.spa.address%></p>
+                                                        <p class="spa-info phone"><i class="fa fa-phone"></i><span> Phone:</span> <%-spaservice.spa.phone%></p>
+                                                        <p class="spa-info email"><i class="fa fa-envelope"></i><span> Email:</span> <a href="#"><%-spaservice.spa.email%></a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ul class="brand">
+                                                <li><i class="fa fa-heart"></i>18</li>
+                                                <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
+                                                <li>
+                                                    <p data-toggle="modal" data-target="#mapModal" data-lat="<%=spaservice.spa.latitude%>" data-lng="<%=spaservice.spa.longitude%>" data-title="<%=spaservice.spa.name%>" class="map">
+                                                        <i class="fa fa-map-marker" aria-hidden="true"></i> Direct to location
+                                                    </p>
+                                                </li>
+                                                <li class="gallery"><i class="fa fa-picture-o"></i></li>
+                                            </ul>
+                                    </div>
+                                    <% } %>
+                                <% }) %>
+                                <% if(item.spaservice.length===0){ %>
+                                  <div>Không có dữ liệu</div>
+                                <% } %>
+                            <% }) %>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
               <% services.forEach((item, index)=>{ %>
+
                 <div class="tab-pane fade show <%=index===0?'active':''%>" id="service<%=item._id%>" role="tabpanel" aria-labelledby="<%=item._id%>-tab">
                   <div class="row">
                       <div class="col-md-12">
                           <div class="product-carousel-wrapper owl-carousel" id="experts-carousel">
-                                <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <!-- <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog modal-lg">
                                       <div class="modal-content">
                                           <div class="modal-header">
@@ -118,37 +163,36 @@
                                           </div>
                                       </div>
                                   </div>
-                              </div>
+                              </div> -->
                               <div class="row">
-
                                   <% item.spaservice.forEach((spaservice, index)=>{ %>
-                                    <% if(index < 9) { %>
-                                      <div class="single-carousel col-md-4">
-                                        <img style="height: 220px; width: 100%;" src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs || spaservice.spa.logo)%>" alt="experts person" class="img-fluid">
-                                        <div class="expert-hover">
-                                            <div class="blog-content">
-                                                <div class="text-center">
-                                                    <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500 pt-20"><%=spaservice.spa.name%></a>
-                                                </div>
-                                                <div class="address">
-                                                    <p class="spa-info address"><i class="fa fa-home"></i><span> Address:</span> <%-spaservice.spa.address%></p>
-                                                    <p class="spa-info phone"><i class="fa fa-phone"></i><span> Phone:</span> <%-spaservice.spa.phone%></p>
-                                                    <p class="spa-info email"><i class="fa fa-envelope"></i><span> Email:</span> <a href="#"><%-spaservice.spa.email%></a></p>
+                                        <% if(index < 9 ) { %>
+                                        <div class="single-carousel col-md-4">
+                                            <img style="height: 220px; width: 100%;" src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs || spaservice.spa.logo)%>" alt="experts person" class="img-fluid">
+                                            <div class="expert-hover">
+                                                <div class="blog-content">
+                                                    <div class="text-center">
+                                                        <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500 pt-20"><%=spaservice.spa.name%></a>
+                                                    </div>
+                                                    <div class="address">
+                                                        <p class="spa-info address"><i class="fa fa-home"></i><span> Address:</span> <%-spaservice.spa.address%></p>
+                                                        <p class="spa-info phone"><i class="fa fa-phone"></i><span> Phone:</span> <%-spaservice.spa.phone%></p>
+                                                        <p class="spa-info email"><i class="fa fa-envelope"></i><span> Email:</span> <a href="#"><%-spaservice.spa.email%></a></p>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <ul class="brand">
+                                                <li><i class="fa fa-heart"></i>18</li>
+                                                <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
+                                                <li>
+                                                    <p data-toggle="modal" data-target="#mapModal" data-lat="<%=spaservice.spa.latitude%>" data-lng="<%=spaservice.spa.longitude%>" data-title="<%=spaservice.spa.name%>" class="map">
+                                                        <i class="fa fa-map-marker" aria-hidden="true"></i> Direct to location
+                                                    </p>
+                                                </li>
+                                                <li class="gallery"><i class="fa fa-picture-o"></i></li>
+                                            </ul>
                                         </div>
-                                        <ul class="brand">
-                                            <li><i class="fa fa-heart"></i>18</li>
-                                            <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
-                                            <li>
-                                                <p data-toggle="modal" data-target="#mapModal" data-lat="<%=spaservice.spa.latitude%>" data-lng="<%=spaservice.spa.longitude%>" data-title="<%=spaservice.spa.name%>" class="map">
-                                                    <i class="fa fa-map-marker" aria-hidden="true"></i> Direct to location
-                                                </p>
-                                            </li>
-                                            <li class="gallery"><i class="fa fa-picture-o"></i></li>
-                                        </ul>
-                                      </div>
-                                    <% } %>
+                                        <% } %>
                                   <% }) %>
 
                                   <% if(item.spaservice.length===0){ %>

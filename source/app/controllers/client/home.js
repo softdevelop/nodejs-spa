@@ -22,12 +22,14 @@ const index = async (req, res) => {
   let services = await Service.find({ status: 'active'}).select('title').populate({
     path: 'spaservice',
     select: 'title _id spa_id',
-    populate: 'spa',
+    populate: {
+      path:'spa',
+      math:{status:'active'}
+    },
     options: {
       limit: 10
     }
   }).lean();
-
 
   const startOfWeek = moment().startOf('isoWeek').toISOString();
   const endOfWeek = moment().endOf('isoWeek').toISOString();

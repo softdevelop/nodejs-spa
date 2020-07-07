@@ -18,6 +18,7 @@ const NewSchema = new Schema({
     numOfViews:{type: Number, require},
     spa_id: {type: String, require: true},
     createBy: {type: String, require: true},
+    author: {type: String, require: true},
     category_ids: {type: Array, required: true },
 },{
     timestamps: true
@@ -33,8 +34,9 @@ function validateNew(news){
         image: Joi.any(),
         status: Joi.string().required(),
         numOfViews: Joi.number(),
-        spa_id: Joi.string().min(1).max(50).required(),
-        createBy: Joi.string().min(1).max(50).required(),
+        spa_id: Joi.string().required(),
+        createBy: Joi.string().required(),
+        author: Joi.string().required(),
         category_ids: Joi.allow(),
     }
     return Joi.validate(news , schema, { abortEarly: false });
@@ -49,8 +51,9 @@ function validateNewEdit(news){
         image: Joi.any(),
         status: Joi.string().required(),
         numOfViews: Joi.number(),
-        spa_id: Joi.string().min(1).max(50).required(),
-        createBy: Joi.string().min(1).max(50).required(),
+        spa_id: Joi.string().required(),
+        createBy: Joi.string().required(),
+        author: Joi.string().required(),
         category_ids: Joi.allow(),
     }
     return Joi.validate(news, schema, { abortEarly: false });
@@ -71,6 +74,12 @@ NewSchema.virtual('spas', {
 NewSchema.virtual('user', {
     ref: 'User',
     localField: 'createBy',
+    foreignField: '_id',
+    justOne: true
+});
+NewSchema.virtual('user_author', {
+    ref: 'User',
+    localField: 'author',
     foreignField: '_id',
     justOne: true
 });

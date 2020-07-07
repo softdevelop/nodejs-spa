@@ -33,7 +33,10 @@ const getListNew = async (req, res) => {
           path: 'spas',
         },{
           path: 'user',
-          select: 'last_name first_name'
+          select:'_id first_name last_name'
+        },{
+          path:'user_author',
+          select:'_id first_name last_name'
         }
       ]
       };
@@ -57,7 +60,8 @@ const getListNew = async (req, res) => {
       options: { lean: true },
     });
     let optionsHtml = genCategory.genMultiOptions(categories);
-    res.render('admin/news/create', {errors: {}, data: {}, spas,urlMediaUpload, optionsHtml,today})
+    let user = await User.find({role:'EXPERT'}).select(' _id first_name last_name').exec();
+    res.render('admin/news/create', {errors: {}, data: {}, spas,user,urlMediaUpload, optionsHtml,today})
     
   }
 
@@ -100,13 +104,14 @@ const getListNew = async (req, res) => {
     let id = req.params.id;
     let news = await New.findById(id).exec()
     let spas = await Spa.find().exec()
+    let user = await User.find({role:'EXPERT'}).select(' _id first_name last_name').exec();
     let nameSpa = spas.find(item => item._id == news.spa_id)   
     let categories = await Category.getChildrenTree({
       fields: "_id name slug parent path",
       options: { lean: true },
     });
     let optionsHtml = genCategory.genMultiOptions(categories, '', news.category_ids);
-    res.render('admin/news/edit', {errors: {}, data: news, urlMediaUpload, nameSpa, spas,optionsHtml })
+    res.render('admin/news/edit', {errors: {}, data: news,user, urlMediaUpload, nameSpa, spas,optionsHtml })
   };
 
   const edit = async (req, res) => {
@@ -153,12 +158,13 @@ const viewDetail = async (req, res) => {
   let news = await New.findById(id).exec()
   let spas = await Spa.find().exec()
   let nameSpa = spas.find(item => item._id == news.spa_id)   
+  let user = await User.find({role:'EXPERT'}).select(' _id first_name last_name').exec();
   let categories = await Category.getChildrenTree({
     fields: "_id name slug parent path",
     options: { lean: true },
   });
   let optionsHtml = genCategory.genMultiOptions(categories, '', news.category_ids);
-  res.render('admin/news/view', {errors: {}, data: news, urlMediaUpload, nameSpa, spas,optionsHtml })
+  res.render('admin/news/view', {errors: {}, data: news,user, urlMediaUpload, nameSpa, spas,optionsHtml })
 }
 
 module.exports = {
