@@ -413,7 +413,7 @@
                     <% experts.forEach(item=>{ %>
                     <!--experts person-1-->
                     <div class="single-carousel col-md-6 col-lg-4 col-xl-3" style="height: 300px;">
-                        <img class="w-100" style="height: 100%;" src="<%=urlMediaUpload.imageObj(item.user.avatar || item.images[0])%>" alt="author">
+                        <div class="img-background" style="background-image:url(<%=urlMediaUpload.imageObj(item.user.avatar || item.images[0])%>)"></div>
                         <div class="expert-hover expert-hover-2 text-center" >
                             <p class="name fw-700 color-ff h6"><%=item.user.first_name%> <%=item.user.last_name%></p>
                             <p class="degignation"><%=item.job%></p>
