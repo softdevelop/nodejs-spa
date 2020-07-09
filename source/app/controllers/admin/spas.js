@@ -12,6 +12,7 @@ const { locations } = require("../../utils/constants");
 const Service = mongoose.model('Service')
 const truncate = require('html-truncate');
 const { dataProvince, dataDistrict } = require("../../utils/location");
+const fs = require('fs')
 
 const {
     spaIntroService,
@@ -125,8 +126,21 @@ const edit = async(req, res) => {
             data.logo = req.files.logo[0]
         } else delete data.logo
 
-        if (req.files.imgs && req.files.imgs[0]) {
-            data.imgs = req.files.imgs[0]
+        if (req.files.imgs) {
+            let record = await Spa.findById(id).select('imgs').exec();
+            let path;
+            record.imgs.forEach(img => {
+                path = 'assets/uploads/' + img.filename
+                fs.unlink(path, (err) => {
+                    if (err) {
+                        console.error(err)
+                        return
+                    }
+                    //file removed
+                })
+                console.log('true')
+            })
+            data.imgs = req.files.imgs
         } else delete data.imgs
         await Spa.findById(id).update(data);
         return res.sendData({ status: 'Success' })

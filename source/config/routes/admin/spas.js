@@ -44,7 +44,7 @@ router.get("/spas/landing-page/example/:id", spas.getTemplateExampleId);
 router.get("/spas/:id", hasPermission('spa.view'), spas.viewDetail);
 router.get("/spas/:id/edit", hasPermission('spa.edit'), spas.getFormEdit);
 router.post("/spas/:id/edit", uploadMedia.fields([
-    { name: 'logo', maxCount: 1 }, { name: 'imgs', maxCount: 1 }
+    { name: 'logo', maxCount: 1 }, { name: 'imgs', maxCount: 10 }
 ]), hasPermission('spa.edit'), spas.edit);
 router.post("/spas/delmany", hasPermission('spa.delete'), spas.delMany);
 router.get('/spas/:id/service/index', hasPermission('spa.index'), spas.getListService);
