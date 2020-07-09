@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Category = mongoose.model('Category')
 const Service = mongoose.model('Service')
+const Spa = mongoose.model('Spa')
 const New = mongoose.model("New");
 const Expert = mongoose.model("Expert");
 const Discount = mongoose.model("Discount");
@@ -19,7 +20,7 @@ const index = async(req, res) => {
     });
 
 
-    let services = await Service.find({ status: 'active' }).select('title').populate({
+    let services = await Service.find({ status: 'active' }).select('id title').populate({
         path: 'spaservice',
         select: 'title _id spa_id',
         populate: {
@@ -31,10 +32,14 @@ const index = async(req, res) => {
         }
     }).lean();
 
+    console.log('aaaaa', typeof categories, categories)
+    console.log('=================')
+    console.log('bbb', typeof services, services)
+
 
     const startOfWeek = moment().startOf('isoWeek').toISOString();
     const endOfWeek = moment().endOf('isoWeek').toISOString();
-    let discount = await await Discount.find({
+    let discount = await Discount.find({
         $or: [{ date_start: { $gte: startOfWeek, $lte: endOfWeek } },
             { date_end: { $gte: startOfWeek, $lte: endOfWeek } }
         ],
@@ -49,6 +54,7 @@ const index = async(req, res) => {
             }
         }
     ]).exec();
+    let spa = await Spa.find().select('_id imgs').exec()
 
     let { limit } = req.query;
     let page = req.params.page
@@ -83,6 +89,7 @@ const index = async(req, res) => {
         dataDistrict,
         discount,
         data,
+        spa,
         services,
         urlMediaUpload,
         moment: moment.tz.setDefault("Asia/Ho_Chi_Minh"),

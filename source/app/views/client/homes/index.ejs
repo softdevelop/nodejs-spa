@@ -6,9 +6,11 @@
     
     <link rel="stylesheet" href="/libs/js/Simple-Flexible-jQuery-Autocomplete-Plugin-Flexdatalist/jquery.flexdatalist.css">
     <link rel="stylesheet" href="/libs/js/Simple-Flexible-jQuery-Autocomplete-Plugin-Flexdatalist/jquery.flexdatalist.min.css">
+    <link rel="stylesheet" href="/libs_client/css/lightslider.css">
   `,
   script: `
   <script src="/libs_client/js/demo-home.js"></script>
+  <script src="/libs_client/js/lightslider.js"></script>
   <script>
     $(document).ready(function(){
       $('.LoadmoreSpaRecommendation').on('click', function(){
@@ -155,9 +157,9 @@
                         </div>
                     </div>
                 </div>
-                <% services.forEach((item, index)=>{ %>
+                <% services.forEach((item, indexServices)=>{ %>
 
-                    <div class="tab-pane fade show <%=index===0?'active':''%>" id="service<%=item._id%>" role="tabpanel" aria-labelledby="<%=item._id%>-tab">
+                    <div class="tab-pane fade show <%=indexServices===0?'active':''%>" id="service<%=item._id%>" role="tabpanel" aria-labelledby="<%=item._id%>-tab">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="product-carousel-wrapper owl-carousel" id="experts-carousel">
@@ -183,50 +185,46 @@
                                             <% item.spaservice.forEach((spaservice, index)=>{ %>
                                                 <% if(index < 9 ) { %>
                                                     <div class="item col-md-6 col-lg-4">
-                                                        <div class="col-12">
-                                                            <div class="single-blog mb-2">
-                                                                <div class="blog-img pos-relative">
-                                                                    <div class="img-area">
-                                                                        <a href="/spa/<%=spaservice.spa.slug%>"><img src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs || spaservice.spa.logo)%>" alt="blog img" class="img-fluid" style="max-height: 200px;"></a>
-                                                                    </div>
-                                                                    <ul class="brand">
-                                                                        <li><i class="fa fa-heart"></i>18</li>
-                                                                        <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
-                                                                        <li>
-                                                                            <p data-lat="16.662506225634573" data-lng="107.12768554687501" data-title="Nivea for men’s sensitive hydro gel the perfect cure." class="map home-search">
-                                                                                <i class="fa fa-map-marker" aria-hidden="true"></i> Xem địa điểm
-                                                                            </p>
-                                                                        </li>
-                                                                        <li class="gallery"><i class="fa fa-picture-o"></i></li>
-                                                                    </ul>
+                                                        <div class="single-blog mb-0">
+                                                            <div class="blog-img pos-relative">
+                                                                <div class="img-area">
+                                                                    <a href="/spa/<%=spaservice.spa.slug%>"><img src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs[0] || spaservice.spa.logo)%>" alt="blog img" class="img-fluid" style="max-height: 200px;"></a>
                                                                 </div>
+                                                                <ul class="brand ">
+                                                                    <li><i class="fa fa-heart"></i>18</li>
+                                                                    <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
+                                                                    <li>
+                                                                        <p data-lat="16.662506225634573" data-lng="107.12768554687501" data-title="Nivea for men’s sensitive hydro gel the perfect cure." class="map home-search">
+                                                                            <i class="fa fa-map-marker" aria-hidden="true"></i> Xem địa điểm
+                                                                        </p>
+                                                                    </li>
+                                                                    <li class="modal-content-slide gallery" spa-id="<%= spaservice.spa._id %>"><i class="fa fa-picture-o"></i></li>
+                                                                </ul>
                                                             </div>
                                                         </div>
-                                                        <div class="col-12">
-                                                            <div class="blog-content p-t-20 mb-4">
-                                                                <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500">
-                                                                    <%=spaservice.spa.name%>
-                                                                </a>
-                                                                <div class="remove-style string-line-3">
-                                                                    <%-spaservice.spa.description%>
-                                                                </div>
-                                                                <div class="address">
-                                                                    <p class="address py-1"><i class="fa fa-home"></i><span> Địa chỉ:</span>
-                                                                        <%-spaservice.spa.address%>
-                                                                    </p>
-                                                                    <p class="phone py-1"><i class="fa fa-phone"></i><span> Điện thoại:</span>
-                                                                        <%-spaservice.spa.phone%>
-                                                                    </p>
-                                                                    <p class="email py-1"><i class="fa fa-envelope"></i><span> Email:</span>
-                                                                        <a href="#">
-                                                                            <%-spaservice.spa.email%>
-                                                                        </a>
-                                                                    </p>
-                                                                    <p class="py-1">Giờ làm việc: <i class="fa fa-clock-o"></i>
-                                                                        <%-spaservice.spa.working_hour && spaservice.spa.working_hour.start || '8:00' %> -
-                                                                            <%-spaservice.spa.working_hour && spaservice.spa.working_hour.end || '17:00' %>
-                                                                    </p>
-                                                                </div>
+                                                        <div class="blog-content py-2 mb-4">
+                                                            <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500">
+                                                                <%=spaservice.spa.name%>
+                                                            </a>
+                                                            <div class="remove-style string-line-3">
+                                                                <%-spaservice.spa.description%>
+                                                            </div>
+                                                            <div class="address">
+                                                                <p class="address py-1"><i class="fa fa-home"></i><span> Địa chỉ:</span>
+                                                                    <%-spaservice.spa.address%>
+                                                                </p>
+                                                                <p class="phone py-1"><i class="fa fa-phone"></i><span> Điện thoại:</span>
+                                                                    <%-spaservice.spa.phone%>
+                                                                </p>
+                                                                <p class="email py-1"><i class="fa fa-envelope"></i><span> Email:</span>
+                                                                    <a href="#">
+                                                                        <%-spaservice.spa.email%>
+                                                                    </a>
+                                                                </p>
+                                                                <p class="py-1">Giờ làm việc: <i class="fa fa-clock-o"></i>
+                                                                    <%-spaservice.spa.working_hour && spaservice.spa.working_hour.start || '8:00' %> -
+                                                                        <%-spaservice.spa.working_hour && spaservice.spa.working_hour.end || '17:00' %>
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -248,6 +246,8 @@
 
         </div>
     </section>
+
+
     <!-- ======================================= 
     ==End recommendation section== 
 =======================================-->
@@ -762,13 +762,84 @@
     ==End pricing plan section== 
 =======================================-->
 
+    <!-- Modal -->
+    <div class="modal-slide modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    <div class="demo">
+                        <div class="item">
+                            <div class="clearfix" style="max-width:474px;">
+                                <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+                                    <li data-thumb="">
+                                        <img class="modal-img" src="" />
+                                    </li>
+                                    <li data-thumb="http://localhost:3002/uploads/937a5e1d-feaf-492e-bf49-60e64aa18b49.png">
+                                        <img src="http://localhost:3002/uploads/937a5e1d-feaf-492e-bf49-60e64aa18b49.png" />
+                                    </li>
+                                    <li data-thumb="http://localhost:3002/uploads/937a5e1d-feaf-492e-bf49-60e64aa18b49.png">
+                                        <img src="http://localhost:3002/uploads/937a5e1d-feaf-492e-bf49-60e64aa18b49.png" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <script>
-        let dataProvince = JSON.parse(`<%-JSON.stringify(dataProvince)%>`);
-        $('.remove-style').find(' * ').removeAttr('style')
-        $('select.wide').change(function() {
-            if ($(this).val().length > 3) {
-                let a = $(this).val().substring(0, 2)
-                $('.beauty-service').find('.current').append(" - " + dataProvince[a].name)
+        $(document).ready(function() {
+            let url = `<%=urlMediaUpload.imageObj(spa[0].logo)%>`
+            console.log(url)
+            let dataProvince = JSON.parse(`<%-JSON.stringify(dataProvince)%>`);
+            $('.remove-style').find(' * ').removeAttr('style')
+            $('select.wide').change(function() {
+                if ($(this).val().length > 3) {
+                    let a = $(this).val().substring(0, 2)
+                    $('.beauty-service').find('.current').append(" - " + dataProvince[a].name)
+                }
+            })
+            let dataServices = JSON.parse(`<%-(JSON.stringify(spa).replace(/\\"/g, '\\\\"'))%>`)
+            for (const [key, value] of Object.entries(dataServices)) {
+                console.log(`${key}: ${value.imgs[0].filename}`);
+                $('.modal-img').attr('src', "/uploads/" + value.imgs[0].filename)
             }
+
+            $('body').find('.modal-content-slide').click(function() {
+                $('.modal-slide').modal('show')
+            })
         })
+
+        $(document).ready(function() {
+            $("#content-slider").lightSlider({
+                loop: true,
+                keyPress: true
+            });
+            $('#image-gallery').lightSlider({
+                gallery: true,
+                item: 1,
+                thumbItem: 9,
+                slideMargin: 0,
+                speed: 500,
+                auto: true,
+                loop: true,
+                onSliderLoad: function() {
+                    $('#image-gallery').removeClass('cS-hidden');
+                }
+            });
+        });
     </script>

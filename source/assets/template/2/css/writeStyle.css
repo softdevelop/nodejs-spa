@@ -56,3 +56,36 @@
     right: 15px;
     width: unset !important;
 }
+
+.search-section-results-item .item:hover .blog-content {
+    background: white !important;
+}
+
+.search-section-results-item .item .gallery:hover {
+    cursor: pointer;
+}
+
+.demo ul {
+    list-style: none outside none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.demo .item {
+    margin-bottom: 60px;
+}
+
+.demo .content-slider li {
+    background-color: #ed3020;
+    text-align: center;
+    color: #FFF;
+}
+
+.demo .content-slider h3 {
+    margin: 0;
+    padding: 70px 0;
+}
+
+.demo {
+    width: 100%;
+}
