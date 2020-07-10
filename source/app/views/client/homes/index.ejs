@@ -795,8 +795,6 @@
         </div>
 
     </div>
-    </div>
-    </div>
 
 
 
@@ -812,18 +810,14 @@
                     $('.beauty-service').find('.current').append(" - " + dataProvince[a].name)
                 }
             })
-            let dataServices = JSON.parse(`<%-(JSON.stringify(spa).replace(/\\"/g, '\\\\"'))%>`)
-            for (const [key, value] of Object.entries(dataServices)) {
-                console.log(`${key}: ${value.imgs[0].filename}`);
-
-            }
+            let spas = JSON.parse(`<%-(JSON.stringify(spa).replace(/\\"/g, '\\\\"'))%>`)
 
             $('body').find('.modal-content-slide').click(function() {
                 let spa_id = $(this).attr('spa-id')
                 $('.modal-slide').modal('show')
                 let resultIndicators = '';
                 let resultInner = '';
-                for (const [key, value] of Object.entries(dataServices)) {
+                for (const [key, value] of Object.entries(spas)) {
                     console.log(`${key}: ${value.imgs}`);
                     if (spa_id == value._id) {
                         for (const [keyImg, valueImg] of Object.entries(value.imgs)) {

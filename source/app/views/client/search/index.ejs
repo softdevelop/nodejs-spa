@@ -60,7 +60,7 @@
                 <div class="col-xl-7 col-sm-12">
                     <div class="search-section-results">
                         <% data.forEach(item=>{ %>
-                            <div class="search-section-results-item">
+                            <div class="search-section-results-item item">
                                 <div>
                                     <div class="col-md-6">
                                         <div class="single-blog">
@@ -76,7 +76,7 @@
                                                             <i class="fa fa-map-marker" aria-hidden="true"></i> Xem địa điểm
                                                         </p>
                                                     </li>
-                                                    <li class="gallery"><i class="fa fa-picture-o"></i></li>
+                                                    <li class="modal-content-slide gallery" spa-id="<%= item._id %>"><i class="fa fa-picture-o"></i></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -126,15 +126,66 @@
         </div>
     </section>
 
+    <!-- Modal -->
+    <div class="modal-slide modal fade bd-example " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog w-100" role="document">
+        </div>
+
+        <div class="modal-body col-12 col-lg-9">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <!-- have jquery  -->
+                </ol>
+                <div class="carousel-inner">
+                    <!-- have jquery  -->
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
 
     <script>
+        $('.remove-style').find(' * ').removeAttr('style')
+
         var spas = JSON.parse(`<%-JSON.stringify(data.map(item=> { return {
-    name: item.name,
-    latitude: item.latitude,
-    longitude: item.longitude
-  }}))%>`);
+            _id: item.id,
+            imgs: item.imgs,
+            name: item.name,
+            latitude: item.latitude,
+            longitude: item.longitude
+        }}))%>`);
+
+        $('body').find('.modal-content-slide').click(function() {
+            let spa_id = $(this).attr('spa-id')
+            $('.modal-slide').modal('show')
+            let resultIndicators = '';
+            let resultInner = '';
+            for (const [key, value] of Object.entries(spas)) {
+                console.log(`${key}: ${value.imgs}`);
+                if (spa_id == value._id) {
+                    for (const [keyImg, valueImg] of Object.entries(value.imgs)) {
+                        resultIndicators += `
+                            <li data-target="#carouselExampleIndicators" data-slide-to="${keyImg}" class="${keyImg==0?'active':''}">
+                                <img class="d-block " src="/uploads/${valueImg.filename}" alt="Img ${keyImg}">
+                            </li>`;
+                        resultInner += `
+                            <div class="carousel-item ${keyImg==0?'active':''}">
+                                <img class="d-block " src="/uploads/${valueImg.filename}" alt="Img ${keyImg}">
+                            </div>`
+                    }
+                }
+            }
+            $('.carousel-indicators').html(resultIndicators)
+            $('.carousel-inner').html(resultInner)
+        })
     </script>
     <script src="/libs_client/js/page-search.js"></script>
-    <script>
-        $('.remove-style').find(' * ').removeAttr('style')
-    </script>

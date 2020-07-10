@@ -115,3 +115,7 @@
 .modal-slide .modal-body {
     margin: 0 auto;
 }
+
+.single-widget li a {
+    color: #d5275a;
+}
