@@ -6,11 +6,9 @@
     
     <link rel="stylesheet" href="/libs/js/Simple-Flexible-jQuery-Autocomplete-Plugin-Flexdatalist/jquery.flexdatalist.css">
     <link rel="stylesheet" href="/libs/js/Simple-Flexible-jQuery-Autocomplete-Plugin-Flexdatalist/jquery.flexdatalist.min.css">
-    <link rel="stylesheet" href="/libs_client/css/lightslider.css">
   `,
   script: `
   <script src="/libs_client/js/demo-home.js"></script>
-  <script src="/libs_client/js/lightslider.js"></script>
   <script>
     $(document).ready(function(){
       $('.LoadmoreSpaRecommendation').on('click', function(){
@@ -107,43 +105,53 @@
                         <div class="col-md-12">
                             <div class="product-carousel-wrapper owl-carousel" id="experts-carousel">
                                 <div class="row">
+
                                     <% services.forEach((item, index)=>{ %>
                                         <% item.spaservice.forEach((spaservice, index)=>{ %>
                                             <% if(index < 9 ) { %>
-                                                <div class="single-carousel col-md-6 col-lg-4">
-                                                    <img style="height: 220px; width: 100%;" src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs || spaservice.spa.logo)%>" alt="experts person" class="img-fluid">
-                                                    <div class="expert-hover">
-                                                        <div class="blog-content">
-                                                            <div class="text-center">
-                                                                <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500 pt-20">
-                                                                    <%=spaservice.spa.name%>
-                                                                </a>
+                                                <div class="item col-md-6 col-lg-4">
+                                                    <div class="single-blog mb-0">
+                                                        <div class="blog-img pos-relative">
+                                                            <div class="img-area">
+                                                                <a href="/spa/<%=spaservice.spa.slug%>"><img src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs[0] || spaservice.spa.logo)%>" alt="blog img" class="img-fluid" style="max-height: 200px;"></a>
                                                             </div>
-                                                            <div class="address">
-                                                                <p class="spa-info address"><i class="fa fa-home"></i><span> Address:</span>
-                                                                    <%-spaservice.spa.address%>
-                                                                </p>
-                                                                <p class="spa-info phone"><i class="fa fa-phone"></i><span> Phone:</span>
-                                                                    <%-spaservice.spa.phone%>
-                                                                </p>
-                                                                <p class="spa-info email"><i class="fa fa-envelope"></i><span> Email:</span>
-                                                                    <a href="#">
-                                                                        <%-spaservice.spa.email%>
-                                                                    </a>
-                                                                </p>
-                                                            </div>
+                                                            <ul class="brand ">
+                                                                <li><i class="fa fa-heart"></i>18</li>
+                                                                <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
+                                                                <li>
+                                                                    <p data-lat="16.662506225634573" data-lng="107.12768554687501" data-title="Nivea for men’s sensitive hydro gel the perfect cure." class="map home-search">
+                                                                        <i class="fa fa-map-marker" aria-hidden="true"></i> Xem địa điểm
+                                                                    </p>
+                                                                </li>
+                                                                <li class="modal-content-slide gallery" spa-id="<%= spaservice.spa._id %>"><i class="fa fa-picture-o"></i></li>
+                                                            </ul>
                                                         </div>
                                                     </div>
-                                                    <ul class="brand">
-                                                        <li><i class="fa fa-heart"></i>18</li>
-                                                        <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
-                                                        <li>
-                                                            <p data-toggle="modal" data-target="#mapModal" data-lat="<%=spaservice.spa.latitude%>" data-lng="<%=spaservice.spa.longitude%>" data-title="<%=spaservice.spa.name%>" class="map">
-                                                                <i class="fa fa-map-marker" aria-hidden="true"></i> Direct to location
+                                                    <div class="blog-content py-2 mb-4">
+                                                        <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500">
+                                                            <%=spaservice.spa.name%>
+                                                        </a>
+                                                        <div class="remove-style <%=spaservice.spa.description.length>100?'string-line-3':'' %> ">
+                                                            <%-spaservice.spa.description%>
+                                                        </div>
+                                                        <div class="address">
+                                                            <p class="address py-1"><i class="fa fa-home"></i><span> Địa chỉ:</span>
+                                                                <%-spaservice.spa.address%>
                                                             </p>
-                                                        </li>
-                                                        <li class="gallery"><i class="fa fa-picture-o"></i></li>
-                                                    </ul>
+                                                            <p class="phone py-1"><i class="fa fa-phone"></i><span> Điện thoại:</span>
+                                                                <%-spaservice.spa.phone%>
+                                                            </p>
+                                                            <p class="email py-1"><i class="fa fa-envelope"></i><span> Email:</span>
+                                                                <a href="#">
+                                                                    <%-spaservice.spa.email%>
+                                                                </a>
+                                                            </p>
+                                                            <p class="py-1">Giờ làm việc: <i class="fa fa-clock-o"></i>
+                                                                <%-spaservice.spa.working_hour && spaservice.spa.working_hour.start || '8:00' %> -
+                                                                    <%-spaservice.spa.working_hour && spaservice.spa.working_hour.end || '17:00' %>
+                                                            </p>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <% } %>
                                                     <% }) %>
@@ -206,7 +214,7 @@
                                                             <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500">
                                                                 <%=spaservice.spa.name%>
                                                             </a>
-                                                            <div class="remove-style string-line-3">
+                                                            <div class="remove-style <%=spaservice.spa.description.length>100?'string-line-3':'' %> ">
                                                                 <%-spaservice.spa.description%>
                                                             </div>
                                                             <div class="address">
@@ -763,40 +771,31 @@
 =======================================-->
 
     <!-- Modal -->
-    <div class="modal-slide modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <div class="modal-slide modal fade bd-example " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog w-100" role="document">
+        </div>
+
+        <div class="modal-body col-12 col-lg-9">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <!-- have jquery  -->
+                </ol>
+                <div class="carousel-inner">
+                    <!-- have jquery  -->
                 </div>
-                <div class="modal-body">
-                    <div class="demo">
-                        <div class="item">
-                            <div class="clearfix" style="max-width:474px;">
-                                <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                                    <li data-thumb="">
-                                        <img class="modal-img" src="" />
-                                    </li>
-                                    <li data-thumb="http://localhost:3002/uploads/937a5e1d-feaf-492e-bf49-60e64aa18b49.png">
-                                        <img src="http://localhost:3002/uploads/937a5e1d-feaf-492e-bf49-60e64aa18b49.png" />
-                                    </li>
-                                    <li data-thumb="http://localhost:3002/uploads/937a5e1d-feaf-492e-bf49-60e64aa18b49.png">
-                                        <img src="http://localhost:3002/uploads/937a5e1d-feaf-492e-bf49-60e64aa18b49.png" />
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
         </div>
+
+    </div>
+    </div>
     </div>
 
 
@@ -816,30 +815,31 @@
             let dataServices = JSON.parse(`<%-(JSON.stringify(spa).replace(/\\"/g, '\\\\"'))%>`)
             for (const [key, value] of Object.entries(dataServices)) {
                 console.log(`${key}: ${value.imgs[0].filename}`);
-                $('.modal-img').attr('src', "/uploads/" + value.imgs[0].filename)
+
             }
 
             $('body').find('.modal-content-slide').click(function() {
+                let spa_id = $(this).attr('spa-id')
                 $('.modal-slide').modal('show')
+                let resultIndicators = '';
+                let resultInner = '';
+                for (const [key, value] of Object.entries(dataServices)) {
+                    console.log(`${key}: ${value.imgs}`);
+                    if (spa_id == value._id) {
+                        for (const [keyImg, valueImg] of Object.entries(value.imgs)) {
+                            resultIndicators += `
+                            <li data-target="#carouselExampleIndicators" data-slide-to="${keyImg}" class="${keyImg==0?'active':''}">
+                                <img class="d-block " src="/uploads/${valueImg.filename}" alt="Img ${keyImg}">
+                            </li>`;
+                            resultInner += `
+                            <div class="carousel-item ${keyImg==0?'active':''}">
+                                <img class="d-block " src="/uploads/${valueImg.filename}" alt="Img ${keyImg}">
+                            </div>`
+                        }
+                    }
+                }
+                $('.carousel-indicators').html(resultIndicators)
+                $('.carousel-inner').html(resultInner)
             })
         })
-
-        $(document).ready(function() {
-            $("#content-slider").lightSlider({
-                loop: true,
-                keyPress: true
-            });
-            $('#image-gallery').lightSlider({
-                gallery: true,
-                item: 1,
-                thumbItem: 9,
-                slideMargin: 0,
-                speed: 500,
-                auto: true,
-                loop: true,
-                onSliderLoad: function() {
-                    $('#image-gallery').removeClass('cS-hidden');
-                }
-            });
-        });
     </script>

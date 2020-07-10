@@ -32,10 +32,6 @@ const index = async(req, res) => {
         }
     }).lean();
 
-    console.log('aaaaa', typeof categories, categories)
-    console.log('=================')
-    console.log('bbb', typeof services, services)
-
 
     const startOfWeek = moment().startOf('isoWeek').toISOString();
     const endOfWeek = moment().endOf('isoWeek').toISOString();
