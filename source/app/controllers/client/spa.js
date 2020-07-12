@@ -8,17 +8,10 @@ const truncate = require('html-truncate');
 const { validateBooking, validateBookingEdit } = require('../../models/bookings')
 
 const landingPage = async(req, res) => {
-    console.log('ahihihihi')
-    console.log(req.params.idDiscount)
-    console.log(typeof req.params.idDiscount)
-    let discount
-    if (req.params.idDiscount) {
-        let id_discount = req.params.idDiscount; // discount
-        discount = await Discount.findOne({ _id: id_discount }).exec()
-        console.log('ahihihihi----------2222222222')
-        console.log(req.params.idDiscount)
-        console.log(typeof req.params.idDiscount)
-    }
+
+    let id_discount = req.params.idDiscount; // discount
+    // let discount = await Discount.findOne({ _id: id_discount }).exec()
+    // if(!discount) discount = {}
     let slug = req.params.slug
     let spaDetail = await Spa.findOne({ slug, status: 'active' }).populate('intros').populate({
         path: 'services',
@@ -32,7 +25,7 @@ const landingPage = async(req, res) => {
             spaDetail,
             urlMediaUpload,
             truncate,
-            discount
+            discount:{}
         });
     } else {
         res.render("client/404")
