@@ -9,9 +9,14 @@ const { validateBooking, validateBookingEdit } = require('../../models/bookings'
 
 const landingPage = async(req, res) => {
 
-    let id_discount = req.params.idDiscount; // discount
-    // let discount = await Discount.findOne({ _id: id_discount }).exec()
-    // if(!discount) discount = {}
+    let discount
+
+    console.log('ahihihihii   ', typeof req.params.idDiscount !== 'undefined')
+
+    if (typeof req.params.idDiscount !== 'undefined') {
+        let id_discount = req.params.idDiscount; // discount
+        discount = await Discount.findById(id_discount).exec()
+    }
     let slug = req.params.slug
     let spaDetail = await Spa.findOne({ slug, status: 'active' }).populate('intros').populate({
         path: 'services',
@@ -25,7 +30,7 @@ const landingPage = async(req, res) => {
             spaDetail,
             urlMediaUpload,
             truncate,
-            discount:{}
+            discount
         });
     } else {
         res.render("client/404")
@@ -34,6 +39,7 @@ const landingPage = async(req, res) => {
 
 const booking = async(req, res) => {
     let data = req.body
+    console.log('ahaihaiahiahiahiahiah', data)
     let slug = req.params.slug
     let spa = await Spa.findOne({ slug, status: 'active' }).exec();
     data.spa_id = spa.id

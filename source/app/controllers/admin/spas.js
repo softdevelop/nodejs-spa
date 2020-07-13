@@ -188,6 +188,7 @@ const landingPage = async(req, res) => {
         }).exec();
 
         res.render('admin/spas/landing-page', {
+            discount: '',
             spaLandingData,
             urlMediaUpload,
             services,
@@ -301,6 +302,7 @@ const getTemplatePreview = async(req, res) => {
     }).populate('members').exec();
     let template_id = spaDetail.template_id;
     res.render("template/" + template_id, {
+        discount: '',
         spaDetail,
         urlMediaUpload,
         truncate
