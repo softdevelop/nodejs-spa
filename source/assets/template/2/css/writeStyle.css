@@ -154,14 +154,19 @@ form .nd_options_float_left .nice-select:after {
 }
 
 .tp-caption-title p {
+    text-align: center;
     font-size: 50px;
     color: #fff !important;
     font-weight: 700;
 }
 
-.tp-caption-content p {
-    max-width: 600px;
-    font-size: 20px;
+.tp-caption-content {
+    white-space: unset !important;
+    width: 700px !important;
+}
+
+.tp-caption-content * {
+    font-size: 18px;
     color: #fff !important;
 }
 

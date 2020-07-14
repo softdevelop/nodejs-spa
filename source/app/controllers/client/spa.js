@@ -9,13 +9,11 @@ const { validateBooking, validateBookingEdit } = require('../../models/bookings'
 
 const landingPage = async(req, res) => {
 
-    let discount
+    let discount = ''
 
-    console.log('ahihihihii   ', typeof req.params.idDiscount !== 'undefined')
-
-    if (typeof req.params.idDiscount !== 'undefined') {
-        let id_discount = req.params.idDiscount; // discount
-        discount = await Discount.findById(id_discount).exec()
+    if (mongoose.Types.ObjectId.isValid(req.params.idDiscount)) {
+        let id_discount = req.params.idDiscount;
+        discount = await Discount.find({ _id: id_discount }).exec()
     }
     let slug = req.params.slug
     let spaDetail = await Spa.findOne({ slug, status: 'active' }).populate('intros').populate({
