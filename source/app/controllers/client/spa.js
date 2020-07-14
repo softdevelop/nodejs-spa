@@ -13,7 +13,7 @@ const landingPage = async(req, res) => {
 
     if (mongoose.Types.ObjectId.isValid(req.params.idDiscount)) {
         let id_discount = req.params.idDiscount;
-        discount = await Discount.find({ _id: id_discount }).exec()
+        discount = await Discount.findById(id_discount).exec()
     }
     let slug = req.params.slug
     let spaDetail = await Spa.findOne({ slug, status: 'active' }).populate('intros').populate({
@@ -37,7 +37,6 @@ const landingPage = async(req, res) => {
 
 const booking = async(req, res) => {
     let data = req.body
-    console.log('ahaihaiahiahiahiahiah', data)
     let slug = req.params.slug
     let spa = await Spa.findOne({ slug, status: 'active' }).exec();
     data.spa_id = spa.id
