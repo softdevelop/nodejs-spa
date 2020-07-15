@@ -1,0 +1,122 @@
+<% const block = (name, def = '') => {
+    const fn = locals[name];
+    if(!fn) return def;
+    if(typeof(fn)==='string') return fn;
+    const arr = [];
+    fn(txt=>arr.push(txt));
+    return arr.join('');
+  }-%>
+
+    <!DOCTYPE html>
+    <html lang="en-US" class="no-js">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
+        <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+        <title>
+            SPA
+            <%-block('title', '')%> -
+                <%-block('subTitle', '2020')%>
+        </title>
+        <!--favicon icon-->
+
+        <!-- font awesome css -->
+
+        <!-- flaticon css -->
+
+        <!--bootstrap min css-->
+
+        <!--jquery-ui css-->
+
+        <!--menuzord css-->
+        <link rel="stylesheet" href="/libs_client/css/menuzord.css">
+
+        <!--animate css-->
+        <link rel="stylesheet" href="/libs_client/css/animate.css">
+
+        <!--owl.carousel css-->
+
+        <!-- global style css -->
+        <link rel="stylesheet" href="/libs_client/css/global-style.css">
+
+        <!-- style css -->
+        <link rel="stylesheet" href="/libs_client/css/style.css">
+
+        <!-- color css -->
+        <link rel="stylesheet" href="/libs_client/css/colors/color-1.css">
+
+     
+
+
+        <%-block('css')%>
+
+           
+            <script src="/libs_client/js/jquery-ui.min.js"></script>
+
+            <!--menuzord js-->
+
+            <!--slick js-->
+            <script src="/libs_client/js/menuzord.js"></script>
+
+            <!-- all jQuary activation code here and always it will be bottom of all script tag -->
+
+    </head>
+
+    <body>
+
+        <!-- search-modal -->
+        <div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document" style="top: -10px;">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <img src="/images/search-popup-logo.png" alt="search-popup-logo">
+                    <form action="/tim-kiem" class="form-inline">
+                        <input type="text" name="search" placeholder="Tìm...">
+                        <button><i class="fa fa-search"></i></button>
+                    </form>
+                    <div class="quick-search">
+                        <h6 class="color-ff pos-relative ptb-30">Tìm kiếm</h6>
+                        <ul>
+                            <li><a href="#">parlour</a></li>
+                            <li><a href="#">massage</a></li>
+                            <li><a href="#">yoga</a></li>
+                            <li><a href="#">spa</a></li>
+                            <li><a href="#">beauty</a></li>
+                            <li><a href="#">exparts</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ======================================= 
+        ==Start Header section==  
+    =======================================-->
+        <div class="header-top" style="padding: 1px 0; background: white;"></div>
+
+        <%- include('./header') %>
+
+            <%- content %>
+
+                <%- include('./footer') %>
+
+                    <!-- ======================================= 
+      ==Start scroll top==  
+  =======================================-->
+                    <div class="scroll-top not-visible"><i class="fa fa-angle-up"></i></div>
+                    <!-- =======================================
+      ==End scroll top==  
+  =======================================-->
+
+                    <%-block('script')%>
+                        <script src="/libs_client/js/main.js"></script>
+
+    </body>
+
+    </html>

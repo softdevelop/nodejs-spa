@@ -132,10 +132,10 @@
                 <div class="ls-slide" data-ls="bgsize:cover; bgposition:50% 50%; duration:8000; transition2d:3; timeshift:-500; deeplink:home; kenburnszoom:in; kenburnsrotate:0; kenburnsscale:1.1; parallaxevent:scroll; parallaxdurationmove:500;">
                     <img style="width:100%; height:100%;" src="<%=urlMediaUpload.imageObj(item.image)%>" class="ls-bg" alt="slider image" />
                     <div style="width:100%; height:100%; background:rgba(0, 0, 0, 0.35); top:50%; left:50%;" class="ls-l" data-ls="durationout:400; parallaxlevel:0; position:fixed;"></div>
-                    <p style="font-weight:900; text-align:center; width:100%; text-transform: uppercase; font-family:'Raleway', sans-serif; font-size:50px; line-height:60px; color:#ffffff; top:330px; left:50%;" class="ls-l" data-ls="offsetyin:40; delayin:150; easingin:easeOutQuint; offsetyout:-200; durationout:400; parallax:true; parallaxlevel:3;">
+                    <p style="font-weight:900; text-align:center; width:100%; text-transform: uppercase; font-family:'Raleway', sans-serif; font-size:50px; line-height:60px; color:#ffffff; top:330px; left:50%;" class="ls-l title-slide" data-ls="offsetyin:40; delayin:150; easingin:easeOutQuint; offsetyout:-200; durationout:400; parallax:true; parallaxlevel:3;">
                         <%-item.title%>
                     </p>
-                    <div style="font-weight:300; text-align:center; width:850px; letter-spacing: 2px; font-family:'Raleway', sans-serif; font-size:18px; line-height:30px; color:#ffffff; top:400px; left:50%; white-space:normal;" class="ls-l" data-ls="offsetyin:40; delayin:300; easingin:easeOutQuint; offsetyout:-250; durationout:400; parallax:true; parallaxlevel:2;">
+                    <div style="font-weight:300; text-align:center; width:850px; letter-spacing: 2px; font-family:'Raleway', sans-serif; font-size:18px; line-height:30px; color:#ffffff; top:400px; left:50%; white-space:normal;" class="ls-l content-slide" data-ls="offsetyin:40; delayin:300; easingin:easeOutQuint; offsetyout:-250; durationout:400; parallax:true; parallaxlevel:2;">
                         <%-item.content%>
                     </div>
                 </div>
@@ -280,7 +280,7 @@
                                  <a href="images/gallery/7.jpg" data-fancybox="gallery">
                                     <img src="/template/2/images/gallery/7.jpg" alt="image" />
                                     <div class="overlay-box"> <span><i class="fa fa-plus-circle" aria-hidden="true"></i></span></div>
-                                 </a>
+                                 </a>class
                               </div>
                            </div>
                         </div>
@@ -696,7 +696,7 @@
 
                 if (check.trim() != '') {
                     $('html, body').animate({
-                        scrollTop: $('#map-contact').offset().top
+                        scrollTop: $('#booking').offset().top
                     }, 2500, function() {
                         // Add hash (#) to URL when done scrolling (default click behavior)
                         // window.location.hash = hash;

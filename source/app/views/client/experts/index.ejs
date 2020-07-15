@@ -7,52 +7,84 @@
             ==Start Testimonial section==  
     =======================================-->
     <section class="testimonial-section beautyLab-gallery">
-      <div class="overlay"></div>
-      <div class="container">
-          <div class="row">
-              <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
-                  <div class="section-title pb-60 text-center mt-5">
-                      <h3 class="color-ff fw-500">Đội ngũ chuyên gia giàu kinh nghiệm</h3>
-                  </div>
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
+                    <div class="section-title pb-60 text-center mt-5">
+                        <h3 class="color-ff fw-500">Đội ngũ chuyên gia giàu kinh nghiệm</h3>
+                    </div>
 
-                  <div class="testimoial-wrapper owl-carousel">
+                    <div class="testimoial-wrapper owl-carousel">
 
-                      <% experts.forEach(item=>{ %>
-                        <div class="single-testimonial text-center">
-                          <a href="/chuyen-gia/<%=item.slug%>"><img src="<%=urlMediaUpload.imageObj(item.user.avatar || item.images[0])%>" alt="author"></a>
-                          <p class="testimoinal-txt color-ff pt-25"><%=item.slogan%></p>
-                          <p class="author color-ff"><a href="/chuyen-gia/<%=item.slug%>"><%=item.user.first_name%> <%=item.user.last_name%></a><span><%=item.job%></span></p>
-                        </div>
-                      <% }) %>
-                  
-                  </div>
-                  <!--/testimoial wrapper-->
-              </div>
-              <!--/col-->
-          </div>
+                        <% experts.forEach(item=>{ %>
+                            <div class="single-testimonial text-center">
+                                <a href="/chuyen-gia/<%=item.slug%>"><img src="<%=urlMediaUpload.imageObj(item.user.avatar || item.images[0])%>" alt="author"></a>
+                                <p class="testimoinal-txt color-ff pt-25">
+                                    <%=item.slogan%>
+                                </p>
+                                <p class="author color-ff">
+                                    <a href="/chuyen-gia/<%=item.slug%>">
+                                        <%=item.user.first_name%>
+                                            <%=item.user.last_name%>
+                                    </a><span><%=item.job%></span></p>
+                            </div>
+                            <% }) %>
 
-          <div class="row gallery-wrapper mt-5">
+                    </div>
+                    <!--/testimoial wrapper-->
+                </div>
+                <!--/col-->
+            </div>
+            <!--/row-->
 
-            <% experts.forEach(item=>{ %>
-                <!--gallery-1-->
-                <div class="col-lg-4 col-md-6  mix interiors">
-                  <div class="single-gallery">
-                      <img style="max-height: 200px;" src="<%=urlMediaUpload.imageObj(item.images[0])%>" alt="gallery image" class="img-fluid" />
-                      <div class="single-gallery-overlay text-center">
-                          <h6><a href="/chuyen-gia/<%=item.slug%>" class="color-ff fw-500"><%=item.user.first_name%> <%=item.user.last_name%></a></h6>
-                          <div class="divider mt-15 mb-10"></div>
-                          <p class="color-ff"><%=item.slogan%></p>
-                      </div>
-                  </div>
-              </div>
-            <% }) %>
-          <!--/col-->
         </div>
-        <!--/row-->
-
-      </div>
-  </section>
-  <!-- ======================================= 
+    </section>
+    <!-- ======================================= 
           ==End Testimonial section== 
   =======================================-->
 
+
+    <!-- ======================================= 
+            ==Start Testimonial section==  
+    =======================================-->
+    <section class="product-carousel-section experts-section testimonial-section-lv2">
+        <div class="overlay"></div>
+        <div class="container">
+
+
+            <div class="product-carousel-wrapper w-100" id="experts-carousel">
+                <div class="row">
+                    <% experts.forEach(item=>{ %>
+                        <!--experts person-1-->
+                        <div class="single-carousel col-md-6 col-lg-4 col-xl-3" style="height: 300px;">
+                            <div class="img-background" style="background-image:url(<%=urlMediaUpload.imageObj(item.user.avatar || item.images[0])%>)"></div>
+                            <div class="expert-hover expert-hover-2 text-center">
+                                <p class="name fw-700 color-ff h6">
+                                    <%=item.user.first_name%>
+                                        <%=item.user.last_name%>
+                                </p>
+                                <p class="degignation">
+                                    <%=item.job%>
+                                </p>
+                                <p class="color-ff ptb-20 string-line-3">
+                                    <%=item.slogan%>
+                                </p>
+                                <a href="/chuyen-gia/<%=item.slug%>" title="See Full Bio" class="bio color-ff text-capitalize">Full Bio <i class="fa fa-long-arrow-right"></i></a>
+                            </div>
+                            <div class="social-contact">
+                                <a href="#" title="E-Mail" target="_blank"><i class="fa fa-envelope-o"></i></a>
+                                <a href="#" title="Phone" target="_blank"><i class="fa fa-phone"></i></a>
+                                <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+            </div>
+            <!--/row-->
+        </div>
+    </section>
+    <!-- ======================================= 
+        ==End Testimonial section== 
+=======================================-->

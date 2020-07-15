@@ -179,3 +179,12 @@ form .nd_options_float_left .nice-select:after {
 .team-image img {
     height: 280px;
 }
+
+
+/* teamplate 2  */
+
+.content-slide *,
+.title-slide * {
+    color: #fff !important;
+    font-size: 18px;
+}

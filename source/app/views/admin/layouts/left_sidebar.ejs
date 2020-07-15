@@ -102,73 +102,75 @@
                                                                         </ul>
                                                                     </li>
                                                                     <% } %>
-                                                                        <li>
-                                                                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-badge"></i><span class="hide-menu">Experts</span></a>
-                                                                            <ul aria-expanded="false" class="collapse">
-                                                                                <li><a href="/admin/experts">All Experts</a></li>
-                                                                                <li><a href="/admin/experts/create">Add Expert</a></li>
-                                                                            </ul>
-                                                                        </li>
-                                                                        <% if(userLocal.permissions.includes('role.index')){ %>
+                                                                        <% if(userLocal.permissions.includes('experts.index')){ %>
                                                                             <li>
-                                                                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-lock-open"></i><span class="hide-menu">Role management</span></a>
+                                                                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-badge"></i><span class="hide-menu">Experts</span></a>
                                                                                 <ul aria-expanded="false" class="collapse">
-                                                                                    <li><a href="/admin/roles">All roles</a></li>
-                                                                                    <li><a href="/admin/roles/create">Add role</a></li>
+                                                                                    <li><a href="/admin/experts">All Experts</a></li>
+                                                                                    <li><a href="/admin/experts/create">Add Expert</a></li>
                                                                                 </ul>
                                                                             </li>
                                                                             <% } %>
-
-                                                                                <% if(userLocal.permissions.includes('staticpage.index')){ %>
+                                                                                <% if(userLocal.permissions.includes('role.index')){ %>
                                                                                     <li>
-                                                                                        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-layers"></i><span class="hide-menu">Static page</span></a>
+                                                                                        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-lock-open"></i><span class="hide-menu">Role management</span></a>
                                                                                         <ul aria-expanded="false" class="collapse">
-                                                                                            <li><a href="/admin/static-pages">All static page</a></li>
-                                                                                            <li><a href="/admin/static-pages/create">Add static page</a></li>
+                                                                                            <li><a href="/admin/roles">All roles</a></li>
+                                                                                            <li><a href="/admin/roles/create">Add role</a></li>
                                                                                         </ul>
                                                                                     </li>
                                                                                     <% } %>
 
-                                                                                        <% if(userLocal.permissions.includes('qa.index')){ %>
+                                                                                        <% if(userLocal.permissions.includes('staticpage.index')){ %>
                                                                                             <li>
-                                                                                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-info"></i><span class="hide-menu">Q&A</span></a>
+                                                                                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-layers"></i><span class="hide-menu">Static page</span></a>
                                                                                                 <ul aria-expanded="false" class="collapse">
-                                                                                                    <li><a href="/admin/q-a">All Q&A</a></li>
-                                                                                                    <li><a href="/admin/q-a/create">Add Q&A</a></li>
+                                                                                                    <li><a href="/admin/static-pages">All static page</a></li>
+                                                                                                    <li><a href="/admin/static-pages/create">Add static page</a></li>
                                                                                                 </ul>
                                                                                             </li>
                                                                                             <% } %>
 
-                                                                                                <% if(userLocal.role === 'SPA_OWNER'){ %>
+                                                                                                <% if(userLocal.permissions.includes('qa.index')){ %>
                                                                                                     <li>
-                                                                                                        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-home"></i><span class="hide-menu">Landing page</span></a>
+                                                                                                        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-info"></i><span class="hide-menu">Q&A</span></a>
                                                                                                         <ul aria-expanded="false" class="collapse">
-                                                                                                            <li><a href="/admin/spas/landing-page">Choose landing page</a></li>
-                                                                                                            <li><a href="/admin/spas/landing-page/preview">See on site</a></li>
+                                                                                                            <li><a href="/admin/q-a">All Q&A</a></li>
+                                                                                                            <li><a href="/admin/q-a/create">Add Q&A</a></li>
                                                                                                         </ul>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-pin"></i><span class="hide-menu">Offer - Discount</span></a>
-                                                                                                        <ul aria-expanded="false" class="collapse">
-                                                                                                            <li><a href="/admin/spas/discount">Discount for service</a></li>
-                                                                                                        </ul>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a class="waves-effect waves-dark" href="/admin/spas/bookings" aria-expanded="false">
-                                                                                                            <i class="fas fa-building"></i>
-                                                                                                            <span class="hide-menu">Booking</span>
-                                                                                                        </a>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <a class="waves-effect waves-dark" href="/admin/spas/update-info" aria-expanded="false">
-                                                                                                            <i class="icon-equalizer"></i>
-                                                                                                            <span class="hide-menu">Update info</span>
-                                                                                                        </a>
                                                                                                     </li>
                                                                                                     <% } %>
-                                                                                                        <% } %>
 
-                                                                                                            <!-- <li> 
+                                                                                                        <% if(userLocal.role === 'SPA_OWNER'){ %>
+                                                                                                            <li>
+                                                                                                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-home"></i><span class="hide-menu">Landing page</span></a>
+                                                                                                                <ul aria-expanded="false" class="collapse">
+                                                                                                                    <li><a href="/admin/spas/landing-page">Choose landing page</a></li>
+                                                                                                                    <li><a href="/admin/spas/landing-page/preview">See on site</a></li>
+                                                                                                                </ul>
+                                                                                                            </li>
+                                                                                                            <li>
+                                                                                                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-pin"></i><span class="hide-menu">Offer - Discount</span></a>
+                                                                                                                <ul aria-expanded="false" class="collapse">
+                                                                                                                    <li><a href="/admin/spas/discount">Discount for service</a></li>
+                                                                                                                </ul>
+                                                                                                            </li>
+                                                                                                            <li>
+                                                                                                                <a class="waves-effect waves-dark" href="/admin/spas/bookings" aria-expanded="false">
+                                                                                                                    <i class="fas fa-building"></i>
+                                                                                                                    <span class="hide-menu">Booking</span>
+                                                                                                                </a>
+                                                                                                            </li>
+                                                                                                            <li>
+                                                                                                                <a class="waves-effect waves-dark" href="/admin/spas/update-info" aria-expanded="false">
+                                                                                                                    <i class="icon-equalizer"></i>
+                                                                                                                    <span class="hide-menu">Update info</span>
+                                                                                                                </a>
+                                                                                                            </li>
+                                                                                                            <% } %>
+                                                                                                                <% } %>
+
+                                                                                                                    <!-- <li> 
             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class=" fab fa-product-hunt"></i><span class="hide-menu">Products</span></a>
               <ul aria-expanded="false" class="collapse">
                   <li><a href="/admin/products">All Products</a></li>
@@ -182,16 +184,16 @@
                 <li><a href="/admin/projects/create">Add Projects</a></li>
             </ul>
         </li> -->
-                                                                                                            <li class="nav-small-cap">--- SUPPORTS</li>
-                                                                                                            <li>
-                                                                                                                <a href="/admin/profile" class="waves-effect waves-dark"><i class="ti-user"></i> My Profile</a>
-                                                                                                            </li>
-                                                                                                            <li>
-                                                                                                                <a class="waves-effect waves-dark" href="/admin/logout" aria-expanded="false">
-                                                                                                                    <i class="icon-logout"></i>
-                                                                                                                    <span class="hide-menu">Log Out</span>
-                                                                                                                </a>
-                                                                                                            </li>
+                                                                                                                    <li class="nav-small-cap">--- SUPPORTS</li>
+                                                                                                                    <li>
+                                                                                                                        <a href="/admin/profile" class="waves-effect waves-dark"><i class="ti-user"></i> My Profile</a>
+                                                                                                                    </li>
+                                                                                                                    <li>
+                                                                                                                        <a class="waves-effect waves-dark" href="/admin/logout" aria-expanded="false">
+                                                                                                                            <i class="icon-logout"></i>
+                                                                                                                            <span class="hide-menu">Log Out</span>
+                                                                                                                        </a>
+                                                                                                                    </li>
         </ul>
     </nav>
     <!-- End Sidebar navigation -->
