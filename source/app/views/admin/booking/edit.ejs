@@ -78,13 +78,14 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <div class="form-group form-group-date <%=errors.date?'has-danger':''%>">
-                                        <label class="control-label">Date</label>
-                                        <input type="date" id="date" class="form-control" placeholder="" name="date"
-                                            required value="<%=data.date_form? data.date_form:''%>">
+                                    <div class="form-group form-group-email <%=errors.email?'has-danger':''%>">
+                                        <label class="control-label">Email</label>
+                                        <input type="email" id="email" class="form-control" placeholder="" name="email"
+                                            required value="<%=data.email?data.email:''%>">
                                         <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
                                     </div>
                                 </div>
+                                
                             </div>
                             <div class="row">
                                 <div class="col-md-12 ">
@@ -105,17 +106,15 @@
                                         <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group <%=errors.status?'has-danger':''%>">
-                                        <label class="control-label">Status</label>
-                                        <select class="form-control custom-select" name="status">
-                                          <option value="pending" <%=data.status=='pending'?'selected':''%>>Pending</option>
-                                          <option value="active" <%=data.status=='active'?'selected':''%>>Active</option>
-                                          <option value="blocked" <%=data.status=='blocked'?'selected':''%>>Blocked</option>
-                                        </select>
-                           <small class=" form-control-feedback "><%=errors?errors.status:''%></small> 
-                        </div>
-                      </div>
+                                <div class="col-md-6 ">
+                                    <div class="form-group form-group-date <%=errors.date?'has-danger':''%>">
+                                        <label class="control-label">Date</label>
+                                        <input type="date" id="date" class="form-control" placeholder="" name="date"
+                                            required value="<%=data.date_form? data.date_form:''%>">
+                                        <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
+                                    </div>
+                                </div>
+                               
 
                             </div>
                             <!--/row-->
@@ -148,6 +147,20 @@
                                  </div>
                              </div>
                                     <!--/row-->
+
+                                    <div class="row p-t-20">
+                                        <div class="col-md-6">
+                                            <div class="form-group <%=errors.status?'has-danger':''%>">
+                                                <label class="control-label">Status</label>
+                                                <select class="form-control custom-select" name="status">
+                                                  <option value="pending" <%=data.status=='pending'?'selected':''%>>Pending</option>
+                                                  <option value="active" <%=data.status=='active'?'selected':''%>>Active</option>
+                                                  <option value="blocked" <%=data.status=='blocked'?'selected':''%>>Blocked</option>
+                                                </select>
+                                            <small class=" form-control-feedback "><%=errors?errors.status:''%></small> 
+                                            </div>
+                                        </div>
+                                    </div>
 
 
                                     <!--/row-->

@@ -60,7 +60,7 @@ const getListNew = async (req, res) => {
       options: { lean: true },
     });
     let optionsHtml = genCategory.genMultiOptions(categories);
-    let user = await User.find({role:'EXPERT'}).select(' _id first_name last_name').exec();
+    let user = await User.find({role:'EXPERT'}).select().exec();
     res.render('admin/news/create', {errors: {}, data: {}, spas,user,urlMediaUpload, optionsHtml,today})
     
   }

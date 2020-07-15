@@ -143,7 +143,9 @@ const edit = async (req, res) => {
   let id = req.params.id;
   let data = req.body;
   delete data.files;
+
   let err = validateBookingEdit(data);
+  console.log(err)
   
   if (err && err.error) {
     let errors =

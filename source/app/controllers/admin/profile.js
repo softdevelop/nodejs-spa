@@ -63,10 +63,10 @@ resetPassword = (req, res) => {
         data.newPass = bcrypt.hashSync(data.newPass, 10)
         userService.changePassword(result.id, data.newPass)
           .then(data => {
-            return res.sendData(data);
+            return res.redirect("/admin/profile");
           })
           .catch(err => {
-            return res.sendError(err);
+            return res.render('admin/profile/changePass', {errors:{}, errPass:"Password incorrect" , id})
           })
       }
       else {

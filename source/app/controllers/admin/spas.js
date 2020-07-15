@@ -187,13 +187,16 @@ const landingPage = async(req, res) => {
             ]
         }).exec();
 
+        let spaLandingData1 = spaLandingData;
+        spaLandingData1.description = null
+
         res.render('admin/spas/landing-page', {
             discount: '',
             spaLandingData,
             urlMediaUpload,
             services,
             servicesJSON: JSON.stringify(services).replace(/\\"/g, '\\\\"'),
-            spaLandingDataJSON: JSON.stringify(spaLandingData).replace(/\\"/g, '\\\\"'),
+            spaLandingDataJSON: JSON.stringify(spaLandingData1).replace(/\\"/g, '\\\\"'),
         })
     } catch (e) {
         res.render('admin/404_user_not_owner_spa')

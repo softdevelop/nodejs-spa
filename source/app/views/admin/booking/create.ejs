@@ -133,7 +133,7 @@
                                        <label class="control-label">Service name</label>
                                        <select class="form-control custom-select" name="spa_service_id">
                                          <% data[0].services.forEach(item=>{ %>
-                                           <option value="<%=item._id%>"><%=item.title%></option>
+                                           <option value="<%=item._id%>"><%=item.title || item.service.title%></option>
                                          <% }) %>
                                        </select>
                                        <small class="form-control-feedback "><%=errors?errors.spa_service_id:''%></small> 
@@ -257,11 +257,13 @@
 
     let data = `<%-JSON.stringify(data)%>`;
     let newData = JSON.parse(data)
+    console.log(newData)
     $('select').on('change', function() {
-     
+        
         const result = newData.filter(item=>{
             return item._id === this.value 
         })[0]
+        console.log('aaaa',this.value)
         let option =""
         result.services.forEach(ele => {
             option += `<option value="${ele._id}">${ele.title?ele.title:ele.service.title}</option>`
