@@ -96,7 +96,7 @@
                               <div class="col-md-6">
                                   <div class="form-group <%=errors.birthday?'has-danger':''%>">
                                       <label class="control-label">Date of birth</label>
-                                      <input readonly type="date" class="form-control text-dark" placeholder="dd/mm/yyyy" name="birthday" required value="1990-12-31" value="<%=data.birthday?data.birthday:''%>">
+                                      <input disabled type="date" class="form-control" placeholder="" name="birthday" required value="<%=data.birthday_form?data.birthday_form:''%>">
                                       <small class="form-control-feedback"><%=errors?errors.birthday:''%></small>
                                   </div>
                               </div>

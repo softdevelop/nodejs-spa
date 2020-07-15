@@ -83,7 +83,7 @@ const getListExpert = async (req, res) => {
     experts.forEach(item=>{
       if(!jobs.includes(item.job)) jobs.push(item.job)
       item.tags.forEach(tag=>{
-        if(!tags.includes(tag)) tags.push(item.job)
+        if(!tags.includes(tag)) tags.push(item.tag)
       })
     })
     let err = validateExpert(data);

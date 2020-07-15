@@ -37,6 +37,7 @@ const getListBooking = async (req, res) => {
       }],
     };
     let data = await Booking.paginate(query, options);
+    
     data.search = search
     // return res.send(data)
     return res.render("admin/booking/index", {
