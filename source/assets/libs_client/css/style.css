@@ -345,6 +345,7 @@ Css Table Of Content
     width: 100%;
 }
 
+
 /* .home1-slider .img-fill .slider-img1 {
     background: url(../images/slider-img/slider-img1.jpg) no-repeat center center / cover;
 }
@@ -1455,7 +1456,20 @@ priceing-section .single-price-list>p {
     padding: 90px 0;
 }
 
+.testimonial-section-lv2 {
+    background: url(../images/tesimonialbg.jpg) no-repeat fixed center center / cover !important;
+    position: relative;
+    padding: 90px 0;
+}
+
 .testimonial-section .overlay {
+    background: -moz-linear-gradient(left, rgba(64, 15, 56, 0.6) 0%, rgba(166, 27, 73, 0.6) 98%, rgba(166, 27, 73, 0.6) 100%);
+    background: -webkit-linear-gradient(left, rgba(64, 15, 56, 0.6) 0%, rgba(166, 27, 73, 0.6) 98%, rgba(166, 27, 73, 0.6) 100%);
+    background: linear-gradient(to right, rgba(64, 15, 56, 0.6) 0%, rgba(166, 27, 73, 0.6) 98%, rgba(166, 27, 73, 0.6) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#80400f38', endColorstr='#80a61b49', GradientType=1);
+}
+
+.testimonial-section-lv2 .overlay {
     background: -moz-linear-gradient(left, rgba(64, 15, 56, 0.6) 0%, rgba(166, 27, 73, 0.6) 98%, rgba(166, 27, 73, 0.6) 100%);
     background: -webkit-linear-gradient(left, rgba(64, 15, 56, 0.6) 0%, rgba(166, 27, 73, 0.6) 98%, rgba(166, 27, 73, 0.6) 100%);
     background: linear-gradient(to right, rgba(64, 15, 56, 0.6) 0%, rgba(166, 27, 73, 0.6) 98%, rgba(166, 27, 73, 0.6) 100%);
@@ -1788,7 +1802,7 @@ priceing-section .single-price-list>p {
     float: right;
     font-size: 16px;
     font-weight: 700;
-    padding: 0px 20px;
+    padding: 0px 20px !important;
     cursor: pointer;
     text-transform: uppercase;
     height: 46px;
@@ -2987,6 +3001,13 @@ footer .copyright a:hover {
     transition: all 0.3s ease-in-out;
 }
 
+.experts-section .expert-hover-2 {
+    top: 0;
+    left: 15px;
+    right: 15px;
+    width: unset;
+}
+
 .experts-section .single-carousel:hover .expert-hover {
     background: rgba(114, 15, 131, 0.8) none repeat scroll 0 0;
 }
@@ -3959,7 +3980,7 @@ footer .copyright a:hover {
 }
 
 .blog-page .blog-content p.spa-info {
-  padding: 4px 0;
+    padding: 4px 0;
 }
 
 .blog-page .single-blog .date {

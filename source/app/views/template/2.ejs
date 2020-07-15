@@ -1,4 +1,3 @@
-
 <% extend('../client/layouts/base',{
   title: "Homepage",
   css: `
@@ -25,64 +24,65 @@
       <script src="/template/2/js/custom.js"></script> 
   `
 }) %>
- 
 
-      
-   </head>
-   <body id="top" class="page-wrapper page-load" oncontextmenu ="return false;">
-      <div class="preloader">
-         <div id="loader-wrap" class="loader-wrap">
-            <div class="cssload-loader">
-               <div class="cssload-side"></div>
-               <div class="cssload-side"></div>
-               <div class="cssload-side"></div>
-               <div class="cssload-side"></div>
-               <div class="cssload-side"></div>
-               <div class="cssload-side"></div>
-               <div class="cssload-side"></div>
-               <div class="cssload-side"></div>
+
+
+    </head>
+
+    <body id="top" class="page-wrapper page-load" oncontextmenu="return false;">
+        <div class="preloader">
+            <div id="loader-wrap" class="loader-wrap">
+                <div class="cssload-loader">
+                    <div class="cssload-side"></div>
+                    <div class="cssload-side"></div>
+                    <div class="cssload-side"></div>
+                    <div class="cssload-side"></div>
+                    <div class="cssload-side"></div>
+                    <div class="cssload-side"></div>
+                    <div class="cssload-side"></div>
+                    <div class="cssload-side"></div>
+                </div>
             </div>
-         </div>
-      </div>
+        </div>
 
-      <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-hidden="true">
-         <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-               <div class="modal-header border-0"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div>
-               <div class="mobal-body">
-                  <div class="col-md-12 col-lg-12">
-                     <h2 class="main-title my-3 text-uppercase text-center color-primary">reservation from</h2>
-                     <span class="sub-title pb-5 w-50 m-auto text-center color-black">Third and made a saying stars two. Image stars. All let made subdue, stars fruit blessed were. Lights fowl fruitful.</span>
-                  </div>
-                  <div class="col-md-12 col-lg-12">
-                     <form class="reservation-form" action="#" method="post">
-                        <div class="row">
-                           <div class="col-md-6 col-lg-6">
-                              <h3 class="color-black">Treatment Details</h3>
-                              <div class="row">
-                                 <div class="col-md-12 col-lg-12">
-                                    <div class="form-group">
-                                       <label>Date of Arrival</label>
-                                       <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                          <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
-                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                          </div>
-                                          <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="form-group col-md-12 col-lg-12">
-                                    <label>Preferred Time</label>
-                                    <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
-                                       <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
-                                          <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
-                                       </div>
-                                       <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3"/>
-                                    </div>
-                                 </div>
-                                 <div class="form-group col-md-12 col-lg-12">
-                                    <label>No Of Guest</label> 
-                                    <select>
+        <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div>
+                    <div class="mobal-body">
+                        <div class="col-md-12 col-lg-12">
+                            <h2 class="main-title my-3 text-uppercase text-center color-primary">reservation from</h2>
+                            <span class="sub-title pb-5 w-50 m-auto text-center color-black">Third and made a saying stars two. Image stars. All let made subdue, stars fruit blessed were. Lights fowl fruitful.</span>
+                        </div>
+                        <div class="col-md-12 col-lg-12">
+                            <form class="reservation-form" action="#" method="post">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-6">
+                                        <h3 class="color-black">Treatment Details</h3>
+                                        <div class="row">
+                                            <div class="col-md-12 col-lg-12">
+                                                <div class="form-group">
+                                                    <label>Date of Arrival</label>
+                                                    <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+                                                        <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+                                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                        </div>
+                                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-12 col-lg-12">
+                                                <label>Preferred Time</label>
+                                                <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                                                    <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                                                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+                                                    </div>
+                                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-12 col-lg-12">
+                                                <label>No Of Guest</label>
+                                                <select>
                                        <option>1</option>
                                        <option>2</option>
                                        <option>3</option>
@@ -94,108 +94,101 @@
                                        <option>9</option>
                                        <option>10</option>
                                     </select>
-                                 </div>
-                                 <div class="form-group col-md-12 col-lg-12">
-                                    <label>Type Of Treatment</label> 
-                                    <select>
+                                            </div>
+                                            <div class="form-group col-md-12 col-lg-12">
+                                                <label>Type Of Treatment</label>
+                                                <select>
                                        <option>Full Body Massage</option>
                                        <option>spa treatment</option>
                                        <option>skin care treatment</option>
                                        <option>beauty</option>
                                        <option>nail treatment</option>
-                                       <option>Hair Treatment</option>
+                                       <option>Hair Treatment 2222</option>
                                     </select>
-                                 </div>
-                                 <div class="col-md-12 col-lg-12"> <strong class="color-black">Or You May Contact This Number : +981 123 456 789</strong></div>
-                              </div>
-                           </div>
-                           <div class="col-md-6 col-lg-6">
-                              <h3 class="color-black">Guest Details</h3>
-                              <div class="row">
-                                 <div class="form-group col-md-12 col-lg-12"> <label>name</label> <input class="form-control no-border" id="name" type="text" name="name" placeholder="Enter Your Name"/></div>
-                                 <div class="form-group col-md-12 col-lg-12"> <label>email</label> <input class="form-control" id="email" type="text" name="email" placeholder="Enter Your Email"/></div>
-                                 <div class="form-group col-md-12 col-lg-12"> <label>Phone</label> <input class="form-control" id="number" type="text" name="number" placeholder="Enter Your Phone Number"/></div>
-                                 <div class="form-group col-md-12 col-lg-12"> <label>Address</label> <input class="form-control" id="Address" type="text" name="address" placeholder="Enter Your Address"/></div>
-                                 <div class="form-group col-md-12 col-lg-12"> <a class="btn btn-black" href="#">Submit Your Request</a></div>
-                              </div>
-                           </div>
+                                            </div>
+                                            <div class="col-md-12 col-lg-12"> <strong class="color-black">Or You May Contact This Number : +981 123 456 789</strong></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <h3 class="color-black">Guest Details</h3>
+                                        <div class="row">
+                                            <div class="form-group col-md-12 col-lg-12"> <label>name</label> <input class="form-control no-border" id="name" type="text" name="name" placeholder="Enter Your Name" /></div>
+                                            <div class="form-group col-md-12 col-lg-12"> <label>email</label> <input class="form-control" id="email" type="text" name="email" placeholder="Enter Your Email" /></div>
+                                            <div class="form-group col-md-12 col-lg-12"> <label>Phone</label> <input class="form-control" id="number" type="text" name="number" placeholder="Enter Your Phone Number" /></div>
+                                            <div class="form-group col-md-12 col-lg-12"> <label>Address</label> <input class="form-control" id="Address" type="text" name="address" placeholder="Enter Your Address" /></div>
+                                            <div class="form-group col-md-12 col-lg-12"> <a class="btn btn-black" href="#">Submit Your Request</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                     </form>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <header id="header" class="nav-on-top" style="top:88px;">
-        <div class="container">
-            <div class="row">
-                <nav class="navbar navbar-expand-lg navbar-light w-100">
-                    <a class="navbar-brand p_0" href="#top"><img src="<%=urlMediaUpload.imageObj(spaDetail.logo)%>" style="max-width: 50px;" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <%=spaDetail.name%>
                     </div>
-                </nav>
+                </div>
             </div>
         </div>
-    </header>
-      <div id="slider" style="width:100%;height:100vh;">
-        <% spaDetail.intros.forEach(item=>{ %>
-          <div class="ls-slide" data-ls="bgsize:cover; bgposition:50% 50%; duration:8000; transition2d:3; timeshift:-500; deeplink:home; kenburnszoom:in; kenburnsrotate:0; kenburnsscale:1.1; parallaxevent:scroll; parallaxdurationmove:500;">
-            <img style="width:100%; height:100%;" src="<%=urlMediaUpload.imageObj(item.image)%>" class="ls-bg" alt="slider image" />
-            <div style="width:100%; height:100%; background:rgba(0, 0, 0, 0.35); top:50%; left:50%;" class="ls-l" data-ls="durationout:400; parallaxlevel:0; position:fixed;"></div>
-            <p style="font-weight:900; text-align:center; width:100%; text-transform: uppercase; font-family:'Raleway', sans-serif; font-size:50px; line-height:60px; color:#ffffff; top:330px; left:50%;" class="ls-l" data-ls="offsetyin:40; delayin:150; easingin:easeOutQuint; offsetyout:-200; durationout:400; parallax:true; parallaxlevel:3;"><%-item.title%></p>
-            <div style="font-weight:300; text-align:center; width:850px; letter-spacing: 2px; font-family:'Raleway', sans-serif; font-size:18px; line-height:30px; color:#ffffff; top:400px; left:50%; white-space:normal;" class="ls-l" data-ls="offsetyin:40; delayin:300; easingin:easeOutQuint; offsetyout:-250; durationout:400; parallax:true; parallaxlevel:2;">
-              <%-item.content%>
-            </div>
-         </div>
-         
-        <% }) %>
-      </div>
-      <section id="about" class="py-80">
-         <div class="container">
-            <div class="row">
-             
-            </div>
-            <div class="row">
-               <div class="col-md-5 col-lg-6"> <img src="/template/2/images/about/woman-large.png" alt="image not found"></div>
-               <div class="col-md-7 col-lg-6">
-                  <div class="text-area">
-                    <%-spaDetail.description%>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <section id="services" class="bg-gray py-80">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-lg-12">
-                  <h2 class="main-title mb-3 text-uppercase letter-space-1 text-center color-primary">our services</h2>
-               </div>
-            </div>
-            <div class="row">
-              <% spaDetail.services.forEach(item=>{ %>
-                <div class="col-md-6 col-lg-4">
-                  <div class="service-widget mb-4">
-                     <div class="service-image overflow-hidden"> <img src="<%=urlMediaUpload.imageObj( item.image || item.service.image )%>" style="max-height: 200px;" alt="bodymassage"></div>
-                     <div class="service-iconprice">
-                        <div class="ser-icon bg-gradient icon-font-30 color-white"> <i class="flaticon-massage"></i></div>
-                        <div class="ser-price bg-gradient color-white"> <span><%=item.price%></span></div>
-                     </div>
-                     <div class="text-box py-4 px-3">
-                        <h4 class="inner-title text-center text-capitalize color-black"><%=item.title || item.service.title%></h4>
-                        <div>
-                          <%-truncate(item.content || item.service.content, 200)%>
-                        </div>
-                     </div>
-                  </div>
+
+        <div id="slider" style="width:100%;height:100vh;">
+            <% spaDetail.intros.forEach(item=>{ %>
+                <div class="ls-slide" data-ls="bgsize:cover; bgposition:50% 50%; duration:8000; transition2d:3; timeshift:-500; deeplink:home; kenburnszoom:in; kenburnsrotate:0; kenburnsscale:1.1; parallaxevent:scroll; parallaxdurationmove:500;">
+                    <img style="width:100%; height:100%;" src="<%=urlMediaUpload.imageObj(item.image)%>" class="ls-bg" alt="slider image" />
+                    <div style="width:100%; height:100%; background:rgba(0, 0, 0, 0.35); top:50%; left:50%;" class="ls-l" data-ls="durationout:400; parallaxlevel:0; position:fixed;"></div>
+                    <p style="font-weight:900; text-align:center; width:100%; text-transform: uppercase; font-family:'Raleway', sans-serif; font-size:50px; line-height:60px; color:#ffffff; top:330px; left:50%;" class="ls-l title-slide" data-ls="offsetyin:40; delayin:150; easingin:easeOutQuint; offsetyout:-200; durationout:400; parallax:true; parallaxlevel:3;">
+                        <%-item.title%>
+                    </p>
+                    <div style="font-weight:300; text-align:center; width:850px; letter-spacing: 2px; font-family:'Raleway', sans-serif; font-size:18px; line-height:30px; color:#ffffff; top:400px; left:50%; white-space:normal;" class="ls-l content-slide" data-ls="offsetyin:40; delayin:300; easingin:easeOutQuint; offsetyout:-250; durationout:400; parallax:true; parallaxlevel:2;">
+                        <%-item.content%>
+                    </div>
                 </div>
 
-              <% }) %>
+                <% }) %>
+        </div>
+        <section id="about" class="py-80">
+            <div class="container">
+                <div class="row">
+
+                </div>
+                <div class="row">
+                    <div class="col-md-5 col-lg-6"> <img src="/template/2/images/about/woman-large.png" alt="image not found"></div>
+                    <div class="col-md-7 col-lg-6">
+                        <div class="text-area">
+                            <%-spaDetail.description%>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </section>
-      <!-- <section id="our-gallery" class="full-row py-80 pb-0">
+        </section>
+        <section id="services" class="bg-gray py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <h2 class="main-title mb-3 text-uppercase letter-space-1 text-center color-primary">our services</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <% spaDetail.services.forEach(item=>{ %>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="service-widget mb-4">
+                                <div class="service-image overflow-hidden"> <img src="<%=urlMediaUpload.imageObj( item.image || item.service.image )%>" style="max-height: 200px;" alt="bodymassage"></div>
+                                <div class="service-iconprice">
+                                    <div class="ser-icon bg-gradient icon-font-30 color-white"> <i class="flaticon-massage"></i></div>
+                                    <div class="ser-price bg-gradient color-white"> <span><%=item.price%></span></div>
+                                </div>
+                                <div class="text-box py-4 px-3">
+                                    <h4 class="inner-title text-center text-capitalize color-black">
+                                        <%=item.title || item.service.title%>
+                                    </h4>
+                                    <div>
+                                        <%-truncate(item.content || item.service.content, 200)%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <% }) %>
+                </div>
+            </div>
+        </section>
+        <!-- <section id="our-gallery" class="full-row py-80 pb-0">
          <div class="container-fluid">
             <div class="row">
                <div class="col-md-12 col-lg-12">
@@ -287,7 +280,7 @@
                                  <a href="images/gallery/7.jpg" data-fancybox="gallery">
                                     <img src="/template/2/images/gallery/7.jpg" alt="image" />
                                     <div class="overlay-box"> <span><i class="fa fa-plus-circle" aria-hidden="true"></i></span></div>
-                                 </a>
+                                 </a>class
                               </div>
                            </div>
                         </div>
@@ -307,57 +300,61 @@
             </div>
          </div>
       </section> -->
-      <section id="team" class="bg-gray py-80">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-lg-12">
-                  <h2 class="main-title mb-3 text-uppercase letter-space-1 text-center color-primary">our team</h2>
-                  <span class="sub-title pb-5 w-50 m-auto text-center color-black">Third and made a saying stars two. Image stars. All let made subdue, stars fruit blessed were. Lights fowl fruitful.</span>
-               </div>
-            </div>
-            <div class="row">
-              <% spaDetail.members.forEach(item=>{ %>
-                <div class="col-md-6 col-lg-3">
-                  <div class="team-widget bg-white mb-4">
-                     <div class="team-image">
-                        <img src="<%=urlMediaUpload.imageObj(item.avatar)%>" style="min-height: 270px;" alt="<%=item.name%>">
-                        <div class="teamimg-overlay"></div>
-                        <div class="member-data">
-                           <h4><%=item.name%></h4>
-                           <span><%=item.position%></span>
-                           <div class="socal-icon mt-4">
-                              <ul>
-                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                              </ul>
-                           </div>
+        <section id="team" class="bg-gray py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <h2 class="main-title mb-3 text-uppercase letter-space-1 text-center color-primary">our team</h2>
+                        <span class="sub-title pb-5 w-50 m-auto text-center color-black">Third and made a saying stars two. Image stars. All let made subdue, stars fruit blessed were. Lights fowl fruitful.</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <% spaDetail.members.forEach(item=>{ %>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="team-widget bg-white mb-4">
+                                <div class="team-image">
+                                    <img src="<%=urlMediaUpload.imageObj(item.avatar)%>" style="min-height: 270px;" alt="<%=item.name%>">
+                                    <div class="teamimg-overlay"></div>
+                                    <div class="member-data">
+                                        <h4>
+                                            <%=item.name%>
+                                        </h4>
+                                        <span><%=item.position%></span>
+                                        <div class="socal-icon mt-4">
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-profile">
+                                    <div class="member-data">
+                                        <h4 class="color-black">
+                                            <%=item.name%>
+                                        </h4>
+                                        <span><%=item.position%></span>
+                                        <div class="socal-icon mt-4">
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="member-content">
+                                        <%-item.content%>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                     <div class="member-profile">
-                        <div class="member-data">
-                           <h4 class="color-black"><%=item.name%></h4>
-                           <span><%=item.position%></span>
-                           <div class="socal-icon mt-4">
-                              <ul>
-                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="member-content">
-                          <%-item.content%>
-                        </div>
-                     </div>
-                  </div>
-               </div>
 
-              <% }) %>
+                        <% }) %>
+                </div>
             </div>
-         </div>
-      </section>
-      <!-- <div id="join-us" class="py-80 overlay-black background-1">
+        </section>
+        <!-- <div id="join-us" class="py-80 overlay-black background-1">
          <div class="container">
             <div class="row">
                <div class="col-md-8 col-lg-8">
@@ -374,7 +371,7 @@
       </div> -->
 
 
-      <!-- <section id="price" class="py-80 bg-gray">
+        <!-- <section id="price" class="py-80 bg-gray">
          <div class="container">
             <div class="row">
                <div class="col-md-12 col-lg-12">
@@ -466,9 +463,9 @@
             </div>
          </div>
       </section> -->
-      
-      
-      <!-- <div class="background-2 py-80 overlay-black">
+
+
+        <!-- <div class="background-2 py-80 overlay-black">
          <div class="container">
             <div class="row">
                <div class="video text-center m-auto color-white">
@@ -604,87 +601,106 @@
       </section> -->
 
 
-      <section id="map-contact">
-         <div class="container-fluid">
-            <div class="row">
-               <div class="col-md-6 col-lg-6">
-                <div id="mapid" class="map-canvas" style="width: 100%;height: 700px;"></div>
-               </div>
-               <div class="col-md-6 col-lg-6 py-80">
-                  <h2 class="main-title mb-3 text-uppercase letter-space-1 text-center color-primary">Đặt lịch</h2>
-                  <form method="POST" >
-                    <div class="col-md-12 col-lg-12">
-                       <div class="row">
-                          <div class="col-md-6 col-lg-6">
-                             <div class="form-group"> <input required class="form-control no-border" type="text" name="name" placeholder="Tên*"/></div>
-                          </div>
-                          <div class="col-md-6 col-lg-6">
-                             <div class="form-group"> <input required class="form-control no-border" type="text" name="email" placeholder="Email*"/></div>
-                          </div>
-                       </div>
+        <section id="map-contact">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6">
+                        <div id="mapid" class="map-canvas" style="width: 100%;height: 700px;"></div>
                     </div>
-                    <div class="col-md-12 col-lg-12">
-                       <div class="row">
-                        <div class="col-md-6 col-lg-6">
-                           <div class="form-group"> <input required class="form-control no-border" id="phone" type="number" name="phone" placeholder="Số điện thoại*"/></div>
+                    <div id="booking" class="col-md-6 col-lg-6 py-80 <%= discount?'pt-3':'' %>">
+                        <div class="alert alert-primary alert-booking <%= discount?'':'d-none' %>">
+                            <%- discount?discount.title:'ahihi' %> <br>
+                                <%- discount?discount.content:'ahoho' %>
                         </div>
-                        <div class="col-md-6 col-lg-6">
-                           <div class="form-group"> <input required class="form-control no-border" id="address" type="text" name="address" placeholder="Địa chỉ*"/></div>
-                        </div>
-                      </div>
+                        <h2 class="main-title mb-3 text-uppercase letter-space-1 text-center color-primary">Đặt lịch</h2>
+                        <form method="POST">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="form-group"> <input required class="form-control no-border" type="text" name="name" placeholder="Tên*" /></div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="form-group"> <input required class="form-control no-border" type="text" name="email" placeholder="Email*" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="form-group"> <input required class="form-control no-border" id="phone" type="number" name="phone" placeholder="Số điện thoại*" /></div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="form-group"> <input required class="form-control no-border" id="address" type="text" name="address" placeholder="Địa chỉ*" /></div>
+                                    </div>
+                                </div>
 
-                    </div>
-                    <div class="col-md-12 col-lg-12">
-                       <div class="form-group"> <input required class="form-control no-border" id="subject" type="text" name="subject" placeholder="Tiêu đề*"/></div>
-                    </div>
-                    <div class="col-md-12 col-lg-12">
-                      <div class="row">
-                        <div class="col-md-6 col-lg-6">
-                            <div class="form-group">
-                              <select class="form-control no-border" id="service" name="service_id" placeholder="Dịch vụ*">
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="form-group"> <input required class="form-control no-border" id="note" type="text" name="note" placeholder="Ghi chú*" /></div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <select class="form-control no-border" id="service" name="spa_service_id" placeholder="Dịch vụ*">
                                 <% spaDetail.services.forEach(item=>{ %>
                                   <option value="<%=item._id%>"><%=item.title || item.service.title%></option>
                                 <% }) %>
                               </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="form-group"> <input required class="form-control no-border" id="date" type="date" name="date" placeholder="Ngày đặt*" /></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6">
-                            <div class="form-group"> <input required class="form-control no-border" id="date" type="date" name="date" placeholder="Ngày đặt*"/></div>
-                        </div>
-                      </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="form-group"><textarea required class="form-control no-border" id="message" rows="7" name="message" placeholder="Nội dung*"></textarea></div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="form-group m-0"> <input required class="btn btn-black" id="send" type="submit" value="Gửi" /></div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="error-handel">
+                                    <div id="success">Your email sent Successfully, Thank you.</div>
+                                    <div id="error"> Error occurred while sending email. Please try again later.</div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-md-12 col-lg-12">
-                       <div class="form-group"><textarea required class="form-control no-border" id="message" rows="7" name="message" placeholder="Nội dung*"></textarea></div>
-                    </div>
-                    <div class="col-md-12 col-lg-12">
-                       <div class="form-group m-0"> <input required class="btn btn-black" id="send" type="submit" value="Gửi"/></div>
-                    </div>
-                    <div class="col-md-12 col-lg-12">
-                       <div class="error-handel">
-                          <div id="success">Your email sent Successfully, Thank you.</div>
-                          <div id="error"> Error occurred while sending email. Please try again later.</div>
-                       </div>
-                    </div>
-                 </form>
-               </div>
+                </div>
             </div>
-         </div>
-      </section>
-      
-<script>
-  var mymap = L.map('mapid').setView([<%=spaDetail.latitude?spaDetail.latitude:''%>, <%=spaDetail.longitude?spaDetail.longitude:''%>], 8);
-  var lng = <%=spaDetail.longitude?spaDetail.longitude:''%>;
-  var lat = <%=spaDetail.latitude?spaDetail.latitude:''%>;
-  
-  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-  maxZoom: 18,
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  id: 'mapbox/streets-v11',
-  tileSize: 512,
-  zoomOffset: -1
-  }).addTo(mymap);
-  var theMarker = {};
-  L.marker([<%=spaDetail.latitude?spaDetail.latitude:''%>, <%=spaDetail.longitude?spaDetail.longitude:''%>]).addTo(mymap);
-</script>
+        </section>
+
+        <script>
+            var mymap = L.map('mapid').setView([`<%=spaDetail.latitude?spaDetail.latitude:''%>`, `<%=spaDetail.longitude?spaDetail.longitude:''%>`], 8);
+            var lng = `<%=spaDetail.longitude?spaDetail.longitude:''%>`;
+            var lat = `<%=spaDetail.latitude?spaDetail.latitude:''%>`;
+
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                maxZoom: 18,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1
+            }).addTo(mymap);
+            var theMarker = {};
+            L.marker([`<%=spaDetail.latitude?spaDetail.latitude:''%>`, `<%=spaDetail.longitude?spaDetail.longitude:''%>`]).addTo(mymap);
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                let check = `<%- discount %>`;
+
+                if (check.trim() != '') {
+                    $('html, body').animate({
+                        scrollTop: $('#booking').offset().top
+                    }, 2500, function() {
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        // window.location.hash = hash;
+                    });
+                }
+            })
+        </script>

@@ -18,6 +18,7 @@ const DiscountSchema = new Schema({
     date_start: { type: Date },
     date_end: { type: Date },
     spa_service_id: { type: Schema.Types.ObjectId, required: false },
+    spa_id: { type: Schema.Types.ObjectId, required: false },
     is_all_service: {type:Boolean,default: false, required: false}
   }, {
     timestamps: true,
@@ -34,6 +35,7 @@ function validateDiscount(data) {
       date_end: Joi.date().required(),
       price: Joi.number().required(),
       spa_service_id: Joi.any(),
+      spa_id: Joi.any(),
       is_all_service: Joi.boolean()
   };
   return Joi.validate(data, schema, { abortEarly: false });
@@ -48,10 +50,29 @@ function validateDiscountEdit(data) {
     date_end: Joi.date().required(),
     price: Joi.number().required(),
     spa_service_id: Joi.any(),
+    spa_id: Joi.any(),
     is_all_service: Joi.boolean()
   };
   return Joi.validate(data, schema, { abortEarly: false });
 }
+
+
+function validateDiscountEditAdmin(data) {
+  const schema = {
+    status: Joi.string().valid(STATUS).required(),
+    title: Joi.string().max(50).required(),
+    content: Joi.string().max(1000).required(),
+    image: Joi.object(),
+    date_start: Joi.date().required(),
+    date_end: Joi.date().required(),
+    price: Joi.number().required(),
+    spa_service_id: Joi.any(),
+    spa_id: Joi.any(),
+    is_all_service: Joi.boolean()
+  };
+  return Joi.validate(data, schema, { abortEarly: false });
+}
+
 
 /**
  * virtual
@@ -63,6 +84,14 @@ DiscountSchema.virtual('spaservice', {
   foreignField: '_id',
   justOne: true
 });
+
+DiscountSchema.virtual('spa', {
+  ref: 'Spa',
+  localField: 'spa_id',
+  foreignField: '_id',
+  justOne: true
+});
+
 
 DiscountSchema.post('save', function (error, doc, next) {
     if (error.name === 'MongoError' && error.code === 11000)
@@ -82,3 +111,4 @@ const Discount = mongoose.model('Discount', DiscountSchema);
 exports.Discount = Discount;
 exports.validateDiscount = validateDiscount;
 exports.validateDiscountEdit = validateDiscountEdit;
+exports.validateDiscountEditAdmin = validateDiscountEditAdmin;

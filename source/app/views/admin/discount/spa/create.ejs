@@ -1,0 +1,249 @@
+<% extend('../../layouts/base', { 
+    title: "Spa management",
+    subTitle: "Create",
+    css: `
+      <link rel="stylesheet" href="/libs/node_modules/dropify/dist/css/dropify.min.css">
+      <link rel="stylesheet" type="text/css" href="/libs/node_modules/summernote/dist/summernote-bs4.css">
+
+      `,
+    script: `
+      <script src="/libs/node_modules/summernote/dist/summernote-bs4.min.js"></script>
+      <script src="/js/slugify.js"></script>
+      <script src="/js/admin/summernote-init.js"></script>
+ 
+    `
+    }) %>
+    <script src=""></script>
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h4 class="text-themecolor">Discount</h4>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">Discount</li>
+                </ol>
+                <a href="/admin/spas/discount" <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i
+                        class="fa fa-plus-circle"></i> List</button></a>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <!-- Row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/admin/spas/discount/create" method="post" enctype="multipart/form-data">
+                        <div class="form-body">
+                            <h3 class="card-title">DisCount Create</h3>
+                            <hr>
+                            <div class="row p-t-20">
+                                <div class="col-md-6">
+                                  <div class="form-group <%=errors.service?'has-danger':''%>">
+                                      <label class="control-label">Select service</label>
+                                      <select class="form-control custom-select" name="spa_service_id">
+                                          <option value="0">Choose all</option>
+                                          <% services.forEach(item=>{ %>
+                                            <option value="<%=item._id%>"><%=item.title || item.service.title%></option>
+                                          <% }) %>
+                                    </select>
+                                    <small class="form-control-feedback "><%=errors?errors.service:''%></small> 
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-title <%=errors.title?'has-danger':''%>">
+                                        <label class="control-label">Title</label>
+                                        <input type="text" id="title" class="form-control" placeholder="" name="title"
+                                            required >
+                                        <small class="form-control-feedback"><%=errors?errors.title:''%></small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <div class="form-group form-group-content <%=errors.content? 'has-danger': ''%>">
+                                        <label class="control-label">Content</label>
+                                        <textarea class="summernote" style="z-index: 1;" name="content"></textarea>
+                                        <small class="form-control-feedback"><%=errors?errors.content:''%></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group <%=errors.birthday?'has-danger':''%>">
+                                        <label class="control-label">Date Start</label>
+                                        <input id="date_start" type="date" class="form-control" min="<%= moment().format('YYYY-MM-DD') %>" placeholder="dd/mm/yyyy" name="date_start" required value="<%= moment().format('YYYY-MM-DD') %>">
+                                        <small class="form-control-feedback"><%=errors?errors.birthday:''%></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group <%=errors.birthday?'has-danger':''%>">
+                                        <label class="control-label">Date End</label>
+                                        <input id="date_end" type="date" class="form-control"placeholder="dd/mm/yyyy" name="date_end" required%>">
+                                        <small class="form-control-feedback"><%=errors?errors.birthday:''%></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 ">
+                                    <div class="form-group form-group-image <%=errors.image? 'has-danger': ''%>">
+                                        <label class="control-label">Image</label>
+                                        <input type="file" id="image" class="form-control" name="image"
+                                            >
+                                            <img id="blah" class="w-100 d-none mt-2" src="#" />
+                                        <small class="form-control-feedback"><%=errors?errors.image:''%></small>
+                                        <img src="" id="image" style="max-width: 100%;"/>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="form-group form-group-price <%=errors.price?'has-danger':''%>">
+                                        <label class="control-label">Price</label>
+                                        <input type="text" id="price" class="form-control" placeholder="" name="price"
+                                            required >
+                                        <small class="form-control-feedback"><%=errors?errors.price:''%></small>
+                                    </div>
+                                </div>
+
+                            </div>
+                          
+                            <!--/row-->
+                            <!--/row-->
+                       
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                                <a href="/admin/spas">
+                                    <button type="button" class="btn btn-inverse">Cancel</button>
+                                </a>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Row -->
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    <div class="right-sidebar">
+        <div class="slimscrollright">
+            <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+            <div class="r-panel-body">
+                <ul id="themecolors" class="m-t-20">
+                    <li><b>With Light sidebar</b></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-default" class="default-theme">1</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-green" class="green-theme">2</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-red" class="red-theme">3</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-blue" class="blue-theme">4</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-purple" class="purple-theme">5</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-megna" class="megna-theme">6</a></li>
+                    <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-default-dark"
+                            class="default-dark-theme working">7</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-green-dark" class="green-dark-theme">8</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-red-dark" class="red-dark-theme">9</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-blue-dark" class="blue-dark-theme">10</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-purple-dark" class="purple-dark-theme">11</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-megna-dark" class="megna-dark-theme ">12</a></li>
+                </ul>
+                <ul class="m-t-20 chatonline">
+                    <li><b>Chat option</b></li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user-img"
+                                class="img-circle"> <span>Varun Dhavan <small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/2.jpg" alt="user-img"
+                                class="img-circle"> <span>Genelia Deshmukh <small
+                                    class="text-warning">Away</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/3.jpg" alt="user-img"
+                                class="img-circle"> <span>Ritesh Deshmukh <small
+                                    class="text-danger">Busy</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/4.jpg" alt="user-img"
+                                class="img-circle"> <span>Arijit Sinh <small
+                                    class="text-muted">Offline</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/5.jpg" alt="user-img"
+                                class="img-circle"> <span>Govinda Star <small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/6.jpg" alt="user-img"
+                                class="img-circle"> <span>John Abraham<small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/7.jpg" alt="user-img"
+                                class="img-circle"> <span>Hritik Roshan<small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/8.jpg" alt="user-img"
+                                class="img-circle"> <span>Pwandeep rajan <small
+                                    class="text-success">online</small></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+</div>
+</div>
+<script>
+
+    $(document).ready(function(){
+
+        //load img
+      function readURL(input) {
+         if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function(e) {
+               $('#blah').attr('src', e.target.result).removeClass("d-none");
+            }
+            
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+         }
+      }
+
+      $("#image").change(function() {
+         readURL(this);
+      });
+
+      // set time
+      $('#date_start').change(function() {
+            $('#date_end').attr({
+                "value":$(this).val(),
+              "min":$(this).val(),
+            })
+      }) 
+      $('#date_start').trigger("change");
+
+
+    })
+</script>
+   

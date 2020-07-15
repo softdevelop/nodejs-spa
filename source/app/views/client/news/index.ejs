@@ -7,11 +7,14 @@
   =======================================-->
   <section class="blog-section blog-page">
       <div class="container">
-          <div class="row">
+          <div class="row mt-30">
               <div class="col-lg-9 order-lg-2">
 
                   <div class="row">
                       <!--blog 2-->
+                      <div class="alert alert-danger mx-auto <%= data.docs.length==0?'':'d-none'  %> " role="alert">
+                        Không có dữ liệu!
+                      </div>
                       <% data.docs.forEach(function(item) { %>
                       <div class="col-md-4">
                           <div class="single-blog">
@@ -46,8 +49,8 @@
                   </div>
                   <!--/row-->
 
-                  <div class="row">
-                      <div class="col-12">
+                  <div class="row <%= data.docs.length==0?'d-none':''  %>">
+                      <div class="col-12 ">
                         <%-genHtmlPaginationClient%>
                       </div>
                   </div>

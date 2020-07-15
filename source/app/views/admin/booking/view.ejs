@@ -125,11 +125,8 @@
                                    <div class="form-group form-group-spa_id <%=errors.spa_id?'has-danger':''%>">
                                       <label class="control-label">Spa name</label>
                                       <select disabled class="form-control custom-select" name="spa_id">
-                                        <%spas.forEach(item=>{
-                                            var selected = ( item._id == data.spa_id ) ? "selected" : ""; 
-                                            %>
-                                          <option value="<%=item._id%>"  <%=selected %>><%=item.name%></option>
-                                        <% }) %>
+                                       
+                                          <option><%=data.spas.name%></option>
                                       </select>
                                       <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
                                    </div>
@@ -138,11 +135,7 @@
                                     <div class="form-group form-group-service_id <%=errors.service_id?'has-danger':''%>">
                                        <label class="control-label">Service title</label>
                                        <select disabled class="form-control custom-select" name="service_id">
-                                         <% services.services.forEach(item=>{ 
-                                            var selected = ( item._id == data.service_id ) ? "selected" : ""; 
-                                            %>
-                                           <option value="<%=item._id%>" <%=selected %>><%=item.title%></option>
-                                         <% }) %>
+                                           <option><%=data.services.service.title%></option>
                                        </select>
                                        <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
                                     </div>

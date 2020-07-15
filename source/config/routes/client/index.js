@@ -12,19 +12,18 @@ const news = require('../../../app/controllers/client/news')
 const qa = require('../../../app/controllers/client/qa')
 const staticPage = require('../../../app/controllers/client/staticpage')
 const { PATH_CLIENT } = require("../../../config")
-const {
-} = require("../../../app/controllers/client");
+const {} = require("../../../app/controllers/client");
 const { getHeader } = require("../../middleware");
 router.use(getHeader);
 
-router.get("/", home.index );
-router.get("/index/trang-:page", home.index );
-router.get("/index", home.index );
-router.get("/login", auth.login );
-router.get("/dang-nhap", auth.login );
-router.get("/register", auth.register );
-router.get("/dang-ki", auth.register );
-router.get("/tim-kiem", search.index) ;
+router.get("/", home.index);
+router.get("/index/trang-:page", home.index);
+router.get("/index", home.index);
+router.get("/login", auth.login);
+router.get("/dang-nhap", auth.login);
+router.get("/register", auth.register);
+router.get("/dang-ki", auth.register);
+router.get("/tim-kiem", search.index);
 router.get('/lien-he', contact.index)
 router.get('/booking', booking.index)
 router.get('/service', service.index)
@@ -34,7 +33,9 @@ router.get('/tin-tuc', news.index)
 router.get('/tin-tuc/:slug', news.view)
 router.get('/hoi-dap', qa.index)
 router.get('/spa/:slug', spa.landingPage)
+router.get('/spa/:slug/:idDiscount', spa.landingPage)
 router.post('/spa/:slug', spa.booking)
+router.post('/spa/:slug/:idDiscount', spa.booking)
 router.get("/:slug", staticPage.index);
 
 // router.get("*", (req, res) => {

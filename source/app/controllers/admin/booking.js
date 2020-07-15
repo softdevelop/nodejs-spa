@@ -31,11 +31,15 @@ const getListBooking = async (req, res) => {
         path: 'spas',
       },{
         path: 'services',
+        populate:{
+          path: 'service'
+        }
       }],
     };
     let data = await Booking.paginate(query, options);
-    data.search = search
     
+    data.search = search
+    // return res.send(data)
     return res.render("admin/booking/index", {
       data,
       urlMediaUpload,
@@ -50,7 +54,11 @@ const getListBooking = async (req, res) => {
 const getFormCreate = async (req, res) => {
   var spas = await Spa.find().select('_id name').populate({
     path: "services",
-    select: "_id title"
+    select: "_id title service_id service",
+    populate:{
+      path:'service',
+      select:"title"
+    }
   }).exec()
   res.render('admin/booking/create', {errors: {}, data:  spas})
 }
@@ -59,6 +67,15 @@ const create = async (req, res) => {
   let data = req.body;
   delete data.files;
   let err = validateBooking(data);
+  
+  let spas = await Spa.find().select('_id name').populate({
+    path: "services",
+    select: "_id title service_id service",
+    populate:{
+      path:'service',
+      select:"title"
+    }
+  }).exec()
   if (err && err.error) {
     let errors =
       err.error &&
@@ -68,7 +85,9 @@ const create = async (req, res) => {
           [item.path[0]]: item.message,
         };
       }, {});
-    return res.render("admin/booking/create", { errors, data });
+      
+    
+    res.render('admin/booking/create', {errors, data:  spas})
   } else {
     let newBooking = new Booking(data);
     newBooking.save()
@@ -81,7 +100,7 @@ const create = async (req, res) => {
             name: "The value is duplicated.",
             slug: "The value is duplicated.",
           },
-          data,
+          data:spas,
         });
       });
   }
@@ -91,10 +110,33 @@ const create = async (req, res) => {
 const getFormEdit = async (req, res) => {
   let id = req.params.id;
   
-  let booking = await Booking.findOne({_id: id}).populate('services').populate('spas').exec()
-  let spas = await Spa.find().populate("services").exec()
-  let services = spas.find(item => item._id == booking.spa_id);
-  res.render('admin/booking/edit', {errors: {}, data: booking, spas, services})
+  // let booking = await Booking.findOne().populate('spas').exec()
+  let booking = await Booking.findOne({_id: id}).populate([
+    {
+      path:'spas',
+      select:'_id name'
+    },
+    {
+      path:'services',
+      populate:{
+        path:'service',
+        select:'title'
+      }
+    }
+  ]).exec();
+  var spas = await Spa.find().select('_id name').populate({
+    path: "services",
+    select: "_id title service_id service",
+    populate:{
+      path:'service',
+      select:"title"
+    }
+  }).exec()
+  let services = await  SpaService.find({spa_id : booking.spas._id}).populate({
+    path:'service',
+    select:'title'
+  }).exec()
+  res.render('admin/booking/edit', {errors: {}, data: booking, spas,services})
 };
 
 
@@ -135,10 +177,20 @@ const delMany = async (req, res) => {
 };
 const viewDetail = async (req, res) => {
   let id = req.params.id
-  let booking = await Booking.findOne({_id: id}).populate('services').populate('spas').exec()
-  let spas = await Spa.find().populate("services").exec()
-  let services = spas.find(item => item._id == booking.spa_id);
-  res.render('admin/booking/view', {errors: {}, data: booking, spas, services})
+  let booking = await Booking.findOne({_id: id}).populate([
+    {
+      path:'services',
+      populate:{
+        path:'service',
+        select: 'title'
+      }
+    },
+    {
+      path:'spas',
+      select:'name'
+    }
+  ]).exec()
+  res.render('admin/booking/view', {errors: {}, data: booking})
 }
 
 const getListBookingOfSpa = async (req, res) => {
