@@ -20,6 +20,7 @@ const {
     spaTeamService,
     serviceService,
 } = require("../../services");
+const { send } = require("process");
 
 const APP_DOMAIN = require("../../../config/index").APP_DOMAIN;
 const dashboardUrl = () => APP_DOMAIN + `/dashboard`;
@@ -187,8 +188,9 @@ const landingPage = async(req, res) => {
             ]
         }).exec();
 
-        let spaLandingData1 = spaLandingData;
+        let spaLandingData1 = Object.assign(spaLandingData);
         spaLandingData1.description = null
+
 
         res.render('admin/spas/landing-page', {
             discount: '',

@@ -1844,3 +1844,8 @@ ul.list-default li,
     height: 42px;
     border: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
+
+#team .img-responsive{
+    height: 350px;
+    width: 100%;
+}
