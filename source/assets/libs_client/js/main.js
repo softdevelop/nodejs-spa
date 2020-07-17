@@ -299,7 +299,6 @@
         }
     });
     $('.scroll-top').on('click', function(event) {
-        alert('ahihi llelelelel')
         event.preventDefault();
         $('html, body').animate({
             scrollTop: 0
