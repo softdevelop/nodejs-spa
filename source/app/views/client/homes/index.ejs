@@ -113,7 +113,7 @@
                                                     <div class="single-blog mb-0">
                                                         <div class="blog-img pos-relative">
                                                             <div class="img-area">
-                                                                <a href="/spa/<%=spaservice.spa.slug%>"><img src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs[0] || spaservice.spa.logo)%>" alt="blog img" class="img-fluid" style="max-height: 200px;"></a>
+                                                                <a href="/spa/<%=spaservice.spa?spaservice.spa.slug:''%>"><img src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs[0] || spaservice.spa.logo)%>" alt="blog img" class="img-fluid" style="max-height: 200px;"></a>
                                                             </div>
                                                             <ul class="brand ">
                                                                 <li><i class="fa fa-heart"></i>18</li>

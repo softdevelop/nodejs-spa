@@ -5,7 +5,6 @@ const moment = require("moment");
 const passwordHash = require("password-hash");
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs');
-
 // utils 
 const { jwtToken, pareJwtToken } = require("../../utils/func");
 const { urlMediaUpload } = require('../../utils')
@@ -34,10 +33,10 @@ viewLoginPage = async (req, res) => {
       let user = User.findById(decodedToken._id).exec();
       if(user) return res.redirect('/admin') 
     }catch(e){
-      return res.render("admin/auth/login");
+      return res.render("admin/auth/login",{error:false});
     }
   }
-  return res.render("admin/auth/login");
+  return res.render("admin/auth/login",{error:false});
 }
 
 login = async (req, res) => {
@@ -47,14 +46,17 @@ login = async (req, res) => {
     let user = await User.findOne({ email, status: 'active' }).populate({ path: 'permissions' }).exec();
 
     if(!user && req.url === '/login'){
-      res.redirect('/login')
+      res.redirect('/login',{error:true})
     }
     if (!user) {
-      return res.render("admin/auth/login");
+      return res.render("admin/auth/login",{error:true});
     }
 
     if (!user.checkPassword(password)) {
-      return res.render("admin/auth/login");
+      if(req.url === '/login'){
+        return res.render("admin/auth/login",{error:true});
+      }
+      return res.redirect('/login/?error=true')
     }
 
     // create token

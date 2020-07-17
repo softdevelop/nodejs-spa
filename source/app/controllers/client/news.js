@@ -76,6 +76,7 @@ const index = async(req, res)=>{
 
   let data = await New.paginate(query, options);
   data.search = search
+
   let newsLatest = await New.find().limit(3).exec();
   res.render('client/news/index', {
      data,

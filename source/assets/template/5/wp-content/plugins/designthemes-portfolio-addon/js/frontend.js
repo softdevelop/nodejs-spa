@@ -410,7 +410,6 @@ jQuery(document).ready(function($){
 				    });
 
 				    $swiperItem.find('.dtportfolio-swiper-arrow-click.right').on('click', function(e) {
-				    	console.log('asdsad');
 				    	var swiperUniqueId = $swiperItem.attr('id');
 				        swiperGallery[swiperUniqueId].slideNext();
 				        if(swiperGalleryOptions[swiperUniqueId]['autoplay_enable'] > 0 || $swiperItem.find('.dtportfolio-swiper-pagination-holder').find('.dtportfolio-swiper-playpause').hasClass('pause')) {

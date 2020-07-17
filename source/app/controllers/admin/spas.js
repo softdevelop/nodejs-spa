@@ -188,7 +188,7 @@ const landingPage = async(req, res) => {
             ]
         }).exec();
 
-        let spaLandingData1 = Object.assign(spaLandingData);
+        let spaLandingData1 = JSON.parse(JSON.stringify(spaLandingData))
         spaLandingData1.description = null
 
 

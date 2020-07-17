@@ -1,5 +1,6 @@
 const login = (req, res) => {
-  res.render("client/auth/login");
+  error = req.query.error?true:false
+  res.render("client/auth/login",{error});
 };
 
 const register = (req, res) => {

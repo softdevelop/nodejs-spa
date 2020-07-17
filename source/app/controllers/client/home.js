@@ -52,6 +52,7 @@ const index = async(req, res) => {
     ]).exec();
     let spa = await Spa.find().select('_id imgs').exec()
 
+
     let { limit } = req.query;
     let page = req.params.page
     let search = req.query.search || '';

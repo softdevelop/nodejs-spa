@@ -22,7 +22,10 @@ const getListNew = async (req, res) => {
       let reg = new RegExp(text);
       var query = {
         name: { $regex: reg, $options: 'gmi' },
+        createBy: req.user.id
       };
+      if(req.user.role == 'EDITOR')
+        query.createBy= req.user.id
       var options = {
         select: "", //"username email"
         sort: { createdAt: -1 },
@@ -103,6 +106,13 @@ const getListNew = async (req, res) => {
   const getFormEdit = async (req, res) => {
     let id = req.params.id;
     let news = await New.findById(id).exec()
+    
+    if(req.user.role == "EDITOR"){
+      if(news.createBy != req.user.id){
+        res.render('admin/404');
+      }
+    }
+
     let spas = await Spa.find().exec()
     let user = await User.find({role:'EXPERT'}).select(' _id first_name last_name').exec();
     let nameSpa = spas.find(item => item._id == news.spa_id)   
@@ -117,6 +127,15 @@ const getListNew = async (req, res) => {
   const edit = async (req, res) => {
     let createBy = req.user.id
     let id = req.params.id
+
+    let news = await New.findById(id).exec()
+    
+    if(req.user.role == "EDITOR"){
+      if(news.createBy != req.user.id){
+        res.render('admin/404');
+      }
+    }
+
     let data = {...req.body,createBy};
     delete data.image
     let err = validateNewEdit(data)
