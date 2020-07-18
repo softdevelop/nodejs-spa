@@ -259,12 +259,17 @@
                                     <div class="form-group <%=errors.status?'has-danger':''%>">
                                         <label class="control-label">Status</label>
                                         <select class="form-control custom-select" name="status">
-                                            <option value="pending" <%=data.status=='pending'?'selected':''%>>Pending
-                                            </option>
-                                            <option value="active" <%=data.status=='active'?'selected':''%>>Active
-                                            </option>
-                                            <option value="blocked" <%=data.status=='blocked'?'selected':''%>>Blocked
-                                            </option>
+                                            <% if(!editor){ %>
+                                                <option value="pending" <%=data.status=='pending'?'selected':''%>>Pending
+                                                </option>
+                                                <option value="active" <%=data.status=='active'?'selected':''%>>Active
+                                                </option>
+                                                <option value="blocked" <%=data.status=='blocked'?'selected':''%>>Blocked
+                                                </option>
+                                                <%}else{%>
+                                                    <option value="pending">Pending</option>
+                                                <%}%>
+                                            
                                         </select>
                                         <small class="form-control-feedback "><%=errors?errors.status:''%></small>
                                     </div>

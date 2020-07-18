@@ -12,7 +12,7 @@ const APP_DOMAIN = require("../../../config/index").APP_DOMAIN;
 const dashboardUrl = () => APP_DOMAIN + `/dashboard`;
 mongoose.Promise = global.Promise;
 
-
+let editor=false;
 
 const getListNew = async (req, res) => {
     if (req.user) {
@@ -44,6 +44,7 @@ const getListNew = async (req, res) => {
       ]
       };
       let data = await New.paginate(query, options);
+      return res.send(data)
       data.search = search
       return res.render("admin/news/index", {
         data,
@@ -62,15 +63,22 @@ const getListNew = async (req, res) => {
       fields: "_id name slug parent path",
       options: { lean: true },
     });
+    if(req.user.role == "EDITOR"){
+      editor = true;
+    }
     let optionsHtml = genCategory.genMultiOptions(categories);
     let user = await User.find({role:'EXPERT'}).select().exec();
-    res.render('admin/news/create', {errors: {}, data: {}, spas,user,urlMediaUpload, optionsHtml,today})
+    res.render('admin/news/create', {errors: {}, data: {}, spas,user,urlMediaUpload, optionsHtml,today,editor})
     
   }
 
   const create = async (req, res) => {
     let createBy = req.user.id
     let data = {...req.body,createBy};
+    if(req.user.role == "EDITOR"){
+      data.status = 'pending'
+      editor = true;
+    }
     let err = validateNew(data);
     if (err && err.error) {
       let errors =
@@ -82,7 +90,7 @@ const getListNew = async (req, res) => {
           };
         }, {});
       var spas = await Spa.find().select('_id name').exec()
-      return res.render("admin/news/create", { errors, data, spas });
+      return res.render("admin/news/create", { errors, data, spas,editor });
     } else {
       if(req.files.image){
         data.image = req.files.image[0]
@@ -108,10 +116,13 @@ const getListNew = async (req, res) => {
     let news = await New.findById(id).exec()
     
     if(req.user.role == "EDITOR"){
+      editor = true
       if(news.createBy != req.user.id){
         res.render('admin/404');
       }
     }
+
+    
 
     let spas = await Spa.find().exec()
     let user = await User.find({role:'EXPERT'}).select(' _id first_name last_name').exec();
@@ -121,7 +132,7 @@ const getListNew = async (req, res) => {
       options: { lean: true },
     });
     let optionsHtml = genCategory.genMultiOptions(categories, '', news.category_ids);
-    res.render('admin/news/edit', {errors: {}, data: news,user, urlMediaUpload, nameSpa, spas,optionsHtml })
+    res.render('admin/news/edit', {errors: {}, data: news,user, urlMediaUpload, nameSpa, spas,optionsHtml,editor })
   };
 
   const edit = async (req, res) => {
@@ -129,14 +140,15 @@ const getListNew = async (req, res) => {
     let id = req.params.id
 
     let news = await New.findById(id).exec()
+    let data = {...req.body,createBy};
     
     if(req.user.role == "EDITOR"){
+      data.status = 'pending'
       if(news.createBy != req.user.id){
         res.render('admin/404');
       }
     }
 
-    let data = {...req.body,createBy};
     delete data.image
     let err = validateNewEdit(data)
     if(err && err.error){

@@ -84,5 +84,5 @@ module.exports = (app, extra) => {
 
     app.use("/", clientRoute);
 
-    app.use(notFound);
+    // app.use("admin/?",notFound);
 }

@@ -259,9 +259,13 @@
                                     <div class="form-group form-group-status <%=errors.status?'has-danger':''%>">
                                         <label class="control-label">Status</label>
                                         <select class="form-control custom-select" name="status">
+                                            <% if(!editor){ %>
                                             <option value="pending">Pending</option>
                                             <option value="active" ">Active</option>
                                           <option value=" blocked ">Blocked</option>
+                                            <%}else{%>
+                                                <option value="pending">Pending</option>
+                                            <%}%>
                                        </select>
                                        <small class=" form-control-feedback "><%=errors?errors.status:''%></small> 
                                     </div>
@@ -288,7 +292,7 @@
 
                         <div class="form-actions">
                             <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                            <a href="/admin/New">
+                            <a href="/admin/News">
                                 <button type="button" class="btn btn-inverse">Cancel</button>
                             </a>
                         </div>

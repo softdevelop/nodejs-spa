@@ -3,6 +3,7 @@ const Category = mongoose.model('Category')
 const Service = mongoose.model('Service')
 const Spa = mongoose.model('Spa')
 const New = mongoose.model("New");
+const User = mongoose.model("User");
 const Expert = mongoose.model("Expert");
 const Discount = mongoose.model("Discount");
 const moment = require("moment-timezone");
@@ -11,7 +12,7 @@ const truncate = require('html-truncate');
 const { constants, location } = require("../../utils");
 const { dataProvince, dataDistrict } = require("../../utils/location");
 
-const index = async(req, res) => {
+const index = async (req, res) => {
 
 
     let categories = await Category.getChildrenTree({
@@ -37,18 +38,18 @@ const index = async(req, res) => {
     const endOfWeek = moment().endOf('isoWeek').toISOString();
     let discount = await Discount.find({
         $or: [{ date_start: { $gte: startOfWeek, $lte: endOfWeek } },
-            { date_end: { $gte: startOfWeek, $lte: endOfWeek } }
+        { date_end: { $gte: startOfWeek, $lte: endOfWeek } }
         ],
         status: 'active'
     }).populate([{
-            path: 'spa'
-        },
-        {
-            path: 'spaservice',
-            populate: {
-                path: 'service'
-            }
+        path: 'spa'
+    },
+    {
+        path: 'spaservice',
+        populate: {
+            path: 'service'
         }
+    }
     ]).exec();
     let spa = await Spa.find().select('_id imgs').exec()
 
@@ -79,8 +80,21 @@ const index = async(req, res) => {
     data.search = search
     let newsLatest = await New.find().limit(3).exec();
 
-    let experts = await Expert.find().populate('user').lean();
-    // return res.send(experts)
+    let experts = await Expert.find().populate('user').limit(16).lean();
+ 
+    const users = await User.populate(await New.aggregate(
+        [
+            {
+                $group: {
+                    _id: "$author",
+                    author: { $first: '$author' },
+                    count: { $sum: 1 },
+                }
+            },
+        ]
+    ).sort({ count: -1 }).limit(16)
+    , { path: "author" })
+    return res.send(users)
     res.render("client/homes/index", {
         dataProvince,
         dataDistrict,
@@ -99,6 +113,8 @@ const index = async(req, res) => {
         experts
     });
 };
+
+
 
 module.exports = {
     index,

@@ -13,7 +13,9 @@ const Service = mongoose.model('Service')
 const truncate = require('html-truncate');
 const { dataProvince, dataDistrict } = require("../../utils/location");
 const fs = require('fs')
-
+const Discount = mongoose.model("Discount");
+const Booking = mongoose.model("Booking");
+const SpaIntro = require("../../models/spas_intros");
 const {
     spaIntroService,
     spaServiceService,
@@ -36,6 +38,7 @@ const getListSpas = async(req, res) => {
             name: { $regex: reg, $options: 'gmi' },
             description: { $regex: reg, $options: 'gmi' }
         };
+        
         var options = {
             select: "", //"username email"
             sort: { createdAt: -1 },
@@ -45,6 +48,7 @@ const getListSpas = async(req, res) => {
             populate: "ownerDetail",
 
         };
+
         let data = await Spa.paginate(query, options);
 
         data.search = search
@@ -153,6 +157,21 @@ const delMany = async(req, res) => {
         let ids = req.body.ids;
         ids.map(async val => {
             const user = await Spa.deleteOne({ _id: val }, (err, result) => {
+                if (err) return res.status(400).json({ status: "error" });
+            }).exec();
+            const discount = await Discount.deleteOne({ spa_id: val }, (err, result) => {
+                if (err) return res.status(400).json({ status: "error" });
+            }).exec();
+            const spa_service = await SpaService.deleteOne({ spa_id: val }, (err, result) => {
+                if (err) return res.status(400).json({ status: "error" });
+            }).exec();
+            const booking = await Booking.deleteOne({ spa_id: val }, (err, result) => {
+                if (err) return res.status(400).json({ status: "error" });
+            }).exec();
+            const spa_team = await SpaTeam.deleteOne({ spa_id: val }, (err, result) => {
+                if (err) return res.status(400).json({ status: "error" });
+            }).exec();
+            const spa_itros = await SpaIntro.deleteOne({ spa_id: val }, (err, result) => {
                 if (err) return res.status(400).json({ status: "error" });
             }).exec();
         });
