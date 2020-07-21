@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
+const New = mongoose.model("New");
+const Spa = mongoose.model("Spa");
+const Expert = mongoose.model("Expert");
 const Role = mongoose.model("Role");
 const moment = require("moment-timezone");
 const { genHtmlPagination, urlMediaUpload } = require('../../utils')
 const { validateUser, validateUserEdit } = require('../../models/users')
+const spa = require('../admin/spas')
 const bcrypt = require("bcryptjs");
 const fs = require('fs')
 
@@ -151,6 +155,13 @@ delMany = async(req, res) => {
             const user = await User.deleteOne({ _id: val }, (err, result) => {
                 if (err) return res.status(400).json({ status: "error" });
             }).exec();
+            const Experts = await Expert.deleteMany({ user_id: val }, (err, result) => {
+                if (err) return res.status(400).json({ status: "error" });
+            }).exec();
+            const New = await New.deleteMany({ author: val }, (err, result) => {
+                if (err) return res.status(400).json({ status: "error" });
+            }).exec();
+            const id_spa = await Spa.findOne({owner:val}).select("_id").exec()
         });
         return res.status(200).json({ success: true });
     } catch (err) {

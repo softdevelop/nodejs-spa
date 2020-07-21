@@ -80,21 +80,46 @@ const index = async (req, res) => {
     data.search = search
     let newsLatest = await New.find().limit(3).exec();
 
-    let experts = await Expert.find().populate('user').limit(16).lean();
- 
-    const users = await User.populate(await New.aggregate(
+    let expert = await Expert.find().populate('user').limit(16).lean(); //
+
+    let experts = await New.aggregate(
         [
             {
                 $group: {
                     _id: "$author",
-                    author: { $first: '$author' },
                     count: { $sum: 1 },
-                }
+                },
             },
-        ]
-    ).sort({ count: -1 }).limit(16)
-    , { path: "author" })
-    return res.send(users)
+
+            {
+                $lookup: {
+                    from: 'users',
+                    localField: '_id',
+                    foreignField: '_id',
+                    as: 'User'
+                },
+            },
+            {
+                $sort:{count:-1}
+            },
+            {
+                $lookup: {
+                    from: 'experts',
+                    localField: '_id',
+                    foreignField: 'user_id',
+                    as: 'Expert'
+                },
+            },
+            {
+                $match:{Expert:{"$exists": true,}}
+            },
+            {
+                $limit:16
+            }
+
+
+        ],
+    )
     res.render("client/homes/index", {
         dataProvince,
         dataDistrict,

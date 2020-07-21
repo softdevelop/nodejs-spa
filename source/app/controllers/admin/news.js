@@ -44,7 +44,6 @@ const getListNew = async (req, res) => {
       ]
       };
       let data = await New.paginate(query, options);
-      return res.send(data)
       data.search = search
       return res.render("admin/news/index", {
         data,

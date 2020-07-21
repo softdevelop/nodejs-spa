@@ -505,22 +505,22 @@
                 <!--experts person-1-->
                 <div class="single-carousel col-md-6 col-lg-4 col-xl-3" style="height: 300px;">
                     <div class="img-background"
-                        style="background-image:url(<%=urlMediaUpload.imageObj(item.user.avatar || item.images[0])%>)">
+                        style="background-image:url(<%=urlMediaUpload.imageObj(item.User[0].avatar || item.Expert[0].images[0])%>)">
                     </div>
                     <div class="expert-hover expert-hover-2 text-center">
                         <a href="/chuyen-gia/<%=item.slug%>">
                             <p class="name fw-700 color-ff h6">
-                                <%=item.user.first_name%>
-                                <%=item.user.last_name%>
+                                <%=item.User[0].first_name%>
+                                <%=item.User[0].last_name%>
                             </p>
                         </a>
                         <p class="degignation">
-                            <%=item.job%>
+                            <%=item.Expert[0].job%>
                         </p>
                         <p class="color-ff ptb-20 string-line-3">
-                            <%=item.slogan%>
+                            <%=item.Expert[0].slogan%>
                         </p>
-                        <a href="/chuyen-gia/<%=item.slug%>" title="See Full Bio"
+                        <a href="/chuyen-gia/<%=item.Expert[0].slug%>" title="See Full Bio"
                             class="bio color-ff text-capitalize">Xem thêm <i class="fa fa-long-arrow-right"></i></a>
                     </div>
                     <div class="social-contact">
