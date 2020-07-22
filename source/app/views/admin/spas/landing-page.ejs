@@ -52,15 +52,15 @@
                 <div class="col-12">
                   <div class="card">
                       <div class="card-body wizard-content ">
-                        <h4 class="card-title">Manage your spa landing page</h4>
-                        <h6 class="card-subtitle">You can custome spa landing page at here</h6>
+                        <h4 class="card-title">Quản lý spa của bạn</h4>
+                        <h6 class="card-subtitle">Bạn có thể chọn giao diên spa tại đây</h6>
                         <form action="#" class="tab-wizard vertical wizard-circle" id="Landing-Form">
                             <!-- Step 1 -->
-                            <h6>Choose template</h6>
+                            <h6>Chọn mẫu</h6>
                             <section>
                               <!-- Row -->
                               <div class="row">
-                                  <h4 class="d-inline mb-5">Template will be same this image</h4>
+                                  <h4 class="d-inline mb-5">Mẫu spa sẽ giống các hình ảnh này</h4>
                               </div>
                               <div class="row">
                                   <div class="col-12">
@@ -127,10 +127,10 @@
                               <!-- End Row -->
                             </section>
                             <!-- Step 2 -->
-                            <h6>Intro</h6>
+                            <h6>Giới thiệu</h6>
                             <section>
                               <div class="row">
-                                  <h4 class="m-t-40 mb-5">Each card is a slide in the landing page</h4>
+                                  <h4 class="m-t-40 mb-5">Mỗi thẻ là một slide</h4>
                               </div>
                               <div class="Landing-Intro">
 
@@ -144,15 +144,15 @@
 
                               </div>
                               <div class="row">
-                                  <button type="button" class="Landing-Intro-Create btn btn-info d-lg-block m-l-15 mb-3"><i class="fa fa-plus-circle"></i> Add slide</button>
+                                  <button type="button" class="Landing-Intro-Create btn btn-info d-lg-block m-l-15 mb-3"><i class="fa fa-plus-circle"></i> Thêm slide</button>
                               </div>
                             </section>
 
                             <!-- Step 3 -->
-                            <h6>Services</h6>
+                            <h6>Dịch vụ</h6>
                             <section>
                               <div class="row">
-                                  <h4 class="m-t-40 mb-5">Each card is a service in the landing page</h4>
+                                  <h4 class="m-t-40 mb-5">Mỗi thẻ là một slide</h4>
                               </div>
                               <div class="Landing-Service">
 
@@ -167,28 +167,28 @@
                               </div>
 
                               <div class="row">
-                                  <button type="button" class="Landing-Service-Create btn btn-info d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add service</button>
+                                  <button type="button" class="Landing-Service-Create btn btn-info d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Thêm dịch vụ</button>
                               </div>
                             </section>
                             <!-- Step 4 -->
-                            <h6>About</h6>
+                            <h6>Thông tin</h6>
                             <section>
                               <div class="row">
                                   <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Working time start</label>
+                                        <label>Thời gian bắt đầu làm việc</label>
                                         <input type="time" class="form-control" name="start" value="<%=spaLandingData && spaLandingData.working_hour && spaLandingData.working_hour.start%>">
                                     </div>
                                   </div>
                                   <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Working time end</label>
+                                        <label>Thời gian kết thúc làm việc</label>
                                         <input type="time" class="form-control" name="end" value="<%=spaLandingData && spaLandingData.working_hour && spaLandingData.working_hour.end%>">
                                     </div>
                                   </div>
                                   <div class="col-md-12 ">
                                     <div class="form-group form-group-description">
-                                        <label class="control-label">Description</label>
+                                        <label class="control-label">Mô tả</label>
                                         <textarea class="summernote" style="z-index: 1;" name="description"><%=spaLandingData.description%></textarea>
                                         <small class="form-control-feedback"></small>
                                     </div>
@@ -196,10 +196,10 @@
                               </div>
                             </section>
                            <!-- Step 5 -->
-                           <h6>Team</h6>
+                           <h6>Nhóm</h6>
                            <section>
                              <div class="row">
-                                 <h4 class="m-t-40 mb-5">Each card is a member of spa</h4>
+                                 <h4 class="m-t-40 mb-5">Mỗi thẻ là thành viên của spa</h4>
                              </div>
                              <div class="Landing-Team">
 
@@ -214,7 +214,7 @@
                              </div>
 
                              <div class="row">
-                                 <button type="button" class="Landing-Team-Create btn btn-info d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add Member</button>
+                                 <button type="button" class="Landing-Team-Create btn btn-info d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Thêm thành viên</button>
                              </div>
                            </section>
                         </form>
@@ -239,7 +239,7 @@
      <!-- .right-sidebar -->
      <div class="right-sidebar">
         <div class="slimscrollright">
-           <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+           <div class="rpanel-title"> Bảng dịch vụ <span><i class="ti-close right-side-toggle"></i></span> </div>
            <div class="r-panel-body">
               <ul id="themecolors" class="m-t-20">
                  <li><b>With Light sidebar</b></li>
@@ -355,7 +355,9 @@
       transitionEffect: "fade",
       titleTemplate: '<span class="step">#index#</span> #title#',
       labels: {
-          finish: "Submit"
+          finish: "Xác nhận",
+          previous: 'Quay lại',
+          next: 'Tiếp tục'
       },
       onFinished: function (event, currentIndex) {
         landing.onSubmit();
@@ -367,7 +369,6 @@
 
       },
   });
-
   class LandingManageForm {
     constructor(id, spaLandingData, services) {
       this.form = $(id)
@@ -768,16 +769,16 @@
 
   $('.Landing-Template').on('click', function(){
     landing.setTemplate($(this).attr('data'));
-    $('.Landing-Template').html('Choose')
+    $('.Landing-Template').html('Chọn')
     $('.Landing-Template').removeClass('btn-success').addClass('btn-primary');
-    $(this).html('Chosen')
+    $(this).html('Đã chọn')
     $(this).removeClass('btn-primary').addClass('btn-success');
   })
 
   function setView(){
-    $('.Landing-Template').html('Choose')
+    $('.Landing-Template').html('Chọn')
     $('.Landing-Template').removeClass('btn-success').addClass('btn-primary');
-    $(`.Landing-Template[data=${landing.getTemplateId()}]`).html('Chosen')
+    $(`.Landing-Template[data=${landing.getTemplateId()}]`).html('Đã chọn')
     $(`.Landing-Template[data=${landing.getTemplateId()}]`).removeClass('btn-primary').addClass('btn-success');
   }
 
