@@ -23,27 +23,27 @@
     <div class="row">
         <div class="col-md-12">
           <div class="form-group">
-              <label>Title</label>
+              <label>Tiêu đề</label>
               <input type="text" class="form-control" name='title' value="<%=item.title || item.service.title%>"> 
           </div>
         </div>
         <div class="col-md-12 ">
           <div class="form-group form-group-content ">
-              <labelclass="control-label">Content</label>
+              <labelclass="control-label">Nội dung</label>
               <textarea class="summernote" style="z-index: 1;" name="content"><%=item.content || item.service.content%></textarea>
               <small class="form-control-feedback"></small>
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group">
-              <label>Image</label>
+              <label>Hình ảnh</label>
               <input type="file" class="ImageUpload form-control" name='image' id="<%=item._id%>"> 
               <img class="avatar-100" src="<%=urlMediaUpload.imageObj(item.image || item.service.image)%>" />
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group">
-              <label>Price</label>
+              <label>Giá</label>
               <input type="text" class="form-control" name='price' required value="<%=item.price%>"> 
           </div>
         </div>
