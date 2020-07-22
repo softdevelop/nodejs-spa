@@ -78,6 +78,7 @@ const getFormCreate = async(req, res) => {
         fields: "_id name slug parent path",
         options: { lean: true },
     });
+    let optionsHtml = genCategory.genOptions(categories);
     res.render("admin/categories/create", { errors: {}, data: {}, optionsHtml });
 };
 

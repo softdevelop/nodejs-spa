@@ -18,7 +18,7 @@ const NewSchema = new Schema({
     numOfViews:{type: Number, require},
     spa_id: {type: String, require: true},
     createBy: {type: String, require: true},
-    author: {type: String, require: true},
+    author: {type:  Schema.Types.ObjectId, require: true},
     category_ids: {type: Array, required: true },
 },{
     timestamps: true
@@ -83,6 +83,9 @@ NewSchema.virtual('user_author', {
     foreignField: '_id',
     justOne: true
 });
+
+
+
 NewSchema.virtual('category', {
     ref: 'Category',
     localField: 'category_ids',

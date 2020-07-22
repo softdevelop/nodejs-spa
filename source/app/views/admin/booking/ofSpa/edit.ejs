@@ -1,5 +1,5 @@
 <% extend('../../layouts/base', { 
-    title: "Booking Spa management",
+    title: "Booking management",
     subTitle: "Create",
     css: `
       <link rel="stylesheet" href="/libs/node_modules/dropify/dist/css/dropify.min.css">
@@ -45,7 +45,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="/admin/spas/bookings/<%=data._id%>/edit" method="post">
+                    <form action="/admin/spas/booking/<%=data._id%>/edit" method="post">
                         <div class="form-body">
                             <h3 class="card-title">Booking Info</h3>
                             <hr>
@@ -61,7 +61,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group form-group-phone <%=errors.phone?'has-danger':''%>">
                                         <label class="control-label">Phone</label>
-                                        <input type="number" id="phone" class="form-control" placeholder="" name="phone"
+                                        <input type="text" id="phone" class="form-control" placeholder="" name="phone"
                                             required value="<%=data.phone?data.phone:''%>">
                                         <small class="form-control-feedback"><%=errors?errors.phone:''%></small>
                                     </div>
@@ -78,20 +78,20 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <div class="form-group form-group-date <%=errors.date?'has-danger':''%>">
-                                        <label class="control-label">Date</label>
-                                        <input type="date" id="date" class="form-control" placeholder="" name="date"
-                                            required value="<%=data.date_form? data.date_form:''%>">
+                                    <div class="form-group form-group-email <%=errors.email?'has-danger':''%>">
+                                        <label class="control-label">Email</label>
+                                        <input type="email" id="email" class="form-control" placeholder="" name="email"
+                                            required value="<%=data.email?data.email:''%>">
                                         <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
                                     </div>
                                 </div>
+                                
                             </div>
                             <div class="row">
                                 <div class="col-md-12 ">
                                     <div class="form-group form-group-message <%=errors.message? 'has-danger': ''%>">
                                         <label class="control-label">Message</label>
-                                        <textarea class="summernote" style="z-index: 1;"
-                                            name="message"><%=data.message?data.message:''%></textarea>
+                                        <textarea class="summernote" style="z-index: 1;" name="message"><%=data.message?data.message:''%></textarea>
                                         <small class="form-control-feedback"><%=errors?errors.message:''%></small>
                                     </div>
                                 </div>
@@ -102,69 +102,78 @@
                                     <div class="form-group form-group-note <%=errors.note?'has-danger':''%>">
                                         <label class="control-label">Note</label>
                                         <input type="text" id="note" class="form-control" placeholder="" name="note"
-                                            value="<%=data.note?data.note:''%>">
+                                             value="<%=data.note?data.note:''%>">
                                         <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group <%=errors.status?'has-danger':''%>">
-                                        <label class="control-label">Status</label>
-                                        <select class="form-control custom-select" name="status">
-                                            <option value="pending" <%=data.status=='pending'?'selected':''%>>Pending
-                                            </option>
-                                            <option value="active" <%=data.status=='active'?'selected':''%>>Active
-                                            </option>
-                                            <option value="blocked" <%=data.status=='blocked'?'selected':''%>>Blocked
-                                            </option>
-                                        </select>
-                                        <small class=" form-control-feedback "><%=errors?errors.status:''%></small>
+                                <div class="col-md-6 ">
+                                    <div class="form-group form-group-date <%=errors.date?'has-danger':''%>">
+                                        <label class="control-label">Date</label>
+                                        <input type="date" id="date" class="form-control" placeholder="" name="date"
+                                            required value="<%=data.date_form? data.date_form:''%>">
+                                        <small class="form-control-feedback"><%=errors?errors.slug:''%></small>
                                     </div>
                                 </div>
+                               
 
                             </div>
                             <!--/row-->
                             <div class="row p-t-20">
                                 <div class="col-md-6">
-                                    <div class="form-group form-group-spa_id <%=errors.spa_id?'has-danger':''%>">
-                                        <label class="control-label">Spa name</label>
-                                        <select class="form-control custom-select" name="spa_id">
-                                            <%spas.forEach(item=>{
-                                            var selected = ( item._id == data.spa_id ) ? "selected" : ""; 
+                                   <div class="form-group form-group-spa_id <%=errors.spa_id?'has-danger':''%>">
+                                      <label class="control-label">Spa name</label>
+                                      <select class="form-control custom-select" name="spa_id">
+                                        <%spas.forEach(item=>{
+                                            if(item._id == data.spa_id){
                                             %>
-                                            <option value="<%=item._id%>" <%=selected %>><%=item.name%></option>
-                                            <% }) %>
-                                        </select>
-                                        <small class="form-control-feedback "><%=errors?errors.status:''%></small>
-                                    </div>
+                                          <option value="<%=item._id%>"  selected ><%=item.name%></option>
+                                        <% }
+                                            }) %>
+                                      </select>
+                                      <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
+                                   </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div
-                                        class="form-group form-group-service_id <%=errors.service_id?'has-danger':''%>">
-                                        <label class="control-label">Service name</label>
-                                        <select class="form-control custom-select" name="service_id">
-                                            <% services.services.forEach(item=>{ 
-                                            var selected = ( item._id == data.service_id ) ? "selected" : ""; 
+                                    <div class="form-group form-group-service_id <%=errors.service_id?'has-danger':''%>">
+                                       <label class="control-label">Service name</label>
+                                       <select class="form-control custom-select" name="spa_service_id">
+                                        <% services.forEach(item=>{ 
+                                            var selected = ( item._id == data.spa_service_id ) ? "selected" : ""; 
                                             %>
-                                            <option value="<%=item._id%>" <%=selected %>><%=item.title%></option>
-                                            <% }) %>
-                                        </select>
-                                        <small class="form-control-feedback "><%=errors?errors.status:''%></small>
+                                           <option value="<%=item._id%>" <%=selected %>><%=item.title || item.service.title%></option>
+                                         <% }) %>
+                                       </select>
+                                       <small class="form-control-feedback "><%=errors?errors.status:''%></small> 
                                     </div>
-                                </div>
-                            </div>
-                            <!--/row-->
+                                 </div>
+                             </div>
+                                    <!--/row-->
+
+                                    <div class="row p-t-20">
+                                        <div class="col-md-6">
+                                            <div class="form-group <%=errors.status?'has-danger':''%>">
+                                                <label class="control-label">Status</label>
+                                                <select class="form-control custom-select" name="status">
+                                                  <option value="pending" <%=data.status=='pending'?'selected':''%>>Pending</option>
+                                                  <option value="active" <%=data.status=='active'?'selected':''%>>Active</option>
+                                                  <option value="blocked" <%=data.status=='blocked'?'selected':''%>>Blocked</option>
+                                                </select>
+                                            <small class=" form-control-feedback "><%=errors?errors.status:''%></small> 
+                                            </div>
+                                        </div>
+                                    </div>
 
 
-                            <!--/row-->
-                            <!--/row-->
+                                    <!--/row-->
+                                    <!--/row-->
 
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i>
-                                    Save</button>
-                                <a href="/admin/spas/bookings">
-                                    <button type="button" class="btn btn-inverse">Cancel</button>
-                                </a>
-                            </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i>
+                                            Save</button>
+                                        <a href="/admin/spas/bookings">
+                                            <button type="button" class="btn btn-inverse">Cancel</button>
+                                        </a>
+                                    </div>
                     </form>
                 </div>
             </div>
@@ -254,19 +263,20 @@
 
 <script>
 
-    let spas = `<%-JSON.stringify(spas)%>`;
-    let newspas = JSON.parse(spas)
-    $('select').on('change', function () {
-
-        const result = newspas.filter(item => {
-            return item._id === this.value
+    let data = `<%-JSON.stringify(spas)%>`;
+    let newData = JSON.parse(data)
+    $('select').on('change', function() {
+        const result = newData.filter(item=>{
+            return item._id === this.value 
         })[0]
-        let option = ""
+        let option =""
         result.services.forEach(ele => {
-            option += `<option value="${ele._id}">${ele.title}</option>`
-
+            option += `<option value="${ele._id}">${ele.title?ele.title:ele.service.title}</option>`
+            
         });
-        $('select[name=service_id]').html(option)
-     
-    });
+        $('select[name=spa_service_id]').html(option)
+        // alert( this.value );
+      });
+
 </script>
+    

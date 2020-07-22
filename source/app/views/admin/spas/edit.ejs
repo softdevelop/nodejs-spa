@@ -160,9 +160,12 @@
                                             <small class="form-control-feedback"><%=errors?errors.imgs:''%></small>
                                         </div>
                                         <div class="Images-Preview">
-                                            <% data.imgs.forEach(img=>{ %>
+                                            
+                                            <% if(data.imgs.length>0){
+                                                 data.imgs.forEach(img=>{ %>
                                                 <div class="Image-Preview"><img src="<%=img?urlMediaUpload.imageObj(img):''%>" /></div>
-                                                <% }) %>
+                                                <% })
+                                            } %>
                                         </div>
                                     </div>
                                 </div>

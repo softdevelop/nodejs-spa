@@ -197,15 +197,15 @@ const viewDetail = async (req, res) => {
 
 const getListBookingOfSpa = async (req, res) => {
   if (req.user) {
+    let id = req.user._id
+    let spa = await Spa.findOne({owner: id}).populate('ownerDetail').exec();
     let { page, limit } = req.query;
     let search = req.query.search || '';
     let text = '.*'+search.split(' ').join('.*')+'.*'
     let reg = new RegExp(text);
-    let id = req.user._id
-    let spa = await Spa.findOne({owner: id}).populate('ownerDetail').exec();
     var query = {
       name: { $regex: reg, $options: 'gmi' },
-      spa_id: spa._id
+      spa_id : spa._id
     };
     var options = {
       select: "", //"username email"
@@ -217,34 +217,82 @@ const getListBookingOfSpa = async (req, res) => {
         path: 'spas',
       },{
         path: 'services',
+        populate:{
+          path: 'service'
+        }
       }],
     };
-      let data = await Booking.paginate(query, options);
-      data.search = search;
-        return res.render("admin/booking/ofSpa/index", {
-          data,
-          urlMediaUpload,
-          moment: moment.tz.setDefault("Asia/Ho_Chi_Minh"),
-          genHtmlPagination: genHtmlPagination(data.total, data.limit, data.page, data.pages, data.search),
-        });
-    }
-    else {
-      console.log('err', req.err);
-    }
+    let data = await Booking.paginate(query, options);
+    
+    data.search = search
+    // return res.send(data)
+    return res.render("admin/booking/ofSpa/index", {
+      data,
+      urlMediaUpload,
+      moment: moment.tz.setDefault("Asia/Ho_Chi_Minh"),
+      genHtmlPagination: genHtmlPagination(data.total, data.limit, data.page, data.pages, data.search),
+    });
+  } else {
+    console.log('err', req.err);
+  }
+
 };
 const getFormEditOfSpa = async (req, res) => {
   let id = req.params.id;
-  let booking = await Booking.findOne({_id: id}).populate('services').populate('spas').exec()
-  let spas = await Spa.find().populate("services").exec()
-  let services = spas.find(item => item._id == booking.spa_id);
-  res.render('admin/booking/ofSpa/edit', {errors: {}, data: booking, spas, services})
+  let id_user = req.user._id
+  let spa = await Spa.findOne({owner: id_user}).populate('ownerDetail').exec();
+  let booking = await Booking.findOne({_id: id}).populate([
+    {
+      path:'spas',
+      select:'_id name'
+    },
+    {
+      path:'services',
+      populate:{
+        path:'service',
+        select:'title'
+      }
+    }
+  ]).exec();
+  if(spa._id!=booking.spa_id){ // security
+    res.render('admin/404');
+  }
+  var spas = await Spa.find().select('_id name').populate({
+    path: "services",
+    select: "_id title service_id service",
+    populate:{
+      path:'service',
+      select:"title"
+    }
+  }).exec()
+  let services = await  SpaService.find({spa_id : booking.spas._id}).populate({
+    path:'service',
+    select:'title'
+  }).exec()
+  res.render('admin/booking/ofSpa/edit', {errors: {}, data: booking, spas,services})
+
+
+  // let id = req.params.id;
+  // let booking = await Booking.findOne({_id: id}).populate('services').populate('spas').exec()
+  // let spas = await Spa.find().populate("services").exec()
+  // let services = spas.find(item => item._id == booking.spa_id);
+  // res.render('admin/booking/ofSpa/edit', {errors: {}, data: booking, spas, services})
 };
 
 const editOfSpa = async (req, res) => {
   let id = req.params.id;
+
+  let id_user = req.user._id
+  let spa = await Spa.findOne({owner: id_user}).populate('ownerDetail').exec();
+  let booking = await Booking.findById(id).exec()
+  if(spa._id!=booking.spa_id){ // security
+    res.render('admin/404');
+  }
+
   let data = req.body;
   delete data.files;
   let err = validateBookingEdit(data);
+  console.log(err)
   if (err && err.error) {
     let errors =
       err.error &&

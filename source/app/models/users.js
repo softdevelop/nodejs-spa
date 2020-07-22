@@ -160,12 +160,34 @@ function validateEmail(user) {
 /**
  * virtual
  */
-UserSchema.virtual('spa', {
-  ref: 'Spa',
+UserSchema.virtual('numOfNews', {
+  ref: 'New',
   localField: '_id',
-  foreignField: 'owner',
-  justOne: true
+  foreignField: 'author',
+  count:true,
+  justOne:false
 });
+
+UserSchema.virtual('new', {
+    ref: 'New',
+    localField: '_id',
+    foreignField: 'author',
+    justOne: true
+  });
+
+UserSchema.virtual('spa', {
+    ref: 'Spa',
+    localField: '_id',
+    foreignField: 'owner',
+    justOne: true
+  });
+
+UserSchema.virtual('expert', {
+    ref: 'Expert',
+    localField: '_id',
+    foreignField: 'user_id',
+    justOne: true
+  });
 
 UserSchema.virtual('projects', {
   ref: 'Project',

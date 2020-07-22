@@ -20,8 +20,8 @@ $(document).ready(function() {
 
 
     function mapHandle(lat, lng) {
-        $('.modal-body').html("<div class='search-section-map'><div id='mapid' style='width: 100%; height: 100%;min-height: 400px; z-index: 1;'></div></div>");
-        var mymap = L.map('mapid').setView([lat, lng], 10);
+        $('#mapModal .modal-body').html("<div class='search-section-map'><div id='mapid' style='width: 100%; height: 100%;min-height: 400px; z-index: 1;'></div></div>");
+        var mymap = L.map('mapid').setView([lat, lng], 13);
 
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
             maxZoom: 18,

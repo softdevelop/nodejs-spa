@@ -6,7 +6,10 @@
     
     <link rel="stylesheet" href="/libs/js/Simple-Flexible-jQuery-Autocomplete-Plugin-Flexdatalist/jquery.flexdatalist.css">
     <link rel="stylesheet" href="/libs/js/Simple-Flexible-jQuery-Autocomplete-Plugin-Flexdatalist/jquery.flexdatalist.min.css">
-  `,
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+  
+    `,
   script: `
   <script src="/libs_client/js/demo-home.js"></script>
   <script>
@@ -73,34 +76,30 @@
         ==End Seassion booking section== 
 =======================================-->
 
-
 <!-- ======================================= 
       ==Start recommendation Section==  
   =======================================-->
-<section class="product-carousel-section experts-section blog-section blog-page">
+  <section class="product-carousel-section experts-section blog-section blog-page">
     <div class="container">
         <div class="row mb-3">
             <div class="col-md-12">
                 <div class="text-left">
                     <h3 class="color-72 fw-500 pb-10">Danh mục spa</h3>
                 </div>
-                <p>Các spa được phân loại tại đây</p>
 
             </div>
         </div>
 
         <ul class="tab-menu nav nav-tabs mb-4 position-relative" role="tablist">
             <% services.forEach((item, index)=>{ %>
-            <li class="nav-item SpaRecommendationCat" length="<%=item.spaservice.length%>">
-                <a class="nav-link <%=index===0?'active':''%>" href="#service<%=item._id%>"
-                    aria-controls="service<%=item._id%>" role="tab" data-toggle="tab" aria-selected="true">
-                    <%=item.title%>
-                </a>
-            </li>
-            <% }) %>
+                <li class="nav-item SpaRecommendationCat" length="<%=item.spaservice.length%>">
+                    <a class="nav-link <%=index===0?'active':''%>" href="#service<%=item._id%>" aria-controls="service<%=item._id%>" role="tab" data-toggle="tab" aria-selected="true">
+                        <%=item.title%>
+                    </a>
+                </li>
+                <% }) %>
 
-            <li class="view-more position-absolute nav-item SpaRecommendationCat"><a class="nav-link" href="#service"
-                    aria-controls="service" role="tab" data-toggle="tab" aria-selected="true">Xem thêm</a></li>
+                    <li class="view-more position-absolute nav-item SpaRecommendationCat"><a class="nav-link" href="#service" aria-controls="service" role="tab" data-toggle="tab" aria-selected="true">Xem thêm</a></li>
         </ul>
         <div class="tab-content" id="myTabContent">
             <div id="service" class="tab-pane fade show" role="tabpanel">
@@ -110,168 +109,134 @@
                             <div class="row">
 
                                 <% services.forEach((item, index)=>{ %>
-                                <% item.spaservice.forEach((spaservice, index)=>{ %>
-                                <% if(index < 9 ) { %>
-                                <div class="item col-md-6 col-lg-4">
-                                    <div class="single-blog mb-0">
-                                        <div class="blog-img pos-relative">
-                                            <div class="img-area">
-                                                <a href="/spa/<%=spaservice.spa.slug%>"><img
-                                                        src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs[0] || spaservice.spa.logo)%>"
-                                                        alt="blog img" class="img-fluid" style="max-height: 200px;"></a>
+                                    <% item.spaservice.forEach((spaservice, index)=>{ %>
+                                        <% if(index < 9 ) { %>
+                                            <div class="item col-md-6 col-lg-4">
+                                                <div class="single-blog mb-0">
+                                                    <div class="blog-img pos-relative">
+                                                        <div class="img-area">
+                                                            <a href="/spa/<%=spaservice.spa.slug%>"><img src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs[0] || spaservice.spa.logo)%>" alt="blog img" class="img-fluid" style="max-height: 200px;"></a>
+                                                        </div>
+                                                        <ul class="brand ">
+                                                            <li><i class="fa fa-heart"></i>18</li>
+                                                            <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
+                                                            <li>
+                                                                <p data-toggle="modal" data-target="#mapModal" data-lat="<%=spaservice.spa.latitude%>" data-lng="<%=spaservice.spa.longitude%>" data-title="<%=spaservice.spa.name%>" class="map">
+                                                                    <i class="fa fa-map-marker" aria-hidden="true"></i> Xem địa điểm
+                                                                </p>
+                                                            </li>
+                                                            <li class="modal-content-slide gallery" spa-id="<%= spaservice.spa._id %>"><i class="fa fa-picture-o"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="blog-content py-2 mb-4">
+                                                    <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500">
+                                                        <%=spaservice.spa.name%>
+                                                    </a>
+                                                    <div class="remove-style <%=spaservice.spa.description.length>100?'string-line-3':'' %> ">
+                                                        <%-spaservice.spa.description%>
+                                                    </div>
+                                                    <div class="address">
+                                                        <p class="address py-1"><i class="fa fa-home"></i><span> Địa chỉ:</span>
+                                                            <%-spaservice.spa.address%>
+                                                        </p>
+                                                        <p class="phone py-1"><i class="fa fa-phone"></i><span> Điện thoại:</span>
+                                                            <%-spaservice.spa.phone%>
+                                                        </p>
+                                                        <p class="email py-1"><i class="fa fa-envelope"></i><span> Email:</span>
+                                                            <a href="#">
+                                                                <%-spaservice.spa.email%>
+                                                            </a>
+                                                        </p>
+                                                        <p class="py-1">Giờ làm việc: <i class="fa fa-clock-o"></i>
+                                                            <%-spaservice.spa.working_hour && spaservice.spa.working_hour.start || '8:00' %> -
+                                                                <%-spaservice.spa.working_hour && spaservice.spa.working_hour.end || '17:00' %>
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <ul class="brand ">
-                                                <li><i class="fa fa-heart"></i>18</li>
-                                                <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
-                                                <li>
-                                                    <p data-lat="16.662506225634573" data-lng="107.12768554687501"
-                                                        data-title="Nivea for men’s sensitive hydro gel the perfect cure."
-                                                        class="map home-search">
-                                                        <i class="fa fa-map-marker" aria-hidden="true"></i> Xem địa điểm
-                                                    </p>
-                                                </li>
-                                                <li class="modal-content-slide gallery"
-                                                    spa-id="<%= spaservice.spa._id %>"><i class="fa fa-picture-o"></i>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="blog-content py-2 mb-4">
-                                        <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500">
-                                            <%=spaservice.spa.name%>
-                                        </a>
-                                        <div
-                                            class="remove-style <%=spaservice.spa.description.length>100?'string-line-3':'' %> ">
-                                            <%-spaservice.spa.description%>
-                                        </div>
-                                        <div class="address">
-                                            <p class="address py-1"><i class="fa fa-home"></i><span> Địa chỉ:</span>
-                                                <%-spaservice.spa.address%>
-                                            </p>
-                                            <p class="phone py-1"><i class="fa fa-phone"></i><span> Điện thoại:</span>
-                                                <%-spaservice.spa.phone%>
-                                            </p>
-                                            <p class="email py-1"><i class="fa fa-envelope"></i><span> Email:</span>
-                                                <a href="#">
-                                                    <%-spaservice.spa.email%>
-                                                </a>
-                                            </p>
-                                            <p class="py-1">Giờ làm việc: <i class="fa fa-clock-o"></i>
-                                                <%-spaservice.spa.working_hour && spaservice.spa.working_hour.start || '8:00' %>
-                                                -
-                                                <%-spaservice.spa.working_hour && spaservice.spa.working_hour.end || '17:00' %>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <% } %>
-                                <% }) %>
-                                <% if(item.spaservice.length===0){ %>
-                                <div>Không có dữ liệu</div>
-                                <% } %>
-                                <% }) %>
+                                            <% } %>
+                                                <% }) %>
+                                                    <% if(item.spaservice.length===0){ %>
+                                                        <div>Không có dữ liệu</div>
+                                                        <% } %>
+                                                            <% }) %>
 
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+           
+            <!-- ________  -->
             <% services.forEach((item, indexServices)=>{ %>
 
-            <div class="tab-pane fade show <%=indexServices===0?'active':''%>" id="service<%=item._id%>" role="tabpanel"
-                aria-labelledby="<%=item._id%>-tab">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="product-carousel-wrapper owl-carousel" id="experts-carousel">
-                            <!-- <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog modal-lg">
-                                      <div class="modal-content">
-                                          <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                  <span aria-hidden="true">&times;</span>
-                                              </button>
-                                          </div>
-                                          <div class="modal-body">
-                                              <div class="search-section-map">
-                                                  <div id="mapid" style="width: 100%; height: 100%;min-height: 400px; z-index: 1;"></div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div> -->
-                            <div class="search-section-results-item">
-                                <div class="row">
-                                    <% item.spaservice.forEach((spaservice, index)=>{ %>
-                                    <% if(index < 9 ) { %>
-                                    <div class="item col-md-6 col-lg-4">
-                                        <div class="single-blog mb-0">
-                                            <div class="blog-img pos-relative">
-                                                <div class="img-area">
-                                                    <a href="/spa/<%=spaservice.spa.slug%>"><img
-                                                            src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs[0] || spaservice.spa.logo)%>"
-                                                            alt="blog img" class="img-fluid"
-                                                            style="max-height: 200px;"></a>
+                <div class="tab-pane fade show <%=indexServices===0?'active':''%>" id="service<%=item._id%>" role="tabpanel" aria-labelledby="<%=item._id%>-tab">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="product-carousel-wrapper owl-carousel" id="experts-carousel">
+                                
+                                <div class="search-section-results-item">
+                                    <div class="row">
+                                        <% item.spaservice.forEach((spaservice, index)=>{ %>
+                                            <% if(index < 9 ) { %>
+                                                <div class="item col-md-6 col-lg-4">
+                                                    <div class="single-blog mb-0">
+                                                        <div class="blog-img pos-relative">
+                                                            <div class="img-area">
+                                                                <a href="/spa/<%=spaservice.spa.slug%>"><img src="<%=urlMediaUpload.imageObj(spaservice.spa.imgs[0] || spaservice.spa.logo)%>" alt="blog img" class="img-fluid" style="max-height: 200px;"></a>
+                                                            </div>
+                                                            <ul class="brand ">
+                                                                <li><i class="fa fa-heart"></i>18</li>
+                                                                <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
+                                                                <li>
+                                                                    <p data-toggle="modal" data-target="#mapModal" data-lat="<%=spaservice.spa.latitude%>" data-lng="<%=spaservice.spa.longitude%>" data-title="<%=spaservice.spa.name%>" class="map">
+                                                                        <i class="fa fa-map-marker" aria-hidden="true"></i> Xem địa điểm
+                                                                    </p>
+                                                                </li>
+                                                                <li class="modal-content-slide gallery" spa-id="<%= spaservice.spa._id %>"><i class="fa fa-picture-o"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="blog-content py-2 mb-4">
+                                                        <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500">
+                                                            <%=spaservice.spa.name%>
+                                                        </a>
+                                                        <div class="remove-style <%=spaservice.spa.description.length>100?'string-line-3':'' %> ">
+                                                            <%-spaservice.spa.description%>
+                                                        </div>
+                                                        <div class="address">
+                                                            <p class="address py-1"><i class="fa fa-home"></i><span> Địa chỉ:</span>
+                                                                <%-spaservice.spa.address%>
+                                                            </p>
+                                                            <p class="phone py-1"><i class="fa fa-phone"></i><span> Điện thoại:</span>
+                                                                <%-spaservice.spa.phone%>
+                                                            </p>
+                                                            <p class="email py-1"><i class="fa fa-envelope"></i><span> Email:</span>
+                                                                <a href="#">
+                                                                    <%-spaservice.spa.email%>
+                                                                </a>
+                                                            </p>
+                                                            <p class="py-1">Giờ làm việc: <i class="fa fa-clock-o"></i>
+                                                                <%-spaservice.spa.working_hour && spaservice.spa.working_hour.start || '8:00' %> -
+                                                                    <%-spaservice.spa.working_hour && spaservice.spa.working_hour.end || '17:00' %>
+                                                            </p>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <ul class="brand ">
-                                                    <li><i class="fa fa-heart"></i>18</li>
-                                                    <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>10</li>
-                                                    <li>
-                                                        <p data-lat="16.662506225634573" data-lng="107.12768554687501"
-                                                            data-title="Nivea for men’s sensitive hydro gel the perfect cure."
-                                                            class="map home-search">
-                                                            <i class="fa fa-map-marker" aria-hidden="true"></i> Xem địa
-                                                            điểm
-                                                        </p>
-                                                    </li>
-                                                    <li class="modal-content-slide gallery"
-                                                        spa-id="<%= spaservice.spa._id %>"><i
-                                                            class="fa fa-picture-o"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="blog-content py-2 mb-4">
-                                            <a href="/spa/<%=spaservice.spa.slug%>" class="title fw-500">
-                                                <%=spaservice.spa.name%>
-                                            </a>
-                                            <div
-                                                class="remove-style <%=spaservice.spa.description.length>100?'string-line-3':'' %> ">
-                                                <%-spaservice.spa.description%>
-                                            </div>
-                                            <div class="address">
-                                                <p class="address py-1"><i class="fa fa-home"></i><span> Địa chỉ:</span>
-                                                    <%-spaservice.spa.address%>
-                                                </p>
-                                                <p class="phone py-1"><i class="fa fa-phone"></i><span> Điện
-                                                        thoại:</span>
-                                                    <%-spaservice.spa.phone%>
-                                                </p>
-                                                <p class="email py-1"><i class="fa fa-envelope"></i><span> Email:</span>
-                                                    <a href="#">
-                                                        <%-spaservice.spa.email%>
-                                                    </a>
-                                                </p>
-                                                <p class="py-1">Giờ làm việc: <i class="fa fa-clock-o"></i>
-                                                    <%-spaservice.spa.working_hour && spaservice.spa.working_hour.start || '8:00' %>
-                                                    -
-                                                    <%-spaservice.spa.working_hour && spaservice.spa.working_hour.end || '17:00' %>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <% } %>
-                                    <% }) %>
+                                                <% } %>
+                                                    <% }) %>
 
-                                    <% if(item.spaservice.length===0){ %>
-                                    <div>Không có dữ liệu</div>
-                                    <% } %>
+                                                        <% if(item.spaservice.length===0){ %>
+                                                            <div>Không có dữ liệu</div>
+                                                            <% } %>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <% }) %>
+                <% }) %>
 
         </div>
 
@@ -280,7 +245,7 @@
 
 
 <!-- ======================================= 
-    ==End recommendation section== 
+==End recommendation section== 
 =======================================-->
 
 
@@ -540,22 +505,22 @@
                 <!--experts person-1-->
                 <div class="single-carousel col-md-6 col-lg-4 col-xl-3" style="height: 300px;">
                     <div class="img-background"
-                        style="background-image:url(<%=urlMediaUpload.imageObj(item.user.avatar || item.images[0])%>)">
+                        style="background-image:url(<%=urlMediaUpload.imageObj(item.User[0].avatar || item.Expert[0].images[0])%>)">
                     </div>
                     <div class="expert-hover expert-hover-2 text-center">
                         <a href="/chuyen-gia/<%=item.slug%>">
                             <p class="name fw-700 color-ff h6">
-                                <%=item.user.first_name%>
-                                <%=item.user.last_name%>
+                                <%=item.User[0].first_name%>
+                                <%=item.User[0].last_name%>
                             </p>
                         </a>
                         <p class="degignation">
-                            <%=item.job%>
+                            <%=item.Expert[0].job%>
                         </p>
                         <p class="color-ff ptb-20 string-line-3">
-                            <%=item.slogan%>
+                            <%=item.Expert[0].slogan%>
                         </p>
-                        <a href="/chuyen-gia/<%=item.slug%>" title="See Full Bio"
+                        <a href="/chuyen-gia/<%=item.Expert[0].slug%>" title="See Full Bio"
                             class="bio color-ff text-capitalize">Xem thêm <i class="fa fa-long-arrow-right"></i></a>
                     </div>
                     <div class="social-contact">
@@ -601,7 +566,7 @@
                     <div class="single-shortlink-plan single-pack text-left float-left">
                         <div class="shortlink-body">
                             <div class="shortlink-content">
-                                <a href='#'>
+                                <a href='/ve-chung-toi'>
                                     <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Về chúng tôi</h6>
                                 </a>
                                 <p>Sứ mệnh của đội ngũ Spa chính là mang đến niềm vui thông qua sự Thư Giãn – Khoẻ Mạnh.
@@ -609,7 +574,7 @@
                             </div>
 
                             <div class="shortlink-content">
-                                <a href='#'>
+                                <a href='/ve-chung-toi'>
                                     <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Đặt dịch vụ</h6>
                                 </a>
                                 <p>Vui lòng liên hệ với chúng tôi.</p>
@@ -621,7 +586,7 @@
                     <div class="single-shortlink-plan text-left float-left">
                         <div class="shortlink-body">
                             <div class="shortlink-content">
-                                <a href='#'>
+                                <a href='/ve-chung-toi'>
                                     <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Đánh giá spa của bạn
                                     </h6>
                                 </a>
@@ -629,7 +594,7 @@
                                     vụ spa, nhưng tôi ấn tượng và cảm thấy hài lòng.</p>
                             </div>
                             <div class="shortlink-content">
-                                <a href='#'>
+                                <a href='/ve-chung-toi'>
                                     <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Lấy thông tin spa
                                     </h6>
                                 </a>
@@ -642,7 +607,7 @@
                     <div class="single-shortlink-plan family-pack text-left float-left">
                         <div class="shortlink-body">
                             <div class="shortlink-content">
-                                <a href='#'>
+                                <a href='/ve-chung-toi'>
                                     <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Thời gian làm việc
                                     </h6>
                                 </a>
@@ -650,7 +615,7 @@
                                     bạn liên hệ với chứng tôi.</p>
                             </div>
                             <div class="shortlink-content">
-                                <a href='#'>
+                                <a href='/ve-chung-toi'>
                                     <h6 class="color-33 fw-500"><i class="fa fa-check color-d5"></i>Các tin tức liên
                                         quan</h6>
                                 </a>
@@ -672,8 +637,27 @@
     ==End pricing plan section== 
 =======================================-->
 
+<!-- Modal-Map  -->
+<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="search-section-map">
+                    <div id="mapid" style="width: 100%; height: 100%;min-height: 400px; z-index: 1;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal -->
-<div class="modal-slide modal fade bd-example " id="exampleModal" tabindex="-1" role="dialog"
+<div class="modal-slide modal fade bd-example " id="modalSlide" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog w-100" role="document">
     </div>
@@ -717,7 +701,7 @@
 
         $('body').find('.modal-content-slide').click(function () {
             let spa_id = $(this).attr('spa-id')
-            $('.modal-slide').modal('show')
+            $('#modalSlide').modal('show')
             let resultIndicators = '';
             let resultInner = '';
             for (const [key, value] of Object.entries(spas)) {

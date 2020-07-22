@@ -9,9 +9,9 @@ const { hasPermission, checkRole, hasRole } = require("../../middleware");
 
 //spa
 router.get('/spas/bookings', hasRole('SPA_OWNER'), booking.getListBookingOfSpa)
-router.get('/spas/bookings/:id/edit', hasRole('SPA_OWNER'), booking.getFormEditOfSpa)
-router.post('/spas/bookings/:id/edit', hasRole('SPA_OWNER'), booking.editOfSpa)
-router.get('/spas/bookings/:id/view', hasRole('SPA_OWNER'), booking.viewDetailOfSpa)
+router.get('/spas/booking/:id/edit', hasRole('SPA_OWNER'), booking.getFormEditOfSpa)
+router.post('/spas/booking/:id/edit', hasRole('SPA_OWNER'), booking.editOfSpa)
+router.get('/spas/booking/:id/view', hasRole('SPA_OWNER'), booking.viewDetailOfSpa)
 router.post("/spas/bookings/delmany", hasRole('SPA_OWNER'), booking.delMany)
 router.get("/spas/discount", hasRole('SPA_OWNER'), discount.getListDiscount);
 router.get("/spas/discount/create", hasRole('SPA_OWNER'), discount.getFormCreate);

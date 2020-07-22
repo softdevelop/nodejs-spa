@@ -47,7 +47,7 @@
     </div>
   </section>
   
-  <section class="service-section">
+  <section class="service-section"  style="border-bottom: 1px solid #e3dddd;">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -67,19 +67,18 @@
     </div>
   </section>
 
-  <section>
-    <
+    
   </section>
 
     <!-- ======================================= 
             ==Start Service section== 
     =======================================-->
-    <section class="service-section">
+    <section class="service-section blog-page pt-5 <%= news.length > 0?'':'d-none'%>">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="section-title text-center">
-                        <h3 class="color-72 fw-500 pb-10">Dịch vụ của tôi</h3>
+                        <h3 class="color-72 fw-500 pb-10">Bài viết của <%= expert.user.first_name + expert.user.last_name %></h3>
                         <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore etc.</p> -->
                     </div>
                 </div>
@@ -88,20 +87,34 @@
             <!--/row-->
 
             <div class="row">
-              <% expert.services.forEach(item=>{ %>
-                <!--service-1-->
-                <div class="col-lg-4 col-md-6">
-                  <div class="single-service">
-                      <div class="img"><img src="<%=urlMediaUpload.imageObj(item.image)%>" alt="service-img" class="img-fluid"></div>
-                      <div class="img-over-content text-center">
-                          <p><%=item.title%></p>
-                          <div class="divider"></div>
-                          <a href="service-details.html" class="fw-500 color-33 mtb-15"><%=item.price%></a>
-                          <p><%-item.content%></p>
-                      </div>
-                  </div>
+
+              <% news.forEach(function(item) { %>
+                <div class="col-md-4">
+                    <div class="single-blog">
+                        <div class="blog-img pos-relative">
+                            <div class="img-area">
+                                <a href="/tin-tuc/<%=item.slug%>"><img src="<%=urlMediaUpload.imageObj(item.image)%>" style="height: 200px;" alt="blog img" class="img-fluid"></a>
+                            </div>
+                            <ul class="brand">
+                                <li><i class="fa fa-heart"></i>18</li>
+                                <li><i class="fa fa-eye"></i><%=item.numOfViews%></li>
+                                <!-- <li><i class="fa fa-folder-open"></i>Spa Tips</li>ontent -->
+                                <li class="gallery"><i class="fa fa-picture-o"></i></li>
+                            </ul>
+                            <div class="date">
+                                <h5 class="fw-700 color-ff"><%=moment(item.date).format('DD')%></h5>
+                                <span class="fw-500 roboto color-ff ">Tháng <%=moment(item.date).format('MM')%></span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <a href="/tin-tuc/<%=item.slug%>" class="title fw-500 pt-20"><%=item.name%></a>
+                            <div class="cut-content" ><%-truncate(item.content, 100)%></div>
+                            <a href="/tin-tuc/<%=item.slug%>" class="readmore" title="Xem thêm" target="-blank">Xem thêm <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
                 </div>
-              <% }) %>
+                <% }) %>
+              
                
             </div>
             <!--/row-->
@@ -115,7 +128,7 @@
     <!-- ======================================= 
             ==Start Testimonial section==  
     =======================================-->
-    <section class="testimonial-section">
+    <!-- <section class="testimonial-section">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -126,14 +139,12 @@
                     <div class="testimoial-wrapper owl-carousel">
                         
                     </div>
-                    <!--/testimoial wrapper-->
                 </div>
-                <!--/col-->
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- ======================================= 
             ==End Testimonial section== 
     =======================================-->
 
-    
+   

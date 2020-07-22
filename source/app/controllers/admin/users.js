@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
+const New = mongoose.model("New");
+const Spa = mongoose.model("Spa");
+const Expert = mongoose.model("Expert");
 const Role = mongoose.model("Role");
 const moment = require("moment-timezone");
 const { genHtmlPagination, urlMediaUpload } = require('../../utils')
 const { validateUser, validateUserEdit } = require('../../models/users')
+const spa = require('../admin/spas')
 const bcrypt = require("bcryptjs");
 const fs = require('fs')
 
@@ -21,6 +25,9 @@ const getListUsers = async(req, res) => {
         var query = {
             email: { $regex: reg, $options: 'gmi' }
         };
+        if(req.user.role == 'USER_MANAGEMENT'){ //security
+            query.role = 'USER_MANAGEMENT'
+        }
         var options = {
             select: "", //"username email"
             sort: { createdAt: -1 },
@@ -29,6 +36,7 @@ const getListUsers = async(req, res) => {
             page: parseInt(page, 10) || 1
         };
         let data = await User.paginate(query, options);
+        
         for (let i = 0; i < data.docs.length; i++) {}
         data.search = search
         return res.render("admin/users/index", {
@@ -44,11 +52,19 @@ const getListUsers = async(req, res) => {
 
 const getFormCreate = async(req, res) => {
     let roles = await Role.find().select('name value').exec();
+    if(req.user.role == 'USER_MANAGEMENT'){ //security
+        roles = roles.filter(item =>{
+            return item.value == 'USER'
+        })
+    }
     res.render('admin/users/create', { errors: {}, data: {}, roles })
 }
 
 const create = async(req, res) => {
     let data = req.body
+    if(req.user.role == 'USER_MANAGEMENT'){ //security
+        data.role = "USER"
+    }
     let err = validateUser(data)
     let roles = await Role.find().select('name value').exec();
     if (err && err.error) {
@@ -86,12 +102,20 @@ const getFormEdit = async(req, res) => {
     let id = req.params.id
     let record = await User.findById(id).select("-password").exec();
     let roles = await Role.find().select('name value').exec();
+    if(req.user.role == 'USER_MANAGEMENT'){ //security
+        roles = roles.filter(item =>{
+            return item.value == 'USER'
+        })
+    }
     res.render('admin/users/edit', { errors: {}, data: record, urlMediaUpload, roles })
 }
 
 const edit = async(req, res) => {
     let id = req.params.id
     let data = req.body
+    if(req.user.role == 'USER_MANAGEMENT'){ //security
+        data.role = "USER"
+    }
     let err = validateUserEdit(data)
     if (err && err.error) {
         let errors = err.error && err.error.details.reduce((result, item) => {
@@ -131,6 +155,13 @@ delMany = async(req, res) => {
             const user = await User.deleteOne({ _id: val }, (err, result) => {
                 if (err) return res.status(400).json({ status: "error" });
             }).exec();
+            const Experts = await Expert.deleteMany({ user_id: val }, (err, result) => {
+                if (err) return res.status(400).json({ status: "error" });
+            }).exec();
+            const New = await New.deleteMany({ author: val }, (err, result) => {
+                if (err) return res.status(400).json({ status: "error" });
+            }).exec();
+            const id_spa = await Spa.findOne({owner:val}).select("_id").exec()
         });
         return res.status(200).json({ success: true });
     } catch (err) {
