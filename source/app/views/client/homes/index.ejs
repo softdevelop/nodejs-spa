@@ -524,10 +524,10 @@
                             class="bio color-ff text-capitalize">Xem thêm <i class="fa fa-long-arrow-right"></i></a>
                     </div>
                     <div class="social-contact">
-                        <a href="#" title="E-Mail" target="_blank"><i class="fa fa-envelope-o"></i></a>
-                        <a href="#" title="Phone" target="_blank"><i class="fa fa-phone"></i></a>
-                        <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="<%=item.Expert[0].email?item.Expert[0].email:'javascript:void(0)'%>" title="E-Mail" target="_blank"><i class="fa fa-envelope-o"></i></a>
+                        <a href="<%=item.Expert[0].phone?item.Expert[0].phone:'javascript:void(0)'%>" title="Phone" target="_blank"><i class="fa fa-phone"></i></a>
+                        <a href="<%=item.Expert[0].facebook?item.Expert[0].facebook:'javascript:void(0)'%>" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="<%=item.Expert[0].twiter?item.Expert[0].twiter:'javascript:void(0)'%>" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
                     </div>
                 </div>
                 <% }) %>
@@ -562,8 +562,9 @@
             <div class="col-md-12">
                 <div class="shortlink-wrapper clearfix">
 
-                    <!--plan-1-->
-                    <div class="single-shortlink-plan single-pack text-left float-left">
+                    <div class="row">
+                        <!--plan-1-->
+                    <div class="single-shortlink-plan single-pack text-left float-left col-12 col-md-4">
                         <div class="shortlink-body">
                             <div class="shortlink-content">
                                 <a href='/ve-chung-toi'>
@@ -581,9 +582,8 @@
                             </div>
                         </div>
                     </div>
-
                     <!--plan-2-->
-                    <div class="single-shortlink-plan text-left float-left">
+                    <div class="single-shortlink-plan text-left float-left col-12 col-md-4">
                         <div class="shortlink-body">
                             <div class="shortlink-content">
                                 <a href='/ve-chung-toi'>
@@ -603,8 +603,9 @@
                         </div>
                     </div>
 
+
                     <!--plan-3-->
-                    <div class="single-shortlink-plan family-pack text-left float-left">
+                    <div class="single-shortlink-plan family-pack text-left float-left col-12 col-md-4">
                         <div class="shortlink-body">
                             <div class="shortlink-content">
                                 <a href='/ve-chung-toi'>
@@ -623,6 +624,13 @@
                             </div>
                         </div>
                     </div>
+
+                    </div>
+                    
+
+                   
+
+                    
                     <!--/single price plan-->
                 </div>
                 <!--/wrapper-->

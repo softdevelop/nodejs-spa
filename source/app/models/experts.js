@@ -15,7 +15,11 @@ const ExpertSchema = new Schema({
     description: { type: String },
     user_id: {type: Schema.Types.ObjectId, ref: 'User' },
     tags: {type: Array, require: false},
-    job: {type: String, required: false }
+    job: {type: String, required: false },
+    email: {type: String, required: false },
+    phone: {type: String, required: false },
+    facebook: {type: String, required: false },
+    twiter: {type: String, required: false }
 
 },{
     timestamps: true,
@@ -30,7 +34,11 @@ function validateExpert(expert){
         description: Joi.string().min(1),
         user_id: Joi.string().required(),
         tags: Joi.allow(),
-        job: Joi.string().min(1)
+        job: Joi.string().min(1),
+        email: Joi.any(),
+        phone: Joi.any(),
+        facebook: Joi.any(),
+        twiter: Joi.any(),
     }
     return Joi.validate(expert, schema, { abortEarly: false });
 }
@@ -44,7 +52,11 @@ function validateExpertEdit(expert){
         description: Joi.string().min(1),
         user_id: Joi.string().required(),
         tags: Joi.allow(),
-        job: Joi.string().min(1)
+        job: Joi.string().min(1),
+        email: Joi.any(),
+        phone: Joi.any(),
+        facebook: Joi.any(),
+        twiter: Joi.any(),
     }
     return Joi.validate(expert, schema, { abortEarly: false });
 }

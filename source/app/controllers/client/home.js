@@ -90,7 +90,6 @@ const index = async (req, res) => {
                     count: { $sum: 1 },
                 },
             },
-
             {
                 $lookup: {
                     from: 'users',
@@ -116,8 +115,6 @@ const index = async (req, res) => {
             {
                 $limit:16
             }
-
-
         ],
     )
     res.render("client/homes/index", {

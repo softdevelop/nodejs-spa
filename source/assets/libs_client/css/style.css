@@ -2999,6 +2999,8 @@ footer .copyright a:hover {
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+    background: rgba(114, 15, 131, 0.5) none repeat scroll 0 0;
+
 }
 
 .experts-section .expert-hover-2 {
@@ -3008,8 +3010,13 @@ footer .copyright a:hover {
     width: unset;
 }
 
+.product-carousel-wrapper .single-carousel *{
+    opacity: 1 !important;
+}
+
 .experts-section .single-carousel:hover .expert-hover {
-    background: rgba(114, 15, 131, 0.8) none repeat scroll 0 0;
+    background: rgba(114, 15, 131, 0.05) none repeat scroll 0 0;
+    transition: 7s;
 }
 
 .experts-section .expert-hover .name {
@@ -3195,7 +3202,7 @@ footer .copyright a:hover {
     background-color: #fff;
     border: medium none;
     border-radius: 0;
-    color: #333;
+    color: #333;libs_client/css/style.css
     font-size: 18px;
     height: 43px;
 }

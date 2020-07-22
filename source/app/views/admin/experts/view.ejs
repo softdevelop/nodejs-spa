@@ -138,6 +138,44 @@
                                   </div>
                                 </div>
                             </div>
+                             <!--/row-->
+                             <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-email <%=errors.email?'has-danger':''%>">
+                                        <label class="control-label">Email</label>
+                                        <input disabled type="text" id="email" class="form-control" placeholder="" name="email"
+                                            required value="<%=data.email?data.email:''%>">
+                                        <small class="form-control-feedback"><%=errors?errors.email:''%></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-phone <%=errors.phone?'has-danger':''%>">
+                                        <label class="control-label">Phone</label>
+                                        <input disabled type="text" id="phone" class="form-control" placeholder="" name="phone"
+                                            required value="<%=data.phone?data.phone:''%>">
+                                        <small class="form-control-feedback"><%=errors?errors.phone:''%></small>
+                                    </div>
+                                </div>
+                            </div>
+                             <!--/row-->
+                             <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-facebook <%=errors.facebook?'has-danger':''%>">
+                                        <label class="control-label">Facebook</label>
+                                        <input  disabled type="text" id="facebook" class="form-control" placeholder="" name="facebook"
+                                            required value="<%=data.facebook?data.facebook:''%>">
+                                        <small class="form-control-feedback"><%=errors?errors.facebook:''%></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-twiter <%=errors.twiter?'has-danger':''%>">
+                                        <label class="control-label">Twiter</label>
+                                        <input disabled type="text" id="twiter" class="form-control" placeholder="" name="twiter"
+                                            required value="<%=data.twiter?data.twiter:''%>">
+                                        <small class="form-control-feedback"><%=errors?errors.twiter:''%></small>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
                                 <a href="/admin/experts">
