@@ -54,7 +54,7 @@
     "md5": "^2.2.1",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.26",
-    "mongoose": "^5.2.10",
+    "mongoose": "^5.7.5",
     "mongoose-mpath": "^2.0.33",
     "mongoose-paginate": "^5.0.3",
     "morgan": "^1.10.0",
