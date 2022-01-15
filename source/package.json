@@ -68,7 +68,7 @@
     "password-hash": "^1.2.2",
     "pdf-to-base64": "^1.0.2",
     "session-memory-store": "^1.0.0",
-    "shelljs": "^0.8.3",
+    "shelljs": "^0.8.5",
     "socket.io": "^2.1.1",
     "ua-parser-js": "^0.7.19",
     "underscore": "^1.9.1",
