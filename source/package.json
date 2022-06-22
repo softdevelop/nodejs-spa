@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "analytics-node": "^3.4.0-beta.1",
-    "async": "^3.2.0",
+    "async": "^3.2.2",
     "async-lock": "^1.2.2",
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
